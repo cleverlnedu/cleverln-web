@@ -1,0 +1,411 @@
+/* ===== HERO WRAPPER ===== */
+.hero {
+  width: 100%;
+  background: #ffffff;
+   padding: 80px 0 0;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+/* ===== LEFT CONTENT ===== */
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* HEADLINE */
+.heading {
+  font-family: var(--font-dm-serif);
+  font-size: 56px;
+  line-height: 1.15;
+  font-weight: 400;
+  color: #000000;
+}
+
+.heading span {
+  background: linear-gradient(
+    135deg,
+    #0EB47E 0%,
+    #136449 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  font-weight: 600;
+}
+
+
+/* SUBTEXT */
+.subtext {
+  font-family: var(--font-poppins);
+  font-size: 18px;
+  line-height: 1.6;
+  color: #1f2937;
+  max-width: 520px;
+  font-weight: 600;
+}
+
+.subtext strong {
+  background: linear-gradient(
+    135deg,
+    #0EB47E 0%,
+    #465602 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  
+  font-weight: 600;
+}
+
+/* CTA BUTTON */
+.cta {
+  margin-top: 10px;
+  width: fit-content;
+  padding: 16px 36px;
+
+  border-radius: 999px;
+  border: none;
+
+  background: linear-gradient(
+     135deg,
+    #0EB47E 0%,
+    #136449 100%
+  );
+
+  color: #ffffff;
+  font-family: var(--font-prompt);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+}
+
+/* ===== RESPONSIVE (LEFT ONLY) ===== */
+/* ===== RESPONSIVE UPDATES ===== */
+
+@media (max-width: 900px) {
+  .container {
+    /* Switch to a single column and reverse the order */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+
+
+  /* 2nd: The Left Content (Text) */
+  .left {
+    order: 2;
+    align-items: center;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+ .heading {
+    font-size: 38px !important;
+    /* Forces two lines by limiting width */
+    width: 500px ; 
+    
+    /* Alignment Logic: */
+    text-align: left;    /* Align actual text to the left */
+    margin-left:  6rem;      /* Centers the text block itself in the container */
+    
+    line-height: 1.2;
+  }
+  /* Scale down the icons so they don't overlap the text */
+
+
+  .subtext{
+    font-size: 19px;
+    width: 428px;
+    text-align: left;
+    margin-left: 2rem;
+    line-height: auto;
+  }
+  .staticIcon {
+    transform: scale(0.6);
+  }
+    
+  .cta{
+    margin-left: -15rem;
+   align-self: left;
+  }
+  .topLeft { top: 5%; left: 0%; }
+  .topRight { top: 5%; right: 0%; }
+  .bottomLeft { bottom: 5%; left: -5%; }
+  .bottomRight { bottom: 5%; right: -5%; }
+
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 32px;
+  }
+
+  /* 1. Fix the container height to fit the 300px image */
+  .right {
+    height: 100%!important; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8%;
+   
+    
+  }
+
+  /* 2. Scale the Background Circle */
+  .bgWrapper {
+    transform: translate(-50%, -50%) scale(0.65);
+    left: 50%;
+    top: 50%;
+  }
+
+  /* 3. Individual Image Sizing & Placement */
+  
+  /* Top Left Image */
+  .topLeft img {
+    width: 155px !important;  /* Individual Size */
+    height: 100px !important;
+    border-bottom-right-radius: 2rem !important;
+  }
+  .topLeft {
+    top: -10% !important;
+    left: -15% !important;
+  }
+
+  /* Top Right Image */
+  .topRight img {
+    width: 155px !important;  /* Individual Size */
+    height: 110px !important;
+  }
+  .topRight {
+    top: -20% !important;
+    right: -10% !important;
+  }
+
+  /* Bottom Left Image */
+  .bottomLeft img {
+    width: 240px !important;  /* Individual Size */
+    height: 70px !important;
+  }
+  .bottomLeft {
+    bottom: 13% !important;
+    left: -25% !important;
+  }
+
+  /* Bottom Right Image */
+  .bottomRight img {
+    width: 150px !important;  /* Individual Size */
+    height: 110px !important;
+  }
+  .bottomRight {
+    bottom: 15% !important;
+    right: -17% !important;
+  }
+
+  /* 4. Main Hero Image scaling */
+  .heroImage img {
+    max-width: 250px !important;
+    height: 260 !important;
+  }
+
+  .container{
+    transform: scale(0.9);
+    padding-top: none !important;
+    
+    
+  }
+}
+
+/* ===== RIGHT CONTENT BASE ===== */
+/* .right {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+
+/* Right content container */
+.right {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background circle wrapper */
+.bgWrapper {
+  position: absolute;
+  z-index: 1;
+  padding-bottom: 50px;
+}
+
+
+
+
+/* Circle base */
+.circleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.outerCircle {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-width: 100px;
+  z-index: 2;
+ transform: translate(-50%, -50%);
+ top: 50%;
+  left: 50%;
+  background: white;
+  position: absolute;
+ 
+}
+
+
+.outerCircle1 {
+  position: absolute;
+  width: 1000px;   /* slightly bigger */
+  height: 1000px;
+  border-radius: 50%;
+  background: #43464683;  /* example green */
+  
+  top: 50%;
+  left: 55%;  /* slightly shifted right */
+  transform: translate(-50%, -50%);
+  
+  z-index: 1; /* Behind */
+}
+
+
+.innerCircle {
+  width: 91%;
+  height: 91%;
+  border-radius: 55%;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+}
+
+
+
+
+/* ================= 2️⃣ HERO IMAGE ================= */
+.heroImage {
+  position: relative;
+  z-index: 3;
+  opacity: 600%;
+
+}
+
+
+.heroImage img {
+  width: 100%;
+  height: auto;
+  max-width: 420px;
+}
+
+/* .innerCircle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+/* Ellipse highlight */
+.innerEllipse {
+  width: 93%;      /* horizontal stretch */
+  height: 93%;     /* vertical compression → ellipse */
+  border-radius: 50%;
+}
+   
+
+
+/* Container must be relative so icons stay inside it */
+/* .right {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+.staticIcon {
+  position: absolute;
+  z-index: 4; /* Sits on top of the girl and the circle */
+}
+
+/* Precise Placements */
+.topLeft {
+  top: 15%;
+  left: 4%;
+}
+
+.topRight {
+  top: 5%;
+  right: 10%;
+}
+
+.bottomLeft {
+  bottom: 22%;
+  left: -9%;
+  position: absolute;
+  z-index: 2;
+}
+
+.bottomRight {
+  bottom: 40%;
+  right: -4%;
+}
+
+/* Responsive adjustment: move icons closer or hide them on small screens */
+@media (max-width: 768px) {
+  .staticIcon {
+    transform: scale(0.7); /* Shrinks the icons instead of moving them */
+  }
+  .topLeft { left: 2%; }
+  .topRight { right: 2%; }
+
+}

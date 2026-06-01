@@ -1,0 +1,583 @@
+.container {
+  padding: 110px 24px 70px;
+  background: #F1F1F1;
+  min-height: 100vh;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+/* Outer pill (smaller height) */
+.tabWrapper {
+  display: flex;
+  align-items: center;
+  background: #E5E5E5;
+  padding: 6px;
+  border-radius: 999px;
+}
+
+/* Tabs (reduced size) */
+.tab {
+  padding: 10px 26px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #696969;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Active tab */
+.activeTab {
+  background: #D9D9D9;
+  color: #126F51;
+}
+
+/* Divider */
+.divider {
+  width: 1px;
+  height: 23px;
+  background: #E5E5E5;
+  margin: 0 6px;
+}
+
+/* Outer light container */
+.cardsWrapper {
+  max-width: 1220px;
+  margin: 0 auto;
+  background: #F1F1F1;
+  padding: 34px;
+  border-radius: 8px;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Card */
+.card {
+  background: linear-gradient(#FFFFFF, #D7D7D7);
+  border-radius: 12px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  /* very soft layered shadow like design */
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.7),
+    0 1px 2px rgba(0,0,0,0.04);
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-1px);
+}
+
+/* Top */
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.sessions {
+  font-size: 10px;
+  color: #989898;
+  font-weight: 500;
+  font-family: poppins;
+  border-radius: 12;
+}
+
+.badge {
+  font-size: 10.5px;
+  color: #2c2c2c;
+}
+
+/* Text */
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #000000;
+  font-family: IBM Plex Sans;
+}
+
+.description {
+  font-size: 10px;
+  color: #6A6A6A;
+  font-weight: 400;
+  font-family: poppins;
+  line-height: auto;
+  max-width: 95%;
+}
+
+/* Bottom */
+.cardBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.oldPrice {
+  font-size: 10px;
+  text-decoration: line-through;
+  color: #A3A3A3;
+  font-family: poppins;
+  margin-right: 6px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: IBM Plex Sans;
+  color: #0E795D;
+}
+
+/* Button (THIS was slightly off before) */
+.button {
+  padding: 6px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(90deg, #0EB47E 0%, #136449 100%);
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFFFFF;
+  font-family: poppins;
+
+}
+
+.button:hover {
+  filter: brightness(0.95);
+}
+
+/* ===============================
+   LARGE SCREENS (1400px+)
+================================ */
+@media (min-width: 1400px) {
+  .cardsWrapper {
+    max-width: 1300px;
+    padding: 40px;
+  }
+
+  .grid {
+    gap: 24px;
+  }
+}
+
+/* ===============================
+   LAPTOP (1024px - 1399px)
+================================ */
+@media (max-width: 1200px) {
+  .cardsWrapper {
+    padding: 28px;
+  }
+
+  .grid {
+    gap: 18px;
+  }
+}
+
+/* ===============================
+   TABLET (768px - 1024px)
+================================ */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cardsWrapper {
+    padding: 24px;
+  }
+
+  .tab {
+    font-size: 14px;
+    padding: 8px 18px;
+  }
+}
+
+/* ===============================
+   SMALL TABLET (600px - 768px)
+================================ */
+@media (max-width: 768px) {
+  .container {
+    padding: 90px 16px 50px;
+  }
+
+  .cardsWrapper {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .grid {
+    gap: 16px;
+  }
+
+  .tabWrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .divider {
+    display: none; /* hide lines in small screens */
+  }
+}
+
+/* ===============================
+   MOBILE (480px - 600px)
+================================ */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .title {
+    font-size: 15px;
+  }
+
+  .description {
+    font-size: 11.5px;
+  }
+
+  .tab {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+}
+
+/* ===============================
+   SMALL MOBILE (<480px)
+================================ */
+@media (max-width: 480px) {
+  .container {
+    padding: 80px 12px 40px;
+  }
+
+  .cardsWrapper {
+    padding: 14px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+
+  .price {
+    font-size: 14px;
+  }
+
+  .button {
+    font-size: 11px;
+    padding: 6px 14px;
+  }
+
+  .tabWrapper {
+    padding: 4px;
+  }
+
+  .tab {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+.card {
+  width: 100%;
+}
+
+
+
+.footer {
+  background: #143b34;
+  color: #ffffff;
+  padding-top: 0rem;
+  padding-bottom: 1px;
+ /*  max-height: 700px; */
+}
+
+/* .top {
+  max-width: 1300px;
+  margin-top: 100px;
+  padding: 4rem  3rem 0rem;
+
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.2fr;
+  gap: 3rem;
+  align-items: start;
+} */
+.top {
+  max-width: 1300px;
+  margin: 100px auto 0;
+  padding: 4rem 3rem 0;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 3rem;
+  align-items: start;
+}
+
+
+
+
+
+/* LEFT & RIGHT */
+.left,
+.right {
+  display: flex;
+  gap: 3rem;
+}
+
+.column h4 {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.column li {
+  font-size: 0.9rem;
+  color: #c5d6d2;
+  margin-bottom: 0.6rem;
+  cursor: pointer;
+}
+
+.column li:hover {
+  color: #ffffff;
+}
+
+/* CENTER CARD */
+
+.centerCard {
+  position: relative;
+  justify-self: center;
+
+  /* Card colors */
+  background: #cdddb4;        /* light sage green */
+  color: #1c2d28;
+
+  /* Spacing */
+  padding: 3rem 2.75rem;
+  text-align: center;
+
+  /* Rounded bottom corners only */
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
+
+  /* Hanging / overlap effect */
+  margin-top: -5rem;
+  z-index: 2;
+
+  /* 🔥 KEY PART — BEVELED CORNERS (LEFT + RIGHT) */
+  clip-path: polygon(
+    -3px -50px,                    /* top-left diagonal start */
+    calc(275px- 36px) 10,       /* top-right diagonal start */
+    100% 36px,                 /* top-right diagonal end */
+    100% 100%,                 /* bottom-right */
+    0 100%,                    /* bottom-left */
+    0 36px                     /* top-left diagonal end */
+  );
+
+  /* Depth */
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.18);
+}
+
+
+.centerCard::before {
+  content: "";
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 36px;
+  height: 6px;
+
+  background: #143b34; /* footer color */
+
+  transform: skewX(-45deg);
+  transform-origin: left center;
+}
+
+
+.centerCard::after {
+  content: "";
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 36px;
+  height: 6px;
+
+  background: #143b34; /* footer color */
+
+  transform: skewX(45deg);
+  transform-origin: right center;
+}
+
+
+.centerCard h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.tagline {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+.centerCard h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.subtext {
+  font-size: 0.9rem;
+  margin-bottom: 1.75rem;
+}
+
+.subscribe {
+  display: flex;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.subscribe input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  outline: none;
+}
+
+.subscribe button {
+  background: #143b34;
+  color: #ffffff;
+  border: none;
+  padding: 0 1.5rem;
+  cursor: pointer;
+}
+
+/* SOCIAL */
+.socials {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.socials span {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.badge {
+  font-size: 0.75rem;
+  color: #c5d6d2;
+}
+
+/* BOTTOM */
+.bottom {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding: 1.5rem 2rem;
+  display: flex;
+  margin-top: 25px;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #c5d6d2;
+}
+
+@media (max-width: 768px) {
+  
+
+  /* Keep main stacking */
+  .top {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 2rem 1.25rem 0;
+    
+  }
+
+  /* Center card stays same */
+  .centerCard {
+    order: 1;
+    width: 100%;
+    margin: 0;
+    padding: 1.75rem;
+    clip-path: none;
+    border-radius: 22px;
+  }
+
+  .centerCard::before,
+  .centerCard::after {
+    display: none;
+  }
+
+  /* 🔥 Explore + Learn side by side */
+  .left {
+    order: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  /* 🔥 Important Links + Connect With Us side by side */
+  .right {
+    order: 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  /* Columns full width inside grid */
+  .column {
+    width: 100%;
+    margin-left: 1.5rem;
+  }
+
+  /* Bottom bar */
+  .bottom {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+  .subscribe input {
+  
+  background: #ffffff;
+}
+
+.footer{
+  max-height: fit-content;
+}
+}
+
+

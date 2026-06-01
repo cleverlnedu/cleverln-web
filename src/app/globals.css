@@ -1,0 +1,174 @@
+:root {
+  --background: #ffffff;
+  --font-poppins: 'Poppins', sans-serif;
+   --font-dm-serif: 'DM Serif Display', serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+   
+    --foreground: #ededed;
+  }
+}
+
+html, body {
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE and Edge */
+}
+
+html::-webkit-scrollbar, 
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari, Opera */
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-poppins);
+
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #ffffff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+:root {
+  --font-inter: 'Inter', sans-serif;
+}
+
+body {
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  /* FONT FAMILY */
+  --font-primary: 'Inter', sans-serif;
+
+  /* HEADINGS */
+  --text-h1: 44px;
+  --text-h2: 40px;
+  --text-h3: 28px;
+
+  /* BODY */
+  --text-body-lg: 18px;
+  --text-body: 16px;
+  --text-small: 13px;
+
+  /* WEIGHTS */
+  --fw-bold: 700;
+  --fw-semibold: 600;
+  --fw-medium: 500;
+  --fw-regular: 400;
+
+  /* COLORS */
+  --text-primary: #000;
+  --text-secondary: #6b6b6b;
+  --text-muted: #7a7a7a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+body {
+  font-family: var(--font-ibm), sans-serif;
+}
+
+/* ================= GLOBAL TYPE ================= */
+
+body {
+  font-family: var(--font-ibm), sans-serif;
+  color: #111;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ================= HEADING ================= */
+
+.clvHireCategoryLeft h2 {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.32; /* 🔥 exact visual match */
+  letter-spacing: -0.2px;
+
+  max-width: 420px;
+  margin-bottom: 14px;
+}
+
+/* ================= PARAGRAPH ================= */
+
+.clvHireCategoryLeft p {
+  font-size: 14.5px;
+  font-weight: 400;
+  line-height: 1.7; /* 🔥 airy spacing like screenshot */
+  letter-spacing: 0.1px;
+
+  color: #6b6b6b;
+  max-width: 380px;
+}
+
+/* ================= CARD TITLE ================= */
+
+.clvHireCategoryCard h3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.1px;
+
+  margin-bottom: 6px;
+}
+
+/* ================= CARD SUBTEXT ================= */
+
+.clvHireCategoryCard p {
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+
+  color: #7a7a7a;
+}

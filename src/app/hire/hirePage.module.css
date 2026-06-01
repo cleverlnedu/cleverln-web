@@ -1,0 +1,3042 @@
+
+/* ================= PAGE ================= */
+.clvHirePage {
+  width: 100%;
+}
+
+/* ================= HERO ================= */
+.clvHireHero {
+  width: 100%;
+  padding: 140px 20px 120px;
+  display: flex;
+  justify-content: center;
+
+  /* 🔥 EXACT soft gradient feel */
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f2f2f2 55%,
+    #eaeaea 100%
+  );
+}
+
+/* CONTAINER */
+.clvHireHeroContainer {
+  max-width: 1050px;
+  width: 100%;
+  text-align: center;
+}
+
+/* TOP TEXT */
+.clvHireHeroTop {
+  font-size: 38px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 22px;
+  font-family: var(--font-ibm);
+}
+
+/* TITLE */
+.clvHireHeroTitle {
+  font-size: 81px;
+  font-weight: bold;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  color: #000000;
+  margin-bottom: 22px;
+  font-family: var(--font-ibm-hebrew);
+}
+
+.clvHireHeroTitle span {
+  font-size: 81px;
+  font-weight: bold;
+  background: linear-gradient(
+    to right bottom,
+    #0EB47E 0%,
+    #064E37 100%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* SUBTEXT */
+.clvHireHeroSub {
+  font-size: 31px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 50px;
+  font-family: var(--font-ibm);
+}
+
+/* ================= INPUT COMBO ================= */
+
+.clvHireHeroInputWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #E5E5E5;
+  border-radius: 20px;
+  padding: 6px;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+/* SELECT */
+.clvHireHeroSelect {
+   width: 100%;
+  height: 64px;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  padding: 0 24px;
+
+  font-family: var(--font-poppins);
+
+  font-size: 16px;
+  font-weight: 600;
+
+  color: #9a9a9a;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  cursor: pointer;
+}
+
+
+/* BUTTON */
+.clvHireHeroBtn {
+  width: 215px;
+  height: 64px;
+
+  border: none;
+  border-radius: 20px;
+
+  background: linear-gradient(
+    to right,
+    #0EB47E 0%,
+    #064E37 100%
+  );
+
+  color: #ffffff;
+
+  font-family: var(--font-poppins);
+
+  font-size: 19px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.clvHireHeroBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(31, 167, 116, 0.25);
+}
+
+/* =========================================================
+ULTRA LARGE SCREENS
+========================================================= */
+
+@media (min-width: 1600px) {
+
+  .clvHireHero {
+    padding: 170px 20px 140px;
+  }
+
+  .clvHireHeroContainer {
+    max-width: 1200px;
+  }
+
+  .clvHireHeroTop {
+    font-size: 42px;
+  }
+
+  .clvHireHeroTitle,
+  .clvHireHeroTitle span {
+    font-size: 96px;
+  }
+
+  .clvHireHeroSub {
+    font-size: 36px;
+  }
+
+  .clvHireHeroBtn {
+    width: 240px;
+  }
+}
+
+/* =========================================================
+LARGE DESKTOP
+========================================================= */
+
+@media (max-width: 1440px) {
+
+  .clvHireHero {
+    padding: 130px 24px 110px;
+  }
+
+  .clvHireHeroTitle,
+  .clvHireHeroTitle span {
+    font-size: 72px;
+  }
+
+  .clvHireHeroTop {
+    font-size: 30px;
+  }
+
+  .clvHireHeroSub {
+    font-size: 26px;
+  }
+}
+
+/* =========================================================
+LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .clvHireHero {
+    padding: 120px 24px 100px;
+  }
+
+  .clvHireHeroContainer {
+    max-width: 900px;
+  }
+
+  .clvHireHeroTitle,
+  .clvHireHeroTitle span {
+    font-size: 64px;
+  }
+
+  .clvHireHeroTop {
+    font-size: 26px;
+  }
+
+  .clvHireHeroSub {
+    font-size: 22px;
+  }
+
+  .clvHireHeroInputWrap {
+    transform: scale(0.95);
+  }
+}
+
+/* =========================================================
+TABLET LANDSCAPE
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .clvHireHero {
+    padding: 110px 24px 90px;
+  }
+
+  .clvHireHeroTitle,
+  .clvHireHeroTitle span {
+    font-size: 56px;
+  }
+
+  .clvHireHeroTop {
+    font-size: 22px;
+  }
+
+  .clvHireHeroSub {
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+
+  .clvHireHeroSelect {
+    min-width: 260px;
+  }
+
+  .clvHireHeroBtn {
+    width: 190px;
+  }
+}
+
+/* =========================================================
+TABLET PORTRAIT
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .clvHireHero {
+    padding: 100px 20px 80px;
+  }
+
+  .clvHireHeroTitle,
+  .clvHireHeroTitle span {
+    font-size: 48px;
+    line-height: 1.1;
+  }
+
+  .clvHireHeroTop {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .clvHireHeroSub {
+    font-size: 18px;
+    margin-bottom: 35px;
+  }
+
+  .clvHireHeroInputWrap {
+    transform: none;
+  }
+
+  .clvHireHeroSelect {
+    min-width: 220px;
+    height: 58px;
+  }
+
+  .clvHireHeroBtn {
+    width: 180px;
+    height: 58px;
+    font-size: 16px;
+  }
+}
+
+/* =========================================================
+MOBILE LARGE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .clvHireHero {
+    padding: 90px 16px 70px;
+  }
+
+  .clvHireHeroTitle,
+  .clvHireHeroTitle span {
+    font-size: 38px;
+    line-height: 1.15;
+  }
+
+  .clvHireHeroTop {
+    font-size: 16px;
+  }
+
+  .clvHireHeroSub {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+
+  .clvHireHeroInputWrap {
+    width: 100%;
+
+    flex-direction: column;
+
+    background: transparent;
+
+    padding: 0;
+
+    gap: 12px;
+  }
+
+  .clvHireHeroSelect {
+    width: 100%;
+    height: 54px;
+
+    background: #E5E5E5;
+
+    border-radius: 14px;
+
+    min-width: auto;
+  }
+
+  .clvHireHeroBtn {
+    width: 100%;
+    height: 54px;
+
+    border-radius: 14px;
+  }
+}
+
+/* =========================================================
+SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .clvHireHero {
+    padding: 80px 16px 60px;
+  }
+
+  .clvHireHeroTitle,
+  .clvHireHeroTitle span {
+    font-size: 32px;
+  }
+
+  .clvHireHeroTop {
+    font-size: 15px;
+  }
+
+  .clvHireHeroSub {
+    font-size: 14px;
+  }
+
+  .clvHireHeroSelect,
+  .clvHireHeroBtn {
+    height: 52px;
+  }
+}
+
+/* =========================================================
+EXTRA SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .clvHireHeroTitle,
+  .clvHireHeroTitle span {
+    font-size: 28px;
+  }
+
+  .clvHireHeroTop {
+    font-size: 14px;
+  }
+
+  .clvHireHeroSub {
+    font-size: 13px;
+  }
+
+  .clvHireHeroSelect {
+    font-size: 13px;
+    padding: 0 16px;
+  }
+
+  .clvHireHeroBtn {
+    font-size: 14px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= FEATURES SECTION ================= */
+
+.featuresSection {
+  width: 100%;
+  background: #f5f5f5;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 40px 20px 80px;
+}
+
+.featuresContainer {
+  width: 100%;
+  max-width: 1440px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.featuresImage {
+  width: 100%;
+  max-width: 1320px; /* 🔥 controls exact centered size */
+
+  height: auto;
+  display: block;
+
+  object-fit: contain;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 1024px) {
+  .featuresSection {
+    padding: 32px 16px 60px;
+  }
+
+  .featuresImage {
+    max-width: 100%;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+  .featuresSection {
+    padding: 24px 12px 40px;
+  }
+
+  .featuresImage {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+/* ================= SECTION ================= */
+
+.clvHireSection {
+  padding: 80px 20px;
+  background: #f5f5f5;
+  text-align: center;
+}
+
+/* ================= CONTAINER ================= */
+
+.clvHireContainer {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ================= TEXT ================= */
+
+.clvHireContainer h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.clvHireContainer p {
+  font-size: 14px;
+  color: #6b6b6b;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* ================= TABS ================= */
+
+.clvTabs {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* BUTTON */
+.tab {
+  min-width: 140px;
+  height: 44px;
+
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+
+  background: #f8f8f8;
+  color: #6b6b6b;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* ACTIVE */
+.active {
+  background: #0f7b5f;
+  color: #fff;
+  border: none;
+
+  box-shadow: 0 4px 10px rgba(15, 123, 95, 0.25);
+}
+
+/* HOVER */
+.tab:hover {
+  transform: translateY(-1px);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 600px) {
+  .clvTabs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tab {
+    width: 100%;
+    max-width: 260px;
+  }
+}
+
+
+
+
+
+/* ================= AI IMAGE SECTION ================= */
+
+.hireSection {
+  position: relative;
+
+  width: 100%;
+  background: #f5f5f5;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 60px 20px;
+}
+
+/* CENTER CONTAINER */
+.hireContainer {
+  position: relative;
+
+  width: 100%;
+  max-width: 1600px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* IMAGE */
+.hireImage {
+  width: 100%;
+  max-width: 1400px;
+
+  height: auto;
+  display: block;
+
+  object-fit: contain;
+}
+
+/* BUTTON */
+.hireBtn {
+  position: absolute;
+
+  /* 🔥 PERFECT POSITION */
+  left: 10%;
+  bottom: 20%;
+
+  width: 130px;
+  height: 47px;
+  
+  border: none;
+  border-radius: 8px;
+
+  background: linear-gradient(90deg, #14c38e 0%, #05603f 100%);
+  color: #fff;
+
+  font-family: poppins;
+  font-size: 15px;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: 0.25s ease;
+
+  box-shadow:
+    0 10px 20px rgba(0,0,0,0.08);
+}
+
+.hireBtn:hover {
+  transform: translateY(-2px);
+}
+
+/* ================= LARGE LAPTOP ================= */
+
+@media (max-width: 1440px) {
+  .hireImage {
+    max-width: 1200px;
+  }
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 1024px) {
+
+  .hireSection {
+    padding: 50px 16px;
+  }
+
+  .hireBtn {
+    width: 180px;
+    height: 58px;
+
+    font-size: 16px;
+
+    left: 7%;
+    bottom: 16%;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  .hireSection {
+    padding: 32px 12px;
+  }
+
+  .hireImage {
+    width: 100%;
+  }
+
+  .hireBtn {
+    width: 68px;
+    height: 15px;
+
+    font-size: 7px;
+    font-weight: bold;
+    border-radius: 18px;
+    font-family: poppins;
+    left: 7%;
+    bottom: 10%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ================= WRAPPER ================= */
+
+.clvHireWrap {
+  width: 100%;
+
+  background: #f7f7f7;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 88px 24px;
+}
+
+/* ================= MAIN CONTAINER ================= */
+
+.clvHireGrid {
+  width: 100%;
+  max-width: 1280px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 34px;
+}
+
+/* ================= TOP SECTION ================= */
+
+.clvHireTop {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 48px;
+}
+
+/* ================= LEFT TEXT ================= */
+
+.clvHireText {
+  flex: 1;
+
+  max-width: 620px;
+}
+
+.clvHireText h2 {
+  font-family: var(--font-ibm);
+
+  font-size: 31px;
+  font-weight: bold;
+  padding-left: 70px;
+  line-height: 1.45;
+
+  color: #000000;
+
+  margin: 0 0 14px;
+}
+
+.clvHireText p {
+  font-family: var(--font-ibm);
+
+  font-size: 15px;
+  font-weight: 400;
+
+  line-height: 1.7;
+  padding-left: 80px;
+  color: #6e6e6e;
+
+  margin: 0;
+
+  max-width: 560px;
+}
+
+/* ================= TOP RIGHT CARDS ================= */
+
+.clvTopCards {
+  display: flex;
+ 
+
+  justify-content: center;
+
+  gap: 24px;
+}
+
+/* ================= BOTTOM CARDS ================= */
+
+.clvBottomCards {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  gap: 24px;
+  
+
+  flex-wrap: wrap;
+}
+
+/* ================= CARD ================= */
+
+.card {
+  width: 265px;
+  height: 210px;
+
+  background: #f5f5f5;
+
+  border-radius: 20px;
+
+  padding: 28px;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.03),
+    0 10px 24px rgba(0, 0, 0, 0.04);
+
+  transition: all 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* ================= ICON ================= */
+
+.card img {
+  width: 42px;
+  height: 42px;
+
+  object-fit: contain;
+
+  margin-bottom: 34px;
+}
+
+/* ================= TITLE ================= */
+
+.card h3 {
+  font-family: var(--font-ibm);
+
+  font-size: 21px;
+  font-weight: 700;
+
+  color: #000000;
+
+  margin: 0 0 10px;
+}
+
+/* ================= SUBTEXT ================= */
+
+.card span {
+  font-family: var(--font-ibm);
+
+  font-size: 13px;
+  font-weight: 400;
+
+  color: #707070;
+}
+
+/* =========================================================
+LARGE DESKTOP
+========================================================= */
+
+@media (max-width: 1440px) {
+
+  .clvHireGrid {
+    max-width: 1200px;
+  }
+}
+
+/* =========================================================
+LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .clvHireWrap {
+    padding: 80px 24px;
+  }
+
+  .clvHireTop {
+    flex-direction: column;
+
+    text-align: center;
+
+    gap: 36px;
+  }
+
+  .clvHireText {
+    max-width: 760px;
+  }
+
+  .clvHireText p {
+    max-width: 100%;
+  }
+
+  .clvTopCards,
+  .clvBottomCards {
+    justify-content: center;
+
+    flex-wrap: wrap;
+  }
+}
+
+/* =========================================================
+TABLET LANDSCAPE
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .clvHireWrap {
+    padding: 70px 24px;
+  }
+
+  .clvHireText h2 {
+    font-size: 28px;
+  }
+
+  .clvHireText p {
+    font-size: 14px;
+  }
+
+  .card {
+    width: 240px;
+    height: 190px;
+  }
+
+  .card img {
+    width: 38px;
+    height: 38px;
+
+    margin-bottom: 24px;
+  }
+
+  .card h3 {
+    font-size: 20px;
+  }
+}
+
+/* =========================================================
+TABLET PORTRAIT
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .clvHireWrap {
+    padding: 60px 20px;
+  }
+
+  .clvHireGrid {
+    gap: 24px;
+  }
+
+  .clvHireText {
+    text-align: center;
+  }
+
+  .clvHireText h2 {
+    font-size: 24px;
+  }
+
+  .clvHireText p {
+    font-size: 14px;
+  }
+
+  .clvTopCards,
+  .clvBottomCards {
+    width: 100%;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 18px;
+  }
+
+  .card {
+    width: calc(50% - 10px);
+
+    max-width: 280px;
+
+    height: 190px;
+  }
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .clvHireWrap {
+    padding: 55px 18px;
+  }
+
+  .clvHireText h2 {
+    font-size: 22px;
+
+    line-height: 1.4;
+  }
+
+  .clvHireText p {
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+  .clvTopCards,
+  .clvBottomCards {
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 340px;
+
+    min-height: 180px;
+    height: auto;
+
+    padding: 24px;
+  }
+
+  .card h3 {
+    font-size: 22px;
+  }
+
+  .card span {
+    font-size: 14px;
+  }
+}
+
+/* =========================================================
+SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .clvHireText h2 {
+    font-size: 20px;
+  }
+
+  .clvHireText p {
+    font-size: 13px;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+}
+
+/* =========================================================
+EXTRA SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .clvHireText h2 {
+    font-size: 18px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .card h3 {
+    font-size: 20px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+TRUST SECTION
+========================================================= */
+
+.clvTrustSection {
+  width: 100%;
+
+  padding: 90px 24px;
+
+  background: #FFFFFF;
+
+  display: flex;
+  justify-content: center;
+}
+
+/* =========================================================
+CONTAINER
+========================================================= */
+
+.clvTrustContainer {
+  width: 100%;
+  max-width: 1200px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 80px;
+}
+
+/* =========================================================
+LEFT IMAGE
+========================================================= */
+
+.clvTrustImage {
+  flex-shrink: 0;
+}
+
+.clvTrustImage img {
+  width: 100%;
+  max-width: 376px;
+  height: 345px;
+
+  display: block;
+}
+
+/* =========================================================
+RIGHT CONTENT
+========================================================= */
+
+.clvTrustContent {
+  max-width: 560px;
+}
+
+.clvTrustContent h2 {
+  margin: 0 0 24px;
+
+  font-family: var(--font-ibm);
+
+  font-size: 35px;
+  font-weight: bold;
+
+  line-height: 1.3;
+
+  color: #000000;
+}
+
+.clvTrustContent p {
+  margin: 0;
+
+  font-family: var(--font-ibm);
+
+  font-size: 18px;
+  font-weight: 500;
+
+  line-height: 1.8;
+
+  color: #797373;
+}
+
+/* =========================================================
+LARGE DESKTOP
+========================================================= */
+
+@media (max-width: 1440px) {
+
+  .clvTrustContent h2 {
+    font-size: 46px;
+  }
+
+  .clvTrustContainer {
+    gap: 70px;
+  }
+}
+
+/* =========================================================
+LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .clvTrustContainer {
+    gap: 60px;
+  }
+
+  .clvTrustContent h2 {
+    font-size: 40px;
+  }
+
+  .clvTrustContent p {
+    font-size: 18px;
+  }
+
+  .clvTrustImage img {
+    max-width: 340px;
+  }
+}
+
+/* =========================================================
+TABLET LANDSCAPE
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .clvTrustSection {
+    padding: 80px 24px;
+  }
+
+  .clvTrustContainer {
+    flex-direction: column;
+
+    text-align: center;
+
+    gap: 40px;
+  }
+
+  .clvTrustContent {
+    max-width: 720px;
+  }
+
+  .clvTrustContent h2 {
+    font-size: 36px;
+  }
+
+  .clvTrustContent p {
+    font-size: 17px;
+  }
+}
+
+/* =========================================================
+TABLET PORTRAIT
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .clvTrustSection {
+    padding: 70px 20px;
+  }
+
+  .clvTrustImage img {
+    max-width: 320px;
+  }
+
+  .clvTrustContent h2 {
+    font-size: 30px;
+
+    line-height: 1.4;
+  }
+
+  .clvTrustContent p {
+    font-size: 16px;
+
+    line-height: 1.8;
+  }
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .clvTrustSection {
+    padding: 60px 18px;
+  }
+
+  .clvTrustContainer {
+    gap: 32px;
+  }
+
+  .clvTrustImage img {
+    max-width: 280px;
+  }
+
+  .clvTrustContent h2 {
+    font-size: 24px;
+
+    line-height: 1.5;
+  }
+
+  .clvTrustContent p {
+    font-size: 14px;
+
+    line-height: 1.8;
+  }
+}
+
+/* =========================================================
+SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .clvTrustImage img {
+    max-width: 240px;
+  }
+
+  .clvTrustContent h2 {
+    font-size: 22px;
+  }
+
+  .clvTrustContent p {
+    font-size: 13px;
+  }
+}
+
+/* =========================================================
+EXTRA SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .clvTrustContent h2 {
+    font-size: 20px;
+  }
+
+  .clvTrustContent p {
+    font-size: 12px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= SECTION ================= */
+
+.trustSection {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 54px;
+
+  padding: 90px 24px;
+
+  background: #f7f7f7;
+}
+
+/* ================= IMAGE ================= */
+
+.trustImageWrap {
+  flex-shrink: 0;
+}
+
+.trustImage {
+  width: 100%;
+  max-width: 320px;
+
+  display: block;
+  object-fit: contain;
+}
+
+/* ================= CONTENT ================= */
+
+.trustContent {
+  max-width: 650px;
+}
+
+.trustContent h2 {
+  font-family: 'IBM Plex Sans JP', sans-serif;
+
+  font-size: 31px;
+  font-weight: 700;
+
+  line-height: 148%;
+  letter-spacing: -0.4px;
+
+  color: #111;
+
+  margin: 0 0 22px;
+}
+
+.trustContent p {
+  font-family: 'IBM Plex Sans JP', sans-serif;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  line-height: 175%;
+
+  color: #6f6f6f;
+
+  margin: 0;
+
+  max-width: 560px;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 1024px) {
+
+  .trustSection {
+    gap: 40px;
+  }
+
+  .trustContent h2 {
+    font-size: 28px;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  .trustSection {
+    flex-direction: column;
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    gap: 34px;
+  }
+
+  .trustImage {
+    max-width: 280px;
+  }
+
+  .trustContent {
+    max-width: 100%;
+  }
+
+  .trustContent h2 {
+    font-size: 24px;
+    line-height: 145%;
+  }
+
+  .trustContent p {
+    font-size: 14px;
+
+    max-width: 100%;
+  }
+}
+
+
+
+
+
+
+/* ================= WRAPPER ================= */
+
+.leadWrap {
+  width: 100%;
+  padding: 90px 24px;
+
+  display: flex;
+  justify-content: center;
+
+  background: #f7f7f7;
+}
+
+/* ================= CARD ================= */
+
+.leadCard {
+  width: 100%;
+  max-width: 1225px;
+  min-height: 230px;
+
+  background: linear-gradient(
+    90deg,
+    #26735A 0%,
+    #033826 100%
+  );
+
+  border-radius: 12px;
+
+  padding: 42px 70px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 60px;
+}
+
+/* ================= LEFT ================= */
+
+.leftContent {
+  max-width: 500px;
+}
+
+.leftContent h2 {
+  font-family: 'IBM Plex Sans JP', sans-serif;
+
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 145%;
+
+  color: #fff;
+
+  margin-bottom: 14px;
+}
+
+.leftContent p {
+  font-family: 'IBM Plex Sans JP', sans-serif;
+
+  font-size: 14px;
+  line-height: 170%;
+
+  color: rgba(255,255,255,0.78);
+
+  max-width: 470px;
+}
+
+/* ================= RIGHT ================= */
+
+.rightContent {
+  width: 100%;
+  max-width: 390px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ================= INPUT ROW ================= */
+
+.inputRow {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.inputRow input,
+.formFields input {
+  flex: 1;
+
+  height: 46px;
+
+  border: none;
+  outline: none;
+
+  padding: 0 18px;
+
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.16);
+
+  color: #fff;
+
+  font-size: 14px;
+  font-family: 'IBM Plex Sans JP', sans-serif;
+}
+
+.inputRow input::placeholder,
+.formFields input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+/* ================= BUTTON ================= */
+
+.inputRow button,
+.submitBtn {
+  height: 46px;
+  min-width: 110px;
+
+  border: none;
+  cursor: pointer;
+
+  border-radius: 999px;
+
+  background: #fff;
+  color: #000;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: 0.25s ease;
+}
+
+.inputRow button:hover,
+.submitBtn:hover {
+  transform: translateY(-2px);
+}
+
+/* ================= STEP 2 ================= */
+
+.formFields {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+/* ================= BOTTOM ================= */
+
+.bottomArea {
+  margin-top: 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 10px;
+}
+
+/* ================= DOTS ================= */
+
+.dots {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.dots span {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.35);
+}
+
+.dots .active {
+  background: #fff;
+}
+
+/* ================= TEXT ================= */
+
+.bottomArea p {
+  font-size: 12px;
+  font-family: 'IBM Plex Sans JP', sans-serif;
+
+  color: rgba(255,255,255,0.9);
+
+  margin: 0;
+}
+
+.successBox {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 20px;
+}
+
+.successBox p {
+  font-family: 'IBM Plex Sans JP', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+LARGE DESKTOP
+========================================================= */
+
+@media (max-width: 1440px) {
+
+  .leadCard {
+    max-width: 1150px;
+
+    padding: 40px 60px;
+  }
+
+  .leftContent h2 {
+    font-size: 24px;
+  }
+}
+
+/* =========================================================
+LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .leadWrap {
+    padding: 80px 24px;
+  }
+
+  .leadCard {
+    height: auto;
+
+    padding: 40px;
+
+    gap: 40px;
+  }
+
+  .leftContent {
+    max-width: 450px;
+  }
+
+  .leftContent h2 {
+    font-size: 22px;
+  }
+
+  .leftContent p {
+    font-size: 14px;
+  }
+}
+
+/* =========================================================
+TABLET LANDSCAPE
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .leadWrap {
+    padding: 70px 24px;
+  }
+
+  .leadCard {
+    flex-direction: column;
+
+    text-align: center;
+
+    height: auto;
+
+    gap: 35px;
+
+    padding: 40px 32px;
+  }
+
+  .leftContent {
+    max-width: 100%;
+  }
+
+  .leftContent p {
+    max-width: 100%;
+  }
+
+  .rightContent {
+    max-width: 520px;
+  }
+}
+
+/* =========================================================
+TABLET PORTRAIT
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .leadWrap {
+    padding: 60px 20px;
+  }
+
+  .leadCard {
+    padding: 36px 24px;
+
+    gap: 28px;
+
+    border-radius: 18px;
+  }
+
+  .leftContent h2 {
+    font-size: 20px;
+
+    line-height: 1.5;
+  }
+
+  .leftContent p {
+    font-size: 14px;
+
+    line-height: 1.8;
+  }
+
+  .rightContent {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .inputRow {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .leadWrap {
+    padding: 55px 18px;
+  }
+
+  .leadCard {
+    padding: 30px 20px;
+
+    gap: 24px;
+  }
+
+  .leftContent h2 {
+    font-size: 18px;
+  }
+
+  .leftContent p {
+    font-size: 13px;
+  }
+
+  .rightContent {
+    width: 100%;
+  }
+
+  .inputRow {
+    flex-direction: column;
+
+    width: 100%;
+
+    gap: 12px;
+  }
+
+  .inputRow input,
+  .formFields input,
+  .inputRow button,
+  .submitBtn {
+    width: 100%;
+  }
+
+  .inputRow input,
+  .formFields input {
+    height: 50px;
+  }
+
+  .inputRow button,
+  .submitBtn {
+    height: 50px;
+  }
+
+  .bottomArea {
+    margin-top: 14px;
+  }
+}
+
+/* =========================================================
+SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .leadWrap {
+    padding: 50px 16px;
+  }
+
+  .leadCard {
+    padding: 26px 18px;
+  }
+
+  .leftContent h2 {
+    font-size: 17px;
+  }
+
+  .leftContent p {
+    font-size: 12px;
+  }
+
+  .inputRow input,
+  .formFields input {
+    font-size: 13px;
+  }
+
+  .inputRow button,
+  .submitBtn {
+    font-size: 13px;
+  }
+
+  .bottomArea p {
+    font-size: 11px;
+  }
+}
+
+/* =========================================================
+EXTRA SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .leadCard {
+    padding: 22px 16px;
+  }
+
+  .leftContent h2 {
+    font-size: 16px;
+  }
+
+  .leftContent p {
+    font-size: 11px;
+  }
+
+  .inputRow input,
+  .formFields input,
+  .inputRow button,
+  .submitBtn {
+    height: 46px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= TESTIMONIAL SECTION ================= */
+
+.testimonialSection {
+  width: 100%;
+  padding: 80px 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+
+/* ================= HEADING ================= */
+
+.testimonialHeading {
+  font-family: var(--font-poppins);
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 130%;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.testimonialSub {
+  font-family: var(--font-poppins);
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 55px;
+}
+
+/* ================= GRID ================= */
+
+.testimonialGrid {
+  width: 100%;
+  max-width: 1318px;
+
+  overflow: hidden;
+
+  margin: 0 auto;
+
+  position: relative;
+}
+
+/* ================= TRACK ================= */
+
+.testimonialTrack {
+  display: flex;
+  gap: 18px;
+
+  transition: transform 0.5s ease;
+
+  width: max-content;
+
+  will-change: transform;
+}
+
+/* ================= TESTIMONIAL CARD ================= */
+
+.testimonialCard {
+  width: 241px;
+  min-width: 248px;
+  height: 282px;
+
+  background: #419073;
+
+  border-radius: 12px;
+
+  padding: 14px 13px;
+
+  box-sizing: border-box;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+}
+
+/* ================= TOP ================= */
+
+.testimonialTop {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.testimonialTop img {
+  width: 74px;
+  height: 65px;
+
+  object-fit: cover;
+
+  border-radius: 2px;
+}
+
+/* ================= NAME ================= */
+
+.testimonialTop h3 {
+  font-family: var(--font-poppins);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 120%;
+
+  color: #DFE2E1;
+
+  margin: 2px 0 3px;
+}
+
+/* ================= ROLE ================= */
+
+.testimonialTop p {
+  font-family: var(--font-poppins);
+  font-size: 10px;
+  font-weight: 600;
+
+  color: #505050;
+}
+
+/* ================= DIVIDER ================= */
+
+.divider {
+  width: 100%;
+  height: 1.2px;
+
+  background: #D9D9D9;
+
+  margin: 10px 0 16px;
+}
+
+/* ================= CHAT AREA ================= */
+
+.chatWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  flex: 1;
+}
+
+/* ================= MAIN MESSAGE ================= */
+
+.chatLeft {
+  background: #9DB7AD;
+
+  border-radius: 8px;
+
+  padding: 10px 11px;
+
+  color: #E6E6E6;
+
+  font-family: var(--font-poppins);
+  font-size: 8px;
+  font-weight: 600;
+  line-height: 170%;
+
+  width: 100%;
+
+  box-sizing: border-box;
+}
+
+/* ================= RIGHT CHATS ================= */
+
+.chatRight {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.chatRight span {
+  background: #BEBEBE;
+
+  border-radius: 8px;
+
+  padding: 7px 12px;
+
+  color: #ECECEC;
+
+  font-family: var(--font-poppins);
+  font-size: 9px;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+/* ================= TRACK ================= */
+
+.testimonialTrack {
+  display: flex;
+  gap: 18px;
+
+  transition: transform 0.5s ease;
+
+  will-change: transform;
+}
+
+/* ================= GRID ================= */
+
+.testimonialGrid {
+  width: 100%;
+  max-width: 1060px;
+
+  margin: 0 auto;
+
+  overflow: hidden;
+}
+
+/* ================= DOTS ================= */
+
+.testimonialDots {
+  margin-top: 34px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 7px;
+}
+
+.testimonialDots span {
+  width: 10px;
+  height: 10px;
+
+  background: #d5d5d5;
+
+  border-radius: 50%;
+
+  transition: all 0.3s ease;
+
+  cursor: pointer;
+}
+
+.testimonialDots .active {
+  width: 34px;
+  height: 10px;
+
+  border-radius: 20px;
+
+  background: #0EB47E;
+}
+
+
+/* ================= MOBILE TESTIMONIAL FIX ================= */
+
+@media (max-width: 768px) {
+
+  .testimonialSection {
+    padding: 50px 1px;
+    overflow: hidden;
+  }
+
+  /* ONLY ONE CARD VISIBLE */
+  .testimonialGrid {
+    width: 100%; /* exact card width */
+    max-width: 320px;
+
+    overflow: hidd  en;
+
+    margin: 0 auto;
+
+    position: relative;
+  }
+
+  /* SLIDER TRACK */
+  .testimonialTrack {
+    display: flex;
+    gap: 20px; /* IMPORTANT */
+
+    transition: transform 0.5s ease;
+    will-change: transform;
+  }
+
+  /* SINGLE CARD */
+  .testimonialCard {
+    width: 248px;
+    min-width: 248px;
+    max-width: 248px;
+
+    height: 281px;
+
+    flex: 0 0 248px; /* IMPORTANT */
+
+    margin: 0;
+
+    overflow: hidden;
+  }
+
+  /* CENTER TEXT */
+  .testimonialHeading,
+  .testimonialSub {
+    text-align: center;
+  }
+
+  .testimonialHeading {
+    font-size: 28px;
+    line-height: 140%;
+  }
+
+  .testimonialSub {
+    font-size: 14px;
+    margin-bottom: 35px;
+  }
+
+  /* DOTS */
+  .testimonialDots {
+    margin-top: 24px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 7px;
+  }
+}
+
+
+/* =========================================================
+LARGE DESKTOP
+========================================================= */
+
+@media (max-width: 1440px) {
+
+  .testimonialSection {
+    padding: 70px 24px;
+  }
+
+  .testimonialGrid {
+    max-width: 1100px;
+  }
+
+  .testimonialHeading {
+    font-size: 32px;
+  }
+}
+
+/* =========================================================
+LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .testimonialGrid {
+    max-width: 820px;
+  }
+
+  .testimonialHeading {
+    font-size: 30px;
+  }
+
+  .testimonialSub {
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+TABLET LANDSCAPE
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .testimonialSection {
+    padding: 65px 20px;
+  }
+
+  .testimonialGrid {
+    max-width: 780px;
+  }
+
+  .testimonialHeading {
+    font-size: 28px;
+  }
+
+  .testimonialSub {
+    margin-bottom: 45px;
+  }
+
+  .testimonialCard {
+    width: 240px;
+    min-width: 240px;
+  }
+}
+
+/* =========================================================
+TABLET PORTRAIT
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .testimonialSection {
+    padding: 60px 20px;
+  }
+
+  .testimonialHeading {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .testimonialSub {
+    font-size: 14px;
+    text-align: center;
+
+    margin-bottom: 35px;
+  }
+
+  .testimonialGrid {
+    max-width: 520px;
+
+    overflow: hidden;
+  }
+
+  .testimonialTrack {
+    gap: 18px;
+  }
+
+  .testimonialCard {
+    width: 250px;
+    min-width: 250px;
+
+    height: 282px;
+  }
+
+  .testimonialDots {
+    margin-top: 26px;
+  }
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .testimonialSection {
+    padding: 55px 16px;
+  }
+
+  .testimonialGrid {
+    width: 100%;
+    max-width: 250px;
+
+    overflow: hidden;
+  }
+
+  .testimonialTrack {
+    gap: 0;
+  }
+
+  .testimonialCard {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+
+    height: 282px;
+
+    flex: 0 0 250px;
+  }
+
+  .testimonialHeading {
+    font-size: 24px;
+
+    line-height: 1.4;
+  }
+
+  .testimonialSub {
+    font-size: 13px;
+
+    margin-bottom: 30px;
+  }
+
+  .testimonialDots {
+    margin-top: 22px;
+  }
+}
+
+/* =========================================================
+SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .testimonialSection {
+    padding: 50px 14px;
+  }
+
+  .testimonialGrid {
+    max-width: 248px;
+  }
+
+  .testimonialCard {
+    width: 248px;
+    min-width: 248px;
+    max-width: 248px;
+  }
+
+  .testimonialHeading {
+    font-size: 22px;
+  }
+
+  .testimonialSub {
+    font-size: 12px;
+  }
+
+  .testimonialTop h3 {
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+EXTRA SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .testimonialHeading {
+    font-size: 20px;
+  }
+
+  .testimonialSub {
+    font-size: 11px;
+  }
+
+  .testimonialGrid {
+    max-width: 230px;
+  }
+
+  .testimonialCard {
+    width: 230px;
+    min-width: 230px;
+    max-width: 230px;
+
+    height: auto;
+    min-height: 282px;
+  }
+
+  .chatLeft {
+    font-size: 7px;
+  }
+
+  .chatRight span {
+    font-size: 8px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= SECTION ================= */
+
+.clvFaqSection {
+  width: 100%;
+
+  padding: 80px 20px;
+
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ================= TITLE ================= */
+
+.clvFaqTitle {
+  font-family: var(--font-poppins);
+
+  font-size: 31px;
+  font-weight: 600;
+
+  color: #000000;
+
+  text-align: center;
+
+  margin-bottom: 12px;
+}
+
+/* ================= SUBTITLE ================= */
+
+.clvFaqSubtitle {
+  font-family: var(--font-poppins);
+
+  font-size: 16px;
+  font-weight: 500;
+
+  color: #000000;
+
+  text-align: center;
+
+  margin-bottom: 50px;
+}
+
+/* ================= WRAPPER ================= */
+
+.clvFaqWrapper {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+/* ================= ITEM ================= */
+
+.clvFaqItem {
+  width: 100%;
+
+  background: #efefef;
+
+  border-radius: 8px;
+
+  padding: 18px 22px;
+
+  transition: all 0.3s ease;
+}
+
+.activeFaq {
+  background: #efefef;
+}
+
+/* ================= HEADER ================= */
+
+.clvFaqHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.clvFaqHeader p {
+  margin: 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 16px;
+  font-weight: 500;
+
+  color: #666666;
+
+  line-height: 1.6;
+
+  max-width: 92%;
+}
+
+/* ================= ICON ================= */
+
+.clvFaqIcon {
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  background: #0eb47e;
+
+  color: #000000;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+/* ================= BODY ================= */
+
+.clvFaqBody {
+  margin-top: 14px;
+}
+
+.clvFaqBody p {
+  margin: 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 14px;
+  font-weight: 500;
+
+  line-height: 1.8;
+
+  color: #000000;
+
+  max-width: 95%;
+}
+
+/* ================= HOVER ================= */
+
+.clvFaqItem:hover {
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .clvFaqSection {
+    padding: 70px 18px;
+  }
+
+  .clvFaqTitle {
+    font-size: 32px;
+  }
+
+  .clvFaqSubtitle {
+    font-size: 14px;
+
+    margin-bottom: 40px;
+  }
+
+  .clvFaqHeader p {
+    font-size: 14px;
+  }
+
+  .clvFaqBody p {
+    font-size: 13px;
+  }
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .clvFaqTitle {
+    font-size: 26px;
+  }
+
+  .clvFaqSubtitle {
+    font-size: 13px;
+  }
+
+  .clvFaqItem {
+    padding: 16px;
+  }
+
+  .clvFaqHeader p {
+    font-size: 13px;
+
+    max-width: 85%;
+  }
+
+  .clvFaqIcon {
+    width: 20px;
+    height: 20px;
+
+    font-size: 8px;
+  }
+
+  .clvFaqBody p {
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .clvFaqTitle {
+    font-size: 22px;
+  }
+
+  .clvFaqSubtitle {
+    font-size: 12px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= FOOTER ================= */
+
+.footer {
+  background: #143b34;
+  color: #ffffff;
+  padding-top: 0rem;
+  padding-bottom: 1px;
+ /*  max-height: 700px; */
+}
+
+/* .top {
+  max-width: 1300px;
+  margin-top: 100px;
+  padding: 4rem  3rem 0rem;
+
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.2fr;
+  gap: 3rem;
+  align-items: start;
+} */
+.top {
+  max-width: 1300px;
+  margin: 100px auto 0;
+  padding: 4rem 3rem 0;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 3rem;
+  align-items: start;
+}
+
+
+.footer {
+  margin-top: 80px; /* 🔥 spacing from cards */
+}
+
+
+/* LEFT & RIGHT */
+.left,
+.right {
+  display: flex;
+  gap: 3rem;
+}
+
+.column h4 {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.column li {
+  font-size: 0.9rem;
+  color: #c5d6d2;
+  margin-bottom: 0.6rem;
+  cursor: pointer;
+}
+
+.column li:hover {
+  color: #ffffff;
+}
+
+/* CENTER CARD */
+
+.centerCard {
+  position: relative;
+  justify-self: center;
+
+  /* Card colors */
+  background: #cdddb4;        /* light sage green */
+  color: #1c2d28;
+
+  /* Spacing */
+  padding: 3rem 2.75rem;
+  text-align: center;
+
+  /* Rounded bottom corners only */
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
+
+  /* Hanging / overlap effect */
+  margin-top: -5rem;
+  z-index: 2;
+
+  /* 🔥 KEY PART — BEVELED CORNERS (LEFT + RIGHT) */
+  clip-path: polygon(
+    -3px -50px,                    /* top-left diagonal start */
+    calc(275px- 36px) 10,       /* top-right diagonal start */
+    100% 36px,                 /* top-right diagonal end */
+    100% 100%,                 /* bottom-right */
+    0 100%,                    /* bottom-left */
+    0 36px                     /* top-left diagonal end */
+  );
+
+  /* Depth */
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.18);
+}
+
+
+.centerCard::before {
+  content: "";
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 36px;
+  height: 6px;
+
+  background: #143b34; /* footer color */
+
+  transform: skewX(-45deg);
+  transform-origin: left center;
+}
+
+
+.centerCard::after {
+  content: "";
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 36px;
+  height: 6px;
+
+  background: #143b34; /* footer color */
+
+  transform: skewX(45deg);
+  transform-origin: right center;
+}
+
+
+.centerCard h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.tagline {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+.centerCard h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.subtext {
+  font-size: 0.9rem;
+  margin-bottom: 1.75rem;
+}
+
+.subscribe {
+  display: flex;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.subscribe input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  outline: none;
+}
+
+.subscribe button {
+  background: #143b34;
+  color: #ffffff;
+  border: none;
+  padding: 0 1.5rem;
+  cursor: pointer;
+}
+
+/* SOCIAL */
+.socials {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.socials span {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.badge {
+  font-size: 0.75rem;
+  color: #c5d6d2;
+}
+
+/* BOTTOM */
+.bottom {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding: 1.5rem 2rem;
+  display: flex;
+  margin-top: 25px;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #c5d6d2;
+}
+
+@media (max-width: 768px) {
+  
+
+  /* Keep main stacking */
+  .top {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 2rem 1.25rem 0;
+    
+  }
+
+  /* Center card stays same */
+  .centerCard {
+    order: 1;
+    width: 100%;
+    margin: 0;
+    padding: 1.75rem;
+    clip-path: none;
+    border-radius: 22px;
+  }
+
+  .centerCard::before,
+  .centerCard::after {
+    display: none;
+  }
+
+  /* 🔥 Explore + Learn side by side */
+  .left {
+    order: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  /* 🔥 Important Links + Connect With Us side by side */
+  .right {
+    order: 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  /* Columns full width inside grid */
+  .column {
+    width: 100%;
+    margin-left: 1.5rem;
+  }
+
+  /* Bottom bar */
+  .bottom {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+  .subscribe input {
+  
+  background: #ffffff;
+}
+
+.footer{
+  max-height: fit-content;
+}
+}
+
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
