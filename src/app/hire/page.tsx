@@ -45,7 +45,7 @@ const [submitted, setSubmitted] = useState(false);
   {
     title: "Advanced ",
     highlight: "Dashboard",
-    desc: " for Recruiters. Take full control of your hiring with a powerful, all-in-one dashboard.",
+    desc: " for Recruiter's. Take full control of your hiring with a powerful, all-in-one dashboard.",
     image: "/features/dashboard.png",
     reverse: true,
   },
