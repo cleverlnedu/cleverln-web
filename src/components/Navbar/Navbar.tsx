@@ -42,7 +42,7 @@ const Navbar = () => {
     <Link href="/courses">Courses</Link>
     <Link href="/hire">Hire Talent</Link>
     <Link href="/opportunities">Get Hired</Link>
-    <Link href="/community">Community</Link>
+    
     <Link href="/login" className="mobile-login">Log in</Link>
   </div>
 )}
@@ -54,7 +54,7 @@ const Navbar = () => {
                     <span> Explore Courses</span>
                     <span>Hire Talent</span>
                     <span>Get Hired</span>
-                    <span>Join Community</span>
+                    
                 </button>
 
                 {/* Logo */}
@@ -151,15 +151,7 @@ const Navbar = () => {
                             
                         </li>
                    
-                        {/* Community */}
-                        <li
-                            className="site-nav-main__item"
-                            onMouseEnter={() => handleMouseEnter('community')}
-                            onMouseLeave={handleMouseLeave}
-                        >
-                            <Link href="/stories" className="site-nav-main__link">Join Community</Link>
-                            
-                        </li>
+                        
                     </ul>
                 </nav>
 
