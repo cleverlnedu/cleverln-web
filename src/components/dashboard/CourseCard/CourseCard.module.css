@@ -1,0 +1,168 @@
+/* =========================================================
+   ROOT
+========================================================= */
+
+.dcourseRoot{
+    width:100%;
+    margin-top:18px;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.dcourseCard{
+
+    width:100%;
+
+    min-height:170px;
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    border:1px solid #ECECEC;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.03);
+
+    overflow:hidden;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.dcourseHeader{
+
+    padding:18px 24px 0;
+}
+
+.dcourseTitle{
+
+    margin:0;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#222;
+}
+
+/* =========================================================
+   BODY
+========================================================= */
+
+.dcourseBody{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:18px 20px 28px;
+}
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.dcourseIcon{
+
+    width:42px;
+
+    height:42px;
+
+    object-fit:contain;
+
+    margin-bottom:12px;
+}
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.dcourseHeading{
+
+    margin:0;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    color:#7A7A7A;
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.dcourseButton{
+
+    margin-top:14px;
+
+    height:30px;
+
+    padding:0 18px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:#F4F4F4;
+
+    color:#333;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.dcourseButton:hover{
+
+    background:#ECECEC;
+
+    transform:translateY(-2px);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:768px){
+
+.dcourseCard{
+
+min-height:180px;
+
+}
+
+.dcourseBody{
+
+padding:20px;
+
+}
+
+.dcourseHeading{
+
+font-size:14px;
+
+}
+
+.dcourseButton{
+
+width:120px;
+
+height:36px;
+
+}
+
+}

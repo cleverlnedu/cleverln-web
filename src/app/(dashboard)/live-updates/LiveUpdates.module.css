@@ -1,0 +1,194 @@
+/* =========================================================
+   ROOT
+========================================================= */
+
+.dliveRoot{
+
+    width:100%;
+
+    padding:24px 0 40px;
+
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.dliveContainer{
+
+    width:100%;
+
+    background:#ffffff;
+
+    border:1px solid #ECECEC;
+
+    border-radius:24px;
+
+    box-shadow:
+        0 8px 24px rgba(0,0,0,.04);
+
+    overflow:hidden;
+
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.dliveHeader{
+
+    padding:34px 40px 18px;
+
+}
+
+.dliveTitle{
+
+    margin:0;
+
+    color:#2A2A2A;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+}
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.dliveCards{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    padding:0 32px 32px;
+
+}
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media(max-width:1200px){
+
+.dliveHeader{
+
+padding:28px 30px 18px;
+
+}
+
+.dliveCards{
+
+padding:0 24px 24px;
+
+}
+
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:992px){
+
+.dliveTitle{
+
+font-size:24px;
+
+}
+
+.dliveHeader{
+
+padding:24px 24px 16px;
+
+}
+
+.dliveCards{
+
+padding:0 20px 20px;
+
+gap:18px;
+
+}
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:768px){
+
+.dliveContainer{
+
+border-radius:18px;
+
+}
+
+.dliveHeader{
+
+padding:20px 18px 14px;
+
+}
+
+.dliveTitle{
+
+font-size:20px;
+
+}
+
+.dliveCards{
+
+padding:0 16px 16px;
+
+gap:16px;
+
+}
+
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:480px){
+
+.dliveRoot{
+
+padding:16px 0;
+
+}
+
+.dliveContainer{
+
+border-radius:16px;
+
+}
+
+.dliveHeader{
+
+padding:18px 16px 12px;
+
+}
+
+.dliveTitle{
+
+font-size:18px;
+
+}
+
+.dliveCards{
+
+padding:0 12px 12px;
+
+gap:14px;
+
+}
+
+}

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/footer/footer";
+//import Navbar from "@/components/website/Navbar/Navbar";
+//import Footer from "@/components/website/footer/footer";
 
 import {
   Geist,
@@ -98,9 +98,9 @@ export default function RootLayout({
       `}
     >
       <body>
-        <Navbar />
+        
         {children}
-        <Footer />
+        
       </body>
     </html>
   );

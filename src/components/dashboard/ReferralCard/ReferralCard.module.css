@@ -1,0 +1,279 @@
+/* =========================================================
+   ROOT
+========================================================= */
+
+.drefRoot {
+  width: 100%;
+  margin-top: 18px;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.drefCard {
+  width: 100%;
+  min-height: 140px;
+
+  display: flex;
+  align-items: center;
+  gap: 22px;
+
+  padding: 18px 24px;
+
+  background: #ffffff;
+
+  border: 1px solid #ececec;
+  border-radius: 18px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+
+  transition: all 0.25s ease;
+}
+
+.drefCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.drefImageWrapper {
+  position: relative;
+
+  width: 175px;
+  height: 95px;
+
+  flex-shrink: 0;
+}
+
+.drefImage {
+  object-fit: contain;
+  object-position: center;
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.drefContent {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.drefTitle {
+  margin: 0;
+
+  color: #252525;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  line-height: 1.3;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.drefDescription {
+  margin-top: 8px;
+
+  color: #777777;
+
+  font-size: 9px;
+
+  font-weight: 500;
+
+  line-height: 1.55;
+
+  max-width: 320px;
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.drefButton {
+  margin-top: 12px;
+
+  width: 92px;
+  height: 28px;
+
+  border: none;
+
+  border-radius: 999px;
+
+  background: #f2f2f2;
+
+  color: #2f2f2f;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.drefButton:hover {
+  background: #e9e9e9;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width:1200px){
+
+.drefCard{
+
+padding:16px 20px;
+
+gap:18px;
+
+}
+
+.drefImageWrapper{
+
+width:160px;
+
+height:88px;
+
+}
+
+.drefTitle{
+
+font-size:17px;
+
+}
+
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width:992px){
+
+.drefCard{
+
+padding:18px;
+
+}
+
+.drefImageWrapper{
+
+width:145px;
+
+height:82px;
+
+}
+
+.drefDescription{
+
+max-width:100%;
+
+}
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width:768px){
+
+.drefCard{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+.drefImageWrapper{
+
+width:170px;
+
+height:90px;
+
+}
+
+.drefContent{
+
+width:100%;
+
+}
+
+.drefDescription{
+
+font-size:12px;
+
+}
+
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width:480px){
+
+.drefRoot{
+
+margin-top:14px;
+
+}
+
+.drefCard{
+
+padding:16px;
+
+border-radius:16px;
+
+}
+
+.drefImageWrapper{
+
+width:150px;
+
+height:80px;
+
+}
+
+.drefTitle{
+
+font-size:16px;
+
+}
+
+.drefDescription{
+
+font-size:11px;
+
+}
+
+.drefButton{
+
+width:90px;
+
+height:28px;
+
+font-size:10px;
+
+}
+
+}

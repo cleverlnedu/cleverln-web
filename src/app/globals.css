@@ -4,6 +4,10 @@
    --font-dm-serif: 'DM Serif Display', serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
    

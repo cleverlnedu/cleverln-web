@@ -1,0 +1,348 @@
+/* =========================================================
+   CARD
+========================================================= */
+
+.dupCard{
+
+    position:relative;
+
+    width:100%;
+
+    background:#FFFFFF;
+
+    border:1px solid #ECECEC;
+
+    border-radius:20px;
+
+    padding:28px 34px;
+
+    transition:
+        transform .35s cubic-bezier(.22,1,.36,1),
+        box-shadow .35s cubic-bezier(.22,1,.36,1),
+        border-color .35s ease;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 2px 10px rgba(0,0,0,.04);
+}
+
+/* =========================================================
+   FEATURED
+========================================================= */
+
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.dupCard:hover{
+
+    transform:translateY(-4px);
+
+    border-color:#CFEEDF;
+
+    box-shadow:
+
+        0 0 0 1px rgba(167,228,204,.55),
+
+        0 0 26px rgba(116,214,173,.28),
+
+        0 18px 38px rgba(0,0,0,.08);
+
+}
+
+/* =========================================================
+   TOP
+========================================================= */
+
+.dupTop{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:14px;
+
+}
+
+/* =========================================================
+   DEPARTMENT
+========================================================= */
+
+.dupDepartment{
+
+    margin:0;
+
+    color:#868686;
+
+    font-size:13px;
+
+    font-weight:500;
+
+}
+
+/* =========================================================
+   TIME
+========================================================= */
+
+.dupTime{
+
+    color:#404040;
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.dupTitle{
+
+    margin:0;
+
+    color:#2B2B2B;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    line-height:1.35;
+
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.dupDescription{
+
+    margin-top:14px;
+
+    color:#707070;
+
+    font-size:15px;
+
+    line-height:1.75;
+
+    font-weight:400;
+
+    max-width:1080px;
+
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.dupFooter{
+
+    margin-top:22px;
+
+}
+
+/* =========================================================
+   USER
+========================================================= */
+
+.dupUser{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.dupAvatar{
+
+    position:relative;
+
+    width:30px;
+
+    height:30px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    flex-shrink:0;
+
+}
+
+.dupAvatarImage{
+
+    object-fit:cover;
+
+}
+
+/* =========================================================
+   AUTHOR
+========================================================= */
+
+.dupAuthor{
+
+    margin:0;
+
+    display:flex;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    color:#666;
+
+    font-size:13px;
+
+}
+
+.dupAuthorName{
+
+    color:#404040;
+
+    font-weight:600;
+
+}
+
+.dupComma{
+
+    margin-left:2px;
+
+}
+
+.dupRole{
+
+    color:#757575;
+
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width:992px){
+
+.dupCard{
+
+padding:24px;
+
+}
+
+.dupTitle{
+
+font-size:20px;
+
+}
+
+.dupDescription{
+
+font-size:14px;
+
+}
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width:768px){
+
+.dupCard{
+
+padding:20px;
+
+}
+
+.dupTop{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:6px;
+
+}
+
+.dupTitle{
+
+font-size:18px;
+
+}
+
+.dupDescription{
+
+font-size:14px;
+
+line-height:1.6;
+
+}
+
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width:480px){
+
+.dupCard{
+
+padding:18px;
+
+border-radius:16px;
+
+}
+
+.dupDepartment{
+
+font-size:13px;
+
+}
+
+.dupTime{
+
+font-size:12px;
+
+}
+
+.dupTitle{
+
+font-size:17px;
+
+}
+
+.dupDescription{
+
+font-size:13px;
+
+}
+
+.dupAvatar{
+
+width:26px;
+
+height:26px;
+
+}
+
+.dupAuthor{
+
+font-size:12px;
+
+}
+
+}
