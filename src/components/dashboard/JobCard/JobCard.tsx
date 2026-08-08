@@ -125,9 +125,11 @@ export default function JobCard({
 
           <div className={styles.djobEmptyBody}>
 
-            <FilePlus2
-              size={52}
-              strokeWidth={1.5}
+            <Image
+              src="/images/dashboard/course-empty.svg"
+              alt="Course"
+              width={42}
+              height={42}
               className={styles.djobEmptyIcon}
             />
 
@@ -139,7 +141,7 @@ export default function JobCard({
               type="button"
               className={styles.djobEmptyButton}
             >
-              Get Start
+              Get Started
             </button>
 
           </div>
