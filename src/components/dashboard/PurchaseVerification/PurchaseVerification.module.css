@@ -1,0 +1,994 @@
+/* =========================================================
+   ROOT
+========================================================= */
+
+.dpurchaseRoot{
+    width:100%;
+    margin-top:24px;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.dpurchaseCard{
+    width:100%;
+    background:#FFF;
+    border:1px solid #ECECEC;
+    border-radius:16px;
+    padding:24px;
+    box-shadow:0 2px 12px rgba(0,0,0,.04);
+    position:relative;
+    overflow:hidden;
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.dpurchaseToast{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-top: 22px;
+    padding:14px 18px;
+    border-radius:12px;
+    background:#ECFDF5;
+    border:1px solid #A7F3D0;
+    margin-bottom:22px;
+    animation:dpurchaseToast .35s ease;
+}
+
+@keyframes dpurchaseToast{
+
+    from{
+        opacity:0;
+        transform:translateY(-12px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.dpurchaseToastEmoji{
+    font-size:30px;
+}
+
+.dpurchaseToast h5{
+    margin:0;
+    color:#065F46;
+    font-size:16px;
+    font-weight:700;
+}
+
+.dpurchaseToast p{
+    margin:4px 0 0;
+    color:#047857;
+    font-size:14px;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.dpurchaseSectionTitle{
+    margin:0;
+    font-size:15px;
+    font-weight:700;
+    color:#444;
+}
+
+/* =========================================================
+   COURSE
+========================================================= */
+
+.dpurchaseCourse{
+    margin-top:18px;
+    display:grid;
+    grid-template-columns:520px 1fr;
+    gap:36px;
+    align-items:center;
+}
+
+/* =========================================================
+   BANNER
+========================================================= */
+
+.dpurchaseCourseBanner{
+    position:relative;
+    width:100%;
+    height:207px;
+    overflow:hidden;
+    border-radius:10px;
+    border:1px solid #ECECEC;
+    background:#F8F8F8;
+}
+
+.dpurchaseBannerImage{
+    object-fit:cover;
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.dpurchaseCourseContent{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.dpurchaseCourseTitle{
+    margin:0;
+    color:#303030;
+    font-size:30px;
+    font-weight:700;
+}
+
+.dpurchaseMeta{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    margin-top:14px;
+}
+
+.dpurchaseMeta span{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    color:#777;
+    font-size:15px;
+    font-weight:500;
+}
+
+.dpurchaseLine{
+    width:100%;
+    height:1px;
+    background:#E7E7E7;
+    margin:18px 0;
+}
+
+.dpurchaseDescription{
+    margin:0;
+    color:#6E6E6E;
+    font-size:15px;
+    line-height:1.8;
+}
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.dpurchaseDivider{
+    margin:38px 0 -12px;
+    height:1px;
+    background:#DDDDDD;
+}
+
+
+/* =========================================================
+   CAREER BUILD PACK
+========================================================= */
+
+.dpurchaseAddon{
+
+    display:grid;
+
+    grid-template-columns:520px 1fr;
+
+    gap:36px;
+
+    align-items:center;
+
+    transition:all .35s ease;
+
+    margin-top: 54px;
+
+}
+
+
+
+
+/* =========================================================
+   BANNER
+========================================================= */
+
+.dpurchaseAddonBanner{
+
+    position:relative;
+
+    width:100%;
+
+    height:126px;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    border:1px solid #ECECEC;
+
+    background:#FAFAFA;
+
+}
+
+.dpurchaseAddonImage{
+
+    object-fit:cover;
+
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.dpurchaseAddonContent{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+.dpurchaseAddonTitle{
+
+    margin:0;
+
+    color:#303030;
+
+    font-size:30px;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+}
+
+/* =========================================================
+   PRICE ROW
+========================================================= */
+
+.dpurchaseAddonBottom{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-top:20px;
+
+}
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+.dpurchasePrice{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:10px;
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:#181818;
+
+    line-height:1;
+
+}
+
+.dpurchasePrice span{
+
+    font-size:18px;
+
+    color:#A0A0A0;
+
+    font-weight:600;
+
+    text-decoration:line-through;
+
+    margin-bottom:4px;
+
+}
+
+/* =========================================================
+   ADD BUTTON
+========================================================= */
+
+.dpurchaseAddButton{
+
+    width:105px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#e4e4e4;
+
+    color:#303030;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.08);
+
+}
+
+.dpurchaseAddButton:hover{
+
+    background:#1c8a65;
+
+    color:#FFF;
+
+}
+
+/* =========================================================
+   REMOVE BUTTON
+========================================================= */
+
+.dpurchaseRemoveButton{
+
+    width:105px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#ededed;
+
+    color:#bc0b0b;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+
+}
+
+
+
+/* =========================================================
+   SUCCESS MESSAGE
+========================================================= */
+
+.dpurchaseBuildPackSuccess{
+
+    margin-top:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 16px;
+
+    border-radius:10px;
+
+    background:#ECFDF5;
+
+    border:1px solid #A7F3D0;
+
+    color:#047857;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    animation:dpurchaseSuccess .35s ease;
+
+}
+
+.dpurchaseBuildPackIcon{
+
+    font-size:18px;
+
+}
+
+@keyframes dpurchaseSuccess{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(8px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+.dpurchaseSummary{
+
+    margin-top:34px;
+
+    padding-top:28px;
+
+    border-top:1px solid #E7E7E7;
+
+}
+
+.dpurchaseSummaryTitle{
+
+    margin:0 0 28px;
+
+    text-align:center;
+
+    color:#7A7A7A;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+}
+
+.dpurchaseSummaryRow{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:11px 0;
+
+    color:#555;
+
+    font-size:16px;
+
+    font-weight:500;
+
+}
+
+.dpurchaseSummaryRow span:last-child{
+
+    font-weight:600;
+
+}
+
+.dpurchaseIncluded{
+
+    color:#18B87B;
+
+    font-weight:700;
+
+}
+
+.dpurchaseNotAdded{
+
+    color:#9A9A9A;
+
+    font-weight:600;
+
+}
+
+/* =========================================================
+   TOTAL
+========================================================= */
+
+.dpurchaseTotal{
+
+    margin-top:18px;
+
+    padding-top:18px;
+
+    border-top:2px solid #DCDCDC;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.dpurchaseTotal span{
+
+    color:#303030;
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+.dpurchaseTotal strong{
+
+    color:#151515;
+
+    font-size:30px;
+
+    font-weight:800;
+
+}
+
+
+/* =========================================================
+   TERMS
+========================================================= */
+/* =========================================================
+   TERMS CHECKBOX
+========================================================= */
+
+.dpurchaseTerms{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:24px;
+
+    cursor:pointer;
+
+}
+
+.dpurchaseTerms input{
+
+    appearance:none;
+    -webkit-appearance:none;
+
+    width:20px;
+    height:20px;
+
+    border:2px solid #D5D5D5;
+
+    border-radius:4px;
+
+    background:#FFFFFF;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+
+    position:relative;
+
+    flex-shrink:0;
+
+}
+
+/* Hover */
+
+.dpurchaseTerms input:hover{
+
+    border-color:#18B87B;
+
+}
+
+/* Checked */
+
+.dpurchaseTerms input:checked{
+
+    background:#18B87B;
+
+    border-color:#18B87B;
+
+}
+
+/* White Tick */
+
+.dpurchaseTerms input:checked::after{
+
+    content:"✓";
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-58%);
+
+    color:#FFFFFF;
+
+    font-size:14px;
+
+    font-weight:700;
+
+}
+
+.dpurchaseTerms span{
+
+    color:#6B7280;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+}
+
+/* =========================================================
+   PAY NOW BUTTON
+========================================================= */
+
+.dpurchasePayButton{
+
+    width:100%;
+
+    height:56px;
+
+    margin-top:26px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:linear-gradient(
+        180deg,
+        #18B87B,
+        #118D62
+    );
+
+    color:#FFFFFF;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        opacity .25s ease;
+
+    box-shadow:
+        0 12px 28px rgba(24,184,123,.22);
+
+}
+
+.dpurchasePayButton:hover:not(:disabled){
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 18px 36px rgba(24,184,123,.32);
+
+}
+
+.dpurchasePayButton:active:not(:disabled){
+
+    transform:scale(.98);
+
+}
+
+.dpurchasePayButton:disabled{
+
+    background:#D8D8D8;
+
+    color:#8B8B8B;
+
+    cursor:not-allowed;
+
+    box-shadow:none;
+
+}
+
+/* =========================================================
+   1400px
+========================================================= */
+
+@media (max-width:1400px){
+
+    .dpurchaseCourse,
+    .dpurchaseAddon{
+
+        grid-template-columns:450px 1fr;
+
+        gap:28px;
+
+    }
+
+    .dpurchaseCourseBanner{
+
+        height:200px;
+
+    }
+
+    .dpurchaseAddonBanner{
+
+        height:100px;
+
+    }
+
+}
+
+/* =========================================================
+   1200px
+========================================================= */
+
+@media (max-width:1200px){
+
+    .dpurchaseCard{
+
+        padding:20px;
+
+    }
+
+    .dpurchaseCourse,
+    .dpurchaseAddon{
+
+        grid-template-columns:1fr;
+
+        gap:22px;
+
+    }
+
+    .dpurchaseCourseBanner{
+
+        height:230px;
+
+    }
+
+    .dpurchaseAddonBanner{
+
+        height:120px;
+
+    }
+
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width:992px){
+
+    .dpurchaseCourseTitle{
+
+        font-size:26px;
+
+    }
+
+    .dpurchaseAddonTitle{
+
+        font-size:24px;
+
+    }
+
+    .dpurchaseMeta{
+
+        flex-wrap:wrap;
+
+        gap:14px;
+
+    }
+
+    .dpurchaseDescription{
+
+        font-size:14px;
+
+    }
+
+    .dpurchasePrice{
+
+        font-size:28px;
+
+    }
+
+    .dpurchaseSummaryRow{
+
+        font-size:15px;
+
+    }
+
+    .dpurchaseTotal span{
+
+        font-size:18px;
+
+    }
+
+    .dpurchaseTotal strong{
+
+        font-size:24px;
+
+    }
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width:768px){
+
+    .dpurchaseCard{
+
+        padding:16px;
+
+        border-radius:14px;
+
+    }
+
+    .dpurchaseCourseBanner{
+
+        height:250px;
+
+    }
+
+    .dpurchaseAddonBanner{
+
+        height:161px;
+
+    }
+
+    .dpurchaseCourseTitle{
+
+        font-size:22px;
+
+    }
+
+    .dpurchaseAddonTitle{
+
+        font-size:22px;
+
+    }
+
+    .dpurchaseMeta{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:10px;
+
+    }
+
+    .dpurchaseAddonBottom{
+
+        flex-wrap:wrap;
+
+        gap:14px;
+
+    }
+
+    .dpurchaseAddButton,
+    .dpurchaseRemoveButton{
+
+        width:100px;
+
+        height:38px;
+
+    }
+
+    .dpurchaseSummaryTitle{
+
+        font-size:14px;
+
+    }
+
+    .dpurchasePayButton{
+
+        height:50px;
+
+        font-size:16px;
+
+    }
+
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width:480px){
+
+    .dpurchaseCard{
+
+        padding:14px;
+
+    }
+
+    .dpurchaseSectionTitle{
+
+        font-size:13px;
+
+    }
+
+    .dpurchaseCourseBanner{
+
+        height:135px;
+
+    }
+
+    .dpurchaseAddonBanner{
+
+        height:75px;
+
+    }
+
+    .dpurchaseCourseTitle{
+
+        font-size:20px;
+
+    }
+
+    .dpurchaseAddonTitle{
+
+        font-size:20px;
+
+    }
+
+    .dpurchaseMeta span{
+
+        font-size:13px;
+
+    }
+
+    .dpurchaseDescription{
+
+        font-size:13px;
+
+    }
+
+    .dpurchasePrice{
+
+        font-size:24px;
+
+    }
+
+    .dpurchaseSummaryRow{
+
+        font-size:14px;
+
+    }
+
+    .dpurchaseTotal{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:8px;
+
+    }
+
+    .dpurchaseTotal strong{
+
+        font-size:22px;
+
+    }
+
+    .dpurchasePayButton{
+
+        font-size:15px;
+
+    }
+
+}

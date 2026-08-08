@@ -1,0 +1,238 @@
+/* =========================================================
+   CARD
+========================================================= */
+
+.dambCard{
+    width:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+
+    gap:20px;
+    margin-top: 18px;
+
+    background:#FFFFFF;
+
+    border:1px solid #ECECEC;
+    border-radius:18px;
+
+    padding:1px 28px;
+
+    min-height:40px;
+
+    box-shadow:0 4px 18px rgba(0,0,0,.04);
+
+    overflow:hidden;
+}
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.dambImageWrap{
+
+    position:relative;
+
+    width:180px;
+
+    height:95px;
+
+    flex-shrink:0;
+
+}
+
+.dambImage{
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.dambContent{
+
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+
+}
+
+.dambTitle{
+
+    margin:0;
+
+    color:#303030;
+
+    font-size:18px;
+    font-weight:700;
+    line-height:1.15;
+
+    max-width:420px;
+
+}
+
+.dambDescription{
+
+    margin:7px 0 0;
+
+    color:#737373;
+
+    font-size:10px;
+    line-height:1.3;
+
+    max-width:340px;
+
+}
+
+.dambButton{
+
+    margin-top:16px;
+
+    width:92px;
+    height:28px;
+
+    border:none;
+    border-radius:999px;
+
+    background:#F3F3F3;
+
+    color:#333;
+
+    font-size:11px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+
+}
+
+.dambButton:hover{
+
+    background:#18B87B;
+    color:#FFFFFF;
+
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width:992px){
+
+    .dambCard{
+
+        flex-direction:column;
+
+        align-items:center;
+
+        text-align:center;
+
+        gap:22px;
+
+        padding:22px;
+
+    }
+
+    .dambImageWrap{
+
+        width:280px;
+
+        height:130px;
+
+    }
+
+    .dambContent{
+
+        align-items:center;
+
+    }
+
+    .dambDescription{
+
+        max-width:100%;
+
+    }
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width:768px){
+
+    .dambCard{
+
+        padding:18px;
+
+    }
+
+    .dambImageWrap{
+
+        width:240px;
+
+        height:110px;
+
+    }
+
+    .dambTitle{
+
+        font-size:18px;
+
+    }
+
+    .dambDescription{
+
+        font-size:13px;
+
+    }
+
+    .dambButton{
+
+        width:120px;
+
+        height:36px;
+
+    }
+
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width:480px){
+
+    .dambImageWrap{
+
+        width:200px;
+
+        height:95px;
+
+    }
+
+    .dambTitle{
+
+        font-size:17px;
+
+    }
+
+    .dambDescription{
+
+        font-size:12px;
+
+        line-height:1.6;
+
+    }
+
+}

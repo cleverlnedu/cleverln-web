@@ -396,7 +396,12 @@ const handleKeyDown = (
           flexible, self-paced learning.
         </p>
 
-        <button className={styles.buyBtn}>
+        <button
+          className={styles.buyBtn}
+          onClick={() =>
+            router.push("/dashboard?verify=true&plan=standard")
+          }
+        >
           BUY NOW
         </button>
 
@@ -460,7 +465,12 @@ const handleKeyDown = (
           grow under expert guidance.
         </p>
 
-        <button className={styles.buyBtn}>
+        <button
+          className={styles.buyBtn}
+          onClick={() =>
+            router.push("/dashboard?verify=true&plan=advantage")
+          }
+        >
           BUY NOW
         </button>
 
