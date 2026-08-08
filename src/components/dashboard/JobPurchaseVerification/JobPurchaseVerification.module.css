@@ -1,0 +1,580 @@
+/* =========================================================
+   ROOT
+========================================================= */
+
+.djobPurchaseRoot {
+  width: 100%;
+  margin-top: 24px;
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.djobPurchaseCard {
+  width: 100%;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+  border-radius: 18px;
+
+  padding: 38px 26px 24px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PRODUCT
+========================================================= */
+
+.djobProduct {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 500px 1fr;
+
+  align-items: center;
+
+  gap: 44px;
+}
+
+
+/* =========================================================
+   PRODUCT BANNER
+========================================================= */
+
+.djobProductBanner {
+  position: relative;
+
+  width: 100%;
+  height: 198px;
+
+  overflow: hidden;
+
+  border-radius: 8px;
+
+  background: #f5f8fc;
+}
+
+.djobBannerImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* =========================================================
+   PRODUCT CONTENT
+========================================================= */
+
+.djobProductContent {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.djobProductTitle {
+  margin: 0;
+
+  color: #3b3b3b;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  line-height: 1.25;
+}
+
+
+/* =========================================================
+   META
+========================================================= */
+
+.djobMeta {
+  display: flex;
+  align-items: center;
+
+  gap: 32px;
+
+  margin-top: 16px;
+}
+
+.djobMeta span {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: #777777;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   PRODUCT LINE
+========================================================= */
+
+.djobLine {
+  width: 100%;
+
+  height: 1px;
+
+  background: #dddddd;
+
+  margin: 16px 0;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.djobDescription {
+  margin: 0;
+
+  color: #777777;
+
+  font-size: 15px;
+
+  font-weight: 400;
+
+  line-height: 1.55;
+
+  max-width: 760px;
+}
+
+
+/* =========================================================
+   MAIN DIVIDER
+========================================================= */
+
+.djobDivider {
+  width: 100%;
+
+  height: 1px;
+
+  background: #c8c8c8;
+
+  margin: 18px 0 0;
+}
+
+
+/* =========================================================
+   PURCHASE SUMMARY
+========================================================= */
+
+.djobSummary {
+  width: 100%;
+
+  padding-top: 10px;
+}
+
+
+/* =========================================================
+   SUMMARY TITLE
+========================================================= */
+
+.djobSummaryTitle {
+  margin: 0 0 24px;
+
+  text-align: center;
+
+  color: #929292;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  line-height: 1.3;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   SUMMARY ROW
+========================================================= */
+
+.djobSummaryRow {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 11px;
+
+  color: #666666;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.djobSummaryRow span:last-child {
+  color: #666666;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   TOTAL DIVIDER
+========================================================= */
+
+.djobTotalLine {
+  width: 100%;
+
+  height: 2px;
+
+  background: #c8c8c8;
+
+  margin-top: 5px;
+}
+
+
+/* =========================================================
+   TOTAL
+========================================================= */
+
+.djobTotal {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: 10px;
+
+  color: #3c3c3c;
+
+  font-size: 16px;
+
+  font-weight: 700;
+}
+
+.djobTotal strong {
+  font-size: 17px;
+
+  font-weight: 700;
+
+  color: #3c3c3c;
+}
+
+
+/* =========================================================
+   TERMS
+========================================================= */
+
+.djobTerms {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 20px;
+
+  cursor: pointer;
+
+  color: #777777;
+
+  font-size: 11px;
+
+  font-weight: 400;
+
+  line-height: 1.4;
+}
+
+.djobCheckbox {
+  appearance: none;
+
+  -webkit-appearance: none;
+
+  width: 14px;
+  height: 14px;
+
+  flex-shrink: 0;
+
+  margin: 0;
+
+  border: 1px solid #dddddd;
+
+  border-radius: 0;
+
+  background: #ffffff;
+
+  cursor: pointer;
+
+  position: relative;
+}
+
+.djobCheckbox:checked {
+  background: #18b77c;
+
+  border-color: #18b77c;
+}
+
+.djobCheckbox:checked::after {
+  content: "✓";
+
+  position: absolute;
+
+  left: 2px;
+  top: -1px;
+
+  color: #ffffff;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   PAY BUTTON
+========================================================= */
+
+.djobPayButton {
+  width: 100%;
+
+  height: 48px;
+
+  margin-top: 16px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: linear-gradient(
+    90deg,
+    #12b77d 0%,
+    #11845f 100%
+  );
+
+  color: #ffffff;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.djobPayButton:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 20px rgba(17, 143, 99, 0.22);
+}
+
+.djobPayButton:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .djobPurchaseCard {
+    padding: 32px 50px 22px;
+  }
+
+  .djobProduct {
+    grid-template-columns: 430px 1fr;
+
+    gap: 36px;
+  }
+
+  .djobProductBanner {
+    height: 185px;
+  }
+
+  .djobProductTitle {
+    font-size: 27px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+  .djobPurchaseCard {
+    padding: 28px 30px 22px;
+  }
+
+  .djobProduct {
+    grid-template-columns: 1fr;
+
+    gap: 24px;
+  }
+
+  .djobProductBanner {
+    height: 220px;
+  }
+
+  .djobProductTitle {
+    font-size: 27px;
+  }
+
+  .djobDescription {
+    max-width: 100%;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .djobPurchaseCard {
+    padding: 20px 18px;
+  }
+
+  .djobProduct {
+    gap: 20px;
+  }
+
+  .djobProductBanner {
+    height: 180px;
+  }
+
+  .djobProductTitle {
+    font-size: 23px;
+  }
+
+  .djobMeta {
+    flex-wrap: wrap;
+
+    gap: 12px 22px;
+  }
+
+  .djobMeta span {
+    font-size: 13px;
+  }
+
+  .djobDescription {
+    font-size: 13px;
+
+    line-height: 1.6;
+  }
+
+  .djobSummaryTitle {
+    font-size: 13px;
+
+    margin-bottom: 20px;
+  }
+
+  .djobSummaryRow {
+    font-size: 13px;
+  }
+
+  .djobTotal {
+    font-size: 14px;
+  }
+
+  .djobTotal strong {
+    font-size: 15px;
+  }
+
+  .djobTerms {
+    align-items: flex-start;
+
+    font-size: 10px;
+  }
+
+  .djobPayButton {
+    height: 46px;
+
+    font-size: 16px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .djobPurchaseCard {
+    padding: 16px 14px;
+  }
+
+  .djobProductBanner {
+    height: 150px;
+  }
+
+  .djobProductTitle {
+    font-size: 20px;
+  }
+
+  .djobMeta {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 8px;
+  }
+
+  .djobLine {
+    margin: 14px 0;
+  }
+
+  .djobDescription {
+    font-size: 12px;
+  }
+
+  .djobDivider {
+    margin-top: 16px;
+  }
+
+  .djobSummaryTitle {
+    font-size: 12px;
+  }
+
+  .djobSummaryRow {
+    font-size: 12px;
+  }
+
+  .djobTotal {
+    font-size: 13px;
+  }
+
+  .djobTotal strong {
+    font-size: 14px;
+  }
+
+  .djobPayButton {
+    height: 44px;
+
+    font-size: 15px;
+  }
+
+}

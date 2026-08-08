@@ -437,7 +437,17 @@ useEffect(() => {
             Perfect for students aiming to grow under expert guidance.
           </p>
 
-          <button className={styles.buyBtn}>BUY NOW</button>
+          <button
+            type="button"
+            className={styles.buyBtn}
+            onClick={() => {
+              window.location.href =
+                "/dashboard?jobVerify=true&plan=advantage";
+            }}
+          >
+            BUY NOW
+          </button>
+          
         </div>
 
         {/* RIGHT */}

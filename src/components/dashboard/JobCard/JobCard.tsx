@@ -2,9 +2,17 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { List, Star, FilePlus2 } from "lucide-react";
+
 import styles from "./JobCard.module.css";
 
-export default function JobCard() {
+interface JobCardProps {
+  purchased?: boolean;
+}
+
+export default function JobCard({
+  purchased = false,
+}: JobCardProps) {
   return (
     <motion.section
       className={styles.djobRoot}
@@ -15,31 +23,131 @@ export default function JobCard() {
         ease: [0.22, 1, 0.36, 1],
       }}
     >
-      <div className={styles.djobCard}>
-        <div className={styles.djobHeader}>
-          <h3 className={styles.djobTitle}>
-            Job Applied
-          </h3>
-        </div>
 
-        <div className={styles.djobBody}>
-          <Image
-            src="/images/dashboard/course-empty.svg"
-            alt="Job Applied"
-            width={42}
-            height={42}
-            className={styles.djobIcon}
-          />
+      {purchased ? (
 
-          <h4 className={styles.djobHeading}>
-            No Single Job Applied Yet
-          </h4>
+        <div className={styles.djobPurchasedCard}>
 
-          <button className={styles.djobButton}>
-            Get Start
+          {/* =================================================
+              SECTION TITLE
+          ================================================= */}
+
+          <p className={styles.djobSectionTitle}>
+            Job Portal
+          </p>
+
+
+          {/* =================================================
+              MAIN PRODUCT ROW
+          ================================================= */}
+
+          <div className={styles.djobProductRow}>
+
+            {/* LEFT IMAGE */}
+
+            <div className={styles.djobBanner}>
+
+              <Image
+                src="/images/course/job-portal-banner.webp"
+                alt="Job Assistance & Job Portal"
+                fill
+                priority
+                className={styles.djobBannerImage}
+              />
+
+            </div>
+
+
+            {/* RIGHT CONTENT */}
+
+            <div className={styles.djobContent}>
+
+              <h2 className={styles.djobTitle}>
+                Job Assistance & Job Portal
+              </h2>
+
+
+              <div className={styles.djobMeta}>
+
+                <span>
+                  <List size={15} />
+                  No Limitations
+                </span>
+
+                <span>
+                  <Star size={15} />
+                  AI Smart Insights
+                </span>
+
+              </div>
+
+
+              <div className={styles.djobLine} />
+
+
+              <p className={styles.djobDescription}>
+                Apply to unlimited jobs every day through
+                CleverLN. Explore 1,000+ opportunities from
+                verified HR’s and reputed companies, powered
+                by AI-driven insights, smart tracking, and
+                personalized job recommendations.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          {/* =================================================
+              APPLY BUTTON
+          ================================================= */}
+
+          <button
+            type="button"
+            className={styles.djobApplyButton}
+          >
+            Apply Now
           </button>
+
         </div>
-      </div>
+
+      ) : (
+
+        /* =====================================================
+           EMPTY STATE
+        ===================================================== */
+
+        <div className={styles.djobEmptyCard}>
+
+          <p className={styles.djobSectionTitle}>
+            Job Applied
+          </p>
+
+          <div className={styles.djobEmptyBody}>
+
+            <FilePlus2
+              size={52}
+              strokeWidth={1.5}
+              className={styles.djobEmptyIcon}
+            />
+
+            <h4 className={styles.djobEmptyHeading}>
+              No Single Job Applied Yet
+            </h4>
+
+            <button
+              type="button"
+              className={styles.djobEmptyButton}
+            >
+              Get Start
+            </button>
+
+          </div>
+
+        </div>
+
+      )}
+
     </motion.section>
   );
 }
