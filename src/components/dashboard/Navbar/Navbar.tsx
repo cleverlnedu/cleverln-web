@@ -556,7 +556,22 @@ export default function Navbar() {
                 HOME
             =============================================== */}
 
-            
+            <button
+              type="button"
+              className={
+                styles.dnavIcon
+              }
+              aria-label="Dashboard Home"
+              onClick={() =>
+                window.location.href =
+                  "/"
+              }
+            >
+              <House
+                size={20}
+                strokeWidth={1.8}
+              />
+            </button>
 
 
             {/* ===============================================

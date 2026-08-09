@@ -60,7 +60,7 @@ const Navbar = () => {
                 {/* Logo */}
                 <div className="site-nav__logo">
                     <Link href="/">
-                    <Image src="/logo.jpg" alt="MM Miles Logo" width={90} height={27} priority /> 
+                    <Image src="/logo.webp" alt="Cleverln" width={185} height={48} priority /> 
                     </Link>
                 </div>
                 
