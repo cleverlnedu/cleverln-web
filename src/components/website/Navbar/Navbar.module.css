@@ -1,0 +1,818 @@
+/* =========================================================
+   CLEVERLN WEBSITE NAVBAR
+========================================================= */
+
+
+/* =========================================================
+   FIXED WRAPPER
+========================================================= */
+
+.wNavbarWrapper {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+
+  z-index: 9999;
+
+  padding: 18px 22px;
+
+  background: transparent;
+
+  pointer-events: none;
+
+  box-sizing: border-box;
+
+  transition:
+    padding 0.3s ease;
+}
+
+
+/* =========================================================
+   SCROLLED WRAPPER
+========================================================= */
+
+.wNavbarWrapperScrolled {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+
+/* =========================================================
+   MAIN NAVBAR
+========================================================= */
+
+.wNavbar {
+  position: relative;
+
+  width: 100%;
+
+  height: 97px;
+
+  margin: 0;
+
+  padding: 0 48px;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+
+  border-radius: 25px;
+
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.035);
+
+  pointer-events: auto;
+
+  transition:
+    height 0.3s ease,
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    backdrop-filter 0.35s ease;
+}
+
+
+/* =========================================================
+   SCROLLED GLASS NAVBAR
+========================================================= */
+
+.wNavbarScrolled {
+  height: 90px;
+
+  background: rgba(255, 255, 255, 0.70);
+
+  border-color: rgba(255, 255, 255, 0.82);
+
+  box-shadow:
+    0 12px 35px rgba(15, 23, 42, 0.10),
+    0 2px 8px rgba(15, 23, 42, 0.035),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+
+  backdrop-filter:
+    blur(22px)
+    saturate(145%);
+
+  -webkit-backdrop-filter:
+    blur(22px)
+    saturate(145%);
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.wLogo {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  text-decoration: none;
+
+  line-height: 0;
+}
+
+
+.wLogo img {
+  display: block;
+
+  width: 185px !important;
+
+  height: auto !important;
+
+  max-width: none;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   CENTER NAVIGATION
+========================================================= */
+
+.wNav {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  width: 705px;
+
+  height: 70px;
+
+  padding: 5px 20px;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  gap: 2px;
+
+  background: #f7f7f7;
+
+  border-radius: 20px;
+
+  transition:
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* =========================================================
+   SCROLLED NAVIGATION GLASS
+========================================================= */
+
+.wNavbarScrolled .wNav {
+  background:
+    rgba(247, 247, 247, 1.60);
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.65);
+
+  backdrop-filter:
+    blur(14px);
+
+  -webkit-backdrop-filter:
+    blur(14px);
+}
+
+
+/* =========================================================
+   NAVIGATION LINKS
+========================================================= */
+
+.wNavLink {
+  flex: 1;
+
+  height: 50px;
+
+  padding: 0 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border-radius: 999px;
+
+  color: #555555;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* =========================================================
+   ACTIVE LINK
+========================================================= */
+
+.wNavActive {
+  background: #ffffff;
+
+  color: #222222;
+
+  font-weight: 600;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.025);
+}
+
+
+/* =========================================================
+   ACTIVE LINK WHILE SCROLLED
+========================================================= */
+
+.wNavbarScrolled .wNavActive {
+  background:
+    rgba(255, 255, 255, 0.90);
+
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.055);
+}
+
+
+/* =========================================================
+   NAV HOVER
+========================================================= */
+
+.wNavLink:not(.wNavActive):hover {
+  color: #222222;
+
+  background:
+    rgba(255, 255, 255, 0.65);
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
+
+.wRight {
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+========================================================= */
+
+.wLogin {
+  width: 140px;
+
+  height: 50px;
+
+  margin-left: auto;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border: none;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #10b77b 0%,
+      #075f47 100%
+    );
+
+  color: #ffffff;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.wLogin:hover {
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    0 7px 16px
+    rgba(7, 95, 71, 0.20);
+}
+
+
+/* =========================================================
+   HAMBURGER
+   HIDDEN ON DESKTOP
+========================================================= */
+
+.wMenuButton {
+  display: none;
+
+  width: 44px;
+
+  height: 44px;
+
+  padding: 0;
+
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 11px;
+
+  background: #f5f5f5;
+
+  color: #222222;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.wMenuButton:hover {
+  background: #eeeeee;
+}
+
+
+.wMenuButton:active {
+  transform: scale(0.96);
+}
+
+
+/* =========================================================
+   1400px
+========================================================= */
+
+@media (max-width: 1400px) {
+
+  .wNavbar {
+    height: 80px;
+
+    padding: 10px 25px;
+  }
+
+
+  .wLogo img {
+    width: 155px !important;
+  }
+
+
+  .wNav {
+    width: 615px !important;
+
+    height: 65px !important;
+
+    padding: 5px 20px;
+  }
+
+
+  .wNavbarScrolled {
+    height: 80px !important;
+  }
+
+  .wNavLink {
+  flex: 1;
+
+  height: 45px !important;
+  }
+
+
+  .wLogin {
+    width: 120px;
+
+    height: 42px !important;
+
+    margin-left: auto;
+
+    padding: 0;
+
+    border-radius: 16px;
+
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================================
+   NAVBAR DOCUMENT SPACE
+   Prevents Hero overlap
+========================================================= */
+
+.wNavbarSpacer {
+  width: 100%;
+
+  height: 115px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .wNavbarWrapper {
+    padding: 14px 16px;
+  }
+
+
+  .wNavbarWrapperScrolled {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+
+  .wNavbar {
+    height: 80px;
+
+    padding: 0 25px;
+
+    border-radius: 21px;
+  }
+
+
+  .wNavbarScrolled {
+    height: 76px;
+  }
+
+
+  /* LOGO */
+
+  .wLogo img {
+    width: 155px !important;
+  }
+
+
+  /* HIDE DESKTOP NAV */
+
+  .wNav {
+    display: none;
+  }
+
+
+  /* RIGHT SIDE */
+
+  .wRight {
+    margin-left: auto;
+
+    gap: 10px;
+  }
+
+
+  /* LOGIN */
+
+  .wLogin {
+    width: 110px;
+
+    height: 44px !important;
+
+    margin-left: 0;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+  }
+
+
+  /* HAMBURGER */
+
+  .wMenuButton {
+    display: flex;
+
+    width: 44px;
+
+    height: 44px;
+  }
+
+
+  /* SPACER */
+
+  .wNavbarSpacer {
+    height: 108px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+  .wNavbarWrapper {
+    padding: 10px;
+  }
+
+
+  .wNavbarWrapperScrolled {
+    padding: 8px;
+  }
+
+
+  .wNavbar {
+    height: 78px !important;
+
+    padding: 0 18px;
+
+    border-radius: 17px;
+  }
+
+
+  .wNavbarScrolled {
+    height: 72px !important;
+  }
+
+
+  /* LOGO */
+
+  .wLogo img {
+    width: 165px !important;
+  }
+
+
+  /* RIGHT SIDE */
+
+  .wRight {
+    gap: 8px;
+  }
+
+
+  /* LOGIN */
+
+  .wLogin {
+    width: 82px;
+
+    height: 38px !important;
+
+    margin-left: 0;
+
+    border-radius: 11px;
+
+    font-size: 11px;
+  }
+
+
+  /* HAMBURGER */
+
+  .wMenuButton {
+    display: flex;
+
+    width: 30px;
+
+    height: 30px;
+
+    border-radius: 10px;
+  }
+
+
+  /* SPACER */
+
+  .wNavbarSpacer {
+    height: 98px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.wMobileMenu {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 9998;
+
+  padding:
+    105px 18px 20px;
+
+  box-sizing: border-box;
+
+  background:
+    rgba(255, 255, 255, 0.94);
+
+  border-bottom:
+    1px solid #eeeeee;
+
+  box-shadow:
+    0 15px 35px
+    rgba(0, 0, 0, 0.08);
+
+  backdrop-filter:
+    blur(22px);
+
+  -webkit-backdrop-filter:
+    blur(22px);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transform:
+    translateY(-15px);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.wMobileMenuOpen {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform:
+    translateY(0);
+
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   MOBILE NAV
+========================================================= */
+
+.wMobileNav {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+/* =========================================================
+   MOBILE LINKS
+========================================================= */
+
+.wMobileLink {
+  width: 100%;
+
+  min-height: 52px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 20px;
+
+  box-sizing: border-box;
+
+  border-radius: 14px;
+
+  color: #555555;
+
+  background: transparent;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.wMobileLink:hover {
+  background: #f5f5f5;
+
+  color: #222222;
+}
+
+
+/* =========================================================
+   MOBILE ACTIVE
+========================================================= */
+
+.wMobileActive {
+  background: #f3f3f3;
+
+  color: #222222;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .wNavbar {
+    height: 68px !important;
+
+    padding: 0 14px;
+
+    border-radius: 15px;
+  }
+
+
+  .wNavbarScrolled {
+    height: 63px !important;
+  }
+
+
+  .wLogo img {
+    width: 142px !important;
+  }
+
+
+  .wRight {
+    gap: 8px;
+  }
+
+
+  .wLogin {
+    width: 74px;
+
+    height: 35px !important;
+
+    border-radius: 10px;
+
+    font-size: 10px;
+  }
+
+
+  .wMenuButton {
+    width: 26px;
+
+    height: 26px;
+
+    border-radius: 9px;
+  }
+
+
+  .wMobileMenu {
+    padding-top: 90px;
+  }
+
+
+  .wNavbarSpacer {
+    height: 88px;
+  }
+}

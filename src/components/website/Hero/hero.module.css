@@ -2,7 +2,8 @@
 .hero {
   width: 100%;
   background: #ffffff;
-   padding: 80px 0 0;
+   padding: 0px 60px 0;
+   margin-top: 30px;
 }
 
 .container {

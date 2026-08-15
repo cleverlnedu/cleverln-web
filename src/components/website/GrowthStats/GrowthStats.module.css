@@ -1,0 +1,499 @@
+/* =========================================================
+   GROWTH SECTION
+========================================================= */
+
+.growthSection {
+  width: 100%;
+
+  padding: 48px 80px 58px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.growthContainer {
+  width: 100%;
+
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+  box-sizing: border-box;
+}
+
+
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.growthTitle {
+  margin: 0;
+
+  text-align: center;
+
+  color: #111111;
+
+  font-size: 24px;
+
+  font-weight: 800;
+  margin-bottom: 30px;
+
+  line-height: 1.25;
+
+  font-family: var(--font-ibm), sans-serif;
+
+  opacity: 0;
+
+  transform: translateY(55px);
+
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================================
+   TITLE ACTIVE
+========================================================= */
+
+.growthVisible .growthTitle {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   STATS GRID
+========================================================= */
+
+.statsGrid {
+  width: 100%;
+
+  margin-top: 22px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 15px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.statCard {
+  height: 88px;
+
+  padding: 14px 12px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(0, 0, 0, 0.015);
+
+  border-radius: 11px;
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.075);
+
+  text-align: center;
+
+  opacity: 0;
+
+  transform: translateY(70px);
+
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   CARD ACTIVE
+========================================================= */
+
+.growthVisible .statCard {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
+
+.statCard:hover {
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.09);
+}
+
+
+/* =========================================================
+   VALUE
+========================================================= */
+
+.statValue {
+  margin: 0;
+
+  color: #080808;
+
+  font-size: 25px;
+
+  font-weight: 800;
+
+  line-height: 1;
+
+  letter-spacing: -0.6px;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.statDescription {
+  margin: 6px 0 0;
+
+  max-width: 160px;
+
+  color: #6f6f6f;
+
+  font-size: 10.5px;
+
+  font-weight: 500;
+
+  line-height: 1.3;
+
+  text-align: center;
+}
+
+
+@media (min-width: 1440px) {
+
+  .growthSection {
+    padding:
+      48px 72px 45px;
+  }
+  .growthContainer {
+  width: 100%;
+  max-width: 1200px !important;
+  }
+
+  .growthTitle {
+  margin: 0;
+
+  text-align: center;
+
+  color: #111111;
+
+  font-size: 29px !important;
+
+  font-weight: 800;
+
+  line-height: 1.25;
+
+  
+}
+
+
+.statCard {
+  height: 98px !important;
+
+  padding: 14px 12px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(0, 0, 0, 0.015);
+
+  border-radius: 11px;
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.075);
+
+  text-align: center;
+
+  opacity: 0;
+
+  transform: translateY(70px);
+
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   CARD ACTIVE
+========================================================= */
+
+.growthVisible .statCard {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
+
+.statCard:hover {
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.09);
+}
+
+
+/* =========================================================
+   VALUE
+========================================================= */
+
+.statValue {
+  margin: 0;
+
+  color: #080808;
+
+  font-size: 28px !important;
+
+  font-weight: 800;
+
+  line-height: 1;
+
+  letter-spacing: -0.6px;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.statDescription {
+  margin: 6px 0 0;
+
+  max-width: 210px !important;
+
+  color: #6f6f6f;
+
+  font-size: 13.5px !important;
+}
+
+}  
+
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1400px) {
+
+  .growthSection {
+    padding:
+      52px 20px 62px;
+  }
+
+  .growthContainer {
+    max-width: 900px;
+  }
+
+  .growthTitle {
+    font-size: 21px;
+  }
+
+  .statsGrid {
+    margin-top: 23px;
+
+    gap: 15px;
+  }
+
+  .statCard {
+    height: 88px;
+  }
+
+  .statValue {
+    font-size: 25px;
+  }
+
+  .statDescription {
+    font-size: 9.5px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .growthSection {
+    padding:
+      45px 25px 52px;
+  }
+
+  .growthContainer {
+    max-width: 720px;
+  }
+
+  .growthTitle {
+    font-size: 20px;
+  }
+
+  .statsGrid {
+    gap: 13px;
+  }
+
+  .statCard {
+    height: 88px;
+  }
+
+  .statValue {
+    font-size: 24px;
+  }
+
+  .statDescription {
+    font-size: 9px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .growthSection {
+    padding:
+      38px 18px 45px;
+  }
+  .growthTitle {
+  margin: 0;
+
+  text-align: left !important;
+  }
+
+  .growthTitle {
+    font-size: 19px;
+
+    line-height: 1.3;
+  }
+
+  .statsGrid {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 12px;
+
+    margin-top: 20px;
+  }
+
+  .statCard {
+    height: 90px;
+  }
+
+  .statValue {
+    font-size: 24px;
+  }
+
+  .statDescription {
+    max-width: 145px;
+
+    font-size: 9.5px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .growthSection {
+    padding:
+      32px 15px 40px;
+  }
+
+  .growthTitle {
+    font-size: 18px;
+  }
+
+  .statsGrid {
+    gap: 10px;
+  }
+
+  .statCard {
+    height: 88px;
+
+    padding:
+      12px 8px;
+  }
+
+  .statValue {
+    font-size: 23px;
+  }
+
+  .statDescription {
+    max-width: 135px;
+
+    font-size: 9px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .growthTitle,
+  .statCard {
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+  }
+}
