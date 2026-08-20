@@ -1,0 +1,853 @@
+/* =========================================================
+   REVIEWS — TESTIMONIALS SECTION
+========================================================= */
+
+.reviewsTestimonialsSection {
+  width: 100%;
+
+  padding:
+    48px 72px 45px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.reviewsTestimonialsContainer {
+  width: 100%;
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.reviewsTestimonialsTitle {
+  margin: 0 0 29px !important;
+
+  color: #252a40;
+
+  font-size: 24px !important;
+
+  font-weight: 700;
+
+  line-height: 1.3;
+
+  font-family: var(--font-ibm), sans-serif;
+
+  opacity: 0;
+
+  transform: translateY(55px);
+
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================================
+   TITLE ACTIVE
+========================================================= */
+
+.reviewsTestimonialsVisible
+  .reviewsTestimonialsTitle {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.reviewsTestimonialsGrid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 10px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.reviewsTestimonialCard {
+  width: 100%;
+
+  min-width: 0;
+
+  height: 186px;
+
+  padding:
+    12px 14px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border: 1px solid #dfe1e8;
+
+  border-radius: 5px;
+
+  opacity: 0;
+
+  transform: translateY(65px);
+
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   CARD ACTIVE
+========================================================= */
+
+.reviewsTestimonialsVisible
+  .reviewsTestimonialCard {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
+
+.reviewsTestimonialCard:hover {
+  background: #f8f8f8;
+
+  box-shadow:
+    0 7px 20px
+    rgba(0, 0, 0, 0.07);
+}
+
+
+/* =========================================================
+   QUOTE
+========================================================= */
+
+.reviewsQuoteMark {
+  height: 25px;
+
+  color: #202020;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 31px;
+
+  font-weight: 700;
+
+  line-height: 0.9;
+}
+
+
+/* =========================================================
+   TESTIMONIAL TEXT
+========================================================= */
+
+.reviewsTestimonialText {
+  margin:
+    5px 0 0;
+
+  color: #5d6170;
+
+  font-size: 9px;
+
+  font-weight: 500;
+
+  line-height: 1.55;
+
+  flex: 1;
+
+  font-family:
+    var(--font-poppins),
+    sans-serif;
+}
+
+
+/* =========================================================
+   USER
+========================================================= */
+
+.reviewsTestimonialUser {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 9px;
+}
+
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.reviewsAvatar {
+  width: 28px;
+
+  height: 28px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #252525;
+
+  color: #ffffff;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   USER NAME
+========================================================= */
+
+.reviewsUserName {
+  color: #858996;
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   COURSE LINK
+========================================================= */
+
+.reviewsCourseLink {
+  margin-top: 14px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  width: fit-content;
+
+  color: #017b01;
+
+  font-size: 8px;
+
+  font-weight: 500;
+
+  line-height: 1.2;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.2s ease;
+}
+
+
+.reviewsCourseLink:hover {
+  color: #563bc1;
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.reviewsArrow {
+  font-size: 13px;
+
+  line-height: 0;
+
+  margin-top: -1px;
+}
+
+
+/* =========================================================
+   1440px+
+========================================================= */
+
+@media (min-width: 1440px) {
+
+  .reviewsTestimonialsSection {
+    padding:
+      48px 72px 45px;
+  }
+
+  .reviewsTestimonialsContainer {
+    max-width: 1200px;
+  }
+
+  .reviewsTestimonialsTitle {
+    font-size: 28px !important;
+
+    margin-bottom: 20px;
+  }
+
+  .reviewsTestimonialsGrid {
+    gap: 12px;
+  }
+
+  .reviewsTestimonialCard {
+    height: 240px;
+
+    padding:
+      14px 15px;
+  }
+
+  .reviewsQuoteMark {
+    font-size: 32px;
+  }
+
+  .reviewsTestimonialText {
+    font-size: 13px;
+
+    line-height: 1.6;
+  }
+
+  .reviewsAvatar {
+    width: 33px;
+
+    height: 33px;
+
+    font-size: 10px;
+  }
+
+  .reviewsUserName {
+    font-size: 12.5px;
+  }
+
+  .reviewsCourseLink {
+    font-size: 11.5px;
+  }
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1439px) {
+
+  .reviewsTestimonialsSection {
+    padding:
+      55px 60px 50px;
+  }
+
+  .reviewsTestimonialsContainer {
+    max-width: 1000px;
+  }
+
+  .reviewsTestimonialsTitle {
+    font-size: 17px;
+  }
+
+  .reviewsTestimonialCard {
+    height: 205px;
+  }
+
+  .reviewsTestimonialText {
+    font-size: 11px;
+  }
+
+  .reviewsUserName {
+    font-size: 10.5px;
+  }
+
+  .reviewsCourseLink {
+    font-size: 9.5px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .reviewsTestimonialsSection {
+    padding:
+      80px 25px 70px;
+  }
+
+  .reviewsTestimonialsContainer {
+    max-width: 720px;
+  }
+
+  .reviewsTestimonialsTitle {
+    font-size: 22px;
+
+    margin-bottom: 20px;
+  }
+
+  .reviewsTestimonialsGrid {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    column-gap: 16px;
+
+    row-gap: 20px;
+  }
+
+  .reviewsTestimonialCard {
+    height: 170px;
+
+    padding:
+      19px 18px;
+  }
+
+  .reviewsQuoteMark {
+    font-size: 30px;
+  }
+
+  .reviewsTestimonialText {
+    font-size: 9px;
+
+    line-height: 1.55;
+  }
+
+  .reviewsAvatar {
+    width: 30px;
+
+    height: 30px;
+
+    font-size: 8px;
+  }
+
+  .reviewsUserName {
+    font-size: 8px;
+  }
+
+  .reviewsCourseLink {
+    font-size: 8px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE — HORIZONTAL SWIPE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .reviewsTestimonialsSection {
+    padding:
+      65px 18px 60px;
+  }
+
+  .reviewsTestimonialsContainer {
+    max-width: 520px;
+  }
+
+  .reviewsTestimonialsTitle {
+    font-size: 21px;
+
+    line-height: 1.35;
+
+    font-weight: 800;
+
+    margin-bottom: 18px;
+  }
+
+
+  /* =======================================================
+     SWIPE CONTAINER
+  ======================================================= */
+
+  .reviewsTestimonialsGrid {
+    display: flex;
+
+    flex-direction: row;
+
+    gap: 13px;
+
+    width: calc(100vw - 18px);
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    padding:
+      2px 18px 12px 0;
+
+    margin-right: -18px;
+
+    box-sizing: border-box;
+
+    scroll-snap-type: x mandatory;
+
+    scroll-behavior: smooth;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+
+    touch-action: pan-x;
+  }
+
+  .reviewsTestimonialsGrid::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  /* =======================================================
+     SWIPE CARD
+  ======================================================= */
+
+  .reviewsTestimonialCard {
+    flex:
+      0 0 82%;
+
+    width: 82%;
+
+    min-width: 82%;
+
+    height: 165px;
+
+    padding:
+      18px 17px;
+
+    border-radius: 6px;
+
+    scroll-snap-align: start;
+
+    scroll-snap-stop: always;
+
+    box-sizing: border-box;
+  }
+
+
+  /* =======================================================
+     QUOTE
+  ======================================================= */
+
+  .reviewsQuoteMark {
+    font-size: 29px;
+
+    height: 24px;
+  }
+
+
+  /* =======================================================
+     TEXT
+  ======================================================= */
+
+  .reviewsTestimonialText {
+    font-size: 9px;
+
+    font-weight: 500;
+
+    line-height: 1.55;
+  }
+
+
+  /* =======================================================
+     USER
+  ======================================================= */
+
+  .reviewsTestimonialUser {
+    gap: 7px;
+
+    margin-top: 8px;
+  }
+
+  .reviewsAvatar {
+    width: 29px;
+
+    height: 29px;
+
+    font-size: 8px;
+  }
+
+  .reviewsUserName {
+    font-size: 8px;
+  }
+
+
+  /* =======================================================
+     COURSE
+  ======================================================= */
+
+  .reviewsCourseLink {
+    font-size: 8px;
+
+    margin-top: 12px;
+  }
+
+
+  /* =======================================================
+     MOBILE HOVER RESET
+  ======================================================= */
+
+  .reviewsTestimonialCard:hover {
+    background: #ffffff;
+
+    box-shadow: none;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE — SWIPE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .reviewsTestimonialsSection {
+    padding:
+      55px 15px 50px;
+  }
+
+  .reviewsTestimonialsContainer {
+    max-width: 100%;
+  }
+
+  .reviewsTestimonialsTitle {
+    font-size: 19px !important;
+
+    margin-bottom: 16px;
+  }
+
+
+  /* =======================================================
+     SWIPE
+  ======================================================= */
+
+  .reviewsTestimonialsGrid {
+    gap: 12px;
+
+    width: calc(100vw - 15px);
+
+    padding:
+      2px 15px 12px 0;
+
+    margin-right: -15px;
+
+    scroll-snap-type: x mandatory;
+  }
+
+
+  /* =======================================================
+     CARD
+  ======================================================= */
+
+  .reviewsTestimonialCard {
+    flex:
+      0 0 84%;
+
+    width: 84%;
+
+    min-width: 84%;
+
+    height: 175px;
+
+    padding:
+      16px 14px;
+
+    border-radius: 6px;
+  }
+
+
+  /* =======================================================
+     QUOTE
+  ======================================================= */
+
+  .reviewsQuoteMark {
+    font-size: 29px;
+
+    height: 23px;
+  }
+
+
+  /* =======================================================
+     TEXT
+  ======================================================= */
+
+  .reviewsTestimonialText {
+    font-size: 10px;
+
+    line-height: 1.6;
+  }
+
+
+  /* =======================================================
+     USER
+  ======================================================= */
+
+  .reviewsTestimonialUser {
+    gap: 7px;
+
+    margin-top: 8px;
+  }
+
+  .reviewsAvatar {
+    width: 28px;
+
+    height: 28px;
+
+    font-size: 7.9px;
+  }
+
+  .reviewsUserName {
+    font-size: 10px;
+  }
+
+
+  /* =======================================================
+     COURSE
+  ======================================================= */
+
+  .reviewsCourseLink {
+    font-size: 9px;
+
+    margin-top: 9px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE — SWIPE
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .reviewsTestimonialsSection {
+    padding:
+      48px 12px 45px;
+  }
+
+  .reviewsTestimonialsTitle {
+    font-size: 18px;
+
+    line-height: 1.35;
+  }
+
+
+  .reviewsTestimonialsGrid {
+    gap: 11px;
+
+    width: calc(100vw - 12px);
+
+    padding:
+      2px 12px 12px 0;
+
+    margin-right: -12px;
+  }
+
+
+  .reviewsTestimonialCard {
+    flex:
+      0 0 88%;
+
+    width: 88%;
+
+    min-width: 88%;
+
+    height: 155px;
+
+    padding:
+      14px 12px;
+  }
+
+
+  .reviewsQuoteMark {
+    font-size: 27px;
+
+    height: 22px;
+  }
+
+
+  .reviewsTestimonialText {
+    font-size: 8px;
+
+    line-height: 1.6;
+  }
+
+
+  .reviewsAvatar {
+    width: 27px;
+
+    height: 27px;
+
+    font-size: 7px;
+  }
+
+
+  .reviewsUserName {
+    font-size: 7.5px;
+  }
+
+
+  .reviewsCourseLink {
+    font-size: 7.5px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .reviewsTestimonialsTitle,
+  .reviewsTestimonialCard {
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+  }
+
+  .reviewsTestimonialsGrid {
+    scroll-behavior: auto;
+  }
+}

@@ -30,6 +30,9 @@ const Footer = () => {
               <li>Support system</li>
             </ul>
           </div>
+
+
+          
         </div>
 
         {/* CENTER CARD */}
