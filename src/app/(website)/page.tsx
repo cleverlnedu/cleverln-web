@@ -4,6 +4,7 @@ import Hero from "@/components/website/Hero/Hero";
 import Job from "@/components/website/jobs/jobcard";
 import SkillsTrending from "@/components/website/SkillsTrending/SkillsTrending";
 import Testimonials from "@/components/website/Testimonials/Testimonials";
+import TrustedCompanies from "@/components/website/TrustedCompanies/TrustedCompanies";
 
 
 
@@ -15,6 +16,7 @@ export default function Home() {
       <GrowthStats />
       <SkillsTrending />
       <Testimonials />
+      <TrustedCompanies />
       
       
       <Job />

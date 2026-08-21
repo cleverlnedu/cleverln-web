@@ -1,0 +1,472 @@
+/* =========================================================
+   TRUSTED COMPANIES
+========================================================= */
+
+.reviewsTrustSection {
+  width: 100%;
+
+  padding: 40px 20px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.reviewsTrustContainer {
+  width: 100%;
+
+  max-width: 1100px;
+
+  min-height: 105px;
+
+  margin: 0 auto;
+
+  padding: 20px 30px;
+
+  border-radius: 8px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  background: #f8f8f8;
+}
+
+
+/* =========================================================
+   TRUST TEXT
+========================================================= */
+
+.reviewsTrustText {
+  margin: 0 0 22px;
+
+  color: #727785;
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  line-height: 1.4;
+
+  text-align: center;
+
+  opacity: 0;
+
+  transform: translateY(25px);
+
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================================
+   VISIBLE TEXT
+========================================================= */
+
+.reviewsTrustVisible
+  .reviewsTrustText {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   LOGO VIEWPORT
+========================================================= */
+
+.reviewsTrustLogoViewport {
+  width: 100%;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   LOGO ROW
+========================================================= */
+
+.reviewsTrustLogos {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 35px;
+}
+
+
+/* =========================================================
+   LOGO ITEM
+========================================================= */
+
+.reviewsTrustLogo {
+  flex: 0 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  opacity: 0;
+
+  transform: translateY(25px);
+
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================================
+   VISIBLE LOGOS
+========================================================= */
+
+.reviewsTrustVisible
+  .reviewsTrustLogo {
+  opacity: 2;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   ACTUAL LOGO IMAGE
+========================================================= */
+
+.reviewsTrustLogoImage {
+  display: block;
+
+  width: auto;
+
+  height: 27px;
+
+  max-width: 92px;
+
+  object-fit: contain;
+
+  
+
+  opacity: 0.72;
+
+  transition:
+    opacity 0.25s ease,
+    filter 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+/* =========================================================
+   LOGO HOVER
+========================================================= */
+
+.reviewsTrustLogo:hover
+  .reviewsTrustLogoImage {
+  opacity: 1;
+
+  filter: grayscale(100%);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1440px) {
+
+  .reviewsTrustSection {
+    padding: 42px 20px;
+  }
+
+  .reviewsTrustContainer {
+    max-width: 1200px;
+
+    min-height: 115px;
+
+    padding: 28px 45px;
+  }
+
+  .reviewsTrustText {
+    margin-bottom: 29px;
+
+    font-size: 16px;
+  }
+
+  .reviewsTrustLogos {
+    gap: 35px;
+  }
+
+  .reviewsTrustLogoImage {
+    height: 30px;
+
+    max-width: 100px;
+  }
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1439px) {
+
+  .reviewsTrustContainer {
+    max-width: 1000px;
+  }
+
+  .reviewsTrustLogos {
+    gap: 20px;
+  }
+
+  .reviewsTrustText {
+    margin-bottom: 29px;
+
+    font-size: 15px;
+  }
+
+  .reviewsTrustLogoImage {
+    height: 27px;
+
+    max-width: 90px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .reviewsTrustSection {
+    padding: 50px 25px;
+  }
+
+  .reviewsTrustContainer {
+    max-width: 720px;
+
+    min-height: 115px;
+
+    padding: 22px 25px;
+  }
+
+  .reviewsTrustText {
+    font-size: 10px;
+
+    margin-bottom: 22px;
+  }
+
+  .reviewsTrustLogos {
+    gap: 25px;
+  }
+
+  .reviewsTrustLogoImage {
+    height: 25px;
+
+    max-width: 82px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .reviewsTrustSection {
+    padding: 45px 18px;
+  }
+
+  .reviewsTrustContainer {
+    min-height: 120px;
+
+    padding: 22px 15px;
+
+    overflow: hidden;
+  }
+
+  .reviewsTrustText {
+    max-width: 300px;
+
+    margin-bottom: 20px;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+  }
+
+
+  /* =======================================================
+     MOBILE LOGO VIEWPORT
+     ONLY LOGOS SWIPE
+  ======================================================= */
+
+  .reviewsTrustLogoViewport {
+    width: 100%;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+
+    scroll-snap-type: x proximity;
+  }
+
+  .reviewsTrustLogoViewport::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  /* =======================================================
+     MOBILE LOGO ROW
+  ======================================================= */
+
+  .reviewsTrustLogos {
+    width: max-content;
+
+    min-width: max-content;
+
+    display: flex;
+
+    justify-content: flex-start;
+
+    align-items: center;
+
+    gap: 38px;
+
+    padding:
+      2px 8px 8px;
+  }
+
+
+  /* =======================================================
+     MOBILE LOGO
+  ======================================================= */
+
+  .reviewsTrustLogo {
+    flex:
+      0 0 auto;
+
+    scroll-snap-align: center;
+  }
+
+  .reviewsTrustLogoImage {
+    width: auto;
+
+    height: 25px;
+
+    max-width: 90px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .reviewsTrustSection {
+    padding: 40px 15px;
+  }
+
+  .reviewsTrustContainer {
+    min-height: 115px;
+
+    padding: 20px 12px;
+  }
+
+  .reviewsTrustText {
+    font-size: 12.5px;
+
+    margin-bottom: 20px;
+  }
+
+
+  .reviewsTrustLogos {
+    gap: 34px;
+
+    padding-left: 6px;
+
+    padding-right: 6px;
+  }
+
+  .reviewsTrustLogoImage {
+    height: 23px;
+
+    max-width: 82px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .reviewsTrustSection {
+    padding: 35px 12px;
+  }
+
+  .reviewsTrustContainer {
+    padding: 18px 10px;
+  }
+
+  .reviewsTrustText {
+    font-size: 8px;
+  }
+
+  .reviewsTrustLogos {
+    gap: 30px;
+  }
+
+  .reviewsTrustLogoImage {
+    height: 22px;
+
+    max-width: 78px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .reviewsTrustText,
+  .reviewsTrustLogo {
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+  }
+}
