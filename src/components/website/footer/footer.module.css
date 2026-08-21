@@ -1,276 +1,515 @@
-.footer {
-  background: #143b34;
+/* =========================================================
+   CLEVERLN FOOTER
+========================================================= */
+
+.footerFooter {
+  background: #0d4532;
+
   color: #ffffff;
+
   padding-top: 0rem;
+
   padding-bottom: 1px;
- /*  max-height: 700px; */
+
+  margin-top: 80px;
 }
 
-/* .top {
-  max-width: 1300px;
-  margin-top: 100px;
-  padding: 4rem  3rem 0rem;
 
-  display: grid;
-  grid-template-columns: 1.2fr 1fr 1.2fr;
-  gap: 3rem;
-  align-items: start;
-} */
-.top {
+/* =========================================================
+   TOP
+========================================================= */
+
+.footerTop {
   max-width: 1300px;
+
   margin: 100px auto 0;
+
   padding: 4rem 3rem 0;
 
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
+
   gap: 3rem;
+
   align-items: start;
 }
 
 
-.footer {
-  margin-top: 80px; /* 🔥 spacing from cards */
-}
+/* =========================================================
+   LEFT & RIGHT
+========================================================= */
 
-
-/* LEFT & RIGHT */
-.left,
-.right {
+.footerLeft,
+.footerRight {
   display: flex;
+
   gap: 3rem;
 }
 
-.column h4 {
+
+/* =========================================================
+   COLUMN
+========================================================= */
+
+.footerColumn h4 {
   font-size: 0.9rem;
+
   margin-bottom: 1rem;
 }
 
-.column ul {
+
+.footerColumn ul {
   list-style: none;
+
   padding: 0;
+
+  margin: 0;
 }
 
-.column li {
+
+.footerColumn li {
   font-size: 0.9rem;
+
   color: #c5d6d2;
+
   margin-bottom: 0.6rem;
+
   cursor: pointer;
 }
 
-.column li:hover {
+
+.footerColumn li:hover {
   color: #ffffff;
 }
 
-/* CENTER CARD */
 
-.centerCard {
+/* =========================================================
+   CENTER CARD
+========================================================= */
+
+.footerCenterCard {
   position: relative;
+
   justify-self: center;
 
-  /* Card colors */
-  background: #cdddb4;        /* light sage green */
+  background: #dedfdf;
+
   color: #1c2d28;
 
-  /* Spacing */
   padding: 3rem 2.75rem;
+
   text-align: center;
 
-  /* Rounded bottom corners only */
+  border-top-left-radius: 8px;
+
+   border-top-right-radius: 8px;
+
   border-bottom-left-radius: 22px;
+
   border-bottom-right-radius: 22px;
 
-  /* Hanging / overlap effect */
   margin-top: -5rem;
+
   z-index: 2;
 
-  /* 🔥 KEY PART — BEVELED CORNERS (LEFT + RIGHT) */
-  clip-path: polygon(
-    -3px -50px,                    /* top-left diagonal start */
-    calc(275px- 36px) 10,       /* top-right diagonal start */
-    100% 36px,                 /* top-right diagonal end */
-    100% 100%,                 /* bottom-right */
-    0 100%,                    /* bottom-left */
-    0 36px                     /* top-left diagonal end */
-  );
+  /*clip-path: polygon(
+    -3px -50px,
+    calc(275px - 36px) 10px,
+    100% 36px,
+    100% 100%,
+    0 100%,
+    0 36px
+  );*/
 
-  /* Depth */
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.18);
+  box-shadow:
+    0 25px 45px rgba(0, 0, 0, 0.18);
 }
 
+ 
+/* =========================================================
+   CENTER CARD TOP LEFT
+========================================================= */
 
-.centerCard::before {
+.footerCenterCard::before {
   content: "";
+
   position: absolute;
 
   top: 0;
+
   left: 0;
 
   width: 36px;
-  height: 6px;
 
-  background: #143b34; /* footer color */
+  height: 6px;
+  border-radius: 8px 8px 34px 32px;
+
+  background: #143b34;
 
   transform: skewX(-45deg);
+
   transform-origin: left center;
 }
 
 
-.centerCard::after {
+/* =========================================================
+   CENTER CARD TOP RIGHT
+========================================================= */
+
+.footerCenterCard::after {
   content: "";
+
   position: absolute;
 
   top: 0;
+
   right: 0;
 
   width: 36px;
+
   height: 6px;
 
-  background: #143b34; /* footer color */
+  border-radius: 8px 8px 34px 32px;
+
+  background: #143b34;
 
   transform: skewX(45deg);
+
   transform-origin: right center;
 }
 
 
-.centerCard h3 {
+/* =========================================================
+   CENTER CONTENT
+========================================================= */
+
+.footerCenterCard h3 {
   font-size: 1.4rem;
+
   margin-bottom: 0.25rem;
 }
 
-.tagline {
+
+.footerTagline {
   font-size: 0.75rem;
+
   letter-spacing: 0.1em;
+
   margin-bottom: 1.5rem;
 }
 
-.centerCard h2 {
+
+.footerCenterCard h2 {
   font-size: 1.6rem;
+
   margin-bottom: 0.75rem;
 }
 
-.subtext {
+
+.footerSubtext {
   font-size: 0.9rem;
+
   margin-bottom: 1.75rem;
 }
 
-.subscribe {
+
+/* =========================================================
+   SUBSCRIBE
+========================================================= */
+
+.footerSubscribe {
   display: flex;
+
   background: #ffffff;
+
+
   border-radius: 10px;
+
   overflow: hidden;
 }
 
-.subscribe input {
+
+.footerSubscribe input {
   flex: 1;
+  background: #c4c4c4;
+
   padding: 0.75rem 1rem;
+
   border: none;
+  color: #1c2d28;
+
   outline: none;
 }
 
-.subscribe button {
-  background: #143b34;
-  color: #ffffff;
+
+.footerSubscribe button {
+  background:
+    #136449 100%;
+
+  color: #cecccc;
+
   border: none;
+  font-weight: 600;
+  font-size: 10px;
+
   padding: 0 1.5rem;
+
   cursor: pointer;
 }
 
-/* SOCIAL */
-.socials {
+
+/* =========================================================
+   SOCIAL
+========================================================= */
+
+.footerSocials {
   display: flex;
+
   gap: 1rem;
+
   margin-bottom: 1rem;
 }
 
-.socials span {
+
+.footerSocials span {
   font-size: 0.85rem;
+
   opacity: 0.9;
 }
 
-.badge {
+
+.footerBadge {
   font-size: 0.75rem;
+
   color: #c5d6d2;
 }
 
-/* BOTTOM */
-.bottom {
-  border-top: 1px solid rgba(255,255,255,0.15);
+
+/* =========================================================
+   SECOND ROW — FOUR BLOCKS
+========================================================= */
+
+.footerExtraLinks {
+  grid-column: 1 / -1;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 8rem;
+
+  margin-top: 1rem;
+
+  padding: 0 0 1rem;
+}
+
+
+/* =========================================================
+   BOTTOM BAR
+========================================================= */
+
+.footerBottom {
+  border-top:
+    1px solid rgba(255, 255, 255, 0.15);
+
   padding: 1.5rem 2rem;
+
   display: flex;
+
   margin-top: 25px;
+
   justify-content: space-between;
+
   font-size: 0.8rem;
+
   color: #c5d6d2;
 }
 
 @media (max-width: 768px) {
-  
 
-  /* Keep main stacking */
-  .top {
+  .footerCenterCard h3 {
+  font-size: 1.4rem;
+
+  margin-bottom: 0.25rem;
+}
+
+
+.footerTagline {
+  font-size: 0.75rem;
+
+  letter-spacing: 0.1em;
+
+
+  margin-bottom: 1.6rem;
+  font-weight: 500;
+}
+
+
+.footerCenterCard h2 {
+  font-size: 1.3rem;
+
+  margin-bottom: 0.45rem;
+}
+
+
+.footerSubtext {
+  font-size: 0.8rem;
+
+  margin-bottom: 1.75rem;
+}
+
+
+}
+/* =========================================================
+   TABLET / MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  /* =======================================================
+     MAIN STACKING
+  ======================================================= */
+
+  .footerTop {
     display: flex;
+
     flex-direction: column;
+
     gap: 2.5rem;
+
     padding: 2rem 1.25rem 0;
-    
   }
 
-  /* Center card stays same */
-  .centerCard {
+
+  /* =======================================================
+     CENTER CARD
+  ======================================================= */
+
+  .footerCenterCard {
     order: 1;
+
     width: 100%;
+
     margin: 0;
+
     padding: 1.75rem;
+
     clip-path: none;
+
     border-radius: 22px;
   }
 
-  .centerCard::before,
-  .centerCard::after {
+
+  .footerCenterCard::before,
+  .footerCenterCard::after {
     display: none;
   }
 
-  /* 🔥 Explore + Learn side by side */
-  .left {
+
+  /* =======================================================
+     LEFT
+  ======================================================= */
+
+  .footerLeft {
     order: 2;
+
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 1.5rem;
+
     width: 100%;
   }
 
-  /* 🔥 Important Links + Connect With Us side by side */
-  .right {
+
+  /* =======================================================
+     RIGHT
+  ======================================================= */
+
+  .footerRight {
     order: 3;
+
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 1.5rem;
+
     width: 100%;
   }
 
-  /* Columns full width inside grid */
-  .column {
+
+  /* =======================================================
+     SECOND ROW
+  ======================================================= */
+
+  .footerExtraLinks {
+    order: 4;
+
     width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 2rem 1.5rem;
+
+    margin-top: 0;
+
+    padding: 0;
+  }
+
+
+  /* =======================================================
+     COLUMNS
+  ======================================================= */
+
+  .footerColumn {
+    width: 100%;
+
     margin-left: 1.5rem;
   }
 
-  /* Bottom bar */
-  .bottom {
+
+  /* =======================================================
+     BOTTOM BAR
+  ======================================================= */
+
+  .footerBottom {
     margin-top: 1.5rem;
+
     padding: 1.25rem;
+
     display: flex;
+
     flex-direction: column;
+
     gap: 0.75rem;
+
     text-align: center;
   }
-  .subscribe input {
-  
-  background: #ffffff;
-}
-
-.footer{
-  max-height: fit-content;
-}
-}
 
 
+  /* =======================================================
+     INPUT
+  ======================================================= */
+
+  .footerSubscribe input {
+    background: #ffffff;
+  }
+
+
+  /* =======================================================
+     FOOTER HEIGHT
+  ======================================================= */
+
+  .footerFooter {
+    max-height: fit-content;
+  }
+}
