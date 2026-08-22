@@ -29,6 +29,7 @@
   margin: 0 auto;
 
   padding: 0 45px;
+  
 
   display: grid;
 
@@ -528,7 +529,7 @@
   .accessAudience {
     grid-template-columns: repeat(3, 1fr);
 
-    gap: 2px;
+    gap: 8px;
 
     margin-top: 23px;
 
@@ -590,6 +591,9 @@
     height: 30px;
 
     font-size: 10px;
+  }
+  .accessAudienceButton {
+  width: 99%;
   }
 
   .accessButton {
