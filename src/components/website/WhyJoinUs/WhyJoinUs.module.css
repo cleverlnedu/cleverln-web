@@ -1,0 +1,646 @@
+/* =========================================================
+   WHY JOIN US SECTION
+========================================================= */
+
+.whyJoinUsSection {
+  width: 100%;
+
+  background: #ffffff;
+
+  padding: 85px 0 95px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.whyJoinUsContainer {
+  width: 100%;
+
+  max-width: 1300px;
+
+  margin: 0 auto;
+
+  padding: 0 70px;
+
+  box-sizing: border-box;
+}
+
+
+
+@media (max-width: 1439px){
+
+  .whyJoinUsSection {
+  width: 100%;
+  padding: 85px 0 95px;
+}
+
+
+.whyJoinUsContainer {
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 60px;
+}
+
+  .whyJoinUsEyebrow {
+    font-size: 11px !important;
+    margin-bottom: 22px !important;
+  }
+
+  .whyJoinUsTitle {
+    font-size: 24px !important;
+    max-width: 850px;
+  }
+  .whyJoinUsDescription {
+  max-width: 1000px;
+
+  margin: 12px auto 0 !important;
+
+  font-size: 16px !important;
+
+  line-height: 1.45;
+}
+
+.whyJoinUsGrid {
+  width: 100%;
+
+  margin-top: 42px !important;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  column-gap: 90px;
+
+  row-gap: 20px !important;
+}
+
+.whyJoinUsIcon {
+  width: 70px !important;
+
+  height: 70px !important;
+
+  object-fit: contain;
+
+  display: block;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.whyJoinUsContent h3 {
+  margin: 0 0 5px;
+
+  color: #090909;
+
+  font-size: 14px !important;
+
+  line-height: 1.2;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   BENEFIT DESCRIPTION
+========================================================= */
+
+.whyJoinUsContent p {
+  max-width: 570px;
+
+  margin: 0;
+
+  color: #707070;
+
+  font-size: 12px !important;
+
+  line-height: 1.3;
+
+  font-weight: 500;
+}
+
+  
+  
+
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.whyJoinUsEyebrow {
+  text-align: center;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.35em;
+
+  color: #2e2e2e;
+
+  margin-bottom: 32px;
+
+  opacity: 0;
+
+  transform: translateY(25px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+
+/* =========================================================
+   MAIN TITLE
+========================================================= */
+
+.whyJoinUsTitle {
+  max-width: 1050px;
+
+  margin: 0 auto;
+
+  text-align: center;
+
+  font-size: 28px;
+
+  line-height: 1.28;
+
+  font-weight: 700;
+
+  color: #050505;
+
+  opacity: 0;
+
+  transform: translateY(35px);
+
+  transition:
+    opacity 0.8s ease 100ms,
+    transform 0.8s ease 100ms;
+}
+
+
+/* =========================================================
+   GREEN ITALIC WORDS
+========================================================= */
+
+.whyJoinUsTitle span {
+  color: #086b4f;
+
+  font-style: italic;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.whyJoinUsDescription {
+  max-width: 1000px;
+
+  margin: 16px auto 0;
+
+  text-align: center;
+
+  font-size: 18px;
+
+  line-height: 1.45;
+
+  font-weight: 500;
+
+  color: #777777;
+
+  opacity: 0;
+
+  transform: translateY(30px);
+
+  transition:
+    opacity 0.8s ease 180ms,
+    transform 0.8s ease 180ms;
+}
+
+
+/* =========================================================
+   BENEFITS GRID
+========================================================= */
+
+.whyJoinUsGrid {
+  width: 100%;
+
+  margin-top: 52px;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  column-gap: 90px;
+
+  row-gap: 40px;
+}
+
+
+/* =========================================================
+   BENEFIT ITEM
+========================================================= */
+
+.whyJoinUsItem {
+  display: flex;
+
+  align-items: center;
+
+  min-width: 0;
+
+  opacity: 0;
+
+  transform: translateY(55px);
+
+  transition:
+    opacity 0.75s ease var(--why-join-delay),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1)
+      var(--why-join-delay);
+}
+
+
+/* =========================================================
+   ACTIVE / VISIBLE ANIMATION
+========================================================= */
+
+.whyJoinUsVisible .whyJoinUsEyebrow,
+.whyJoinUsVisible .whyJoinUsTitle,
+.whyJoinUsVisible .whyJoinUsDescription,
+.whyJoinUsVisible .whyJoinUsItem {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   ICON OUTER CIRCLE
+========================================================= */
+
+
+
+
+/* =========================================================
+   ICON INNER CIRCLE
+========================================================= */
+
+.whyJoinUsIconCircle {
+  width: 76px;
+
+  height: 76px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   IMAGE ICON
+========================================================= */
+
+.whyJoinUsIcon {
+  width: 86px;
+
+  height: 86px;
+
+  object-fit: contain;
+
+  display: block;
+
+  transition:
+    transform 0.3s ease;
+}
+
+
+/* =========================================================
+   ITEM HOVER
+========================================================= */
+
+.whyJoinUsItem:hover .whyJoinUsIconWrapper {
+  transform: scale(1.05);
+}
+
+
+.whyJoinUsItem:hover .whyJoinUsIcon {
+  transform: scale(1.08);
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.whyJoinUsContent {
+  padding-left: 14px;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   BENEFIT TITLE
+========================================================= */
+
+.whyJoinUsContent h3 {
+  margin: 0 0 5px;
+
+  color: #090909;
+
+  font-size: 18px;
+
+  line-height: 1.2;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   BENEFIT DESCRIPTION
+========================================================= */
+
+.whyJoinUsContent p {
+  max-width: 570px;
+
+  margin: 0;
+
+  color: #707070;
+
+  font-size: 14px;
+
+  line-height: 1.3;
+
+  font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .whyJoinUsSection {
+    padding: 70px 0 80px;
+  }
+
+  .whyJoinUsContainer {
+    padding: 0 45px;
+  }
+
+  .whyJoinUsEyebrow {
+    font-size: 13px;
+
+    margin-bottom: 32px;
+  }
+
+  .whyJoinUsTitle {
+    font-size: 38px;
+
+    max-width: 850px;
+  }
+
+  .whyJoinUsDescription {
+    font-size: 19px;
+
+    max-width: 800px;
+  }
+
+  .whyJoinUsGrid {
+    column-gap: 45px;
+
+    row-gap: 35px;
+
+    margin-top: 60px;
+  }
+
+  .whyJoinUsIconWrapper {
+    width: 88px;
+
+    height: 88px;
+
+    flex-basis: 88px;
+  }
+
+  .whyJoinUsIconCircle {
+    width: 64px;
+
+    height: 64px;
+  }
+
+  .whyJoinUsIcon {
+    width: 30px;
+
+    height: 30px;
+  }
+
+  .whyJoinUsContent {
+    padding-left: 16px;
+  }
+
+  .whyJoinUsContent h3 {
+    font-size: 17px;
+  }
+
+  .whyJoinUsContent p {
+    font-size: 15px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+  .whyJoinUsSection {
+    padding: 60px 0 65px;
+  }
+
+  .whyJoinUsContainer {
+    padding: 0 22px;
+  }
+
+  .whyJoinUsEyebrow {
+    font-size: 11px;
+
+    letter-spacing: 0.35em;
+
+    margin-bottom: 25px;
+  }
+
+  .whyJoinUsTitle {
+    font-size: 28px;
+
+    line-height: 1.3;
+
+    letter-spacing: -0.5px;
+  }
+
+  .whyJoinUsDescription {
+    margin-top: 20px;
+
+    font-size: 16px;
+
+    line-height: 1.5;
+  }
+
+  .whyJoinUsGrid {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+
+    margin-top: 45px;
+  }
+
+  .whyJoinUsItem {
+    align-items: center;
+  }
+
+  .whyJoinUsIconWrapper {
+    width: 78px;
+
+    height: 78px;
+
+    flex-basis: 78px;
+  }
+
+  .whyJoinUsIconCircle {
+    width: 58px;
+
+    height: 58px;
+  }
+
+  .whyJoinUsIcon {
+    width: 25px;
+
+    height: 25px;
+  }
+
+  .whyJoinUsContent {
+    padding-left: 16px;
+  }
+
+  .whyJoinUsContent h3 {
+    font-size: 15px;
+
+    margin-bottom: 6px;
+  }
+
+  .whyJoinUsContent p {
+    font-size: 13px;
+
+    line-height: 1.45;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .whyJoinUsContainer {
+    padding: 0 18px;
+  }
+
+  .whyJoinUsTitle {
+    font-size: 19px !important;
+    text-align: left !important;
+  }
+
+  .whyJoinUsDescription {
+    font-size: 12px !important;
+    text-align: left !important;
+    
+  }
+
+  .whyJoinUsGrid {
+    gap: 13px !important;
+    margin-top: 32px !important;
+  }
+
+  .whyJoinUsIconWrapper {
+    width: 70px;
+
+    height: 70px;
+
+    flex-basis: 70px;
+  }
+
+  .whyJoinUsIconCircle {
+    width: 52px;
+
+    height: 52px;
+  }
+
+  .whyJoinUsIcon {
+    width: 52px;
+
+    height: 52px;
+  }
+
+  .whyJoinUsContent {
+    padding-left: 10px !important;
+  }
+
+  .whyJoinUsContent h3 {
+    font-size: 13px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .whyJoinUsContent p {
+    font-size: 11px !important;
+     max-width: 470px !important;
+    line-height: 1.3;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .whyJoinUsEyebrow,
+  .whyJoinUsTitle,
+  .whyJoinUsDescription,
+  .whyJoinUsItem {
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+  }
+}
