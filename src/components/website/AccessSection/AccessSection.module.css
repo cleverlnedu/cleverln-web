@@ -1,0 +1,624 @@
+/* =========================================================
+   ACCESS SECTION
+========================================================= */
+
+.accessSection {
+  width: 100%;
+
+  background: #ffffff;
+
+  overflow: hidden;
+
+  padding: 45px 65px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.accessContainer {
+  width: 100%;
+
+  max-width: 1100px;
+
+  min-height: 400px;
+
+  margin: 0 auto;
+
+  padding: 0 45px;
+
+  display: grid;
+
+  grid-template-columns: 48% 52%;
+
+  align-items: center;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LEFT IMAGE AREA
+========================================================= */
+
+.accessVisual {
+  width: 95%;
+
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  opacity: 0;
+
+  transform: translateX(-45px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(1, 0.36, 1);
+}
+
+
+/* =========================================================
+   LEFT IMAGE
+========================================================= */
+
+.accessImage {
+  display: block;
+
+  width: 100%;
+
+  max-width: 590px;
+
+  height: auto;
+
+  object-fit: contain;
+
+  object-position: left center;
+}
+
+
+/* =========================================================
+   RIGHT CONTENT
+========================================================= */
+
+.accessContent {
+  width: 100%;
+
+  max-width: 700px;
+
+  padding-left: 10px;
+  padding-top: 30px;
+
+  opacity: 0;
+
+  transform: translateX(45px);
+
+  transition:
+    opacity 0.8s ease 200ms,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================================
+   SCROLL ANIMATION
+========================================================= */
+
+.accessVisible .accessVisual,
+.accessVisible .accessContent {
+  opacity: 1;
+
+  transform: translateX(0);
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.accessTitle {
+  max-width: 780px;
+
+  margin: 0;
+
+  color: #050505;
+
+  font-size: 25px;
+
+  line-height: 1.18;
+
+  font-family: var(--font-ibm), sans-serif;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   GREEN TITLE
+========================================================= */
+
+.accessTitle span {
+  color: #16755c;
+
+  
+  font-family: var(--font-ibm), sans-serif;
+  margin-right: 3px;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.accessDescription {
+  max-width: 490px;
+
+  margin: 13px 0 0;
+  font-family: var(--font-poppins), sans-serif;
+
+  color: #090909;
+
+  font-size: 14px;
+
+  line-height: 1.65;
+
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   GREEN DESCRIPTION
+========================================================= */
+
+.accessDescription strong {
+  color: #16755c;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   AUDIENCE BUTTONS
+========================================================= */
+
+.accessAudience {
+  width: 100%;
+
+  max-width: 360px;
+
+  margin-top: 17px;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: -32px;
+}
+
+
+/* =========================================================
+   AUDIENCE BUTTON
+========================================================= */
+
+.accessAudienceButton {
+  width: 90%;
+
+  height: 36px;
+  font-family: var(--font-ibm), sans-serif;
+
+  padding: 0 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border: 2px solid #ECECEC;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  color: #656565;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.01em;
+
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.035);
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   AUDIENCE HOVER
+========================================================= */
+
+.accessAudienceButton:hover {
+  background: #f7f8f7;
+
+  border-color: #ECECEC;
+
+  color: #075f48;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 16px rgba(0, 0, 0, 0.07);
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.accessButton {
+  width: 160px;
+
+  height: 42px;
+
+  margin-top: 23px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0EB47E 0%,
+      #136449 100%
+    );
+
+  color: #ffffff;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 13px 27px rgba(7, 95, 71, 0.16);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   CTA HOVER
+========================================================= */
+
+.accessButton:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 17px 30px rgba(7, 95, 71, 0.22);
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1440px) {
+
+  .accessContainer {
+    max-width: 1290px;
+
+    padding: 0 45px 0 80px;
+  }
+
+  .accessImage {
+    max-width: 550px;
+  }
+
+  .accessTitle {
+    font-size: 28px;
+  }
+
+  .accessDescription {
+    font-size: 16px;
+    letter-spacing: 0.3px;
+  }
+  .accessAudienceButton{
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .accessSection {
+    padding: 55px 0 65px;
+  }
+
+  .accessContainer {
+    min-height: 440px;
+
+    padding: 0 28px;
+
+    grid-template-columns: 46% 54%;
+
+    column-gap: 15px;
+  }
+
+  .accessImage {
+    max-width: 510px;
+  }
+
+  .accessContent {
+    padding-left: 5px;
+  }
+
+  .accessTitle {
+    font-size: 32px;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.8px;
+  }
+
+  .accessDescription {
+    margin-top: 18px;
+
+    font-size: 17px;
+
+    line-height: 1.45;
+  }
+
+  .accessAudience {
+    margin-top: 22px;
+
+    gap: 9px;
+  }
+
+  .accessAudienceButton {
+    height: 48px;
+
+    border-width: 2px;
+
+    border-radius: 14px;
+
+    font-size: 13px;
+  }
+
+  .accessButton {
+    width: 195px;
+
+    height: 52px;
+
+    margin-top: 32px;
+
+    font-size: 18px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+  .accessSection {
+    padding: 50px 0 60px;
+  }
+
+  .accessContainer {
+    min-height: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 0 20px;
+
+    gap: 28px;
+  }
+
+
+  /* -------------------------------------------------------
+     IMAGE
+  ------------------------------------------------------- */
+
+  .accessVisual {
+    width: 100%;
+
+    height: auto;
+
+    justify-content: center;
+
+    transform: translateY(40px);
+  }
+
+  .accessImage {
+    width: 100%;
+
+    max-width: 520px;
+
+    object-position: center;
+  }
+
+
+  /* -------------------------------------------------------
+     CONTENT
+  ------------------------------------------------------- */
+
+  .accessContent {
+    width: 100%;
+
+    max-width: 100%;
+
+    padding-left: 0;
+
+    transform: translateY(40px);
+  }
+
+  .accessVisible .accessVisual,
+  .accessVisible .accessContent {
+    transform: translateY(0);
+  }
+
+
+  /* -------------------------------------------------------
+     TITLE
+  ------------------------------------------------------- */
+
+  .accessTitle {
+    font-size: 24px;
+
+    line-height: 1.24;
+
+    letter-spacing: -0.6px;
+  }
+
+
+  /* -------------------------------------------------------
+     DESCRIPTION
+  ------------------------------------------------------- */
+
+  .accessDescription {
+    margin-top: 17px;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+  }
+
+
+  /* -------------------------------------------------------
+     AUDIENCE
+  ------------------------------------------------------- */
+
+  .accessAudience {
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 2px;
+
+    margin-top: 23px;
+
+    max-width: 100%;
+  }
+
+  .accessAudienceButton {
+    height: 48px;
+
+    font-size: 12px;
+  }
+
+
+  /* -------------------------------------------------------
+     CTA
+  ------------------------------------------------------- */
+
+  .accessButton {
+    width: 190px;
+
+    height: 52px;
+
+    margin-top: 28px;
+
+    font-size: 17px;
+  }
+}
+
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .accessSection {
+    padding: 45px 0 55px;
+  }
+
+  .accessContainer {
+    padding: 0 17px;
+    gap: 4px;
+  }
+
+  .accessTitle {
+    font-size: 19px;
+    
+  }
+
+  .accessDescription {
+    font-size: 12.5px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: -10px;
+  }
+
+  .accessAudienceButton {
+    height: 30px;
+
+    font-size: 10px;
+  }
+
+  .accessButton {
+    width: 100%;
+
+    height: 39px;
+
+    font-size: 16px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .accessVisual,
+  .accessContent {
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+  }
+
+  .accessAudienceButton,
+  .accessButton {
+    transition: none;
+  }
+}

@@ -1,4 +1,5 @@
 
+import AccessSection from "@/components/website/AccessSection/AccessSection";
 import GrowthStats from "@/components/website/GrowthStats/GrowthStats";
 import Hero from "@/components/website/Hero/Hero";
 import Job from "@/components/website/jobs/jobcard";
@@ -17,8 +18,10 @@ export default function Home() {
       <GrowthStats />
       <SkillsTrending />
       <WhyJoinUs />
-      <Testimonials />
       <TrustedCompanies />
+      <Testimonials />
+      <AccessSection />
+      
       
       
       <Job />
