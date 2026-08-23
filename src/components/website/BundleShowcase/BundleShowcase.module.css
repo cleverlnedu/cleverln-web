@@ -1,0 +1,392 @@
+/* =========================================================
+   CLEVERLN BUNDLE SHOWCASE
+   UNIQUE CLASSNAME PREFIX: bundle
+========================================================= */
+
+.bundleShowcaseSection {
+  width: 100%;
+
+  background: #ffffff;
+
+  padding: 30px 0 40px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.bundleShowcaseContainer {
+  width: 100%;
+
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  padding: 0 14px;
+
+  box-sizing: border-box;
+}
+
+.bundleShowcaseTitle {
+
+  color: #252a40;
+
+  font-size: 24px !important;
+  margin-left: 39px;
+  margin-bottom: 10px;
+
+}
+/* =========================================================
+   IMAGE WRAPPER
+========================================================= */
+
+.bundleImageWrapper {
+  position: relative;
+
+  width: 100%;
+
+  margin: 0 auto;
+
+  opacity: 0;
+
+  transform: translateY(45px);
+
+  transition:
+    opacity 0.75s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================================
+   SECTION VISIBLE
+========================================================= */
+
+.bundleShowcaseVisible .bundleImageWrapper {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   PICTURE
+========================================================= */
+
+.bundleImageWrapper picture {
+  display: block;
+
+  width: 100%;
+
+  line-height: 0;
+}
+
+
+/* =========================================================
+   COMPLETE IMAGE
+========================================================= */
+
+.bundleShowcaseImage {
+  display: block;
+
+  width: 100%;
+
+  height: auto;
+
+  max-width: 100%;
+
+  object-fit: contain;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+
+/* =========================================================
+   CLICKABLE CTA OVERLAY
+========================================================= */
+
+.bundleClickableButton {
+  position: absolute;
+
+  /*
+    DESKTOP POSITION
+
+    Adjust these percentages only if the CTA
+    inside your image is positioned differently.
+  */
+
+  left: 11%;
+
+  top: 75%;
+
+  width: 13%;
+
+  height: 13%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border-radius: 999px;
+
+  background: transparent;
+
+  color: transparent;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  z-index: 10;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+
+/* =========================================================
+   BUTTON TEXT
+========================================================= */
+
+.bundleButtonText {
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+========================================================= */
+
+.bundleClickableButton:hover {
+  transform: scale(1.035);
+
+  background: rgba(255, 255, 255, 0.04);
+}
+
+
+/* =========================================================
+   BUTTON ACTIVE
+========================================================= */
+
+.bundleClickableButton:active {
+  transform: scale(0.98);
+}
+
+@media (min-width: 1440px){
+    .bundleShowcaseContainer {
+        width: 100%;
+
+        max-width: 1330px;
+
+        margin: 0 auto;
+
+        padding: 0 24px;
+
+        box-sizing: border-box;
+        }
+        .bundleShowcaseTitle {
+
+  color: #252a40;
+
+  font-size: 28px !important;
+  margin-left: 44px;
+  margin-bottom: 10px;
+
+}
+.bundleClickableButton {
+  position: absolute;
+  left: 11%;
+
+  top: 75%;
+
+  width: 13%;
+
+  height: 13%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border-radius: 999px;
+
+  background: transparent;
+
+  color: transparent;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  z-index: 10;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+
+}
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .bundleShowcaseSection {
+    padding: 26px 0 34px;
+  }
+
+  .bundleShowcaseContainer {
+    max-width: 900px;
+
+    padding: 0 20px;
+  }
+
+  .bundleClickableButton {
+    left: 17%;
+
+    top: 70%;
+
+    width: 15%;
+
+    height: 13%;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .bundleShowcaseSection {
+    padding: 22px 0 30px;
+  }
+
+  .bundleShowcaseContainer {
+    width: 100%;
+
+    max-width: none;
+
+    padding: 0 12px;
+  }
+
+
+  /* ---------------------------------------------------------
+     MOBILE IMAGE
+
+     The <picture> element automatically switches to:
+
+     /images/bundle/bundle-mobile.webp
+  --------------------------------------------------------- */
+
+  .bundleImageWrapper {
+    width: 100%;
+  }
+
+  .bundleShowcaseImage {
+    width: 100%;
+
+    height: auto;
+
+    object-fit: contain;
+  }
+
+
+  /* ---------------------------------------------------------
+     MOBILE CTA POSITION
+  --------------------------------------------------------- */
+
+  .bundleClickableButton {
+    left: 18%;
+
+    top: 70%;
+
+    width: 24%;
+
+    height: 10%;
+
+    border-radius: 999px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .bundleShowcaseSection {
+    padding: 18px 0 25px;
+  }
+
+  .bundleShowcaseContainer {
+    padding: 0 0px;
+  }
+  .bundleShowcaseTitle {
+
+  color: #252a40;
+
+  font-size: 19px !important;
+  margin-left: 19px !important;
+  margin-bottom: 8px !important;
+  width: 90%;
+
+}
+
+  .bundleClickableButton {
+    left: 34%;
+
+    top: 30%;
+
+    width: 33%;
+
+    height: 4%;
+    
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .bundleImageWrapper {
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+  }
+
+  .bundleClickableButton {
+    transition: none;
+  }
+}

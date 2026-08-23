@@ -1,5 +1,6 @@
 
 import AccessSection from "@/components/website/AccessSection/AccessSection";
+import BundleShowcase from "@/components/website/BundleShowcase/BundleShowcase";
 import GrowthStats from "@/components/website/GrowthStats/GrowthStats";
 import Hero from "@/components/website/Hero/Hero";
 
@@ -19,8 +20,12 @@ export default function Home() {
       <SkillsTrending />
       <WhyJoinUs />
       <TrustedCompanies />
-      <Testimonials />
       <AccessSection />
+      
+      <Testimonials />
+      <BundleShowcase />
+      
+      
       
       
       
