@@ -13,7 +13,7 @@ const heroProfiles = [
     role: "Agent",
   },
   {
-    image: "/images/hero/buyer.webp",
+    image: "/images/hero/2.webp",
     role: "Transaction Coordinator",
   },
   {
