@@ -6,26 +6,26 @@ import styles from "./Testimonials.module.css";
 
 const testimonials = [
   {
-    initials: "DS",
-    name: "Diksha S",
+    initials: "SJ",
+    name: "Sparsha Jain",
     text: "Taking the UI/UX course on Cleverln gave me the exact skills I needed. I successfully cleared two interviews right after finishing! Truly incredible.",
     course: "UI/UX Designer",
   },
   {
-    initials: "CB",
-    name: "Chetan B",
+    initials: "VB",
+    name: "Viroj Bhute",
     text: "Thanks to this course, I successfully leveled up from a frontend engineer to a full-stack engineer. Invaluable content for career growth!",
     course: "Full Stack developer",
   },
   {
-    initials: "BK",
-    name: "Batchu K",
+    initials: "AS",
+    name: "Aarohi sharma",
     text: "Today, I work as a digital marketer, and I credit a massive part of my career success to the rock-solid foundation I built through this course.",
     course: "Digital Marketing",
   },
   {
-    initials: "AK",
-    name: "Ankit K",
+    initials: "GK",
+    name: "Goutham Kumar",
     text: "I would highly recommend this AI program to anyone looking to future-proof their career or dive deep into cutting-edge AI engineering.",
     course: "Agentic AI",
   },

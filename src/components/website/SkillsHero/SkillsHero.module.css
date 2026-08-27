@@ -1,0 +1,1360 @@
+/* =========================================================
+   CLEVERLN HERO
+   PROFILE CAROUSEL
+========================================================= */
+
+.heroSection {
+  width: 100%;
+  background: #ffffff;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.heroContainer {
+  width: 100%;
+  max-width: 1500px;
+  min-height: 640px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  padding: 45px 60px 0px;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.heroContent {
+  width: 100%;
+  max-width: 1200px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  position: relative;
+  z-index: 5;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.heroTitle {
+  margin: 0;
+
+  color: #050505;
+
+  font-size: 38px;
+
+  font-weight: 700;
+
+  line-height: 1.08;
+
+  text-align: center;
+}
+
+.heroTitle span {
+  color: #07845f;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.heroDescription {
+  max-width: 750px;
+
+  margin: 14px auto 0;
+
+  color: #111111;
+
+  font-size: 16px;
+
+  font-weight: 500;
+
+  line-height: 1.55;
+
+  text-align: center;
+}
+
+.heroDescription strong {
+  color: #079d70;
+
+  font-weight: 700;
+}
+
+
+
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.heroButton {
+  width: 202px;
+
+  height: 58px;
+
+  margin-top: 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #10b77b 0%,
+      #075f47 100%
+    );
+
+  color: #ffffff;
+
+  font-size: 18px;
+
+  font-weight: 750;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 16px 30px rgba(8, 118, 85, 0.16);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.heroButton:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 20px 38px rgba(8, 118, 85, 0.22);
+}
+
+
+/* =========================================================
+   CAROUSEL
+========================================================= */
+
+.heroCarousel {
+  position: relative;
+
+  width: 100%;
+
+  max-width: 1250px;
+
+  height: 270px;
+
+  margin-top: 40px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  perspective: 1200px;
+
+  cursor: default;
+
+  overflow: visible;
+}
+
+
+/* =========================================================
+   SUBTLE GREEN GLOW
+========================================================= */
+
+.heroGlow {
+  position: absolute;
+
+  left: 50%;
+
+  top: 45%;
+
+  width: 430px;
+
+  height: 230px;
+
+  transform:
+    translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(16, 183, 123, 0.11) 0%,
+      rgba(16, 183, 123, 0.045) 40%,
+      transparent 72%
+    );
+
+  filter: blur(10px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   PROFILE AREA
+========================================================= */
+
+.heroProfiles {
+  position: relative;
+
+  width: 100%;
+
+  height: 270px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  overflow: visible;
+}
+
+
+/* =========================================================
+   PROFILE CARD
+   SAME BASE SIZE FOR ALL CARDS
+========================================================= */
+
+.heroProfile {
+  position: absolute;
+
+  left: 50%;
+
+  top: 0;
+
+  width: 190px;
+
+  height: 190px;
+
+  transform-origin: center center;
+
+  transition:
+    transform 1.35s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1.1s ease,
+    filter 1.1s ease,
+    width 1.35s cubic-bezier(0.22, 1, 0.36, 1),
+    height 1.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  will-change:
+    transform,
+    opacity,
+    filter;
+}
+
+
+/* =========================================================
+   CENTER PROFILE
+   ONLY SLIGHTLY LARGER
+========================================================= */
+
+.heroProfile[data-position="0"] {
+  width: 232px;
+
+  height: 222px;
+
+  transform:
+    translateX(-50%)
+    translateY(0);
+
+  opacity: 1;
+
+  z-index: 10;
+
+  filter: none;
+}
+
+
+/* =========================================================
+   IMMEDIATE LEFT
+========================================================= */
+
+.heroProfile[data-position="-1"] {
+  width: 180px;
+
+  height: 180px;
+
+  transform:
+    translateX(calc(-50% - 235px))
+    translateY(18px);
+
+  opacity: 1;
+
+  z-index: 7;
+
+  filter:
+    grayscale(0.15)
+    saturate(0.95);
+}
+
+
+/* =========================================================
+   IMMEDIATE RIGHT
+========================================================= */
+
+.heroProfile[data-position="1"] {
+  width: 190px;
+
+  height: 180px;
+
+  transform:
+    translateX(calc(-50% + 235px))
+    translateY(18px);
+
+  opacity: 1;
+
+  z-index: 7;
+
+  filter:
+    grayscale(0.15)
+    saturate(0.95);
+}
+
+
+/* =========================================================
+   FAR LEFT
+========================================================= */
+
+.heroProfile[data-position="-2"] {
+  width: 190px;
+
+  height: 180px;
+
+  transform:
+    translateX(calc(-40% - 470px))
+    translateY(18px);
+
+  opacity: 1;
+
+  z-index: 4;
+
+  filter:
+    grayscale(0.45)
+    saturate(0.85);
+}
+
+
+/* =========================================================
+   FAR RIGHT
+========================================================= */
+
+.heroProfile[data-position="2"] {
+  width: 190px;
+
+  height: 180px;
+
+  transform:
+    translateX(calc(-60% + 470px))
+    translateY(18px);
+
+  opacity: 1;
+
+  z-index: 4;
+
+  filter:
+    grayscale(0.45)
+    saturate(0.85);
+}
+
+
+/* =========================================================
+   OUTSIDE LEFT
+========================================================= */
+
+.heroProfile[data-position="-3"] {
+  transform:
+    translateX(calc(-50% - 710px))
+    translateY(30px);
+
+  opacity: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  filter: grayscale(1);
+}
+
+
+/* =========================================================
+   OUTSIDE RIGHT
+========================================================= */
+
+.heroProfile[data-position="3"] {
+  transform:
+    translateX(calc(-50% + 310px))
+    translateY(40px);
+
+  opacity: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  filter: grayscale(1);
+}
+
+
+/* =========================================================
+   PROFILE IMAGE
+========================================================= */
+
+.heroProfileImageWrap {
+  position: relative;
+
+  width: 100%;
+
+  height: 100%;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  background: #eeeeee;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.10);
+
+  transition:
+    box-shadow 0.8s ease,
+    border-radius 0.8s ease;
+}
+
+
+/* =========================================================
+   CENTER IMAGE
+========================================================= */
+
+.heroProfileCenter .heroProfileImageWrap {
+  border-radius: 18px;
+
+  box-shadow:
+    0 20px 42px rgba(0, 0, 0, 0.16);
+}
+
+
+.heroProfileImage {
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+
+/* =========================================================
+   PROFILE LABEL
+========================================================= */
+
+.heroProfileLabel {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 12px;
+
+  transform:
+    translateX(-50%);
+
+  min-width: max-content;
+
+  padding: 7px 15px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.96);
+
+  color: #111111;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   CENTER LABEL
+========================================================= */
+
+.heroProfileCenter .heroProfileLabel {
+  bottom: 13px;
+
+  padding: 9px 17px;
+
+  font-size: 13px;
+
+  font-weight: 750;
+}
+
+
+/* =========================================================
+   INDICATORS
+========================================================= */
+
+.heroIndicators {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 0;
+
+  transform:
+    translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  z-index: 20;
+}
+
+
+/* =========================================================
+   INDICATOR
+========================================================= */
+
+.heroIndicator {
+  width: 7px;
+
+  height: 7px;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #d6d6d6;
+
+  cursor: pointer;
+
+  transition:
+    width 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+/* =========================================================
+   ACTIVE INDICATOR
+========================================================= */
+
+.heroIndicatorActive {
+  width: 22px;
+
+  border-radius: 999px;
+
+  background: #079d70;
+}
+
+
+
+/* =========================================================
+   DESKTOP 1440px+
+========================================================= */
+
+@media (min-width: 1440px) {
+
+  .heroContainer {
+    width: 100%;
+
+    max-width: 1500px;
+
+    min-height: 640px;
+
+    padding: 75px 60px 0px;
+  }
+
+  .heroTitle {
+    margin: 0;
+
+    color: #050505;
+
+    font-size: 48px;
+
+    font-weight: 700;
+
+    line-height: 1.08;
+
+    text-align: center;
+  }
+
+  .heroDescription {
+    max-width: 950px;
+
+    margin: 14px auto 0;
+
+    font-size: 20px;
+  }
+
+
+  /* =======================================================
+     LARGE DESKTOP CAROUSEL
+  ======================================================= */
+
+  .heroCarousel {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 1450px !important;
+
+    height: 310px !important;
+
+    margin-top: 60px !important;
+  }
+
+
+  .heroProfile[data-position="0"] {
+    width: 272px !important;
+
+    height: 272px !important;
+
+    transform:
+      translateX(-50%)
+      translateY(0);
+
+    opacity: 1;
+
+    z-index: 10;
+
+    filter: none;
+  }
+
+
+  /* =======================================================
+     IMMEDIATE LEFT
+  ======================================================= */
+
+  .heroProfile[data-position="-1"] {
+    width: 210px !important;
+
+    height: 210px !important;
+
+    transform:
+      translateX(calc(-65% - 235px))
+      translateY(18px) !important;
+
+    opacity: 1;
+
+    z-index: 7;
+
+    filter:
+      grayscale(0.15)
+      saturate(0.95);
+  }
+
+
+  /* =======================================================
+     IMMEDIATE RIGHT
+  ======================================================= */
+
+  .heroProfile[data-position="1"] {
+    width: 210px !important;
+
+    height: 210px !important;
+
+    transform:
+      translateX(calc(-35% + 235px))
+      translateY(18px) !important;
+
+    opacity: 1;
+
+    z-index: 7;
+
+    filter:
+      grayscale(0.15)
+      saturate(0.95);
+  }
+
+
+  /* =======================================================
+     FAR LEFT
+  ======================================================= */
+
+  .heroProfile[data-position="-2"] {
+    width: 190px;
+
+    height: 180px;
+
+    transform:
+      translateX(calc(-60% - 470px))
+      translateY(28px) !important;
+
+    opacity: 1;
+
+    z-index: 4;
+
+    filter:
+      grayscale(0.45)
+      saturate(0.85);
+  }
+
+
+  /* =======================================================
+     FAR RIGHT
+  ======================================================= */
+
+  .heroProfile[data-position="2"] {
+    width: 190px;
+
+    height: 180px;
+
+    transform:
+      translateX(calc(-40% + 470px))
+      translateY(28px) !important;
+
+    opacity: 1;
+
+    z-index: 4;
+
+    filter:
+      grayscale(0.45)
+      saturate(0.85);
+  }
+
+
+  /* =======================================================
+     OUTSIDE LEFT
+  ======================================================= */
+
+  .heroProfile[data-position="-3"] {
+    transform:
+      translateX(calc(-50% - 710px))
+      translateY(40px);
+
+    opacity: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    filter: grayscale(1);
+  }
+
+
+  /* =======================================================
+     OUTSIDE RIGHT
+  ======================================================= */
+
+  .heroProfile[data-position="3"] {
+    transform:
+      translateX(calc(-50% + 710px))
+      translateY(40px);
+
+    opacity: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    filter: grayscale(1);
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .heroContainer {
+    min-height: 620px;
+
+    padding:
+      45px 24px 20px;
+  }
+
+
+  .heroTitle {
+    font-size: 46px;
+  }
+
+
+  .heroDescription {
+    max-width: 750px;
+
+    font-size: 19px;
+  }
+
+
+  .heroCarousel {
+    max-width: 1000px;
+
+    margin-top: 42px;
+  }
+
+
+  /* CENTER */
+
+  .heroProfile[data-position="0"] {
+    width: 205px;
+
+    height: 205px;
+
+    transform:
+      translateX(-50%)
+      translateY(0);
+  }
+
+
+  /* LEFT */
+
+  .heroProfile[data-position="-1"] {
+    width: 175px;
+
+    height: 175px;
+
+    transform:
+      translateX(calc(-50% - 205px))
+      translateY(18px);
+  }
+
+
+  /* RIGHT */
+
+  .heroProfile[data-position="1"] {
+    width: 175px;
+
+    height: 175px;
+
+    transform:
+      translateX(calc(-50% + 205px))
+      translateY(18px);
+  }
+
+
+  /* FAR LEFT */
+
+  .heroProfile[data-position="-2"] {
+    width: 175px;
+
+    height: 175px;
+
+    transform:
+      translateX(calc(-50% - 410px))
+      translateY(32px);
+  }
+
+
+  /* FAR RIGHT */
+
+  .heroProfile[data-position="2"] {
+    width: 175px;
+
+    height: 175px;
+
+    transform:
+      translateX(calc(-50% + 410px))
+      translateY(32px);
+  }
+
+
+  .heroProfileLabel {
+    font-size: 10px;
+
+    padding:
+      6px 12px;
+  }
+
+
+  .heroProfileCenter .heroProfileLabel {
+    font-size: 12px;
+
+    padding:
+      8px 14px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   3 PROFILE VIEW
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .heroContainer {
+    min-height: 600px;
+
+    padding:
+      38px 16px 20px;
+  }
+
+
+  .heroTitle {
+    max-width: 500px;
+
+    font-size: 38px;
+
+    line-height: 1.4;
+
+    letter-spacing: -1.2px;
+  }
+
+
+  .heroDescription {
+    max-width: 640px;
+
+    margin-top: 14px;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+  }
+
+
+  .heroButton {
+    width: 170px;
+
+    height: 48px;
+
+    margin-top: 28px;
+
+    border-radius: 15px;
+
+    font-size: 15px;
+  }
+
+
+  .heroCarousel {
+    height: 205px;
+
+    margin-top: 38px;
+
+    touch-action: pan-y;
+  }
+
+
+  .heroProfiles {
+    height: 205px;
+    
+  }
+
+
+  /* CENTER */
+
+  .heroProfile[data-position="0"] {
+    width: 185px;
+    border-radius: 10px !important;
+    height: 185px;
+  }
+
+
+  /* LEFT */
+
+  .heroProfile[data-position="-1"] {
+    width: 140px;
+
+    height: 140px;
+
+    transform:
+      translateX(calc(-40% - 115px))
+      translateY(22px);
+  }
+
+
+  /* RIGHT */
+
+  .heroProfile[data-position="1"] {
+    width: 140px;
+
+    height: 140px;
+
+    transform:
+      translateX(calc(-60% + 115px))
+      translateY(22px);
+  }
+
+  .heroProfileImageWrap {
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   CENTER IMAGE
+========================================================= */
+
+.heroProfileCenter .heroProfileImageWrap {
+  border-radius: 8px;
+}
+
+
+  .heroProfileLabel {
+    bottom: 7px;
+
+    padding:
+      5px 9px;
+
+    font-size: 8px;
+  }
+
+
+  .heroProfileCenter .heroProfileLabel {
+    bottom: 8px;
+
+    padding:
+      6px 10px;
+
+    font-size: 9px;
+  }
+
+
+  .heroIndicator {
+    width: 6px;
+
+    height: 6px;
+  }
+
+
+  .heroIndicatorActive {
+    width: 18px;
+  }
+
+  /* =======================================================
+     MOBILE — TOUCH SWIPE ONLY
+     NO AUTOMATIC CSS ANIMATION
+  ======================================================= */
+
+  .heroProfile {
+    animation: none !important;
+
+    transition: none !important;
+
+    will-change: auto;
+  }
+
+  .heroCarousel {
+    touch-action: pan-y;
+
+    -webkit-user-select: none;
+
+    user-select: none;
+
+    -webkit-tap-highlight-color: transparent;
+
+    cursor: grab;
+  }
+
+  .heroCarousel:active {
+    cursor: grabbing;
+  }
+
+  .heroProfile:hover {
+    transition: none !important;
+  }
+
+  .heroProfileImage {
+    -webkit-user-drag: none;
+
+    user-select: none;
+  }
+}
+
+@media (max-width: 700px) {
+
+  .heroProfile[data-position="-1"],
+  .heroProfile[data-position="1"] {
+    opacity: 0.25;
+  }
+}
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .heroContainer {
+    min-height: 555px;
+
+    padding:
+      32px 12px 15px;
+  }
+
+
+  .heroTitle {
+    font-size: 26px;
+
+    line-height: 1.3;
+
+    max-width: 300px;
+    
+  }
+
+
+  .heroDescription {
+    font-size: 12px;
+    max-width: 300px;
+
+    line-height: 1.48;
+
+    margin-top: 12px;
+  }
+
+
+  .heroButton {
+    width: 150px;
+
+    height: 40px;
+
+    margin-top: 18px;
+
+    font-size: 14px;
+  }
+
+
+  .heroCarousel {
+    height: 205px;
+
+    margin-top: 38px;
+
+    touch-action: pan-y;
+  }
+
+
+  .heroProfiles {
+    height: 215px;
+    
+  }
+
+
+  /* CENTER */
+
+  .heroProfile[data-position="0"] {
+    width: 185px;
+    border-radius: 10px !important;
+    height: 185px;
+  }
+
+
+  /* LEFT */
+
+  .heroProfile[data-position="-1"] {
+    width: 140px;
+
+    height: 140px;
+
+    transform:
+      translateX(calc(-40% - 115px))
+      translateY(22px);
+  }
+
+
+  /* RIGHT */
+
+  .heroProfile[data-position="1"] {
+    width: 140px;
+
+    height: 140px;
+
+    transform:
+      translateX(calc(-60% + 115px))
+      translateY(22px);
+  }
+
+  .heroProfileImageWrap {
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   CENTER IMAGE
+========================================================= */
+
+.heroProfileCenter .heroProfileImageWrap {
+  border-radius: 8px;
+}
+
+
+  .heroProfileLabel {
+    bottom: 7px;
+
+    padding:
+      5px 9px;
+
+    font-size: 8px;
+  }
+
+
+  .heroProfileCenter .heroProfileLabel {
+    bottom: 8px;
+
+    padding:
+      6px 10px;
+
+    font-size: 9px;
+  }
+
+
+  .heroIndicator {
+    width: 6px;
+
+    height: 6px;
+  }
+
+
+  .heroIndicatorActive {
+    width: 18px;
+  }
+
+
+  /* =======================================================
+     SMALL MOBILE — TOUCH ONLY
+  ======================================================= */
+
+  .heroProfile {
+    animation: none !important;
+
+    transition: none !important;
+  }
+
+  .heroCarousel {
+    touch-action: pan-y;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 350px) {
+
+  .heroContainer {
+    padding:
+      28px 10px 12px;
+  }
+
+
+  .heroTitle {
+    font-size: 28px;
+  }
+
+
+  .heroDescription {
+    font-size: 14px;
+  }
+
+
+  .heroButton {
+    width: 180px;
+
+    height: 50px;
+
+    font-size: 15px;
+  }
+
+
+  /* CENTER */
+
+  .heroProfile[data-position="0"] {
+    width: 130px;
+
+    height: 130px;
+  }
+
+
+  /* LEFT */
+
+  .heroProfile[data-position="-1"] {
+    width: 88px;
+
+    height: 88px;
+
+    transform:
+      translateX(calc(-50% - 100px))
+      translateY(27px);
+  }
+
+
+  /* RIGHT */
+
+  .heroProfile[data-position="1"] {
+    width: 88px;
+
+    height: 88px;
+
+    transform:
+      translateX(calc(-50% + 100px))
+      translateY(27px);
+  }
+
+
+  /* =======================================================
+     VERY SMALL MOBILE — TOUCH ONLY
+  ======================================================= */
+
+  .heroProfile {
+    animation: none !important;
+
+    transition: none !important;
+  }
+
+  .heroCarousel {
+    touch-action: pan-y;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .heroProfile {
+    transition: none;
+  }
+
+
+  .heroButton {
+    transition: none;
+  }
+
+
+  .heroIndicator {
+    transition: none;
+  }
+}
