@@ -1107,10 +1107,10 @@
 @media (max-width: 480px) {
 
   .heroContainer {
-    min-height: 555px;
+    min-height: 509px;
 
     padding:
-      32px 12px 15px;
+      52px 12px 15px;
   }
 
 
@@ -1356,5 +1356,75 @@
 
   .heroIndicator {
     transition: none;
+  }
+}
+
+
+
+/* =========================================================
+   MOBILE — TOUCH SWIPE ONLY
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .heroCarousel {
+    touch-action: pan-y;
+
+    -webkit-user-select: none;
+    user-select: none;
+
+    -webkit-tap-highlight-color: transparent;
+
+    cursor: grab;
+  }
+
+  .heroCarousel:active {
+    cursor: grabbing;
+  }
+
+  .heroProfile {
+    animation: none !important;
+  }
+
+  .heroProfile[data-position="-1"],
+  .heroProfile[data-position="1"] {
+    opacity: 0.55;
+  }
+
+  .heroProfileImage {
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .heroCarousel {
+    touch-action: pan-y;
+  }
+
+  .heroProfile {
+    animation: none !important;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .heroProfile {
+    animation: none !important;
+  }
+
+  .heroCarousel {
+    touch-action: pan-y;
   }
 }
