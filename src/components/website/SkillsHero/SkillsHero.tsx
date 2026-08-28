@@ -5,23 +5,25 @@ import styles from "./SkillsHero.module.css";
 
 const heroProfiles = [
   {
-    image: "/images/hero/1.webp",
+    image: "/images/hero/11.webp",
     role: "Buyer",
   },
   {
-    image: "/images/hero/users.webp",
-    role: "Agent",
-  },
-  {
-    image: "/images/hero/2.webp",
+    image: "/images/hero/22.webp",
     role: "Transaction Coordinator",
   },
+  
   {
-    image: "/images/hero/users.webp",
+    image: "/images/hero/33.webp",
+    role: "Agent",
+  },
+  
+  {
+    image: "/images/hero/444.webp",
     role: "Seller",
   },
   {
-    image: "/images/hero/buyer.webp",
+    image: "/images/hero/55.webp",
     role: "Buyer",
   },
 ];

@@ -308,9 +308,7 @@
 
   z-index: 7;
 
-  filter:
-    grayscale(0.15)
-    saturate(0.95);
+  
 }
 
 
@@ -331,9 +329,7 @@
 
   z-index: 7;
 
-  filter:
-    grayscale(0.15)
-    saturate(0.95);
+  
 }
 
 
@@ -354,9 +350,7 @@
 
   z-index: 4;
 
-  filter:
-    grayscale(0.45)
-    saturate(0.85);
+  
 }
 
 
@@ -377,9 +371,7 @@
 
   z-index: 4;
 
-  filter:
-    grayscale(0.45)
-    saturate(0.85);
+  
 }
 
 
