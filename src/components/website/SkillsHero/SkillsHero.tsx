@@ -12,7 +12,7 @@ const heroProfiles = [
     image: "/images/hero/22.webp",
     role: "Transaction Coordinator",
   },
-  
+
   {
     image: "/images/hero/33.webp",
     role: "Agent",
@@ -366,9 +366,15 @@ export default function Hero() {
                 />
 
               )
+
+              
             )}
+            
+
+            
 
           </div>
+          
 
         </div>
 

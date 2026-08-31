@@ -20,10 +20,12 @@ export default function Home() {
       <SkillsTrending />
       <WhyJoinUs />
       <TrustedCompanies />
-      <AccessSection />
+      <BundleShowcase />
       
       <Testimonials />
-      <BundleShowcase />
+      <AccessSection />
+      
+      
       
       
       
