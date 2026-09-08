@@ -1,5 +1,5 @@
-import CoursesPage from "@/components/website/Courses/CoursesPage";
+import Courses from "@/components/website/Courses/Courses";
 
-export default function Page() {
-  return <CoursesPage />;
+export default function CoursesPage() {
+  return <Courses />;
 }

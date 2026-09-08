@@ -1,583 +1,1123 @@
-.container {
-  padding: 110px 24px 70px;
-  background: #F1F1F1;
+/* =========================================================
+   CLEVERLN COURSES MARKETPLACE
+   UNIQUE CLASSNAME PREFIX: coursesMarketplace
+========================================================= */
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+.coursesMarketplacePage {
+  width: 100%;
   min-height: 100vh;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
 }
 
-/* Tabs */
-.tabs {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 32px;
+
+/* =========================================================
+   CATEGORY NAVIGATION BAR
+   STICKY ONLY INSIDE COURSES PAGE
+========================================================= */
+
+.coursesMarketplaceCategoryBar {
+  position: fixed;
+
+  top: 90px;
+
+  z-index: 1000;
+
+  width: 100%;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #e5e5e5;
+
+  box-sizing: border-box;
 }
 
-/* Outer pill (smaller height) */
-.tabWrapper {
-  display: flex;
-  align-items: center;
-  background: #E5E5E5;
-  padding: 6px;
-  border-radius: 999px;
-}
 
-/* Tabs (reduced size) */
-.tab {
-  padding: 10px 26px;
-  border-radius: 12px;
-  font-size: 10px;
-  font-weight: 700;
-  color: #696969;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  white-space: nowrap;
-}
+/* =========================================================
+   CATEGORY CONTAINER
+========================================================= */
 
-/* Active tab */
-.activeTab {
-  background: #D9D9D9;
-  color: #126F51;
-}
+.coursesMarketplaceCategoryContainer {
+  width: 100%;
 
-/* Divider */
-.divider {
-  width: 1px;
-  height: 23px;
-  background: #E5E5E5;
-  margin: 0 6px;
-}
+  max-width: 1500px;
 
-/* Outer light container */
-.cardsWrapper {
-  max-width: 1220px;
+  min-height: 60px;
+
   margin: 0 auto;
-  background: #F1F1F1;
-  padding: 34px;
-  border-radius: 8px;
-}
 
-/* Grid */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
+  padding: 20px 30px 15px;
 
-/* Card */
-.card {
-  background: linear-gradient(#FFFFFF, #D7D7D7);
-  border-radius: 12px;
-  padding: 20px 22px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 
-  /* very soft layered shadow like design */
-  box-shadow: 
-    inset 0 1px 0 rgba(255,255,255,0.7),
-    0 1px 2px rgba(0,0,0,0.04);
-  transition: 0.2s ease;
+  align-items: center;
+
+  justify-content: center;
+
+  gap: clamp(45px, 5vw, 95px);
+
+  box-sizing: border-box;
 }
 
-.card:hover {
+
+/* =========================================================
+   CATEGORY ITEMS
+========================================================= */
+
+.coursesMarketplaceCategoryItem {
+  color: #555555;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.coursesMarketplaceCategoryItem:hover {
+  color: #087f62;
+  font-weight: 600;
   transform: translateY(-1px);
 }
 
-/* Top */
-.cardTop {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 6px;
-}
 
-.sessions {
-  font-size: 10px;
-  color: #989898;
-  font-weight: 500;
-  font-family: poppins;
-  border-radius: 12;
-}
+/* =========================================================
+   COURSE CONTENT CONTAINER
+========================================================= */
 
-.badge {
-  font-size: 10.5px;
-  color: #2c2c2c;
-}
-
-/* Text */
-.title {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: #000000;
-  font-family: IBM Plex Sans;
-}
-
-.description {
-  font-size: 10px;
-  color: #6A6A6A;
-  font-weight: 400;
-  font-family: poppins;
-  line-height: auto;
-  max-width: 95%;
-}
-
-/* Bottom */
-.cardBottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 14px;
-}
-
-.oldPrice {
-  font-size: 10px;
-  text-decoration: line-through;
-  color: #A3A3A3;
-  font-family: poppins;
-  margin-right: 6px;
-}
-
-.price {
-  font-size: 18px;
-  font-weight: bold;
-  font-family: IBM Plex Sans;
-  color: #0E795D;
-}
-
-/* Button (THIS was slightly off before) */
-.button {
-  padding: 6px 18px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-
-  background: linear-gradient(90deg, #0EB47E 0%, #136449 100%);
-  font-size: 10px;
-  font-weight: bold;
-  color: #FFFFFF;
-  font-family: poppins;
-
-}
-
-.button:hover {
-  filter: brightness(0.95);
-}
-
-/* ===============================
-   LARGE SCREENS (1400px+)
-================================ */
-@media (min-width: 1400px) {
-  .cardsWrapper {
-    max-width: 1300px;
-    padding: 40px;
-  }
-
-  .grid {
-    gap: 24px;
-  }
-}
-
-/* ===============================
-   LAPTOP (1024px - 1399px)
-================================ */
-@media (max-width: 1200px) {
-  .cardsWrapper {
-    padding: 28px;
-  }
-
-  .grid {
-    gap: 18px;
-  }
-}
-
-/* ===============================
-   TABLET (768px - 1024px)
-================================ */
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .cardsWrapper {
-    padding: 24px;
-  }
-
-  .tab {
-    font-size: 14px;
-    padding: 8px 18px;
-  }
-}
-
-/* ===============================
-   SMALL TABLET (600px - 768px)
-================================ */
-@media (max-width: 768px) {
-  .container {
-    padding: 90px 16px 50px;
-  }
-
-  .cardsWrapper {
-    padding: 18px;
-    border-radius: 14px;
-  }
-
-  .grid {
-    gap: 16px;
-  }
-
-  .tabWrapper {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 6px;
-  }
-
-  .divider {
-    display: none; /* hide lines in small screens */
-  }
-}
-
-/* ===============================
-   MOBILE (480px - 600px)
-================================ */
-@media (max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .card {
-    padding: 18px;
-  }
-
-  .title {
-    font-size: 15px;
-  }
-
-  .description {
-    font-size: 11.5px;
-  }
-
-  .tab {
-    font-size: 13px;
-    padding: 8px 14px;
-  }
-}
-
-/* ===============================
-   SMALL MOBILE (<480px)
-================================ */
-@media (max-width: 480px) {
-  .container {
-    padding: 80px 12px 40px;
-  }
-
-  .cardsWrapper {
-    padding: 14px;
-  }
-
-  .card {
-    padding: 16px;
-  }
-
-  .title {
-    font-size: 14px;
-  }
-
-  .price {
-    font-size: 14px;
-  }
-
-  .button {
-    font-size: 11px;
-    padding: 6px 14px;
-  }
-
-  .tabWrapper {
-    padding: 4px;
-  }
-
-  .tab {
-    font-size: 12px;
-    padding: 6px 10px;
-  }
-}
-
-.card {
+.coursesMarketplaceContainer {
   width: 100%;
+
+  max-width: 1600px;
+
+  margin: 0 auto;
+
+  box-sizing: border-box;
 }
 
 
+/* =========================================================
+   COURSE SECTION
+========================================================= */
 
-.footer {
-  background: #143b34;
-  color: #ffffff;
-  padding-top: 0rem;
-  padding-bottom: 1px;
- /*  max-height: 700px; */
-}
+.coursesMarketplaceSection {
+  width: 100%;
 
-/* .top {
-  max-width: 1300px;
-  margin-top: 100px;
-  padding: 4rem  3rem 0rem;
+  padding:
+    65px 60px 25px;
 
-  display: grid;
-  grid-template-columns: 1.2fr 1fr 1.2fr;
-  gap: 3rem;
-  align-items: start;
-} */
-.top {
-  max-width: 1300px;
-  margin: 100px auto 0;
-  padding: 4rem 3rem 0;
+  box-sizing: border-box;
 
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  gap: 3rem;
-  align-items: start;
+  scroll-margin-top: 110px;
 }
 
 
+/* =========================================================
+   SECTION HEADING ROW
+========================================================= */
 
+.coursesMarketplaceHeadingRow {
+  width: 100%;
 
-
-/* LEFT & RIGHT */
-.left,
-.right {
   display: flex;
-  gap: 3rem;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 18px;
 }
 
-.column h4 {
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.coursesMarketplaceSectionTitle {
+  margin: 0;
+
+  color: #111111;
+
+  font-size: clamp(24px, 2vw, 32px);
+
+  line-height: 1.2;
+
+  font-weight: 700;
 }
 
-.column ul {
-  list-style: none;
-  padding: 0;
-}
 
-.column li {
-  font-size: 0.9rem;
-  color: #c5d6d2;
-  margin-bottom: 0.6rem;
-  cursor: pointer;
-}
+/* =========================================================
+   SLIDER WRAPPER
+========================================================= */
 
-.column li:hover {
-  color: #ffffff;
-}
-
-/* CENTER CARD */
-
-.centerCard {
+.coursesMarketplaceSlider {
   position: relative;
-  justify-self: center;
 
-  /* Card colors */
-  background: #cdddb4;        /* light sage green */
-  color: #1c2d28;
+  width: 100%;
 
-  /* Spacing */
-  padding: 3rem 2.75rem;
-  text-align: center;
+  overflow: visible;
 
-  /* Rounded bottom corners only */
-  border-bottom-left-radius: 22px;
-  border-bottom-right-radius: 22px;
-
-  /* Hanging / overlap effect */
-  margin-top: -5rem;
-  z-index: 2;
-
-  /* 🔥 KEY PART — BEVELED CORNERS (LEFT + RIGHT) */
-  clip-path: polygon(
-    -3px -50px,                    /* top-left diagonal start */
-    calc(275px- 36px) 10,       /* top-right diagonal start */
-    100% 36px,                 /* top-right diagonal end */
-    100% 100%,                 /* bottom-right */
-    0 100%,                    /* bottom-left */
-    0 36px                     /* top-left diagonal end */
-  );
-
-  /* Depth */
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.18);
+  box-sizing: border-box;
 }
 
 
-.centerCard::before {
-  content: "";
+/* =========================================================
+   COURSE TRACK
+
+   IMPORTANT:
+   Courses always remain in ONE ROW.
+========================================================= */
+
+.coursesMarketplaceTrack {
+  width: 100%;
+
+  display: flex;
+
+  flex-wrap: nowrap;
+
+  gap: 32px;
+
+  overflow-x: auto;
+
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+
+  padding:
+    24px 0 20px;
+
+  box-sizing: border-box;
+}
+
+
+.coursesMarketplaceTrack::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =========================================================
+   COURSE CARD
+
+   5 CARDS VISIBLE ON DESKTOP
+========================================================= */
+
+.coursesMarketplaceCard {
+  position: relative;
+
+  flex: 0 0
+    calc(
+      (100% - 128px) / 5
+    );
+
+  min-width: 0;
+
+  display: block;
+
+  color: inherit;
+
+  text-decoration: none;
+
+  box-sizing: border-box;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease;
+}
+
+
+.coursesMarketplaceCard:hover {
+  transform: translateY(-4px);
+}
+
+
+/* =========================================================
+   IMAGE WRAPPER
+========================================================= */
+
+.coursesMarketplaceImageWrapper {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 16 / 9;
+
+  margin-bottom: 14px;
+
+  overflow: visible;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   COURSE IMAGE
+========================================================= */
+
+.coursesMarketplaceImage {
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PREMIUM BADGE
+
+   WORKS ON DESKTOP + TABLET + MOBILE
+========================================================= */
+
+.coursesMarketplacePremiumBadge {
   position: absolute;
 
-  top: 0;
+  top: -20px;
+
   left: 0;
 
-  width: 36px;
-  height: 6px;
+  z-index: 20;
 
-  background: #143b34; /* footer color */
-
-  transform: skewX(-45deg);
-  transform-origin: left center;
-}
-
-
-.centerCard::after {
-  content: "";
-  position: absolute;
-
-  top: 0;
-  right: 0;
-
-  width: 36px;
-  height: 6px;
-
-  background: #143b34; /* footer color */
-
-  transform: skewX(45deg);
-  transform-origin: right center;
-}
-
-
-.centerCard h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.25rem;
-}
-
-.tagline {
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  margin-bottom: 1.5rem;
-}
-
-.centerCard h2 {
-  font-size: 1.6rem;
-  margin-bottom: 0.75rem;
-}
-
-.subtext {
-  font-size: 0.9rem;
-  margin-bottom: 1.75rem;
-}
-
-.subscribe {
   display: flex;
-  background: #ffffff;
-  border-radius: 10px;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding:
+    5px 10px;
+
+  background: linear-gradient(135deg, #10b77b 0%, #075f47 100%);
+
+  color: #ffffff;
+
+  border-radius: 4px 4px 0px 0px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   COURSE TITLE
+========================================================= */
+
+.coursesMarketplaceCardTitle {
+  margin: 0;
+
+  color: #363636;
+
+  font-size: 13px;
+
+  line-height: 1.3;
+
+  font-weight: 500;
+  font-family: var(--font-poppins);
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 2;
+
+  -webkit-box-orient: vertical;
+
   overflow: hidden;
 }
 
-.subscribe input {
-  flex: 1;
-  padding: 0.75rem 1rem;
-  border: none;
-  outline: none;
+
+/* =========================================================
+   RATING
+========================================================= */
+
+.coursesMarketplaceRating {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 4px;
+
+  min-height: 20px;
 }
 
-.subscribe button {
-  background: #143b34;
-  color: #ffffff;
+
+/* =========================================================
+   RATING NUMBER
+========================================================= */
+
+.coursesMarketplaceRatingNumber {
+  color: #0c8565;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   STARS
+========================================================= */
+
+.coursesMarketplaceStars {
+  color: #075f47;
+
+  font-size: 14px;
+
+  letter-spacing: 1px;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   REVIEW COUNT
+========================================================= */
+
+.coursesMarketplaceReviewCount {
+  color: #777778;
+
+  font-size: 12px;
+
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   SLIDER ARROWS
+========================================================= */
+
+.coursesMarketplaceSliderArrow {
+  position: absolute;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  z-index: 100;
+
+  width: 58px;
+
+  height: 58px;
+
+  padding: 0;
+
   border: none;
-  padding: 0 1.5rem;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #555555;
+
+  font-size: 38px;
+
+  line-height: 1;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
   cursor: pointer;
+
+  box-shadow:
+    0 8px 25px
+    rgba(0, 0, 0, 0.14);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
 
-/* SOCIAL */
-.socials {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
+
+/* =========================================================
+   ARROW HOVER
+========================================================= */
+
+.coursesMarketplaceSliderArrow:hover {
+  transform:
+    translateY(-50%)
+    scale(1.06);
+
+  background: #ffffff;
+
+  box-shadow:
+    0 12px 30px
+    rgba(0, 0, 0, 0.18);
 }
 
-.socials span {
-  font-size: 0.85rem;
-  opacity: 0.9;
+
+/* =========================================================
+   ARROW ACTIVE
+========================================================= */
+
+.coursesMarketplaceSliderArrow:active {
+  transform:
+    translateY(-50%)
+    scale(0.96);
 }
 
-.badge {
-  font-size: 0.75rem;
-  color: #c5d6d2;
+
+/* =========================================================
+   PREVIOUS ARROW
+========================================================= */
+
+.coursesMarketplaceSliderArrowPrev {
+  left: -29px;
 }
 
-/* BOTTOM */
-.bottom {
-  border-top: 1px solid rgba(255,255,255,0.15);
-  padding: 1.5rem 2rem;
-  display: flex;
-  margin-top: 25px;
-  justify-content: space-between;
-  font-size: 0.8rem;
-  color: #c5d6d2;
+
+/* =========================================================
+   NEXT ARROW
+========================================================= */
+
+.coursesMarketplaceSliderArrowNext {
+  right: -29px;
 }
+
+@media (min-width: 1339px) {
+  .coursesMarketplaceCategoryBar {
+  position: fixed;
+
+  top: 102px;
+
+  z-index: 1000;
+
+  width: 100%;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #e5e5e5;
+
+  box-sizing: border-box;
+}
+
+.coursesMarketplaceCategoryContainer {
+  width: 100%;
+
+  max-width: 1500px;
+
+  min-height: 60px;
+
+  margin: 0 auto;
+
+  padding: 20px 30px 10px;
+}
+
+}
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+
+@media (min-width: 1440px) {
+
+  .coursesMarketplaceCategoryContainer {
+    max-width: 1600px;
+
+    gap: 90px;
+  }
+
+
+  .coursesMarketplaceSection {
+    padding-left: 44px;
+
+    padding-right: 44px;
+  }
+
+
+  .coursesMarketplaceCard {
+    flex-basis:
+      calc(
+        (100% - 128px) / 5
+      );
+  }
+  .coursesMarketplaceSection {
+    width: 100%;
+
+    padding: 95px 80px 25px;
+  }
+
+
+  .coursesMarketplaceSectionTitle {
+    font-size: 28px;
+  }
+
+
+  .coursesMarketplaceCardTitle {
+    font-size: 17px;
+  }
+  .coursesMarketplaceCategoryBar {
+    position: fixed;
+
+    top: 100px;
+  }
+  
+.coursesMarketplaceCategoryContainer {
+  width: 100%;
+
+  max-width: 1500px;
+
+  min-height: 75px;
+
+  margin: 0 auto;
+
+  padding: 25px 30px 15px;
+
+  gap: clamp(45px, 5vw, 95px);
+
+  box-sizing: border-box;
+}
+
+.coursesMarketplaceCategoryItem {
+  color: #555555;
+
+  text-decoration: none;
+
+  font-size: 16px;
+
+  font-weight: 500;
+}
+
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  /* -----------------------------------------
+     CATEGORY BAR
+  ----------------------------------------- */
+
+  .coursesMarketplaceCategoryContainer {
+    min-height: 80px;
+
+    gap: 30px;
+
+    padding:
+      0 20px;
+  }
+
+
+  .coursesMarketplaceCategoryItem {
+    font-size: 15px;
+  }
+
+
+  /* -----------------------------------------
+     SECTION
+  ----------------------------------------- */
+
+  .coursesMarketplaceSection {
+    padding:
+      35px 25px 25px;
+
+    scroll-margin-top: 85px;
+  }
+
+
+  .coursesMarketplaceSectionTitle {
+    font-size: 26px;
+  }
+
+
+  /* -----------------------------------------
+     CARD
+  ----------------------------------------- */
+
+  .coursesMarketplaceCard {
+    flex: 0 0 270px;
+  }
+
+
+  .coursesMarketplaceCardTitle {
+    font-size: 17px;
+  }
+
+
+  /* -----------------------------------------
+     ARROWS
+  ----------------------------------------- */
+
+  .coursesMarketplaceSliderArrow {
+    width: 48px;
+
+    height: 48px;
+
+    font-size: 32px;
+  }
+
+
+  .coursesMarketplaceSliderArrowPrev {
+    left: -15px;
+  }
+
+
+  .coursesMarketplaceSliderArrowNext {
+    right: -15px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 768px) {
-  
 
-  /* Keep main stacking */
-  .top {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-    padding: 2rem 1.25rem 0;
-    
+  /* -----------------------------------------
+     CATEGORY BAR
+
+     Sticky only on Courses page.
+  ----------------------------------------- */
+
+  .coursesMarketplaceCategoryBar {
+    position: sticky;
+
+    top: 0;
+
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
   }
 
-  /* Center card stays same */
-  .centerCard {
-    order: 1;
-    width: 100%;
-    margin: 0;
-    padding: 1.75rem;
-    clip-path: none;
-    border-radius: 22px;
-  }
 
-  .centerCard::before,
-  .centerCard::after {
+  .coursesMarketplaceCategoryBar::-webkit-scrollbar {
     display: none;
   }
 
-  /* 🔥 Explore + Learn side by side */
-  .left {
-    order: 2;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    width: 100%;
+
+  /* -----------------------------------------
+     CATEGORY CONTAINER
+  ----------------------------------------- */
+
+  .coursesMarketplaceCategoryContainer {
+    width: max-content;
+
+    min-height: 65px;
+
+    justify-content: flex-start;
+
+    gap: 28px;
+
+    padding:
+      0 20px;
   }
 
-  /* 🔥 Important Links + Connect With Us side by side */
-  .right {
-    order: 3;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    width: 100%;
+
+  .coursesMarketplaceCategoryItem {
+    font-size: 14px;
   }
 
-  /* Columns full width inside grid */
-  .column {
-    width: 100%;
-    margin-left: 1.5rem;
+
+  /* -----------------------------------------
+     SECTION
+  ----------------------------------------- */
+
+  .coursesMarketplaceSection {
+    padding:
+      30px 16px 20px;
+
+    scroll-margin-top: 75px;
   }
 
-  /* Bottom bar */
-  .bottom {
-    margin-top: 1.5rem;
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    text-align: center;
+
+  .coursesMarketplaceHeadingRow {
+    margin-bottom: 12px;
   }
-  .subscribe input {
-  
-  background: #ffffff;
+
+
+  .coursesMarketplaceSectionTitle {
+    font-size: 24px;
+  }
+
+
+  /* -----------------------------------------
+     MOBILE SLIDER
+
+     Native touch/swipe only.
+  ----------------------------------------- */
+
+  .coursesMarketplaceTrack {
+    gap: 16px;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+
+    scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
+
+    touch-action: pan-x;
+
+    padding:
+      14px 4px 20px;
+  }
+
+
+  /* -----------------------------------------
+     MOBILE CARD
+  ----------------------------------------- */
+
+  .coursesMarketplaceCard {
+    flex: 0 0 86vw;
+
+    max-width: none;
+
+    scroll-snap-align: center;
+  }
+
+
+  /* -----------------------------------------
+     MOBILE IMAGE
+  ----------------------------------------- */
+
+  .coursesMarketplaceImageWrapper {
+    margin-bottom: 12px;
+  }
+
+
+  /* -----------------------------------------
+     MOBILE PREMIUM
+  ----------------------------------------- */
+
+  .coursesMarketplacePremiumBadge {
+    top: -10px;
+
+    left: 0;
+
+    padding:
+      4px 8px;
+
+    font-size: 10px;
+  }
+
+
+  /* -----------------------------------------
+     MOBILE TITLE
+  ----------------------------------------- */
+
+  .coursesMarketplaceCardTitle {
+    font-size: 16px;
+
+    line-height: 1.3;
+  }
+
+
+  /* -----------------------------------------
+     MOBILE RATING
+  ----------------------------------------- */
+
+  .coursesMarketplaceRating {
+    margin-top: 7px;
+  }
+
+
+  .coursesMarketplaceRatingNumber {
+    font-size: 14px;
+  }
+
+
+  .coursesMarketplaceStars {
+    font-size: 13px;
+  }
+
+
+  .coursesMarketplaceReviewCount {
+    font-size: 13px;
+  }
+
+
+  /* -----------------------------------------
+     HIDE ARROWS
+
+     Mobile uses touch swipe.
+  ----------------------------------------- */
+
+  .coursesMarketplaceSliderArrow {
+    display: none;
+  }
+
 }
 
-.footer{
-  max-height: fit-content;
-}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  /* -----------------------------------------
+     CATEGORY BAR
+  ----------------------------------------- 
+
+  .coursesMarketplaceCategoryContainer {
+    gap: 24px;
+
+    padding:
+      0 16px;
+  }
+
+
+  .coursesMarketplaceCategoryItem {
+    font-size: 13px;
+  }   */
+     
+.coursesMarketplaceCategoryBar {
+  display: none;
 }
 
 
+  /* -----------------------------------------
+     SECTION
+  ----------------------------------------- */
+
+  .coursesMarketplaceSection {
+    padding:
+      20px 12px 18px;
+
+    scroll-margin-top: 70px;
+  }
+
+
+  .coursesMarketplaceSectionTitle {
+    font-size: 19px;
+    margin-bottom: -2px;
+  }
+
+
+  /* -----------------------------------------
+     TRACK
+  ----------------------------------------- */
+
+  .coursesMarketplaceTrack {
+    gap: 14px;
+
+    padding:
+      20px 3px 18px;
+  }
+
+
+  /* -----------------------------------------
+     CARD
+  ----------------------------------------- */
+
+  .coursesMarketplaceCard {
+    flex-basis: 88vw;
+  }
+
+
+  /* -----------------------------------------
+     IMAGE
+  ----------------------------------------- */
+
+  .coursesMarketplaceImageWrapper {
+    margin-bottom: 11px;
+  }
+
+
+  /* -----------------------------------------
+     TITLE
+  ----------------------------------------- */
+
+  .coursesMarketplaceCardTitle {
+    font-size: 15px;
+  }
+
+
+  /* -----------------------------------------
+     PREMIUM
+  ----------------------------------------- */
+
+  .coursesMarketplacePremiumBadge {
+    top: -17px;
+
+    padding:
+      4px 7px;
+
+    font-size: 9px;
+  }
+
+
+  /* -----------------------------------------
+     RATING
+  ----------------------------------------- */
+
+  .coursesMarketplaceRating {
+    gap: 4px;
+
+    margin-top: 6px;
+  }
+
+
+  .coursesMarketplaceRatingNumber {
+    font-size: 13px;
+  }
+
+
+  .coursesMarketplaceStars {
+    font-size: 12px;
+
+    letter-spacing: 0.5px;
+  }
+
+
+  .coursesMarketplaceReviewCount {
+    font-size: 12px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .coursesMarketplaceCategoryContainer {
+    gap: 20px;
+
+    padding:
+      0 14px;
+  }
+
+
+  .coursesMarketplaceCategoryItem {
+    font-size: 12px;
+  }
+
+
+  .coursesMarketplaceSection {
+    padding-left: 10px;
+
+    padding-right: 10px;
+  }
+
+
+  .coursesMarketplaceSectionTitle {
+    font-size: 20px;
+  }
+
+
+  .coursesMarketplaceTrack {
+    gap: 12px;
+  }
+
+
+  .coursesMarketplaceCard {
+    flex-basis: 90vw;
+  }
+
+
+  .coursesMarketplaceCardTitle {
+    font-size: 14px;
+  }
+
+
+  .coursesMarketplacePremiumBadge {
+    font-size: 9px;
+
+    padding:
+      3px 6px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .coursesMarketplaceTrack {
+    scroll-behavior: auto;
+  }
+
+
+  .coursesMarketplaceCard,
+  .coursesMarketplaceCategoryItem,
+  .coursesMarketplaceSliderArrow {
+    transition: none;
+  }
+
+}
+
+
+
+
+
+/* =========================================================
+   REMOVE MOBILE TAP / CLICK HIGHLIGHT
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .coursesMarketplaceCard {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    outline: none;
+  }
+
+  .coursesMarketplaceCard:focus,
+  .coursesMarketplaceCard:focus-visible,
+  .coursesMarketplaceCard:active {
+    outline: none;
+    background: transparent;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .coursesMarketplaceCategoryItem {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+  }
+
+  .coursesMarketplaceCategoryItem:focus,
+  .coursesMarketplaceCategoryItem:focus-visible,
+  .coursesMarketplaceCategoryItem:active {
+    outline: none;
+    background: transparent;
+  }
+}

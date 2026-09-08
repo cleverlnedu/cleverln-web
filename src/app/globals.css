@@ -176,3 +176,24 @@ body {
 
   color: #7a7a7a;
 }
+
+
+
+
+
+/* =========================================================
+   GLOBAL MOBILE TAP HIGHLIGHT
+   Removes blue background/highlight when tapping elements
+========================================================= */
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}

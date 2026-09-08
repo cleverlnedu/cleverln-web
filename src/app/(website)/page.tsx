@@ -26,13 +26,6 @@ export default function Home() {
       <AccessSection />
       
       
-      
-      
-      
-      
-      
-      
-      
     </main>
   );
 }
