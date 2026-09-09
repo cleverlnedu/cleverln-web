@@ -895,7 +895,7 @@
     touch-action: pan-x;
 
     padding:
-      14px 4px 20px;
+      24px 4px 20px;
   }
 
   
@@ -906,7 +906,7 @@
   ----------------------------------------- */
 
   .coursesMarketplaceCard {
-    flex: 0 0 86vw;
+    flex: 0 0 56vw;
 
     max-width: none;
 
@@ -928,7 +928,7 @@
   ----------------------------------------- */
 
   .coursesMarketplacePremiumBadge {
-    top: -10px;
+    top: -18px;
 
     left: 0;
 
@@ -1055,7 +1055,7 @@
   ----------------------------------------- */
 
   .coursesMarketplaceCard {
-    flex-basis: 88vw;
+    flex-basis: 52vw;
   }
 
 

@@ -46,7 +46,7 @@ function CleverLNCourseCard({
               styles.coursesMarketplacePremiumBadge
             }
           >
-            ✺ Premium
+            ✷ Most Placed
           </span>
         )}
 
@@ -279,7 +279,7 @@ function CleverLNCourseSection({
             }
             aria-label={`Next ${title} courses`}
           >
-            ›
+            ❯
           </button>
         )}
 
