@@ -23,7 +23,7 @@ export const cleverLNCourses: CleverLNCourse[] = [
     description:
       "Master AI, Generative AI and modern engineering skills through practical learning.",
     image: "/images/search-section/ai.webp",
-    rating: 4.5,
+    rating: 4.2,
     reviews: 787,
     premium: true,
     category: "Next-Gen AI",

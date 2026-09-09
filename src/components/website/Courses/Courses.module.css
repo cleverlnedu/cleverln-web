@@ -120,7 +120,7 @@
   width: 100%;
 
   padding:
-    65px 60px 25px;
+    65px 60px 5px;
 
   box-sizing: border-box;
 
@@ -394,10 +394,56 @@
 
   letter-spacing: 1px;
 
-  line-height: 1;
+  line-height: 1.2;
+}
+
+/* =========================================================
+   STARS
+========================================================= */
+
+.coursesMarketplaceStars {
+  position: relative;
+
+  display: inline-block;
+
+  width: max-content;
+
+  height: 18px;
+
+  font-size: 14px;
+
+  letter-spacing: 1px;
+
+  overflow: hidden;
 }
 
 
+.coursesMarketplaceStarsEmpty {
+  display: block;
+
+  color: #d9d9d9;
+
+  white-space: nowrap;
+}
+
+
+.coursesMarketplaceStarsFill {
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  height: 100%;
+
+  overflow: hidden;
+
+  color: #075f47;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+}
 /* =========================================================
    REVIEW COUNT
 ========================================================= */
@@ -418,29 +464,29 @@
 .coursesMarketplaceSliderArrow {
   position: absolute;
 
-  top: 50%;
+  top: 45%;
 
   transform: translateY(-50%);
 
   z-index: 100;
 
-  width: 58px;
+  width: 48px;
 
-  height: 58px;
+  height: 48px;
 
   padding: 0;
 
   border: none;
 
-  border-radius: 50%;
+  border-radius:999px;
 
   background: #ffffff;
 
   color: #555555;
 
-  font-size: 38px;
+  font-size: 28px;
 
-  line-height: 1;
+  
 
   display: flex;
 
@@ -566,7 +612,7 @@
   .coursesMarketplaceSection {
     width: 100%;
 
-    padding: 95px 80px 25px;
+    padding: 95px 80px 5px;
   }
 
 
@@ -606,6 +652,63 @@
   text-decoration: none;
 
   font-size: 16px;
+
+  font-weight: 500;
+}
+
+/* =========================================================
+   RATING
+========================================================= */
+
+.coursesMarketplaceRating {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 4px;
+
+  min-height: 20px;
+}
+
+
+/* =========================================================
+   RATING NUMBER
+========================================================= */
+
+.coursesMarketplaceRatingNumber {
+  color: #0c8565;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   STARS
+========================================================= */
+
+.coursesMarketplaceStars {
+  color: #075f47;
+
+  font-size: 14px;
+
+  letter-spacing: 1px;
+
+  line-height: 1.1;
+}
+
+
+/* =========================================================
+   REVIEW COUNT
+========================================================= */
+
+.coursesMarketplaceReviewCount {
+  color: #777778;
+
+  font-size: 14px;
 
   font-weight: 500;
 }
@@ -795,6 +898,8 @@
       14px 4px 20px;
   }
 
+  
+
 
   /* -----------------------------------------
      MOBILE CARD
@@ -860,8 +965,14 @@
 
 
   .coursesMarketplaceStars {
-    font-size: 13px;
-  }
+  color: #075f47;
+
+  font-size: 16px;
+
+  
+
+  line-height: 1.15;
+}
 
 
   .coursesMarketplaceReviewCount {
@@ -983,6 +1094,16 @@
   /* -----------------------------------------
      RATING
   ----------------------------------------- */
+  .coursesMarketplaceStars {
+  color: #075f47;
+
+  font-size: 15px;
+
+  letter-spacing: 1px;
+
+  line-height: 1.15;
+}
+
 
   .coursesMarketplaceRating {
     gap: 4px;
@@ -996,11 +1117,7 @@
   }
 
 
-  .coursesMarketplaceStars {
-    font-size: 12px;
-
-    letter-spacing: 0.5px;
-  }
+  
 
 
   .coursesMarketplaceReviewCount {

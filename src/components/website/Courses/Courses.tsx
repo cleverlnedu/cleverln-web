@@ -94,12 +94,19 @@ function CleverLNCourseCard({
           {course.rating}
         </span>
 
-        <span
-          className={
-            styles.coursesMarketplaceStars
-          }
-        >
-          ★★★★★
+        <span className={styles.coursesMarketplaceStars}>
+          <span className={styles.coursesMarketplaceStarsEmpty}>
+            ★★★★★
+          </span>
+
+          <span
+            className={styles.coursesMarketplaceStarsFill}
+            style={{
+              width: `${(course.rating / 5) * 100}%`,
+            }}
+          >
+            ★★★★★
+          </span>
         </span>
 
         <span
