@@ -179,7 +179,7 @@ const handleKeyDown = (
 
         {/* MOBILE IMAGE */}
         <Image
-          src="/hero.person.png"
+          src="/student-ambassador.webp"
           alt="UI/UX course"
           fill
           priority
