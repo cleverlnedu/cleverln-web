@@ -465,11 +465,11 @@
   } 
  
   .heroRight { 
-    height: 150px; 
+    height: 160px; 
   } 
  
   .heroImageWrapper { 
-    min-height: 150px; 
+    min-height: 160px; 
   } 
 } 
  
