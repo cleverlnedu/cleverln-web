@@ -142,7 +142,8 @@ const handleKeyDown = (
     <div className={styles.heroLeft}>
 
       <h1 className={styles.productheroHeading}>
-        Learn UI/UX and build your skills in a unique, modern way.
+        Learn UI/UX and build your skills through a modern, innovative approach.
+
       </h1>
 
       <p className={styles.heroSubtext}>
@@ -165,29 +166,27 @@ const handleKeyDown = (
 
     {/* RIGHT IMAGE */}
     <div className={styles.heroRight}>
-
       <div className={styles.heroImageWrapper}>
 
-        {/* BACKGROUND SHAPE */}
-        <Image
-          src="/hero-person.png"
-          alt="shape"
-          fill
-          priority
-          className={styles.heroBgShape}
-        />
-
-        {/* PERSON */}
+        {/* DESKTOP IMAGE */}
         <Image
           src="/hero.person.png"
-          alt="hero"
+          alt="UI/UX course"
           fill
           priority
-          className={styles.heroPerson}
+          className={styles.heroDesktopImage}
+        />
+
+        {/* MOBILE IMAGE */}
+        <Image
+          src="/hero.person.png"
+          alt="UI/UX course"
+          fill
+          priority
+          className={styles.heroMobileImage}
         />
 
       </div>
-
     </div>
 
   </div>
