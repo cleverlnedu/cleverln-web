@@ -169,7 +169,7 @@ const handleKeyDown = (
 
             {/* DESKTOP IMAGE */}
             <Image
-              src="/hero.person.png"
+              src="/products/ui/ux complete course and internship.webp"
               alt="UI/UX course"
               fill
               priority
@@ -178,7 +178,7 @@ const handleKeyDown = (
 
             {/* MOBILE IMAGE */}
             <Image
-              src="/student-ambassador.webp"
+              src="/products/student-ambassador.webp"
               alt="UI/UX course"
               fill
               priority
@@ -248,68 +248,74 @@ const handleKeyDown = (
 
 
       {/* ================= IMPACT SECTION ================= */}
-<section className={styles.impactSection}>
-  <div className={styles.impactContainer}>
+      <section className={styles.proimpactSection}>
+        <div className={styles.proimpactContainer}>
 
-    {/* TOP LABEL */}
+          {/* TOP LABEL */}
+          <p className={styles.proimpactTag}>
+            WHAT THIS PROGRAM IS ABOUT
+          </p>
 
-    <p className={styles.impactTag}>
-      WHAT THIS PROGRAM IS ABOUT
-    </p>
+          {/* MAIN HEADING */}
+          <h2 className={styles.proimpactHeading}>
+            Turn ideas into real impact with CleverLN.
+          </h2>
 
-    {/* MAIN HEADING */}
+          {/* SUBTEXT */}
+          <p className={styles.proimpactSubHeading}>
+            Build. Apply. Impact
+          </p>
 
-    <h2 className={styles.impactHeading}>
-      Turn ideas into real impact with CleverLN.
-    </h2>
+          {/* DESCRIPTION */}
+          <p className={styles.proimpactDescription}>
+            Bring your ideas to life with designs that are creative,
+            intuitive, and user-focused.
+            
+            Where creativity meets usability.
+          </p>
 
-    {/* SUBTEXT */}
+          {/* SMALL TEXT */}
+          <p className={styles.proimpactSmallText}>
+            Learn by building-weekly AI use cases inspired by real companies.
+          </p>
 
-    <p className={styles.impactSubHeading}>
-      Build. Apply. Impact
-    </p>
+          {/* COMPANY LOGOS */}
+          <div className={styles.proimpactLogos}>
 
-    {/* DESCRIPTION */}
+            <div className={styles.proimpactLogoItem}>
+              <img
+                src="/logos/miles.png"
+                alt="Miles"
+              />
+            </div>
 
-    <p className={styles.impactDescription}>
-      Bring your ideas to life with designs that are creative,
-      intuitive, and user-focused.
-      <br />
-      Where creativity meets usability.
-    </p>
+            <div className={styles.proimpactLogoItem}>
+              <img
+                src="/logos/reddit.png"
+                alt="Reddit"
+              />
+            </div>
 
-    {/* SMALL TEXT */}
+            <div className={styles.proimpactLogoItem}>
+              <img
+                src="/logos/swiggy.png"
+                alt="Swiggy"
+              />
+            </div>
 
-    <p className={styles.impactSmallText}>
-      Learn by building—weekly AI use cases inspired by real companies.
-    </p>
+          </div>
 
-    {/* COMPANY LOGOS */}
+          {/* FOOTER TEXT */}
+          <p className={styles.proimpactFooter}>
+            Learn from those who’ve built real AI systems and driven measurable growth.
+          </p>
 
-    <div className={styles.impactLogos}>
+        </div>
+      </section>
 
-  <div className={`${styles.logoItem} ${styles.logoMiles}`}>
-    <img src="/logos/miles.png" alt="Miles" />
-  </div>
 
-  <div className={`${styles.logoItem} ${styles.logoReddit}`}>
-    <img src="/logos/reddit.png" alt="Reddit" />
-  </div>
 
-  <div className={`${styles.logoItem} ${styles.logoSwiggy}`}>
-    <img src="/logos/swiggy.png" alt="Swiggy" />
-  </div>
 
-</div>
-
-    {/* FOOTER TEXT */}
-
-    <p className={styles.impactFooter}>
-      Learn from those who’ve built real AI systems and driven measurable growth.
-    </p>
-
-  </div>
-</section>
 
 
 
