@@ -169,7 +169,7 @@ const handleKeyDown = (
 
             {/* DESKTOP IMAGE */}
             <Image
-              src="/products/ui/ux complete course and internship.webp"
+              src="/products/ui-ux complete course and internship.webp"
               alt="UI/UX course"
               fill
               priority
@@ -284,21 +284,21 @@ const handleKeyDown = (
 
             <div className={styles.proimpactLogoItem}>
               <img
-                src="/logos/miles.png"
+                src="/products/mmmiles.webp"
                 alt="Miles"
               />
             </div>
 
             <div className={styles.proimpactLogoItem}>
               <img
-                src="/logos/reddit.png"
+                src="/products/redit.webp"
                 alt="Reddit"
               />
             </div>
 
             <div className={styles.proimpactLogoItem}>
               <img
-                src="/logos/swiggy.png"
+                src="/products/swiggy.webp"
                 alt="Swiggy"
               />
             </div>
@@ -323,63 +323,56 @@ const handleKeyDown = (
 
 
       {/* ================= STATS ================= */}
-<section className={styles.statsSection}>
-  <div className={styles.statsContainer}>
+      <section className={styles.prostatsSection}>
+        <div className={styles.prostatsContainer}>
 
-    {/* LEFT CARD */}
+          {/* LEFT CARD */}
+          <div className={styles.prostatsCard}>
 
-    <div className={styles.statsCard}>
+            <div className={styles.prostatsCardInner}>
+              <h3>07+</h3>
 
-  <div className={styles.statsCardInner}>
+              <p>YEARS OF EXPERIENCE</p>
+            </div>
 
-    <h3>07+</h3>
+          </div>
 
-    <p>YEARS OF EXPERIENCE</p>
+          {/* CENTER CARD */}
+          <div className={styles.prostatsCenterCard}>
 
-  </div>
+            <div className={styles.prostatsCenterLeft}>
+              <h2>20000+</h2>
+            </div>
 
-</div>
+            <div className={styles.prostatsDivider}></div>
 
-    {/* CENTER CARD */}
+            <div className={styles.prostatsCenterRight}>
 
-    <div className={styles.statsCenterCard}>
+              <p>
+                Jobs are Listed this year.
+              </p>
 
-      <div className={styles.statsCenterLeft}>
-        <h2>20000+</h2>
-      </div>
+              <p>
+                Don’t wait <span>Start with CleverLN</span> and are you ready?
+              </p>
 
-      <div className={styles.statsDivider}></div>
+            </div>
 
-      <div className={styles.statsCenterRight}>
+          </div>
 
-        <p>
-          Jobs are Listed this year.
-        </p>
+          {/* RIGHT CARD */}
+          <div className={styles.prostatsCard}>
 
-        <p>
-          Don’t wait <span>Start with CleverLN</span> and are you ready?
-        </p>
+            <h3>2K+</h3>
 
-      </div>
+            <p>
+              STUDENTS REGISTERED
+            </p>
 
-    </div>
+          </div>
 
-    {/* RIGHT CARD */}
-
-    <div className={styles.statsCard}>
-
-      <h3>2K+</h3>
-
-      <p>
-        Registered in this Years
-      </p>
-
-    </div>
-
-  </div>
-</section>
-
-
+        </div>
+      </section>
 
 
 
