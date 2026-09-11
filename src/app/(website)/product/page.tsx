@@ -135,89 +135,113 @@ const handleKeyDown = (
     <main className={styles.page}>
       
       {/* ================= HERO SECTION ================= */}
-      <section className={styles.hero}>
-  <div className={styles.heroContainer}>
+    <section className={styles.prohero}>
+      <div className={styles.proheroContainer}>
 
-    {/* LEFT CONTENT */}
-    <div className={styles.heroLeft}>
+        {/* LEFT CONTENT */}
+        <div className={styles.proheroLeft}>
 
-      <h1 className={styles.productheroHeading}>
-        Learn UI/UX and build your skills through a modern, innovative approach.
+          <h1 className={styles.proheroHeading}>
+            Learn UI/UX and build your skills through a modern, innovative approach.
+          </h1>
 
-      </h1>
+          <p className={styles.proheroSubtext}>
+            Learn UI/UX design through a practical, hands-on approach focused on
+            applications and helps you understand user behavior, design intuitive
+            interfaces, and work with industry tools like Figma.
+          </p>
 
-      <p className={styles.heroSubtext}>
-        Learn UI/UX design through a practical, hands-on approach focused on
-        applications and helps you understand user behavior, design intuitive
-        interfaces, and work with industry tools like Figma.
-      </p>
+          <div className={styles.proheroButtons}>
+            <button className={styles.proheroPrimaryBtn}>
+              Enroll Now
+            </button>
 
-      <div className={styles.heroButtons}>
-        <button className={styles.heroPrimaryBtn}>
-          Enroll Now
-        </button>
+            <button className={styles.proheroSecondaryBtn}>
+              Know More
+            </button>
+          </div>
 
-        <button className={styles.heroSecondaryBtn}>
-          Know More
-        </button>
+        </div>
+
+        {/* RIGHT IMAGE */}
+        <div className={styles.proheroRight}>
+          <div className={styles.proheroImageWrapper}>
+
+            {/* DESKTOP IMAGE */}
+            <Image
+              src="/hero.person.png"
+              alt="UI/UX course"
+              fill
+              priority
+              className={styles.proheroDesktopImage}
+            />
+
+            {/* MOBILE IMAGE */}
+            <Image
+              src="/student-ambassador.webp"
+              alt="UI/UX course"
+              fill
+              priority
+              className={styles.proheroMobileImage}
+            />
+
+          </div>
+        </div>
+
       </div>
+    </section>
 
-    </div>
 
-    {/* RIGHT IMAGE */}
-    <div className={styles.heroRight}>
-      <div className={styles.heroImageWrapper}>
 
-        {/* DESKTOP IMAGE */}
-        <Image
-          src="/hero.person.png"
-          alt="UI/UX course"
-          fill
-          priority
-          className={styles.heroDesktopImage}
-        />
 
-        {/* MOBILE IMAGE */}
-        <Image
-          src="/student-ambassador.webp"
-          alt="UI/UX course"
-          fill
-          priority
-          className={styles.heroMobileImage}
-        />
+
+
+
+    {/* ================= TRUSTED LOGOS ================= */}
+    <section className={styles.protrusted}>
+      <div className={styles.protrustedContainer}>
+
+        <p className={styles.protrustedText}>
+          Join us, grow with us, and build your future with
+
+        </p>
+
+        <div className={styles.protrustedLogos}>
+
+          <img
+            src="/logos/dell.webp"
+            alt="Rise"
+          />
+
+          <img
+            src="/logos/host.webp"
+            alt="Vertigo"
+          />
+
+          <img
+            src="/logos/linkedin.webp"
+            alt="Minty"
+          />
+
+          <img
+            src="/logos/rpay.webp"
+            alt="Glossy"
+          />
+
+          <img
+            src="/logos/slack.webp"
+            alt="Rise"
+          />
+
+          <img
+            src="/logos/spotify.webp"
+            alt="Waveless"
+          />
+
+        </div>
 
       </div>
-    </div>
-
-  </div>
-</section>
-
-
-
-
-
-
-
-
-      {/* ================= TRUSTED LOGOS ================= */}
-<section className={styles.trusted}>
-  <div className={styles.trustedContainer}>
-    
-    <p className={styles.trustedText}>
-      Trusted by world’s leading brands
-    </p>
-
-    <div className={styles.logos}>
-      <img src="/logos/rise.svg" alt="Rise" />
-      <img src="/logos/vertigo.svg" alt="Vertigo" />
-      <img src="/logos/minty.svg" alt="Minty" />
-      <img src="/logos/glossy.svg" alt="Glossy" />
-      <img src="/logos/rise.svg" alt="Rise" />
-      <img src="/logos/waveless.svg" alt="Waveless" />
-    </div>
-
-  </div>
-</section>
+    </section>
 
 
 

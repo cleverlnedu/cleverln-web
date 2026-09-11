@@ -1,15 +1,15 @@
 /* =========================================================
-   HERO — DESKTOP REFINEMENT
+   PROHERO — DESKTOP REFINEMENT
 ========================================================= */
 
-.hero {
+.prohero {
   width: 100%;
   background: #ffffff;
   overflow: hidden;
   box-sizing: border-box;
 }
 
-.heroContainer {
+.proheroContainer {
   width: 100%;
   max-width: 1620px;
   height: 605px;
@@ -25,11 +25,12 @@
   box-sizing: border-box;
 }
 
+
 /* =========================================================
    LEFT
 ========================================================= */
 
-.heroLeft {
+.proheroLeft {
   width: 100%;
   max-width: 680px;
 
@@ -41,7 +42,7 @@
   box-sizing: border-box;
 }
 
-.productheroHeading {
+.proheroHeading {
   max-width: 650px;
 
   margin: 0;
@@ -52,12 +53,10 @@
   line-height: 1.36;
   font-weight: 700;
 
-  
-
   color: #000000;
 }
 
-.heroSubtext {
+.proheroSubtext {
   max-width: 590px;
 
   margin: 34px 0 0;
@@ -71,7 +70,7 @@
   color: #3e3e3e;
 }
 
-.heroButtons {
+.proheroButtons {
   display: flex;
   align-items: center;
 
@@ -80,8 +79,8 @@
   margin-top: 34px;
 }
 
-.heroPrimaryBtn,
-.heroSecondaryBtn {
+.proheroPrimaryBtn,
+.proheroSecondaryBtn {
   width: 220px;
   height: 68px;
 
@@ -97,7 +96,7 @@
   cursor: pointer;
 }
 
-.heroPrimaryBtn {
+.proheroPrimaryBtn {
   background: linear-gradient(
     to right,
     #0eb47e 0%,
@@ -113,32 +112,31 @@
     box-shadow 0.25s ease;
 }
 
-.heroPrimaryBtn:hover {
+.proheroPrimaryBtn:hover {
   transform: translateY(-3px);
   box-shadow: 0 24px 42px rgba(0, 0, 0, 0.16);
 }
 
-.heroSecondaryBtn {
+.proheroSecondaryBtn {
   background: #eeeeee;
   color: #111111;
-
-  
 
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
 }
 
-.heroSecondaryBtn:hover {
+.proheroSecondaryBtn:hover {
   transform: translateY(-3px);
   box-shadow: 0 22px 38px rgba(0, 0, 0, 0.12);
 }
+
 
 /* =========================================================
    RIGHT IMAGE
 ========================================================= */
 
-.heroRight {
+.proheroRight {
   position: relative;
 
   width: 100%;
@@ -149,11 +147,12 @@
   justify-content: center;
 }
 
+
 /* =========================================================
    DESKTOP IMAGE
 ========================================================= */
 
-.heroDesktopImage {
+.proheroDesktopImage {
   display: block;
 
   object-fit: contain;
@@ -168,7 +167,7 @@
    MOBILE IMAGE
 ========================================================= */
 
-.heroMobileImage {
+.proheroMobileImage {
   display: none;
 
   object-fit: contain;
@@ -178,34 +177,12 @@
   height: 100%;
 }
 
-.heroImageWrapper {
+.proheroImageWrapper {
   position: relative;
 
   width: 100%;
   height: 100%;
   min-height: 605px;
-}
-
-.heroBgShape {
-  object-fit: contain;
-  object-position: center;
-
-  opacity: 0.62;
-
-  transform: scale(1.02);
-}
-
-.heroPerson {
-  object-fit: contain;
-  object-position: center;
-
-  z-index: 2;
-
-  transform: scale(1);
-
-  filter: drop-shadow(
-    0 18px 35px rgba(0, 0, 0, 0.10)
-  );
 }
 
 
@@ -215,7 +192,7 @@
 
 @media (max-width: 1439px) {
 
-  .heroContainer {
+  .proheroContainer {
     height: 520px;
     max-width: 1340px;
     width: 100%;
@@ -223,39 +200,39 @@
     grid-template-columns: 0.99fr 0.90fr;
   }
 
-  .heroLeft {
+  .proheroLeft {
     padding-left: 18px;
   }
 
-  .productheroHeading {
+  .proheroHeading {
     max-width: 580px;
     font-size: 34px;
   }
 
-  .heroSubtext {
+  .proheroSubtext {
     max-width: 520px;
     font-size: 14px;
   }
 
-  .heroButtons {
+  .proheroButtons {
     gap: 28px;
   }
 
-  .heroPrimaryBtn,
-  .heroSecondaryBtn {
+  .proheroPrimaryBtn,
+  .proheroSecondaryBtn {
     width: 175px;
     height: 50px;
-    
+
     font-family: var(--font-poppins);
     font-size: 13px;
     font-weight: 700;
   }
 
-  .heroRight {
+  .proheroRight {
     height: 500px;
   }
 
-  .heroImageWrapper {
+  .proheroImageWrapper {
     min-height: 500px;
   }
 }
@@ -267,7 +244,7 @@
 
 @media (max-width: 1100px) {
 
-  .heroContainer {
+  .proheroContainer {
     height: 500px;
 
     padding: 0 28px;
@@ -275,17 +252,17 @@
     grid-template-columns: 1fr 0.95fr;
   }
 
-  .heroLeft {
+  .proheroLeft {
     padding-left: 10px;
   }
 
-  .productheroHeading {
+  .proheroHeading {
     max-width: 500px;
     font-size: 40px;
     line-height: 1.17;
   }
 
-  .heroSubtext {
+  .proheroSubtext {
     max-width: 450px;
 
     margin-top: 27px;
@@ -294,13 +271,13 @@
     line-height: 1.85;
   }
 
-  .heroButtons {
+  .proheroButtons {
     gap: 20px;
     margin-top: 28px;
   }
 
-  .heroPrimaryBtn,
-  .heroSecondaryBtn {
+  .proheroPrimaryBtn,
+  .proheroSecondaryBtn {
     width: 165px;
     height: 52px;
 
@@ -309,181 +286,181 @@
     font-size: 14px;
   }
 
-  .heroRight {
+  .proheroRight {
     height: 500px;
   }
 
-  .heroImageWrapper {
+  .proheroImageWrapper {
     min-height: 500px;
   }
 }
 
 
-/* ========================================================= 
-   760px 
-========================================================= */ 
- 
-@media (max-width: 760px) { 
- 
-  .hero { 
-    padding: 42px 0 45px; 
-  } 
-  .heroDesktopImage {
+/* =========================================================
+   760px
+========================================================= */
+
+@media (max-width: 760px) {
+
+  .prohero {
+    padding: 42px 0 45px;
+  }
+
+  .proheroDesktopImage {
     display: none;
   }
 
-  .heroMobileImage {
+  .proheroMobileImage {
     display: block;
   }
- 
-  .heroContainer { 
-    height: auto; 
- 
-    padding: 0 24px; 
- 
-    display: flex; 
-    flex-direction: column; 
- 
-    gap: 32px; 
-  } 
- 
+
+  .proheroContainer {
+    height: auto;
+
+    padding: 0 24px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 32px;
+  }
+
   /* IMAGE FIRST */
-  .heroRight {
+  .proheroRight {
     order: 1;
   }
 
   /* CONTENT SECOND */
-  .heroLeft {
+  .proheroLeft {
     order: 2;
 
-    max-width: 650px; 
- 
-    align-items: center; 
- 
-    padding-left: 0; 
- 
-    text-align: center; 
-  } 
- 
-  .productheroHeading { 
-    max-width: 600px; 
- 
-    font-size: 30px; 
-    line-height: 1.14; 
- 
-    letter-spacing: -0.7px; 
-  } 
- 
-  .heroSubtext { 
-    max-width: 560px; 
- 
-    margin-top: 22px; 
- 
-    font-size: 14px; 
-    line-height: 1.8; 
- 
-    text-align: center; 
-  } 
- 
-  .heroButtons { 
-    justify-content: center; 
- 
-    gap: 15px; 
- 
-    margin-top: 28px; 
-  } 
- 
-  .heroPrimaryBtn, 
-  .heroSecondaryBtn { 
-    width: 165px; 
-    height: 51px; 
- 
-    border-radius: 14px; 
- 
-    font-size: 14px; 
-  } 
- 
-  .heroRight { 
-    height: 210px; 
-  } 
-   
- 
-  .heroImageWrapper { 
-    min-height: 210px; 
-  } 
-} 
- 
- 
-/* ========================================================= 
-   420px 
-========================================================= */ 
- 
-@media (max-width: 480px) { 
- 
-  .hero { 
-    padding: 34px 0 40px; 
-  } 
- 
-  .heroContainer { 
-    padding: 0 16px; 
- 
-    gap: 25px; 
-  } 
- 
-  .productheroHeading { 
-    font-size: 24px; 
-    line-height: 1.42; 
-  } 
- 
-  .heroSubtext { 
-    margin-top: 16px; 
- 
-    font-size: 13px; 
-    line-height: 1.75; 
-  } 
- 
-  .heroButtons { 
-    flex-direction: row; 
- 
-    width: 100%; 
- 
-    gap: 18px; 
- 
-    margin-top: 24px; 
-  } 
- 
-  .heroPrimaryBtn, 
-  .heroSecondaryBtn { 
-    width: 100%; 
-    max-width: 145px; 
- 
-    height: 49px; 
- 
-    border-radius: 13px; 
- 
-    font-size: 13px; 
-  } 
- 
-  .heroRight { 
-    height: 160px; 
-  } 
- 
-  .heroImageWrapper { 
-    min-height: 160px; 
-  } 
-} 
- 
- 
-/* ========================================================= 
-   REDUCED MOTION 
-========================================================= */ 
- 
-@media (prefers-reduced-motion: reduce) { 
- 
-  .heroPrimaryBtn, 
-  .heroSecondaryBtn { 
-    transition: none; 
-  } 
+    max-width: 650px;
+
+    align-items: center;
+
+    padding-left: 0;
+
+    text-align: center;
+  }
+
+  .proheroHeading {
+    max-width: 600px;
+
+    font-size: 30px;
+    line-height: 1.14;
+
+    letter-spacing: -0.7px;
+  }
+
+  .proheroSubtext {
+    max-width: 560px;
+
+    margin-top: 22px;
+
+    font-size: 14px;
+    line-height: 1.8;
+
+    text-align: center;
+  }
+
+  .proheroButtons {
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 28px;
+  }
+
+  .proheroPrimaryBtn,
+  .proheroSecondaryBtn {
+    width: 165px;
+    height: 51px;
+
+    border-radius: 14px;
+
+    font-size: 14px;
+  }
+
+  .proheroRight {
+    height: 210px;
+  }
+
+  .proheroImageWrapper {
+    min-height: 210px;
+  }
+}
+
+
+/* =========================================================
+   420px
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .prohero {
+    padding: 34px 0 40px;
+  }
+
+  .proheroContainer {
+    padding: 0 16px;
+
+    gap: 25px;
+  }
+
+  .proheroHeading {
+    font-size: 24px;
+    line-height: 1.42;
+  }
+
+  .proheroSubtext {
+    margin-top: 16px;
+
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .proheroButtons {
+    flex-direction: row;
+
+    width: 100%;
+
+    gap: 18px;
+
+    margin-top: 24px;
+  }
+
+  .proheroPrimaryBtn,
+  .proheroSecondaryBtn {
+    width: 100%;
+    max-width: 145px;
+
+    height: 49px;
+
+    border-radius: 13px;
+
+    font-size: 13px;
+  }
+
+  .proheroRight {
+    height: 160px;
+  }
+
+  .proheroImageWrapper {
+    min-height: 160px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .proheroPrimaryBtn,
+  .proheroSecondaryBtn {
+    transition: none;
+  }
 }
 
 
@@ -505,3 +482,263 @@
 
 
 
+
+
+
+
+
+/* =========================================================
+   PROTRUSTED
+   TRUSTED BY LEADING BRANDS
+========================================================= */
+
+.protrusted {
+  width: 100%;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.protrustedContainer {
+  width: 100%;
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+  padding: 50px 24px 42px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TRUSTED TEXT
+========================================================= */
+
+.protrustedText {
+  margin: 0;
+
+  font-family: var(--font-ibm);
+
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 500;
+
+  color: #a0a0a0;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   LOGOS
+========================================================= */
+
+.protrustedLogos {
+  width: 100%;
+
+  margin-top: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 45px;
+
+  opacity: 0.82;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LOGO IMAGES
+========================================================= */
+
+.protrustedLogos img {
+  display: block;
+
+  width: auto;
+  height: 35px;
+
+  max-width: 130px;
+
+  object-fit: contain;
+
+  
+
+  transition:
+    opacity 0.25s ease,
+    filter 0.25s ease;
+}
+
+.protrustedLogos img:hover {
+  opacity: 1;
+
+  filter: grayscale(0%);
+}
+
+
+/* =========================================================
+   1439px
+========================================================= */
+
+@media (max-width: 1439px) {
+
+  .protrustedContainer {
+    max-width: 800px;
+
+    padding: 48px 24px 38px;
+  }
+
+  .protrustedText {
+    font-size: 14px;
+  }
+
+  .protrustedLogos {
+    margin-top: 22px;
+
+    gap: 28px;
+  }
+
+  .protrustedLogos img {
+    height: 26px;
+
+    max-width: 120px;
+  }
+}
+
+
+/* =========================================================
+   1100px
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .protrustedContainer {
+    max-width: 900px;
+
+    padding: 26px 24px 36px;
+  }
+
+  .protrustedLogos {
+    gap: 30px;
+  }
+
+  .protrustedLogos img {
+    height: 22px;
+
+    max-width: 110px;
+  }
+}
+
+
+/* =========================================================
+   760px
+========================================================= */
+
+@media (max-width: 760px) {
+
+  .protrustedContainer {
+    width: 100%;
+
+    padding: 24px 0 32px;
+
+    align-items: center;
+
+    overflow: hidden;
+  }
+
+  .protrustedText {
+    padding: 0 20px;
+
+    font-size: 11px;
+  }
+
+  .protrustedLogos {
+    width: max-content;
+
+    max-width: none;
+
+    margin-top: 25px;
+
+    padding: 0 20px;
+
+    justify-content: flex-start;
+
+    gap: 42px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+
+    touch-action: pan-x;
+  }
+
+  .protrustedLogos::-webkit-scrollbar {
+    display: none;
+  }
+
+  .protrustedLogos img {
+    flex: 0 0 auto;
+
+    height: 23px;
+
+    max-width: 115px;
+  }
+}
+
+
+/* =========================================================
+   420px
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .protrustedContainer {
+    padding: 22px 0 28px;
+  }
+
+  .protrustedText {
+    padding: 0 16px;
+
+    font-size: 13px;
+  }
+
+  .protrustedLogos {
+    margin-top: 18px;
+
+    padding: 0 16px;
+
+    gap: 26px;
+  }
+
+  .protrustedLogos img {
+    height: 23px;
+
+    max-width: 105px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .protrustedLogos img {
+    transition: none;
+  }
+}
