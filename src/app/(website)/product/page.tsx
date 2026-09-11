@@ -528,6 +528,97 @@ const handleKeyDown = (
 
 
 
+    
+<section className={styles.protoolsSection}>
+  <div className={styles.protoolsContainer}>
+
+    {/* ================= HEADING ================= */}
+    <div className={styles.protoolsHeader}>
+      <h2>
+        Work with Industry Tools
+      </h2>
+
+      <p>
+        Core Skills You’ll Build with CleverLN
+      </p>
+    </div>
+
+
+    {/* ================= LOGOS ================= */}
+        <div className={styles.protoolsLogos}>
+
+          <img
+            src="/tools/canva.png"
+            alt="Canva"
+          />
+
+          <img
+            src="/tools/figma.png"
+            alt="Figma"
+          />
+
+          <img
+            src="/tools/claude.png"
+            alt="Claude"
+          />
+
+          <img
+            src="/tools/adobe.png"
+            alt="Adobe XD"
+          />
+
+          <img
+            src="/tools/framer.png"
+            alt="Framer"
+          />
+
+        </div>
+
+
+        {/* ================= BROCHURE CARD ================= */}
+        <div className={styles.protoolsBrochureCard}>
+
+          {/* LEFT */}
+          <div className={styles.protoolsBrochureLeft}>
+
+            <h3>
+              Access Course Brochure
+            </h3>
+
+            <p>
+              Want to know more about the course? Click the download button to check it out.
+            </p>
+
+          </div>
+
+
+          {/* RIGHT */}
+          <button
+            type="button"
+            className={styles.protoolsBrochureButton}
+          >
+            Download Brochure
+          </button>
+
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
