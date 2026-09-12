@@ -92,30 +92,28 @@ const faqs = [
     question:
       "Is technical support available if I encounter issues with the online platform?",
     answer:
-      "Yes, our dedicated technical support team is available 24/7 to assist you with any platform-related issues.",
+      "Yes, our dedicated technical support team is available 24/7 to assist you with any platform-related issues. You can reach us via chat, email, or our support portal.",
   },
-
   {
     question:
-      "Will I get access to recorded sessions and study materials?",
+      "Will I get practical projects during the course?",
     answer:
-      "Yes, all enrolled students receive lifetime access to recordings and materials.",
+      "Yes, the program focuses on practical, hands-on learning so you can apply what you learn through real-world projects and use cases.",
   },
-
   {
     question:
-      "Do I receive a certificate after completing the course?",
+      "Do I receive a certificate after completing the program?",
     answer:
-      "Yes, you will receive an industry-recognized CleverLN certificate.",
+      "Yes, you receive a certificate after successfully completing the required course and program activities.",
   },
-
   {
     question:
-      "Can beginners join this program?",
+      "Can CleverLN help me with job opportunities after the course?",
     answer:
-      "Absolutely. The course is beginner-friendly.",
+      "Yes, CleverLN provides access to career opportunities and job-related support to help you move forward after building your skills.",
   },
 ];
+
 
 
 const handleKeyDown = (
@@ -624,579 +622,131 @@ const handleKeyDown = (
 
 
 
-      {/* ================= PRICING ================= */}
-<section className={styles.pricingSection}>
+      
 
-  {/* HEADING */}
 
-  <div className={styles.pricingHeader}>
 
-    <h2>
-      CleverLN plans built for every learner.
-    </h2>
 
-    <p>
-      Built for competition. Designed for every student’s success.
-    </p>
+{/* =========================================================
+   FAQ SECTION
+========================================================= */}
 
-  </div>
+<section className={styles.profaqSection}>
 
-  {/* CARDS */}
+  <div className={styles.profaqContainer}>
 
-  <div className={styles.pricingCards}>
+    {/* HEADER */}
 
-    {/* ================= CARD 1 ================= */}
+    <div className={styles.profaqHeader}>
 
-    <div className={styles.pricingCard}>
+      <h2>
+        Let’s Clear Things Up
+      </h2>
 
-      <div className={styles.pricingLeft}>
-
-        <span className={styles.planBadge}>
-          Standard
-        </span>
-
-        <h3 className={styles.price}>
-          Rs 399<span>.00</span>
-        </h3>
-
-        <p className={styles.priceDesc}>
-          Perfect for beginners who prefer
-          flexible, self-paced learning.
-        </p>
-
-        <button
-          className={styles.buyBtn}
-          onClick={() =>
-            router.push("/dashboard?verify=true&plan=standard")
-          }
-        >
-          BUY NOW
-        </button>
-
-      </div>
-
-      <div className={styles.pricingRight}>
-
-        <ul className={styles.featuresList}>
-
-          <li>
-            <img src="/icons/check.png" alt="" />
-            Life time LMS access
-          </li>
-
-          <li>
-            <img src="/icons/check.png" alt="" />
-            Earn your <span>CleverLN</span> certificate.
-          </li>
-
-          <li>
-            <img src="/icons/check.png" alt="" />
-            Get job portal access. Apply now.
-          </li>
-
-          <li>
-            <img src="/icons/check.png" alt="" />
-            2+ Real-time projects
-          </li>
-
-          <li>
-            <img src="/icons/check.png" alt="" />
-            Integrate AI into your daily work.
-          </li>
-
-        </ul>
-
-      </div>
+      <p>
+        Quick answers to help you move forward with confidence.
+      </p>
 
     </div>
 
-    {/* ================= CARD 2 ================= */}
 
-    <div className={styles.pricingCard}>
-
-      <div className={styles.trendingBadge}>
-        Trending Plan
-      </div>
-
-      <div className={styles.pricingLeft}>
-
-        <span className={styles.planBadge}>
-          Advantage +
-        </span>
-
-        <h3 className={styles.price}>
-          Rs 1499<span>.00</span>
-        </h3>
-
-        <p className={styles.priceDesc}>
-          Perfect for students aiming to
-          grow under expert guidance.
-        </p>
-
-        <button
-          className={styles.buyBtn}
-          onClick={() =>
-            router.push("/dashboard?verify=true&plan=advantage")
-          }
-        >
-          BUY NOW
-        </button>
-
-      </div>
-
-      <div className={styles.pricingRight}>
-
-        <ul className={styles.featuresList}>
-
-          <li>
-            <img src="/icons/check.png" alt="" />
-            LMS + Interactive live sessions
-          </li>
-
-          <li>
-            <img src="/icons/check.png" alt="" />
-            Earn your<span>CleverLN Pro</span>certificate.
-          </li>
-
-          <li>
-            <img src="/icons/check.png" alt="" />
-            Get job access + LOR. Apply now.
-          </li>
-
-          <li>
-            <img src="/icons/check.png" alt="" />
-            4+ Real-time projects
-          </li>
-
-          <li>
-            <img src="/icons/check.png" alt="" />
-            100% doubt clearance & job assistance
-          </li>
-
-        </ul>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  {/* PAYMENTS */}
-
-  <div className={styles.paymentSection}>
-
-    <p>
-      Trusted by 519+ universities, we follow PPP pricing
-      to make learning accessible—along with 100% secure payments with
-    </p>
-
-    <div className={styles.paymentLogos}>
-
-      <img src="/logos/razorpay.png" alt="" />
-
-      <img src="/logos/easebuzz.png" alt="" />
-
-      <img src="/logos/nsdc.png" alt="" />
-
-      <img src="/logos/skill-india.png" alt="" />
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-
-
-
-
-
-{/* ================= CONTACT ================= */}
-
-<section className={styles.clvContactSection}>
-
-        <div className={styles.clvContactContainer}>
-
-          {/* LEFT */}
-
-          <div className={styles.clvContactLeft}>
-
-            <h2 className={styles.clvContactTitle}>
-              Want to know more?
-            </h2>
-
-            <h1 className={styles.clvContactHeading}>
-              Submit the form to get complete details.
-            </h1>
-
-            <p className={styles.clvContactDescription}>
-              Whether you have questions, need clarity,
-              or are looking for the right direction,
-              connect with our experts for the right guidance.
-            </p>
-
-          </div>
-
-          {/* RIGHT */}
-
-          <div className={styles.clvContactRight}>
-
-            {!submitted ? (
-
-              <>
-
-                {/* INPUT ROW */}
-
-                <div className={styles.clvInputWrapper}>
-
-                  {/* STEP 1 */}
-
-                  {step === 1 && (
-
-                    <input
-                      type="text"
-
-                      placeholder="Enter Your Name"
-
-                      value={name}
-
-                      onChange={(e) =>
-                        setName(e.target.value)
-                      }
-
-                      onKeyDown={handleKeyDown}
-
-                      className={styles.clvContactInput}
-                    />
-
-                  )}
-
-                  {/* STEP 2 */}
-
-                  {step === 2 && (
-
-                    <input
-                      type="tel"
-
-                      placeholder="Enter Your Phone Number"
-
-                      value={phone}
-
-                      onChange={(e) =>
-                        setPhone(e.target.value)
-                      }
-
-                      onKeyDown={handleKeyDown}
-
-                      className={styles.clvContactInput}
-                    />
-
-                  )}
-
-                  {/* STEP 3 */}
-
-                  {step === 3 && (
-
-                    <input
-                      type="email"
-
-                      placeholder="Enter Your Email"
-
-                      value={email}
-
-                      onChange={(e) =>
-                        setEmail(e.target.value)
-                      }
-
-                      onKeyDown={handleKeyDown}
-
-                      className={styles.clvContactInput}
-                    />
-
-                  )}
-
-                  {/* BUTTON */}
-
-                  <button
-                    onClick={handleNext}
-                    className={styles.clvContactButton}
-                  >
-                    {step === 3
-                      ? "Submit"
-                      : "Next"}
-                  </button>
-
-                </div>
-
-                {/* PROGRESS */}
-
-                <div className={styles.clvProgressWrapper}>
-
-                  <span
-                    className={`${styles.clvProgressBar} ${
-                      step >= 1
-                        ? styles.clvProgressActive
-                        : ""
-                    }`}
-                  />
-
-                  <span
-                    className={`${styles.clvProgressBar} ${
-                      step >= 2
-                        ? styles.clvProgressActive
-                        : ""
-                    }`}
-                  />
-
-                  <span
-                    className={`${styles.clvProgressBar} ${
-                      step >= 3
-                        ? styles.clvProgressActive
-                        : ""
-                    }`}
-                  />
-
-                </div>
-
-                <p className={styles.clvResponseText}>
-                  Get Response within 12 Hours
-                </p>
-
-              </>
-
-            ) : (
-
-              <div className={styles.clvSuccessWrapper}>
-
-                <p className={styles.clvSuccessMessage}>
-                  ✅ Thank you! We’ll contact you soon.
+    {/* FAQ LIST */}
+
+    <div className={styles.profaqList}>
+
+      {faqs.map((faq, index) => {
+
+        const isOpen = activeFAQ === index;
+
+        return (
+          <div
+            key={index}
+            className={`${styles.profaqItem} ${
+              isOpen ? styles.profaqItemOpen : ""
+            }`}
+          >
+
+            {/* QUESTION */}
+
+            <button
+              type="button"
+              className={styles.profaqQuestion}
+              onClick={() =>
+                setActiveFAQ(
+                  isOpen ? null : index
+                )
+              }
+              aria-expanded={isOpen}
+              aria-controls={`profaq-answer-${index}`}
+            >
+
+              <span className={styles.profaqQuestionText}>
+                {faq.question}
+              </span>
+
+              <span
+                className={`${styles.profaqIcon} ${
+                  isOpen
+                    ? styles.profaqIconOpen
+                    : ""
+                }`}
+                aria-hidden="true"
+              >
+                <span className={styles.profaqChevron} />
+              </span>
+
+            </button>
+
+
+            {/* ANSWER */}
+
+            <div
+              id={`profaq-answer-${index}`}
+              className={`${styles.profaqAnswerWrapper} ${
+                isOpen
+                  ? styles.profaqAnswerWrapperOpen
+                  : ""
+              }`}
+            >
+
+              <div className={styles.profaqAnswer}>
+
+                <p>
+                  {faq.answer}
                 </p>
 
               </div>
 
-            )}
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-
-
-
-
-
-
-      {/* ================= TOOLS SECTION ================= */}
-
-<section className={styles.clvToolsSection}>
-
-  <div className={styles.clvToolsContainer}>
-
-    {/* ================= HEADING ================= */}
-
-    <div className={styles.clvToolsHeader}>
-
-      <h2>
-        Work with Industry Tools
-      </h2>
-
-      <p>
-        Core Skills You’ll Build with CleverLN
-      </p>
-
-    </div>
-
-    {/* ================= LOGOS ================= */}
-
-    <div className={styles.clvToolsLogos}>
-
-      <img src="/tools/canva.png" alt="Canva" />
-
-      <img src="/tools/figma.png" alt="Figma" />
-
-      <img src="/tools/claude.png" alt="Claude" />
-
-      <img src="/tools/adobe.png" alt="Adobe XD" />
-
-      <img src="/tools/framer.png" alt="Framer" />
-
-    </div>
-
-    {/* ================= BROCHURE CARD ================= */}
-
-    <div className={styles.clvBrochureCard}>
-
-      {/* LEFT */}
-
-      <div className={styles.clvBrochureLeft}>
-
-        <h3>
-          Access Course Brochure
-        </h3>
-
-        <p>
-          Want to know more about the course? Click the download button to check it out.
-        </p>
-
-      </div>
-
-      {/* RIGHT */}
-
-      <button className={styles.clvBrochureBtn}>
-        Download Brochure
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-
-
-
-{/* ================= CTA SECTION ================= */}
-<section className={styles.ctaSection}>
-  <div className={styles.ctaContainer}>
-
-    {/* LEFT IMAGE */}
-    <div className={styles.ctaLeft}>
-      <img src="/cta/person.png" alt="person" className={styles.person} />
-      <img src="/cta/bubble.png" alt="bubble" className={styles.bubble} />
-    </div>
-
-    {/* RIGHT CONTENT */}
-    <div className={styles.ctaRight}>
-      <h2>
-        Start your journey—unlock opportunities and grow into a future leader.
-      </h2>
-
-      <p>
-        More than just courses—CleverLN connects you to real opportunities.
-        Enroll now for <strong>free job portal</strong> access and start applying with confidence.
-      </p>
-
-      <div className={styles.ctaButtons}>
-
-  <button
-    className={styles.primaryBtn}
-    onClick={() => router.push("/enroll")}
-  >
-    ENROLL TODAY TO UNLOCK FOR FREE
-  </button>
-
-  <button
-    className={styles.secondaryBtn}
-    onClick={() => router.push("/job-portal")}
-  >
-    EXPLORE JOB PORTAL
-  </button>
-
-</div>
-    </div>
-
-  </div>
-</section>
-
-
-
-
-
-
-
-
-
-{/* ================= FAQ SECTION ================= */}
-
-<section className={styles.productPageFaqSection}>
-
-  {/* HEADING */}
-
-  <div className={styles.productFaqHeading}>
-
-    <h2>
-      Let’s Clear Things Up
-    </h2>
-
-    <p>
-      Quick answers to help you move forward with confidence.
-    </p>
-
-  </div>
-
-  {/* FAQ WRAPPER */}
-
-  <div className={styles.productPageFaqWrapper}>
-
-    {faqs.map((item, index) => {
-
-      const isOpen =
-  activeFAQ === index;
-
-      return (
-
-        <div
-          key={index}
-          className={styles.productPageFaqItem}
-        >
-
-          {/* FAQ HEADER */}
-
-          <div
-            className={styles.productPageFaqHeader}
-
-            onClick={() =>
-  setActiveFAQ(
-    isOpen ? null : index
-  )
-}
-
-           
-          >
-
-            <p>
-              {item.question}
-            </p>
-
-            <div
-              className={styles.productPageFaqIcon}
-            >
-              {isOpen ? "▲" : "▼"}
             </div>
 
           </div>
+        );
 
-          {/* FAQ ANSWER */}
+      })}
 
-          {activeFAQ === index && (
-
-            <div
-              className={styles.productPageFaqBody}
-            >
-
-              <p>
-                {item.answer}
-              </p>
-
-            </div>
-
-          )}
-
-        </div>
-
-      );
-    })}
+    </div>
 
   </div>
 
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </main>
 
   );

@@ -2685,7 +2685,7 @@
 
   padding: 16px 24px;
 
-  background: #eeeeee;
+  background: #F7F7F7;
 
   border-radius: 9px;
 
@@ -3073,7 +3073,7 @@
   }
 
   .protoolsHeader p {
-    font-size: 10px;
+    font-size: 11px;
   }
 
 
@@ -3161,6 +3161,694 @@
 @media (prefers-reduced-motion: reduce) {
 
   .protoolsBrochureButton {
+    transition: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   PROFAQ
+   FAQ SECTION
+========================================================= */
+
+.profaqSection {
+  width: 100%;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.profaqContainer {
+  width: 100%;
+
+  max-width: 1140px;
+
+  margin: 0 auto;
+
+  padding: 28px 20px 55px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.profaqHeader {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.profaqHeader h2 {
+  margin: 0;
+
+  font-family: var(--font-ibm);
+
+  font-size: 28px;
+
+  line-height: 1.25;
+
+  font-weight: 700;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   SUB HEADING
+========================================================= */
+
+.profaqHeader p {
+  margin: 8px 0 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 15px;
+
+  line-height: 1.5;
+
+  font-weight: 500;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   FAQ LIST
+========================================================= */
+
+.profaqList {
+  width: 100%;
+
+  margin-top: 35px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+
+/* =========================================================
+   FAQ ITEM
+========================================================= */
+
+.profaqItem {
+  width: 100%;
+
+  background: #F7F7F7;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   QUESTION
+========================================================= */
+
+.profaqQuestion {
+  width: 100%;
+
+  min-height: 59px;
+
+  padding: 0 25px;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 29px;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  box-sizing: border-box;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
+   QUESTION TEXT
+========================================================= */
+
+.profaqQuestionText {
+  min-width: 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  font-weight: 600;
+
+  color: #363636;
+
+  transition: color 0.2s ease;
+}
+
+
+/* =========================================================
+   OPEN QUESTION
+========================================================= */
+
+.profaqItemOpen .profaqQuestionText {
+  color: #555555;
+}
+
+
+/* =========================================================
+   ICON CIRCLE
+========================================================= */
+
+.profaqIcon {
+  flex: 0 0 auto;
+
+  width: 22px;
+
+  height: 22px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #0eb47e 0%,
+    #087957 100%
+  );
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+
+/* =========================================================
+   CHEVRON
+========================================================= */
+
+.profaqChevron {
+  width: 6px;
+
+  height: 6px;
+
+  border-right: 1.9px solid #ffffff;
+
+  border-bottom: 1.9px solid #ffffff;
+
+  transform: rotate(45deg) ;
+
+  transition: transform 0.25s ease;
+}
+
+
+/* =========================================================
+   OPEN CHEVRON
+========================================================= */
+
+.profaqIconOpen .profaqChevron {
+  transform: rotate(225deg) translateY(-1px);
+}
+
+
+/* =========================================================
+   ANSWER WRAPPER
+========================================================= */
+
+.profaqAnswerWrapper {
+  display: grid;
+
+  grid-template-rows: 0fr;
+
+  transition:
+    grid-template-rows 0.28s ease;
+}
+
+
+.profaqAnswerWrapperOpen {
+  grid-template-rows: 1fr;
+}
+
+
+/* =========================================================
+   ANSWER
+========================================================= */
+
+.profaqAnswer {
+  min-height: 0;
+
+  overflow: hidden;
+
+  padding: 0 50px 0 25px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ANSWER TEXT
+========================================================= */
+
+.profaqAnswer p {
+  margin: 0;
+
+  padding: 0 0 15px;
+
+  font-family: var(--font-poppins);
+
+  font-size: 14px;
+  margin-top: -6px;
+
+  line-height: 1.65;
+
+  font-weight: 600;
+
+  color: #585858;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.profaqQuestion:hover .profaqQuestionText {
+  color: #087957;
+}
+
+.profaqQuestion:hover .profaqIcon {
+  transform: scale(1.05);
+}
+
+
+/* =========================================================
+   1439px
+========================================================= */
+
+@media (max-width: 1439px) {
+
+  .profaqContainer {
+    max-width: 900px;
+
+    padding: 27px 20px 50px;
+  }
+
+  .profaqHeader h2 {
+    font-size: 24px;
+  }
+
+  .profaqHeader p {
+    font-size: 13px;
+  }
+
+  .profaqList {
+    margin-top: 33px;
+  }
+  
+.profaqQuestion {
+  width: 100%;
+
+  min-height: 55px;
+
+  padding: 0 25px;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 29px;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  box-sizing: border-box;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
+   QUESTION TEXT
+========================================================= */
+
+.profaqQuestionText {
+  min-width: 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 12px;
+
+  line-height: 1.2;
+
+  font-weight: 600;
+
+  color: #363636;
+
+  transition: color 0.2s ease;
+}
+
+
+/* =========================================================
+   OPEN QUESTION
+========================================================= */
+
+.profaqItemOpen .profaqQuestionText {
+  color: #555555;
+}
+
+
+/* =========================================================
+   ICON CIRCLE
+========================================================= */
+
+.profaqIcon {
+  flex: 0 0 auto;
+
+  width: 20px;
+
+  height: 20px;
+
+  border-radius: 50%;
+
+}
+
+
+/* =========================================================
+   CHEVRON
+========================================================= */
+
+.profaqChevron {
+  width: 5px;
+
+  height: 5px;
+
+  border-right: 2.5px solid #ffffff;
+
+  border-bottom: 2.5px solid #ffffff;
+
+  transform: rotate(45deg) ;
+
+  transition: transform 0.25s ease;
+}
+
+
+
+
+
+
+/* =========================================================
+   ANSWER TEXT
+========================================================= */
+
+.profaqAnswer p {
+  font-size: 12px;
+  margin-top: -5px;
+}
+
+}
+
+
+/* =========================================================
+   1100px
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .profaqContainer {
+    max-width: 820px;
+
+    padding: 25px 20px 45px;
+  }
+
+  .profaqHeader h2 {
+    font-size: 22px;
+  }
+
+  .profaqHeader p {
+    font-size: 10px;
+  }
+
+  .profaqList {
+    margin-top: 30px;
+
+    gap: 9px;
+  }
+
+  .profaqQuestion {
+    min-height: 47px;
+
+    padding: 0 18px;
+  }
+
+  .profaqQuestionText {
+    font-size: 10px;
+  }
+
+  .profaqIcon {
+    width: 18px;
+
+    height: 18px;
+  }
+
+  .profaqAnswer {
+    padding: 0 18px;
+  }
+
+  .profaqAnswer p {
+    font-size: 10px;
+
+    padding-bottom: 13px;
+  }
+}
+
+
+/* =========================================================
+   760px
+========================================================= */
+
+@media (max-width: 760px) {
+
+  .profaqContainer {
+    width: 100%;
+
+    max-width: 560px;
+
+    padding: 28px 20px 40px;
+  }
+
+  .profaqHeader h2 {
+    font-size: 21px;
+  }
+
+  .profaqHeader p {
+    margin-top: 7px;
+
+    font-size: 10px;
+  }
+
+  .profaqList {
+    margin-top: 26px;
+
+    gap: 8px;
+  }
+
+  .profaqItem {
+    border-radius: 7px;
+  }
+
+  .profaqQuestion {
+    min-height: 49px;
+
+    padding: 0 15px;
+
+    gap: 12px;
+  }
+
+  .profaqQuestionText {
+    font-size: 9px;
+
+    line-height: 1.5;
+  }
+
+  .profaqIcon {
+    width: 19px;
+
+    height: 19px;
+  }
+
+  .profaqAnswer {
+    padding: 0 15px;
+  }
+
+  .profaqAnswer p {
+    font-size: 9px;
+
+    line-height: 1.65;
+
+    padding-bottom: 14px;
+  }
+}
+
+
+/* =========================================================
+   480px
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .profaqContainer {
+    padding: 25px 16px 35px;
+  }
+
+  .profaqHeader h2 {
+    font-size: 20px;
+  }
+
+  .profaqHeader p {
+    margin-top: 6px;
+
+    font-size: 11px;
+  }
+
+  .profaqList {
+    margin-top: 23px;
+
+    gap: 8px;
+  }
+
+  .profaqQuestion {
+    min-height: 48px;
+
+    padding: 0 13px;
+
+    gap: 10px;
+  }
+
+  .profaqQuestionText {
+    font-size: 10.4px;
+
+    line-height: 1.5;
+  }
+
+  .profaqIcon {
+    width: 16px;
+
+    height: 16px;
+  }
+
+  .profaqChevron {
+    width: 4px;
+
+    height: 4px;
+    margin-left: -1px;
+  }
+
+  .profaqAnswer {
+    padding: 0 13px;
+    
+  }
+
+  .profaqAnswer p {
+    font-size: 10px;
+
+    line-height: 1.65;
+    font-weight: 500;
+    margin-top: -5px;
+
+    padding-bottom: 13px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .profaqIcon,
+  .profaqChevron,
+  .profaqQuestionText,
+  .profaqAnswerWrapper {
     transition: none;
   }
 }
