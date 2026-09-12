@@ -90,27 +90,33 @@ const [activeFAQ, setActiveFAQ] =
 const faqs = [
   {
     question:
-      "Is technical support available if I encounter issues with the online platform?",
+      "Can students and professionals from any background learn UI/UX?",
     answer:
-      "Yes, our dedicated technical support team is available 24/7 to assist you with any platform-related issues. You can reach us via chat, email, or our support portal.",
+      "Yes! Anyone can learn UI/UX, regardless of their degree or background—whether you’re from Development, Arts, Sales, MBA, BCA, or any other field.",
   },
   {
     question:
-      "Will I get practical projects during the course?",
+      "What career opportunities are available after learning UI/UX?",
     answer:
-      "Yes, the program focuses on practical, hands-on learning so you can apply what you learn through real-world projects and use cases.",
+      "You can explore roles such as UI Designer, UX Designer, Product Designer, UX Researcher, Interaction Designer, and Visual Designer.",
   },
   {
     question:
-      "Do I receive a certificate after completing the program?",
+      "Will I work on real-world projects?",
     answer:
-      "Yes, you receive a certificate after successfully completing the required course and program activities.",
+      "Yes. You’ll work on practical projects and gain real-world internship experience with a company, helping you build hands-on design skills.",
   },
   {
     question:
       "Can CleverLN help me with job opportunities after the course?",
     answer:
-      "Yes, CleverLN provides access to career opportunities and job-related support to help you move forward after building your skills.",
+      "We don’t leave you after the course. Our dedicated team continues to support you with career opportunities.",
+  },
+  {
+    question:
+      "Does the CleverLN team provide doubt-clearing support after classes?",
+    answer:
+      "Yes! Dedicated mentors are available to assist and guide you, so you never feel stuck.",
   },
 ];
 
