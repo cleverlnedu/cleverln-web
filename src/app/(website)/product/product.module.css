@@ -3819,7 +3819,7 @@
     width: 4px;
 
     height: 4px;
-    margin-left: -1px;
+    
   }
 
   .profaqAnswer {
@@ -3832,7 +3832,7 @@
 
     line-height: 1.65;
     font-weight: 500;
-    margin-top: -5px;
+    margin-top: -3px;
 
     padding-bottom: 13px;
   }
