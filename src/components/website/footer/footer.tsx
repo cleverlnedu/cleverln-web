@@ -34,8 +34,16 @@ const Footer = () => {
 
             <ul>
               <li>Help Center</li>
-              <li>Privacy Policy</li>
-              <li>Terms & Conditions</li>
+              <li>
+                <Link href="/privacy-policy">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms-and-conditions">
+                  Terms & Conditions
+                </Link>
+              </li>
               <li>Support system</li>
             </ul>
           </div>
