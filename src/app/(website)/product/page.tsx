@@ -388,6 +388,320 @@ const handleKeyDown = (
 
 
 
+
+
+{/* =========================================================
+   PRICING SECTION
+========================================================= */}
+
+<section className={styles.propricingSection}>
+
+  <div className={styles.propricingContainer}>
+
+    {/* ================= HEADER ================= */}
+
+    <div className={styles.propricingHeader}>
+
+      <h2>
+        CleverLN plans built for every learner.
+      </h2>
+
+      <p>
+        Built for competition. Designed for every student’s success.
+      </p>
+
+    </div>
+
+
+    {/* ================= PRICING CARDS ================= */}
+
+    <div className={styles.propricingCards}>
+
+
+      {/* ================= STANDARD PLAN ================= */}
+
+      <div className={styles.propricingCard}>
+
+        <div className={styles.propricingCardContent}>
+
+          {/* LEFT SIDE */}
+
+          <div className={styles.propricingMain}>
+
+            <span className={styles.propricingPlanBadge}>
+              Standard
+            </span>
+
+            <div className={styles.propricingPrice}>
+              <span className={styles.propricingCurrency}>
+                Rs
+              </span>
+
+              <span className={styles.propricingAmount}>
+                21099
+              </span>
+
+              <span className={styles.propricingDecimal}>
+                .00
+              </span>
+            </div>
+
+            <p className={styles.propricingDescription}>
+              Perfect for beginners who prefer
+              flexible, self-paced learning.
+            </p>
+
+            <button
+              type="button"
+              className={styles.propricingBuyButton}
+            >
+              BUY NOW
+            </button>
+
+          </div>
+
+
+          {/* FEATURES */}
+
+          <div className={styles.propricingFeatures}>
+
+            <div className={styles.propricingFeature}>
+              <span className={styles.propricingCheck}>
+                ✓
+              </span>
+
+              <span>
+                LMS + interactive live sessions
+              </span>
+            </div>
+
+            <div className={styles.propricingFeature}>
+              <span className={styles.propricingCheck}>
+                ✓
+              </span>
+
+              <span>
+                Earn your CleverLN certificate.
+              </span>
+            </div>
+
+            <div className={styles.propricingFeature}>
+              <span className={styles.propricingCheck}>
+                ✓
+              </span>
+
+              <span>
+                Get job portal access. Apply now.
+              </span>
+            </div>
+
+            <div className={styles.propricingFeature}>
+              <span className={styles.propricingCheck}>
+                ✓
+              </span>
+
+              <span>
+                2+ Real-time projects
+              </span>
+            </div>
+
+            <div className={styles.propricingFeature}>
+              <span className={styles.propricingCheck}>
+                ✓
+              </span>
+
+              <span>
+                Integrate AI into your daily work.
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      {/* ================= ADVANTAGE PLAN ================= */}
+
+      <div
+        className={`${styles.propricingCard} ${styles.propricingCardTrending}`}
+      >
+
+        <span className={styles.propricingTrendingBadge}>
+          Trending Plan
+        </span>
+
+        <div className={styles.propricingCardContent}>
+
+          {/* LEFT SIDE */}
+
+          <div className={styles.propricingMain}>
+
+            <span className={styles.propricingPlanBadge}>
+              Advantage +
+            </span>
+
+            <div className={styles.propricingPrice}>
+              <span className={styles.propricingCurrency}>
+                Rs
+              </span>
+
+              <span className={styles.propricingAmount}>
+                23199
+              </span>
+
+              <span className={styles.propricingDecimal}>
+                .00
+              </span>
+            </div>
+
+            <p className={styles.propricingDescription}>
+              Perfect for students aiming to
+              grow under expert guidance.
+            </p>
+
+            <button
+              type="button"
+              className={styles.propricingBuyButton}
+            >
+              BUY NOW
+            </button>
+
+          </div>
+
+
+          {/* FEATURES */}
+
+          <div className={styles.propricingFeatures}>
+
+            <div className={styles.propricingFeature}>
+              <span className={styles.propricingCheck}>
+                ✓
+              </span>
+
+              <span>
+                Complete Standard plan Included
+              </span>
+            </div>
+
+            <div className={styles.propricingFeature}>
+              <span className={styles.propricingCheck}>
+                ✓
+              </span>
+
+              <span>
+                Earn your CleverLN Pro certificate.
+              </span>
+            </div>
+
+            <div className={styles.propricingFeature}>
+              <span className={styles.propricingCheck}>
+                ✓
+              </span>
+
+              <span>
+                Get Real-Time Internship + LOR
+              </span>
+            </div>
+
+            <div className={styles.propricingFeature}>
+              <span className={styles.propricingCheck}>
+                ✓
+              </span>
+
+              <span>
+                Dedicated Growth Mentor Provided
+              </span>
+            </div>
+
+            <div className={styles.propricingFeature}>
+              <span className={styles.propricingCheck}>
+                ✓
+              </span>
+
+              <span>
+                Weekly AI Interviews, Tests & Reports
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    {/* ================= TRUST TEXT ================= */}
+
+    <div className={styles.propricingTrust}>
+
+      <p>
+        Trusted by 519+ universities, we follow PPP pricing
+        to make learning accessible—along with 100% secure
+        payments with
+      </p>
+
+    </div>
+
+
+    {/* ================= PAYMENT LOGOS ================= */}
+
+    <div className={styles.propricingPaymentLogos}>
+
+      <img
+        src="/images/payment/razorpay.png"
+        alt="Razorpay"
+      />
+
+      <img
+        src="/images/payment/easebuzz.png"
+        alt="Easebuzz"
+      />
+
+      <img
+        src="/images/payment/nsdc.png"
+        alt="NSDC"
+      />
+
+      <img
+        src="/images/payment/iso.png"
+        alt="Certification"
+      />
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     {/* ================= CONTACT SECTION ================= */}
     <section className={styles.procontactSection}>
       <div className={styles.procontactContainer}>

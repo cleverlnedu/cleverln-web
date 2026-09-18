@@ -3852,3 +3852,972 @@
     transition: none;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   PROPRICING
+   PRICING SECTION
+========================================================= */
+
+.propricingSection {
+  width: 100%;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.propricingContainer {
+  width: 100%;
+
+  max-width: 1040px;
+
+  margin: 0 auto;
+
+  padding: 30px 20px 42px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.propricingHeader {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.propricingHeader h2 {
+  margin: 0;
+
+  font-family: var(--font-ibm);
+
+  font-size: 27px;
+
+  line-height: 1.25;
+
+  font-weight: 700;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.propricingHeader p {
+  margin: 8px 0 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  font-weight: 500;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   PRICING CARDS
+========================================================= */
+
+.propricingCards {
+  width: 100%;
+
+  margin-top: 42px;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 22px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.propricingCard {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 193px;
+
+  padding: 28px 25px 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #d0d0d0;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 2px 7px rgba(0, 0, 0, 0.18);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.propricingCardContent {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: 0.95fr 1.05fr;
+
+  align-items: start;
+
+  gap: 22px;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.propricingMain {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+
+/* =========================================================
+   PLAN BADGE
+========================================================= */
+
+.propricingPlanBadge {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 67px;
+
+  height: 22px;
+
+  padding: 0 9px;
+
+  background: #ffffff;
+
+  border-radius: 3px;
+
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.12);
+
+  font-family: var(--font-poppins);
+
+  font-size: 8px;
+
+  line-height: 1;
+
+  font-weight: 500;
+
+  color: #00a878;
+}
+
+
+/* =========================================================
+   TRENDING BADGE
+========================================================= */
+
+.propricingTrendingBadge {
+  position: absolute;
+
+  top: -15px;
+
+  left: 25px;
+
+  height: 25px;
+
+  padding: 0 12px;
+
+  border-radius: 5px 5px 0 0;
+
+  background: #64c1a4;
+
+  color: #ffffff;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-family: var(--font-poppins);
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+.propricingPrice {
+  display: flex;
+
+  align-items: baseline;
+
+  margin-top: 12px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   CURRENCY
+========================================================= */
+
+.propricingCurrency {
+  margin-right: 5px;
+
+  font-family: var(--font-ibm);
+
+  font-size: 18px;
+
+  line-height: 1;
+
+  font-weight: 700;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   AMOUNT
+========================================================= */
+
+.propricingAmount {
+  font-family: var(--font-ibm);
+
+  font-size: 27px;
+
+  line-height: 1;
+
+  font-weight: 700;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   DECIMAL
+========================================================= */
+
+.propricingDecimal {
+  font-family: var(--font-ibm);
+
+  font-size: 22px;
+
+  line-height: 1;
+
+  font-weight: 500;
+
+  color: #b8b8b8;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.propricingDescription {
+  max-width: 190px;
+
+  margin: 8px 0 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 8px;
+
+  line-height: 1.45;
+
+  font-weight: 400;
+
+  color: #aaaaaa;
+}
+
+
+/* =========================================================
+   BUY BUTTON
+========================================================= */
+
+.propricingBuyButton {
+  width: 68px;
+
+  height: 28px;
+
+  margin-top: 14px;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background: linear-gradient(
+    to right,
+    #0eb47e 0%,
+    #087957 100%
+  );
+
+  color: #ffffff;
+
+  font-family: var(--font-poppins);
+
+  font-size: 8px;
+
+  line-height: 1;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.propricingBuyButton:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 15px rgba(0, 0, 0, 0.14);
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.propricingFeatures {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+  padding-top: 7px;
+}
+
+
+/* =========================================================
+   FEATURE
+========================================================= */
+
+.propricingFeature {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 7px;
+
+  font-family: var(--font-poppins);
+
+  font-size: 8px;
+
+  line-height: 1.45;
+
+  font-weight: 500;
+
+  color: #222222;
+}
+
+
+/* =========================================================
+   CHECK
+========================================================= */
+
+.propricingCheck {
+  flex: 0 0 auto;
+
+  width: 13px;
+
+  height: 13px;
+
+  border: 1px solid #25b98a;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #18ae7e;
+
+  font-size: 8px;
+
+  line-height: 1;
+
+  font-weight: 700;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TRUST TEXT
+========================================================= */
+
+.propricingTrust {
+  width: 100%;
+
+  margin-top: 44px;
+
+  display: flex;
+
+  justify-content: center;
+
+  text-align: center;
+}
+
+.propricingTrust p {
+  max-width: 760px;
+
+  margin: 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 9px;
+
+  line-height: 1.5;
+
+  font-weight: 400;
+
+  color: #666666;
+}
+
+
+/* =========================================================
+   PAYMENT LOGOS
+========================================================= */
+
+.propricingPaymentLogos {
+  width: 100%;
+
+  margin-top: 9px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+}
+
+
+/* =========================================================
+   PAYMENT LOGO
+========================================================= */
+
+.propricingPaymentLogos img {
+  display: block;
+
+  width: auto;
+
+  height: 25px;
+
+  max-width: 80px;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   1439px
+========================================================= */
+
+@media (max-width: 1439px) {
+
+  .propricingContainer {
+    max-width: 1040px;
+
+    padding: 30px 20px 40px;
+  }
+
+  .propricingHeader h2 {
+    font-size: 26px;
+  }
+
+  .propricingCards {
+    margin-top: 40px;
+
+    gap: 22px;
+  }
+
+  .propricingCard {
+    min-height: 190px;
+
+    padding: 27px 24px 20px;
+  }
+
+  .propricingCardContent {
+    gap: 20px;
+  }
+
+  .propricingAmount {
+    font-size: 26px;
+  }
+
+  .propricingTrust {
+    margin-top: 42px;
+  }
+}
+
+
+/* =========================================================
+   1100px
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .propricingContainer {
+    max-width: 900px;
+
+    padding: 28px 20px 38px;
+  }
+
+  .propricingHeader h2 {
+    font-size: 24px;
+  }
+
+  .propricingHeader p {
+    font-size: 11px;
+  }
+
+  .propricingCards {
+    margin-top: 38px;
+
+    gap: 18px;
+  }
+
+  .propricingCard {
+    min-height: 185px;
+
+    padding: 25px 20px 18px;
+  }
+
+  .propricingCardContent {
+    grid-template-columns: 0.9fr 1.1fr;
+
+    gap: 17px;
+  }
+
+  .propricingAmount {
+    font-size: 24px;
+  }
+
+  .propricingCurrency {
+    font-size: 16px;
+  }
+
+  .propricingDecimal {
+    font-size: 19px;
+  }
+
+  .propricingDescription {
+    max-width: 160px;
+
+    font-size: 7px;
+  }
+
+  .propricingFeature {
+    font-size: 7px;
+  }
+
+  .propricingCheck {
+    width: 12px;
+
+    height: 12px;
+
+    font-size: 7px;
+  }
+
+  .propricingTrust {
+    margin-top: 38px;
+  }
+}
+
+
+/* =========================================================
+   760px
+========================================================= */
+
+@media (max-width: 760px) {
+
+  .propricingContainer {
+    width: 100%;
+
+    max-width: 560px;
+
+    padding: 30px 20px 38px;
+  }
+
+  .propricingHeader h2 {
+    font-size: 22px;
+
+    line-height: 1.3;
+  }
+
+  .propricingHeader p {
+    margin-top: 7px;
+
+    font-size: 10px;
+  }
+
+
+  /* =======================================================
+     CARDS
+  ======================================================= */
+
+  .propricingCards {
+    margin-top: 35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 25px;
+  }
+
+  .propricingCard {
+    min-height: auto;
+
+    padding: 27px 22px 22px;
+
+    border-radius: 9px;
+  }
+
+  .propricingCardContent {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+  }
+
+  .propricingTrendingBadge {
+    top: -14px;
+
+    left: 22px;
+
+    height: 24px;
+
+    font-size: 8px;
+  }
+
+  .propricingPlanBadge {
+    min-width: 64px;
+
+    height: 21px;
+
+    font-size: 8px;
+  }
+
+  .propricingPrice {
+    margin-top: 11px;
+  }
+
+  .propricingCurrency {
+    font-size: 16px;
+  }
+
+  .propricingAmount {
+    font-size: 24px;
+  }
+
+  .propricingDecimal {
+    font-size: 19px;
+  }
+
+  .propricingDescription {
+    max-width: 180px;
+
+    font-size: 8px;
+  }
+
+  .propricingBuyButton {
+    width: 72px;
+
+    height: 29px;
+
+    font-size: 8px;
+  }
+
+  .propricingFeatures {
+    padding-top: 5px;
+
+    gap: 9px;
+  }
+
+  .propricingFeature {
+    font-size: 8px;
+
+    gap: 6px;
+  }
+
+
+  /* =======================================================
+     TRUST
+  ======================================================= */
+
+  .propricingTrust {
+    margin-top: 34px;
+  }
+
+  .propricingTrust p {
+    max-width: 500px;
+
+    font-size: 8px;
+  }
+
+  .propricingPaymentLogos {
+    gap: 8px;
+
+    margin-top: 9px;
+  }
+
+  .propricingPaymentLogos img {
+    height: 23px;
+
+    max-width: 72px;
+  }
+}
+
+
+/* =========================================================
+   480px
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .propricingContainer {
+    padding: 26px 16px 34px;
+  }
+
+  .propricingHeader h2 {
+    font-size: 20px;
+  }
+
+  .propricingHeader p {
+    font-size: 9px;
+  }
+
+
+  /* =======================================================
+     CARDS
+  ======================================================= */
+
+  .propricingCards {
+    margin-top: 32px;
+
+    gap: 23px;
+  }
+
+  .propricingCard {
+    padding: 25px 17px 20px;
+
+    border-radius: 8px;
+  }
+
+  .propricingCardContent {
+    grid-template-columns: 0.9fr 1.1fr;
+
+    gap: 14px;
+  }
+
+  .propricingTrendingBadge {
+    top: -13px;
+
+    left: 17px;
+
+    height: 23px;
+
+    padding: 0 10px;
+
+    font-size: 7px;
+  }
+
+  .propricingPlanBadge {
+    min-width: 59px;
+
+    height: 20px;
+
+    font-size: 7px;
+  }
+
+  .propricingPrice {
+    margin-top: 10px;
+  }
+
+  .propricingCurrency {
+    margin-right: 3px;
+
+    font-size: 14px;
+  }
+
+  .propricingAmount {
+    font-size: 21px;
+  }
+
+  .propricingDecimal {
+    font-size: 17px;
+  }
+
+  .propricingDescription {
+    max-width: 145px;
+
+    margin-top: 7px;
+
+    font-size: 7px;
+
+    line-height: 1.5;
+  }
+
+  .propricingBuyButton {
+    width: 65px;
+
+    height: 27px;
+
+    margin-top: 12px;
+
+    font-size: 7px;
+  }
+
+  .propricingFeatures {
+    gap: 8px;
+
+    padding-top: 4px;
+  }
+
+  .propricingFeature {
+    font-size: 7px;
+
+    line-height: 1.4;
+
+    gap: 5px;
+  }
+
+  .propricingCheck {
+    width: 11px;
+
+    height: 11px;
+
+    font-size: 6px;
+  }
+
+
+  /* =======================================================
+     TRUST
+  ======================================================= */
+
+  .propricingTrust {
+    margin-top: 30px;
+  }
+
+  .propricingTrust p {
+    max-width: 340px;
+
+    font-size: 7px;
+
+    line-height: 1.6;
+  }
+
+  .propricingPaymentLogos {
+    gap: 6px;
+
+    margin-top: 8px;
+  }
+
+  .propricingPaymentLogos img {
+    height: 21px;
+
+    max-width: 65px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .propricingBuyButton {
+    transition: none;
+  }
+}
