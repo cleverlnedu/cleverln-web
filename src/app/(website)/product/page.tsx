@@ -652,23 +652,20 @@ const handleKeyDown = (
     <div className={styles.propricingPaymentLogos}>
 
       <img
-        src="/images/payment/razorpay.png"
-        alt="Razorpay"
+        src="/images/payment/rzrpay.webp"
+        alt="Rzrpay"
+      />
+
+      
+
+      <img
+        src="/images/payment/upi-w.webp"
+        alt="uip"
       />
 
       <img
-        src="/images/payment/easebuzz.png"
-        alt="Easebuzz"
-      />
-
-      <img
-        src="/images/payment/nsdc.png"
-        alt="NSDC"
-      />
-
-      <img
-        src="/images/payment/iso.png"
-        alt="Certification"
+        src="/images/payment/esbuzz.webp"
+        alt="Esbuzz"
       />
 
     </div>

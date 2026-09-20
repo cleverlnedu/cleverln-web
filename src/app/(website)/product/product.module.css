@@ -3905,7 +3905,7 @@
 .propricingContainer {
   width: 100%;
 
-  max-width: 1040px;
+  max-width: 1150px;
 
   margin: 0 auto;
 
@@ -3941,7 +3941,7 @@
 
   font-family: var(--font-ibm);
 
-  font-size: 27px;
+  font-size: 28px;
 
   line-height: 1.25;
 
@@ -3960,7 +3960,7 @@
 
   font-family: var(--font-poppins);
 
-  font-size: 13px;
+  font-size: 14.5px;
 
   line-height: 1.5;
 
@@ -4000,16 +4000,16 @@
 
   min-height: 193px;
 
-  padding: 28px 25px 20px;
+  padding: 28px 45px 20px;
 
   background: #ffffff;
 
-  border: 1px solid #d0d0d0;
+  
 
   border-radius: 10px;
 
   box-shadow:
-    0 2px 7px rgba(0, 0, 0, 0.18);
+    0 2px 4px rgba(0, 0, 0, 0.18);
 
   box-sizing: border-box;
 }
@@ -4028,7 +4028,7 @@
 
   align-items: start;
 
-  gap: 22px;
+  gap: 2px;
 }
 
 
@@ -4199,11 +4199,11 @@
 
   font-family: var(--font-poppins);
 
-  font-size: 8px;
+  font-size: 10px;
 
   line-height: 1.45;
 
-  font-weight: 400;
+  font-weight: 500;
 
   color: #aaaaaa;
 }
@@ -4214,7 +4214,7 @@
 ========================================================= */
 
 .propricingBuyButton {
-  width: 68px;
+  width: 84px;
 
   height: 28px;
 
@@ -4236,7 +4236,7 @@
 
   font-family: var(--font-poppins);
 
-  font-size: 8px;
+  font-size: 9px;
 
   line-height: 1;
 
@@ -4287,7 +4287,7 @@
 
   font-family: var(--font-poppins);
 
-  font-size: 8px;
+  font-size: 11px;
 
   line-height: 1.45;
 
@@ -4353,11 +4353,11 @@
 
   font-family: var(--font-poppins);
 
-  font-size: 9px;
+  font-size: 12px;
 
   line-height: 1.5;
 
-  font-weight: 400;
+  font-weight: 500;
 
   color: #666666;
 }
@@ -4378,7 +4378,7 @@
 
   justify-content: center;
 
-  gap: 10px;
+  gap: 18px;
 }
 
 
@@ -4391,7 +4391,7 @@
 
   width: auto;
 
-  height: 25px;
+  height: 23px;
 
   max-width: 80px;
 
@@ -4412,7 +4412,7 @@
   }
 
   .propricingHeader h2 {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .propricingCards {
@@ -4428,7 +4428,7 @@
   }
 
   .propricingCardContent {
-    gap: 20px;
+    gap: 1px;
   }
 
   .propricingAmount {
@@ -4670,11 +4670,11 @@
   }
 
   .propricingHeader h2 {
-    font-size: 20px;
+    font-size: 19px;
   }
 
   .propricingHeader p {
-    font-size: 9px;
+    font-size: 11px;
   }
 
 
@@ -4685,7 +4685,7 @@
   .propricingCards {
     margin-top: 32px;
 
-    gap: 23px;
+    gap: 33px;
   }
 
   .propricingCard {
@@ -4697,13 +4697,13 @@
   .propricingCardContent {
     grid-template-columns: 0.9fr 1.1fr;
 
-    gap: 14px;
+    gap: 4px;
   }
 
   .propricingTrendingBadge {
-    top: -13px;
+    top: -23px;
 
-    left: 17px;
+    left: 13px;
 
     height: 23px;
 
@@ -4721,7 +4721,7 @@
   }
 
   .propricingPrice {
-    margin-top: 10px;
+    margin-top: 15px;
   }
 
   .propricingCurrency {
@@ -4743,7 +4743,7 @@
 
     margin-top: 7px;
 
-    font-size: 7px;
+    font-size: 8.5px;
 
     line-height: 1.5;
   }
@@ -4759,13 +4759,13 @@
   }
 
   .propricingFeatures {
-    gap: 8px;
+    gap: 12px;
 
     padding-top: 4px;
   }
 
   .propricingFeature {
-    font-size: 7px;
+    font-size: 9px;
 
     line-height: 1.4;
 
@@ -4792,19 +4792,19 @@
   .propricingTrust p {
     max-width: 340px;
 
-    font-size: 7px;
+    font-size: 10px;
 
     line-height: 1.6;
   }
 
   .propricingPaymentLogos {
-    gap: 6px;
+    gap: 16px;
 
-    margin-top: 8px;
+    margin-top: 10px;
   }
 
   .propricingPaymentLogos img {
-    height: 21px;
+    height: 22px;
 
     max-width: 65px;
   }
