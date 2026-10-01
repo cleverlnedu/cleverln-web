@@ -1,6 +1,7 @@
 "use client";
 
 import { syncLmsProfile } from '@/lib/profileSync';
+import { getAuthCallbackUrl } from '@/lib/authRedirect';
 import { supabase } from '@/lib/supabase';
 import { safeReturnTo, withReturnTo } from '@/lib/returnTo';
 import Link from 'next/link';
@@ -19,7 +20,7 @@ export default function LoginPage() {
     const returnTo = safeReturnTo(window.location.search);
     const { error: authError } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: `${window.location.origin}${withReturnTo('/auth/callback', returnTo)}` },
+      options: { redirectTo: getAuthCallbackUrl(returnTo) },
     });
     if (authError) {
       setError(authError.message);

@@ -1,6 +1,7 @@
 "use client";
 
 import { supabase } from '@/lib/supabase';
+import { getAuthCallbackUrl } from '@/lib/authRedirect';
 import { safeReturnTo, withReturnTo } from '@/lib/returnTo';
 import Link from 'next/link';
 import { FormEvent, useState } from 'react';
@@ -21,7 +22,7 @@ export default function SignupPage() {
     const returnTo = safeReturnTo(window.location.search);
     const { error: authError } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: `${window.location.origin}${withReturnTo('/auth/callback', returnTo)}` },
+      options: { redirectTo: getAuthCallbackUrl(returnTo) },
     });
     if (authError) {
       setError(authError.message);
@@ -40,7 +41,7 @@ export default function SignupPage() {
       password,
       options: {
         data: { name: name.trim(), phone_number: phone.trim() },
-        emailRedirectTo: `${window.location.origin}${withReturnTo('/auth/callback', returnTo)}`,
+        emailRedirectTo: getAuthCallbackUrl(returnTo),
       },
     });
     if (authError) {
