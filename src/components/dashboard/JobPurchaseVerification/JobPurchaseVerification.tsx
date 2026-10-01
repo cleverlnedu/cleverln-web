@@ -167,7 +167,7 @@ export default function JobPurchaseVerification({
           />
 
           <span>
-            I agree to CleverLN's Terms & Conditions and
+            I agree to CleverLN&apos;s Terms & Conditions and
             Refund Policy.
           </span>
 

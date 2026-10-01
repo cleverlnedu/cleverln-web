@@ -5,16 +5,27 @@ import Image from "next/image";
 import { List, Star } from "lucide-react";
 
 import styles from "./PurchaseVerification.module.css";
+import CoursePurchaseVerification from "./CoursePurchaseVerification";
 
 interface PurchaseVerificationProps {
   plan: string;
+  courseSlug?: string;
   onPaymentSuccess?: () => void;
 }
 
 export default function PurchaseVerification({
   plan,
+  courseSlug,
   onPaymentSuccess,
 }: PurchaseVerificationProps) {
+  if (courseSlug) return <CoursePurchaseVerification courseSlug={courseSlug} />;
+  return <LegacyPurchaseVerification plan={plan} onPaymentSuccess={onPaymentSuccess} />;
+}
+
+function LegacyPurchaseVerification({
+  plan,
+  onPaymentSuccess,
+}: Omit<PurchaseVerificationProps, "courseSlug">) {
 
   const [buildPackAdded, setBuildPackAdded] = useState(false);
   const [showToast, setShowToast] = useState(false);
@@ -353,7 +364,7 @@ export default function PurchaseVerification({
           />
 
           <span>
-            I agree to CleverLN's Terms &
+            I agree to CleverLN&apos;s Terms &
             Conditions and Refund Policy.
           </span>
 

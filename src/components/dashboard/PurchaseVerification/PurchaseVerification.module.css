@@ -7,6 +7,20 @@
     margin-top:24px;
 }
 
+.courseCheckoutStatus,
+.courseCheckoutSuccess,
+.courseCheckoutError,
+.courseCheckoutNote,
+.courseCheckoutRetry {
+    margin-top: 18px;
+}
+.courseCheckoutStatus { display: flex; justify-content: center; padding: 14px; border-radius: 8px; background: #f0f8f4; }
+.courseCheckoutSuccess { display: grid; gap: 6px; padding: 16px; border: 1px solid #a7f3d0; border-radius: 9px; background: #ecfdf5; color: #065f46; font-size: 14px; }
+.courseCheckoutSuccess span, .courseCheckoutSuccess small { color: #28715b; font-size: 12px; }
+.courseCheckoutError { color: #9c2727; font-size: 13px; }
+.courseCheckoutNote { color: #718078; font-size: 12px; text-align: center; }
+.courseCheckoutRetry { display: block; margin-right: auto; margin-left: auto; padding: 10px 16px; border: 1px solid #087f65; border-radius: 7px; background: #fff; color: #087f65; font-weight: 700; cursor: pointer; }
+
 /* =========================================================
    CARD
 ========================================================= */

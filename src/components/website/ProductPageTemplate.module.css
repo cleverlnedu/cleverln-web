@@ -3988,6 +3988,28 @@
   box-sizing: border-box;
 }
 
+.coursePricingCards {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 900px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.propricingCoursePrice {
+  color: #111;
+  font-family: var(--font-ibm), Arial, sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.propricingComparePrice {
+  margin-top: 5px;
+  color: #8a9691;
+  font-size: 14px;
+  text-decoration: line-through;
+}
+
 
 /* =========================================================
    CARD

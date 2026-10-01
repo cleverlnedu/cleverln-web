@@ -974,6 +974,48 @@
   line-height: 1.15;
 }
 
+.courseMarketplaceMetadata {
+  margin-top: 5px;
+  color: #555;
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.courseMarketplaceMetadata strong {
+  font-weight: 600;
+}
+
+.courseCatalogStatus {
+  padding: 48px 0;
+  color: #52675f;
+  font-size: 16px;
+  text-align: center;
+}
+
+.catalogLoading { padding-bottom: 40px; }
+.catalogSkeletonRow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 32px;
+}
+.catalogSkeletonCard { min-width: 0; }
+.catalogSkeleton {
+  border-radius: 7px;
+  background: linear-gradient(100deg, #edf2f0 20%, #f8faf9 38%, #edf2f0 58%);
+  background-size: 220% 100%;
+  animation: courseShimmer 1.35s ease-in-out infinite;
+}
+.catalogSkeletonHeading { width: min(320px, 60%); height: 34px; margin-bottom: 18px; }
+.catalogSkeletonImage { width: 100%; aspect-ratio: 16 / 9; margin: 24px 0 14px; }
+.catalogSkeletonTitle { width: 88%; height: 18px; margin-bottom: 9px; }
+.catalogSkeletonRating { width: 56%; height: 15px; }
+.catalogLoadingLabel { position: fixed; z-index: 1200; inset: 0; display: grid; place-items: center; width: auto; margin: 0; padding: 20px; pointer-events: none; }
+.catalogLoadingLabel > span { min-width: 190px; padding: 20px 26px; border: 1px solid #e1eee7; border-radius: 18px; background: rgb(255 255 255 / 94%); box-shadow: 0 16px 48px rgb(23 59 48 / 12%); }
+@keyframes courseShimmer { to { background-position-x: -220%; } }
+@media (max-width: 900px) { .catalogSkeletonRow { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .catalogSkeletonRow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } }
+@media (prefers-reduced-motion: reduce) { .catalogSkeleton { animation: none; } }
+
 
   .coursesMarketplaceReviewCount {
     font-size: 13px;

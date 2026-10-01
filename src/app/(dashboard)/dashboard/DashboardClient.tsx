@@ -4,14 +4,14 @@ import { useRouter } from "next/navigation";
 
 import Container from "@/components/common/Container";
 
-import ProfileCard from "@/components/dashboard/ProfileCard";
-import CourseCard from "@/components/dashboard/CourseCard";
-import StudentAmbassadorCard from "@/components/dashboard/StudentAmbassadorCard";
-import PurchaseVerification from "@/components/dashboard/PurchaseVerification";
-import JobPurchaseVerification from "@/components/dashboard/JobPurchaseVerification";
 import JobCard from "@/components/dashboard/JobCard";
-import ReferralCard from "@/components/dashboard/ReferralCard";
+import JobPurchaseVerification from "@/components/dashboard/JobPurchaseVerification";
+import MyCourses from "@/components/dashboard/MyCourses/MyCourses";
 import PortalCard from "@/components/dashboard/PortalCard";
+import ProfileCard from "@/components/dashboard/ProfileCard";
+import PurchaseVerification from "@/components/dashboard/PurchaseVerification";
+import ReferralCard from "@/components/dashboard/ReferralCard";
+import StudentAmbassadorCard from "@/components/dashboard/StudentAmbassadorCard";
 
 import styles from "./Dashboard.module.css";
 
@@ -21,6 +21,7 @@ interface DashboardClientProps {
   jobVerify: boolean;
   jobPurchased: boolean;
   plan: string;
+  courseSlug?: string;
 }
 
 export default function DashboardClient({
@@ -29,6 +30,7 @@ export default function DashboardClient({
   jobVerify,
   jobPurchased,
   plan,
+  courseSlug,
 }: DashboardClientProps) {
   const router = useRouter();
 
@@ -79,7 +81,9 @@ export default function DashboardClient({
         ===================================================== */}
 
         {verify ? (
-
+          courseSlug ? (
+            <PurchaseVerification plan={plan} courseSlug={courseSlug} />
+          ) : (
           <PurchaseVerification
             plan={plan}
             onPaymentSuccess={() => {
@@ -88,6 +92,7 @@ export default function DashboardClient({
               );
             }}
           />
+          )
 
         ) : jobVerify ? (
 
@@ -112,9 +117,7 @@ export default function DashboardClient({
                 COURSE
             ================================================= */}
 
-            <CourseCard
-              purchased={purchased}
-            />
+            <MyCourses />
 
 
             {/* =================================================

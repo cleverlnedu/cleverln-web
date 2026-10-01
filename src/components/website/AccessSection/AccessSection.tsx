@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import styles from "./AccessSection.module.css";
 
@@ -111,12 +112,12 @@ export default function AccessSection() {
               CTA
           ================================================= */}
 
-          <a
+          <Link
             href="/opportunities"
             className={styles.accessButton}
           >
             Get Access
-          </a>
+          </Link>
 
         </div>
 

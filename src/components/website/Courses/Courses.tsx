@@ -1,423 +1,173 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
+import { supabase } from "@/lib/supabase";
 import styles from "./Courses.module.css";
+import LoadingIndicator from "@/components/common/LoadingIndicator";
 
-import {
-  cleverLNCourses,
-  cleverLNCategories,
-  CleverLNCourse,
-} from "@/data/coursesData";
+type Product = {
+  id: string; slug: string; title: string; description: string; thumbnail_url: string;
+  category: string; rating: number | null; review_count: number | null;
+  is_featured: boolean; is_recommended: boolean; is_trending: boolean; display_order: number;
+};
 
+let cachedCourseProducts: Product[] | null = null;
+let cachedCourseProductsAt = 0;
+let courseProductsRequest: Promise<{ products: Product[] | null; failed: boolean }> | null = null;
+const COURSE_CACHE_TTL = 2 * 60 * 1000;
+const COURSE_CACHE_KEY = "cleverln:published-courses:v1";
 
-/* =========================================================
-   COURSE CARD
-========================================================= */
-
-function CleverLNCourseCard({
-  course,
-}: {
-  course: CleverLNCourse;
-}) {
-  return (
-    <Link
-      href="/product"
-      className={styles.coursesMarketplaceCard}
-    >
-
-      {/* =================================================
-          COURSE IMAGE
-      ================================================= */}
-
-      <div
-        className={
-          styles.coursesMarketplaceImageWrapper
-        }
-      >
-
-        {/* PREMIUM BADGE */}
-
-        {course.premium && (
-          <span
-            className={
-              styles.coursesMarketplacePremiumBadge
-            }
-          >
-            ✷ Most Placed
-          </span>
-        )}
-
-        <Image
-          src={course.image}
-          alt={course.title}
-          width={320}
-          height={180}
-          className={
-            styles.coursesMarketplaceImage
-          }
-        />
-
-      </div>
-
-
-      {/* =================================================
-          COURSE TITLE
-      ================================================= */}
-
-      <h3
-        className={
-          styles.coursesMarketplaceCardTitle
-        }
-      >
-        {course.title}
-      </h3>
-
-
-      {/* =================================================
-          RATING
-      ================================================= */}
-
-      <div
-        className={
-          styles.coursesMarketplaceRating
-        }
-      >
-
-        <span
-          className={
-            styles.coursesMarketplaceRatingNumber
-          }
-        >
-          {course.rating}
-        </span>
-
-        <span className={styles.coursesMarketplaceStars}>
-          <span className={styles.coursesMarketplaceStarsEmpty}>
-            ★★★★★
-          </span>
-
-          <span
-            className={styles.coursesMarketplaceStarsFill}
-            style={{
-              width: `${(course.rating / 5) * 100}%`,
-            }}
-          >
-            ★★★★★
-          </span>
-        </span>
-
-        <span
-          className={
-            styles.coursesMarketplaceReviewCount
-          }
-        >
-          ({course.reviews})
-        </span>
-
-      </div>
-
-    </Link>
-  );
+function slugify(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
+function CourseCard({ course }: { course: Product }) {
+  const image = course.thumbnail_url || "/images/search-section/ai.webp";
+  return <Link href={`/courses/${course.slug}`} className={styles.coursesMarketplaceCard}>
+    <div className={styles.coursesMarketplaceImageWrapper}>
+      {course.is_featured && <span className={styles.coursesMarketplacePremiumBadge}>✷ Most Placed</span>}
+      <Image src={image} alt={course.title} width={320} height={180} className={styles.coursesMarketplaceImage} unoptimized={image.startsWith("http")} />
+    </div>
+    <h3 className={styles.coursesMarketplaceCardTitle}>{course.title}</h3>
+    {course.rating !== null && course.review_count !== null ? <div className={styles.coursesMarketplaceRating}>
+      <span className={styles.coursesMarketplaceRatingNumber}>{course.rating.toFixed(1)}</span>
+      <span className={styles.coursesMarketplaceStars}><span className={styles.coursesMarketplaceStarsEmpty}>★★★★★</span>
+        <span className={styles.coursesMarketplaceStarsFill} style={{ width: `${Math.max(0, Math.min(100, course.rating / 5 * 100))}%` }}>★★★★★</span>
+      </span>
+      <span className={styles.coursesMarketplaceReviewCount}>({course.review_count.toLocaleString("en-IN")})</span>
+    </div> : null}
+  </Link>;
+}
 
-/* =========================================================
-   COURSE SECTION
-========================================================= */
-
-function CleverLNCourseSection({
-  title,
-  courses,
-  sectionId,
-}: {
-  title: string;
-  courses: CleverLNCourse[];
-  sectionId: string;
-}) {
-
-  const sliderRef =
-    useRef<HTMLDivElement | null>(null);
-
-
-  /* =======================================================
-     SCROLL SLIDER
-  ======================================================= */
-
-  const scrollSlider = (
-    direction: "next" | "prev"
-  ) => {
-
-    if (!sliderRef.current) return;
-
-    const slider =
-      sliderRef.current;
-
-    const firstCard =
-      slider.querySelector(
-        `.${styles.coursesMarketplaceCard}`
-      ) as HTMLElement | null;
-
-    if (!firstCard) return;
-
-    const cardWidth =
-      firstCard.offsetWidth;
-
-    const computedStyle =
-      window.getComputedStyle(slider);
-
-    const gap =
-      parseFloat(
-        computedStyle.columnGap ||
-        computedStyle.gap ||
-        "32"
-      );
-
-    const scrollAmount =
-      cardWidth + gap;
-
-    slider.scrollBy({
-      left:
-        direction === "next"
-          ? scrollAmount
-          : -scrollAmount,
-      behavior: "smooth",
-    });
+function CourseSection({ title, courses, sectionId }: { title: string; courses: Product[]; sectionId: string }) {
+  const track = useRef<HTMLDivElement>(null);
+  if (!courses.length) return null;
+  const scroll = (direction: number) => {
+    const el = track.current;
+    if (!el) return;
+    const card = el.querySelector(`.${styles.coursesMarketplaceCard}`) as HTMLElement | null;
+    el.scrollBy({ left: direction * ((card?.offsetWidth ?? 240) + 32), behavior: "smooth" });
   };
-
-
-  /* =======================================================
-     NO COURSES
-  ======================================================= */
-
-  if (!courses || courses.length === 0) {
-    return null;
-  }
-
-
-  return (
-    <section
-      id={sectionId}
-      className={
-        styles.coursesMarketplaceSection
-      }
-    >
-
-      {/* =================================================
-          SECTION HEADING
-      ================================================= */}
-
-      <div
-        className={
-          styles.coursesMarketplaceHeadingRow
-        }
-      >
-
-        <h2
-          className={
-            styles.coursesMarketplaceSectionTitle
-          }
-        >
-          {title}
-        </h2>
-
-      </div>
-
-
-      {/* =================================================
-          COURSE SLIDER
-      ================================================= */}
-
-      <div
-        className={
-          styles.coursesMarketplaceSlider
-        }
-      >
-
-        
-
-
-        {/* =================================================
-            HORIZONTAL TRACK
-
-            Desktop:
-            Courses stay in ONE ROW.
-
-            Mobile:
-            Native horizontal touch/swipe scrolling.
-        ================================================= */}
-
-        <div
-          ref={sliderRef}
-          className={
-            styles.coursesMarketplaceTrack
-          }
-        >
-
-          {courses.map((course) => (
-            <CleverLNCourseCard
-              key={course.id}
-              course={course}
-            />
-          ))}
-
-        </div>
-
-
-        {/* =================================================
-            NEXT ARROW
-        ================================================= */}
-
-        {courses.length > 5 && (
-          <button
-            type="button"
-            className={`${styles.coursesMarketplaceSliderArrow} ${styles.coursesMarketplaceSliderArrowNext}`}
-            onClick={() =>
-              scrollSlider("next")
-            }
-            aria-label={`Next ${title} courses`}
-          >
-            ❯
-          </button>
-        )}
-
-      </div>
-
-    </section>
-  );
+  return <section id={sectionId} className={styles.coursesMarketplaceSection}>
+    <div className={styles.coursesMarketplaceHeadingRow}><h2 className={styles.coursesMarketplaceSectionTitle}>{title}</h2></div>
+    <div className={styles.coursesMarketplaceSlider}>
+      <div ref={track} className={styles.coursesMarketplaceTrack}>{courses.map((course) => <CourseCard key={course.id} course={course} />)}</div>
+      {courses.length > 5 && <button type="button" className={`${styles.coursesMarketplaceSliderArrow} ${styles.coursesMarketplaceSliderArrowNext}`} onClick={() => scroll(1)} aria-label={`Next ${title} courses`}>❯</button>}
+    </div>
+  </section>;
 }
 
-
-/* =========================================================
-   MAIN COURSES PAGE
-========================================================= */
+function CourseCatalogLoading() {
+  return <div className={styles.catalogLoading} role="status" aria-label="Loading courses">
+    {["Recommended for you", "Trending Courses in CleverLN"].map((title) => <section key={title} className={styles.coursesMarketplaceSection}>
+      <div className={`${styles.catalogSkeleton} ${styles.catalogSkeletonHeading}`} />
+      <div className={styles.catalogSkeletonRow}>{Array.from({ length: 5 }, (_, index) => <div className={styles.catalogSkeletonCard} key={index}>
+        <div className={`${styles.catalogSkeleton} ${styles.catalogSkeletonImage}`} />
+        <div className={`${styles.catalogSkeleton} ${styles.catalogSkeletonTitle}`} />
+        <div className={`${styles.catalogSkeleton} ${styles.catalogSkeletonRating}`} />
+      </div>)}</div>
+    </section>)}
+    <div
+      className={styles.catalogLoadingLabel}
+      style={{
+        position: "fixed",
+        inset: 0,
+        display: "grid",
+        placeItems: "center",
+        width: "100vw",
+        minHeight: "100vh",
+        zIndex: 1200,
+        pointerEvents: "none",
+      }}
+    >
+      <LoadingIndicator large label="Loading courses" />
+    </div>
+  </div>;
+}
 
 export default function Courses() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  return (
-    <main
-      className={
-        styles.coursesMarketplacePage
+  useEffect(() => {
+    let active = true;
+    if (cachedCourseProducts === null) {
+      try {
+        const stored = sessionStorage.getItem(COURSE_CACHE_KEY);
+        if (stored) {
+          const parsed: unknown = JSON.parse(stored);
+          if (parsed && typeof parsed === "object" && "products" in parsed && "savedAt" in parsed &&
+            Array.isArray(parsed.products) && typeof parsed.savedAt === "number") {
+            cachedCourseProducts = parsed.products as Product[];
+            cachedCourseProductsAt = parsed.savedAt;
+          }
+        }
+      } catch {
+        // Ignore malformed or unavailable browser storage and fetch fresh data.
       }
-    >
+    }
+    const initialCachedProducts = cachedCourseProducts;
+    const hasCachedProducts = initialCachedProducts !== null;
+    if (hasCachedProducts) {
+      setProducts(initialCachedProducts);
+      setLoading(false);
+    }
 
-      {/* =====================================================
-          STICKY CATEGORY NAVIGATION
+    if (hasCachedProducts && Date.now() - cachedCourseProductsAt < COURSE_CACHE_TTL) {
+      return () => { active = false; };
+    }
 
-          This exists ONLY inside the Courses component,
-          so it will not appear on other pages.
-      ===================================================== */}
+    if (!courseProductsRequest) {
+      courseProductsRequest = Promise.resolve().then(() => supabase.from("store_products")
+        .select("id,slug,title,description,thumbnail_url,category,rating,review_count,is_featured,is_recommended,is_trending,display_order")
+        .eq("status", "published").order("display_order", { ascending: true }))
+        .then(({ data, error: queryError }) => ({
+          products: queryError ? null : (data ?? []) as Product[],
+          failed: Boolean(queryError),
+        }));
+    }
 
-      <div
-        className={
-          styles.coursesMarketplaceCategoryBar
+    const request = courseProductsRequest!;
+    void request.then(({ products: nextProducts, failed }) => {
+      if (courseProductsRequest === request) courseProductsRequest = null;
+      if (!failed && nextProducts) {
+        cachedCourseProducts = nextProducts;
+        cachedCourseProductsAt = Date.now();
+        try {
+          sessionStorage.setItem(COURSE_CACHE_KEY, JSON.stringify({ products: nextProducts, savedAt: cachedCourseProductsAt }));
+        } catch {
+          // In-memory caching still works when browser storage is unavailable.
         }
-      >
+      }
+      if (!active) return;
+      if (failed) {
+        if (!hasCachedProducts) setError("We couldn’t load courses right now. Please refresh to try again.");
+      } else {
+        setProducts(nextProducts ?? []);
+        setError("");
+      }
+      setLoading(false);
+    });
+    return () => { active = false; };
+  }, []);
 
-        <nav
-          className={
-            styles.coursesMarketplaceCategoryContainer
-          }
-        >
-
-          {cleverLNCategories.map(
-            (category) => {
-
-              const sectionId =
-                category
-                  .toLowerCase()
-                  .replace(/[^a-z0-9]+/g, "-")
-                  .replace(/^-|-$/g, "");
-
-              return (
-                <a
-                  key={category}
-                  href={`#${sectionId}`}
-                  className={
-                    styles.coursesMarketplaceCategoryItem
-                  }
-                >
-                  {category}
-                </a>
-              );
-            }
-          )}
-
-        </nav>
-
-      </div>
-
-
-      {/* =====================================================
-          COURSE CONTENT
-      ===================================================== */}
-
-      <div
-        className={
-          styles.coursesMarketplaceContainer
-        }
-      >
-
-        {/* =================================================
-            RECOMMENDED
-        ================================================= */}
-
-        <CleverLNCourseSection
-          title="Recommended for you"
-          sectionId="recommended"
-          courses={
-            cleverLNCourses.slice(0, 7)
-          }
-        />
-
-
-        {/* =================================================
-            TRENDING
-        ================================================= */}
-
-        <CleverLNCourseSection
-          title="Trending Courses in CleverLN"
-          sectionId="trending"
-          courses={
-            cleverLNCourses.slice(7, 14)
-          }
-        />
-
-
-        {/* =================================================
-            CATEGORY SECTIONS
-        ================================================= */}
-
-        {cleverLNCategories.map(
-          (category) => {
-
-            const categoryCourses =
-              cleverLNCourses.filter(
-                (course) =>
-                  course.category === category
-              );
-
-            const sectionId =
-              category
-                .toLowerCase()
-                .replace(/[^a-z0-9]+/g, "-")
-                .replace(/^-|-$/g, "");
-
-            return (
-              <CleverLNCourseSection
-                key={category}
-                title={category}
-                sectionId={sectionId}
-                courses={categoryCourses}
-              />
-            );
-          }
-        )}
-
-      </div>
-
-    </main>
-  );
+  const categories = useMemo(() => [...new Set(products.map((p) => p.category).filter(Boolean))], [products]);
+  return <main className={styles.coursesMarketplacePage}>
+    {!loading && products.length > 0 && <div className={styles.coursesMarketplaceCategoryBar}><nav className={styles.coursesMarketplaceCategoryContainer}>
+      {categories.map((category) => <a key={category} href={`#${slugify(category)}`} className={styles.coursesMarketplaceCategoryItem}>{category}</a>)}
+    </nav></div>}
+    <div className={styles.coursesMarketplaceContainer}>
+      {loading && <CourseCatalogLoading />}
+      {error && <p role="alert" className={styles.courseCatalogStatus}>{error}</p>}
+      {!loading && !error && products.length === 0 && <p className={styles.courseCatalogStatus}>New courses are coming soon.</p>}
+      {!loading && !error && <>
+        <CourseSection title="Recommended for you" sectionId="recommended" courses={products.filter((p) => p.is_recommended)} />
+        <CourseSection title="Trending Courses in CleverLN" sectionId="trending" courses={products.filter((p) => p.is_trending)} />
+        {categories.map((category) => <CourseSection key={category} title={category} sectionId={slugify(category)} courses={products.filter((p) => p.category === category)} />)}
+      </>}
+    </div>
+  </main>;
 }

@@ -82,7 +82,7 @@ export default function LiveUpdatesPage() {
         <div className={styles.dliveContainer}>
           <div className={styles.dliveHeader}>
             <h1 className={styles.dliveTitle}>
-              Today's Updates
+              Today&apos;s Updates
             </h1>
           </div>
 

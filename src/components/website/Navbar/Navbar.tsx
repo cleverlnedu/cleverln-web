@@ -7,6 +7,8 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 import styles from "./Navbar.module.css";
+import { useAuth } from "@/components/website/AuthProvider";
+import LoadingIndicator from "@/components/common/LoadingIndicator";
 
 const navItems = [
   {
@@ -29,6 +31,7 @@ const navItems = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { user, loading } = useAuth();
 
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -138,10 +141,11 @@ export default function Navbar() {
             {/* LOGIN */}
 
             <Link
-              href="/login"
+              href={loading ? "/login" : user ? "/dashboard" : "/login"}
               className={styles.wLogin}
+              aria-live="polite"
             >
-              LOGIN
+              {loading ? <LoadingIndicator /> : user ? "MY LEARNING" : "LOGIN"}
             </Link>
 
 
@@ -206,6 +210,9 @@ export default function Navbar() {
               {item.title}
             </Link>
           ))}
+          <Link href={loading ? "/login" : user ? "/dashboard" : "/login"} onClick={closeMenu} className={styles.wMobileLink}>
+            {loading ? <LoadingIndicator label="Checking account" /> : user ? "My learning" : "Login"}
+          </Link>
 
         </nav>
       </div>

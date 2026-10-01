@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { AuthProvider } from "@/components/website/AuthProvider";
 
 //import Navbar from "@/components/website/Navbar/Navbar";
 //import Footer from "@/components/website/footer/footer";
@@ -75,6 +76,15 @@ export const metadata: Metadata = {
   description: "Learn UI/UX and build your skills in a unique modern way.",
 };
 
+const rootFontClasses = [
+  poppins.variable,
+  geistSans.variable,
+  geistMono.variable,
+  dmSerif.variable,
+  ibm.variable,
+  ibmHebrew.variable,
+].join(" ");
+
 /* =========================================================
 ROOT LAYOUT
 ========================================================= */
@@ -85,23 +95,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`
-        ${poppins.variable}
-        ${geistSans.variable}
-        ${geistMono.variable}
-        ${dmSerif.variable}
-        ${ibm.variable}
-        ${ibmHebrew.variable} 
-        ${poppins.variable}
-      `}
-    >
-      <body>
-        
-        {children}
-        
-      </body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={rootFontClasses}><AuthProvider>{children}</AuthProvider></body>
     </html>
   );
 }

@@ -74,11 +74,11 @@ export default function SupportPage() {
             <h1 className={styles.dsupportTitle}>
               Even if you have a small query,
               <br />
-              we're just one call away.
+              we&apos;re just one call away.
             </h1>
 
             <p className={styles.dsupportDescription}>
-              Have a question? We're always here to help.
+              Have a question? We&apos;re always here to help.
               Even the smallest query matters to us.
               Our expert team is just one call or message away.
               Reach out anytime and get the guidance you need.

@@ -7,6 +7,7 @@ interface DashboardPageProps {
     jobVerify?: string;
     jobPurchased?: string;
     plan?: string;
+    course?: string;
   }>;
 }
 
@@ -22,6 +23,7 @@ export default async function DashboardPage({
       jobVerify={params.jobVerify === "true"}
       jobPurchased={params.jobPurchased === "true"}
       plan={params.plan || "standard"}
+      courseSlug={params.course}
     />
   );
 }

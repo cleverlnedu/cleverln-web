@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import styles from "./SkillsHero.module.css";
 
 const heroProfiles = [
@@ -242,12 +243,12 @@ export default function Hero() {
           </p>
 
 
-          <a
+          <Link
             href="/courses"
             className={styles.heroButton}
           >
             Explore Now
-          </a>
+          </Link>
 
         </div>
 
