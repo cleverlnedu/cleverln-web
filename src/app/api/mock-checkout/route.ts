@@ -3,6 +3,9 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
 
+const isProductionDeployment = process.env.VERCEL_ENV === 'production'
+  || (process.env.NODE_ENV === 'production' && process.env.VERCEL_ENV !== 'preview');
+
 const createAdminClient = () => {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const secretKey = process.env.SUPABASE_SECRET_KEY;
@@ -11,7 +14,7 @@ const createAdminClient = () => {
 };
 
 export async function POST(request: NextRequest) {
-  if (process.env.VERCEL_ENV === 'production' || process.env.MOCK_CHECKOUT_ENABLED !== 'true') {
+  if (!isProductionDeployment && process.env.MOCK_CHECKOUT_ENABLED !== 'true') {
     return NextResponse.json({ error: 'Mock checkout is disabled.' }, { status: 404 });
   }
 
@@ -29,6 +32,19 @@ export async function POST(request: NextRequest) {
     const authUser = authData.user;
     if (authError || !authUser?.email || !authUser.email_confirmed_at) {
       return NextResponse.json({ error: 'A verified sign-in is required.' }, { status: 401 });
+    }
+
+    if (isProductionDeployment) {
+      const { data: allowlistedAccount, error: allowlistError } = await supabase
+        .from('mock_checkout_allowlist')
+        .select('email')
+        .eq('email', authUser.email.trim().toLowerCase())
+        .eq('enabled', true)
+        .maybeSingle();
+      if (allowlistError) throw allowlistError;
+      if (!allowlistedAccount) {
+        return NextResponse.json({ error: 'Mock checkout is not enabled for this account.' }, { status: 404 });
+      }
     }
 
     const name = String(authUser.user_metadata?.name || authUser.user_metadata?.full_name || '').trim();

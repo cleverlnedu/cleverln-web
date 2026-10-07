@@ -152,7 +152,7 @@ export default function CoursePurchaseVerification({ courseSlug }: { courseSlug:
         <button type="button" disabled={!acceptedTerms || state === "pending" || state === "error"} className={styles.dpurchasePayButton} onClick={() => void startMockPayment()}>
           {state === "pending" ? "Processing…" : "Pay Now · Test checkout"}
         </button>
-        <p className={styles.courseCheckoutNote}>Development checkout only. No payment is taken.</p>
+        <p className={styles.courseCheckoutNote}>Authorized test accounts only. No payment will be taken.</p>
       </>}
       {complete && <button type="button" className={styles.dpurchasePayButton} onClick={openCourse}>Open course</button>}
       {state === "error" && <button type="button" className={styles.courseCheckoutRetry} onClick={() => { setError(""); setIdempotencyKey(crypto.randomUUID()); setState("ready"); }}>Try checkout again</button>}
