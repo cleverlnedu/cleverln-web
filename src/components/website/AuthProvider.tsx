@@ -12,6 +12,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash.includes("access_token=")) {
+      const hash = window.location.hash;
+      const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+      const lmsTarget = isLocal ? "http://localhost:5173/dashboard" : "https://lms.cleverln.com/dashboard";
+      window.location.replace(`${lmsTarget}${hash}`);
+      return;
+    }
+
     let mounted = true;
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session: Session | null) => {
       if (mounted) {
