@@ -24,7 +24,7 @@ function slugify(value: string) {
 }
 
 function CourseCard({ course }: { course: Product }) {
-  const image = course.thumbnail_url || "/images/search-section/ai.webp";
+  const image = /*course.thumbnail_url ||*/ "/images/search-section/hr12.png";
   return <Link href={`/courses/${course.slug}`} className={styles.coursesMarketplaceCard}>
     <div className={styles.coursesMarketplaceImageWrapper}>
       {course.is_featured && <span className={styles.coursesMarketplacePremiumBadge}>✷ Most Placed</span>}
