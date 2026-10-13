@@ -122,7 +122,7 @@ export default function CoursePurchaseVerification({ courseSlug }: { courseSlug:
       <p className={styles.dpurchaseSectionTitle}>Course checkout</p>
       <div className={styles.dpurchaseCourse}>
         <div className={styles.dpurchaseCourseBanner}>
-          <Image src={product.thumbnail_url || "/images/course/digital-marketing-banner.webp"} alt={product.title} fill priority className={styles.dpurchaseBannerImage} unoptimized={product.thumbnail_url.startsWith("http")} />
+          <Image src={product.thumbnail_url || "/images/course/digital-marketing-banner.webp"} alt={product.title} fill priority className={styles.dpurchaseBannerImage} unoptimized={Boolean(product.thumbnail_url?.startsWith("http"))} />
         </div>
         <div className={styles.dpurchaseCourseContent}>
           <h2 className={styles.dpurchaseCourseTitle}>{product.title}</h2>

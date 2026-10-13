@@ -12,6 +12,7 @@ type Product = {
   slug: string;
   title: string;
   description: string;
+  thumbnail_url: string;
   sessions: number;
   price_minor: number;
   compare_at_price_minor: number | null;
@@ -61,11 +62,12 @@ function CourseSection({ title, products }: { title: string; products: Product[]
                   <span className={styles.coursesMarketplacePremiumBadge}>Special price</span>
                 )}
                 <Image
-                  src="/images/course/career-build-pack.webp"
-                  alt=""
+                  src={product.thumbnail_url || "/images/course/career-build-pack.webp"}
+                  alt={product.title}
                   width={360}
                   height={200}
                   className={styles.coursesMarketplaceImage}
+                  unoptimized={Boolean(product.thumbnail_url?.startsWith("http"))}
                 />
               </div>
               <h3 className={styles.coursesMarketplaceCardTitle}>{product.title}</h3>
@@ -105,7 +107,7 @@ export default function CoursesDatabasePage() {
     let active = true;
     void supabase
       .from('store_products')
-      .select('id,slug,title,description,sessions,price_minor,compare_at_price_minor,delivery_mode,product_courses(course_id)')
+      .select('id,slug,title,description,thumbnail_url,sessions,price_minor,compare_at_price_minor,delivery_mode,product_courses(course_id)')
       .eq('status', 'published')
       .order('created_at', { ascending: true })
       .then(({ data, error: queryError }) => {

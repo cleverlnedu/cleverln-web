@@ -65,7 +65,25 @@
   border-bottom: 0;
 }
 
+.courseImageWrapper {
+  flex: 0 0 130px;
+  width: 130px;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #eef3f0;
+  border: 1px solid #e0eae5;
+}
+
+.courseImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .courseInfo {
+  flex: 1 1 auto;
   min-width: 0;
 }
 
@@ -106,5 +124,11 @@
   .course {
     align-items: flex-start;
     flex-direction: column;
+    gap: 14px;
+  }
+
+  .courseImageWrapper {
+    width: 100%;
+    max-width: 260px;
   }
 }

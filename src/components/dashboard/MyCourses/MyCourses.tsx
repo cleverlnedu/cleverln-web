@@ -1,6 +1,7 @@
 "use client";
 
 import { supabase } from '@/lib/supabase';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import styles from './MyCourses.module.css';
@@ -11,6 +12,7 @@ type Course = {
   slug: string;
   title: string;
   description: string;
+  thumbnail_url?: string;
   grantedAt: string;
   progress: { percentComplete?: number };
 };
@@ -64,6 +66,16 @@ export default function MyCourses() {
         <div className={styles.list}>
           {courses.map((course) => (
             <article className={styles.course} key={course.id}>
+              <div className={styles.courseImageWrapper}>
+                <Image
+                  src={course.thumbnail_url || "/images/search-section/hr12.png"}
+                  alt={course.title}
+                  width={140}
+                  height={80}
+                  className={styles.courseImage}
+                  unoptimized={Boolean(course.thumbnail_url?.startsWith("http"))}
+                />
+              </div>
               <div className={styles.courseInfo}>
                 <h3 className={styles.courseTitle}>{course.title}</h3>
                 <p className={styles.courseDescription}>{course.description}</p>

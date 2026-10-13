@@ -17,14 +17,14 @@ let cachedCourseProducts: Product[] | null = null;
 let cachedCourseProductsAt = 0;
 let courseProductsRequest: Promise<{ products: Product[] | null; failed: boolean }> | null = null;
 const COURSE_CACHE_TTL = 2 * 60 * 1000;
-const COURSE_CACHE_KEY = "cleverln:published-courses:v1";
+const COURSE_CACHE_KEY = "cleverln:published-courses:v2";
 
 function slugify(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
 function CourseCard({ course }: { course: Product }) {
-  const image = /*course.thumbnail_url ||*/ "/images/search-section/hr12.png";
+  const image = course.thumbnail_url || "/images/search-section/hr12.png";
   return <Link href={`/courses/${course.slug}`} className={styles.coursesMarketplaceCard}>
     <div className={styles.coursesMarketplaceImageWrapper}>
       {course.is_featured && <span className={styles.coursesMarketplacePremiumBadge}>✷ Most Placed</span>}
