@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import ProductPageTemplate, { type ProductPageCourse } from "@/components/website/ProductPageTemplate";
-import LoadingIndicator from "@/components/common/LoadingIndicator";
+import PageLoader from "@/components/common/PageLoader";
 import styles from "@/components/website/Courses/CourseDetail.module.css";
 
 type Product = ProductPageCourse & { id: string; slug: string; product_courses: { course_id: string }[] };
@@ -69,7 +69,7 @@ export default function CourseDetailPage() {
   }, [product, router]);
 
   if (loadError) return <main className={styles.detailPage}><div className={styles.detailWrap} role="alert">{loadError}</div></main>;
-  if (!product) return <main className={styles.detailPage}><div className={`${styles.detailWrap} ${styles.detailLoadingCenter}`}><LoadingIndicator large label="Loading course" /></div></main>;
+  if (!product) return <main className={styles.detailPage}><div className={`${styles.detailWrap} ${styles.detailLoadingCenter}`}><PageLoader label="Loading course" /></div></main>;
 
   return <ProductPageTemplate
     course={product}

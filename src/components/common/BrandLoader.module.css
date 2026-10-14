@@ -1,12 +1,15 @@
 /* =========================================================
    BRAND LOADER
-   Timeline (total 2.9s, keep INTRO_MS in BrandLoader.tsx in sync):
+   Timeline (total 3.05s, keep the splash delay in BrandSplash.module.css in sync):
    0.00s  C arcs swing into place
-   0.30s  boy rises out of the C, cap in hand
-   1.00s  he winds up while gripping the top of the C
-   1.43s  cap released, flies out through the gap of the C
-   1.62s  wordmark is revealed behind the cap
-   2.55s  animated mark fades into the original logo image
+   0.30s  boy rises out of the C wearing his graduation cap
+   0.95s  his free arm reaches up (shoulder pivot 58,92.8) and grips the side of the cap at 1.30s
+   1.30s  pulls it off his head
+   1.47s  flicks it forward; cap released at 1.60s, flies through the gap of the C and over the wordmark
+   1.68s  wordmark is revealed behind the cap
+   2.75s  animated mark fades into the original logo image
+   Every hand-over (head → hand → flight) happens at identical positions, and every move is an eased
+   curve whose speed carries into the next one, so nothing jumps or stalls.
 ========================================================= */
 
 .brandLoader {
@@ -16,9 +19,10 @@
   gap: 14px;
 }
 
+/* Same widths as the Navbar logo. */
 .brandLoaderLogo {
   position: relative;
-  width: min(300px, 72vw);
+  width: 185px;
   aspect-ratio: 608 / 174;
 }
 
@@ -31,12 +35,12 @@
 }
 
 .brandLoaderImage {
-  animation: brandWordmarkReveal .98s linear 1.62s both;
+  animation: brandWordmarkReveal .99s 1.68s both;
 }
 
 .brandLoaderStage {
   overflow: visible;
-  animation: brandStageFade .3s ease-out 2.55s forwards;
+  animation: brandStageFade .3s ease-in-out 2.75s forwards;
 }
 
 .brandLoaderStage g {
@@ -45,40 +49,68 @@
 }
 
 .topArcIn {
-  animation: brandTopArcIn .5s cubic-bezier(.34, 1.45, .5, 1) both;
+  animation: brandTopArcIn .55s cubic-bezier(.22, 1.2, .36, 1) both;
 }
 
 .bottomArcIn {
-  animation: brandBottomArcIn .5s cubic-bezier(.34, 1.45, .5, 1) both;
+  animation: brandBottomArcIn .55s cubic-bezier(.22, 1.2, .36, 1) both;
 }
 
 .topArcGrip {
-  animation: brandTopArcGrip .95s ease-in-out 1s both;
+  animation: brandTopArcGrip 1.3s .95s both;
 }
 
 .boyRise {
-  animation: brandBoyRise .7s cubic-bezier(.3, .7, .4, 1) .3s both;
+  animation:
+    brandBoyRise .75s cubic-bezier(.3, 1.35, .5, 1) .3s both,
+    brandAppear .3s ease-out .3s both;
 }
 
 .boySwing {
-  animation: brandBoySwing .95s ease-in-out 1s both;
+  animation: brandBoySway 1.3s .95s both;
 }
 
-.heldCap {
-  animation: brandCapRelease 1ms linear 1.43s forwards;
+.brandLoaderStage .armThrow {
+  transform-origin: 58px 92.8px;
+  animation: brandArmThrow 1.3s .95s both;
 }
 
-.brandLoaderStage .flyingCap {
+/* On his head until the hand grips it at 1.30s… */
+.headCap {
+  animation: brandHide 1ms linear 1.3s forwards;
+}
+
+/* …then in his hand until the release at 1.60s. */
+.handCap {
   opacity: 0;
+  animation: brandHandCap .3s step-end 1.3s forwards;
+}
+
+/* The flight is split into a horizontal and a vertical ease so the cap follows a natural arc. */
+.brandLoaderStage .capX,
+.brandLoaderStage .capY,
+.brandLoaderStage .capSpin {
   transform-origin: 0 0;
-  animation: brandCapFlight .95s linear 1.43s forwards;
+}
+
+.capX {
+  opacity: 0;
+  animation: brandCapX 1s cubic-bezier(.2, .5, .4, 1) 1.6s forwards;
+}
+
+.capY {
+  animation: brandCapY 1s 1.6s both;
+}
+
+.capSpin {
+  animation: brandCapSpin 1s cubic-bezier(.3, .55, .5, 1) 1.6s both;
 }
 
 .brandLoaderLabel {
   color: #416457;
   font: 600 13px/1.5 var(--font-poppins), Arial, sans-serif;
   letter-spacing: .01em;
-  animation: brandFadeIn .35s ease-out 2.6s both;
+  animation: brandFadeIn .35s ease-out 2.75s both;
 }
 
 .brandLoaderBar {
@@ -88,7 +120,7 @@
   overflow: hidden;
   border-radius: 999px;
   background: #e3f1eb;
-  animation: brandFadeIn .35s ease-out 2.6s both;
+  animation: brandFadeIn .35s ease-out 2.75s both;
 }
 
 .brandLoaderBar::after {
@@ -102,66 +134,91 @@
 }
 
 @keyframes brandTopArcIn {
-  from { opacity: 0; transform: rotate(-55deg); }
+  from { opacity: 0; transform: rotate(-50deg); }
   to { opacity: 1; transform: none; }
 }
 
 @keyframes brandBottomArcIn {
-  from { opacity: 0; transform: rotate(55deg); }
+  from { opacity: 0; transform: rotate(50deg); }
   to { opacity: 1; transform: none; }
+}
+
+@keyframes brandAppear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes brandBoyRise {
+  from { transform: translateY(40px); }
+  to { transform: none; }
+}
+
+/*
+  Throwing arm, rotating about the shoulder (same 1.3s window as the body sway):
+  0.95s rest → 1.30s hand at the side of the cap (-73°) → 1.47s cap pulled off the head (-80°)
+  → 1.60s flicked forward to the release point (-50°, still accelerating) → follow-through, settles in the logo pose.
+*/
+@keyframes brandArmThrow {
+  0% { transform: none; animation-timing-function: cubic-bezier(.45, 0, .4, 1); }
+  26.9% { transform: rotate(-73deg); animation-timing-function: cubic-bezier(.45, 0, .55, 1); }
+  40% { transform: rotate(-80deg); animation-timing-function: cubic-bezier(.55, 0, .85, .5); }
+  50% { transform: rotate(-50deg); animation-timing-function: cubic-bezier(.15, .55, .35, 1.15); }
+  100% { transform: none; }
+}
+
+/*
+  The whole body leans back as he pulls the cap off, then into the flick. It turns about the centre of the C,
+  so the raised left arm keeps following the top arc. Exactly upright at the release (50%), so the flying cap
+  starts where the hand let go.
+*/
+@keyframes brandBoySway {
+  0% { transform: none; animation-timing-function: cubic-bezier(.45, 0, .55, 1); }
+  38% { transform: rotate(-3deg); animation-timing-function: cubic-bezier(.5, 0, .75, .5); }
+  50% { transform: none; animation-timing-function: cubic-bezier(.25, .5, .5, 1); }
+  62% { transform: rotate(2deg); animation-timing-function: cubic-bezier(.45, 0, .55, 1); }
+  100% { transform: none; }
 }
 
 /* The raised hand rides along the top arc, so the C moves a little with him. */
 @keyframes brandTopArcGrip {
-  0%, 100% { transform: none; }
-  30% { transform: rotate(3deg); }
-  48% { transform: rotate(-2.5deg); }
-  80% { transform: rotate(.6deg); }
-}
-
-@keyframes brandBoyRise {
-  0% { opacity: 0; transform: translateY(46px); }
-  15% { opacity: 1; }
-  60% { transform: translateY(-7px); }
-  80% { transform: translateY(2px); }
-  100% { opacity: 1; transform: none; }
-}
-
-/* Wind up (hand dips), throw (hand swings up toward the gap), settle. */
-@keyframes brandBoySwing {
-  0% { transform: none; }
-  30% { transform: rotate(9deg); animation-timing-function: cubic-bezier(.5, 0, .2, 1); }
-  48% { transform: rotate(-7deg); }
-  62% { transform: rotate(-8deg); }
-  80% { transform: rotate(2deg); }
+  0% { transform: none; animation-timing-function: cubic-bezier(.45, 0, .55, 1); }
+  38% { transform: rotate(-1.5deg); animation-timing-function: cubic-bezier(.5, 0, .75, .5); }
+  50% { transform: none; animation-timing-function: cubic-bezier(.25, .5, .5, 1); }
+  62% { transform: rotate(1deg); animation-timing-function: cubic-bezier(.45, 0, .55, 1); }
   100% { transform: none; }
 }
 
-@keyframes brandCapRelease {
+@keyframes brandHide {
   to { opacity: 0; }
 }
 
-/* Points sampled from a curve that leaves the hand, clears the gap of the C and arcs up over the wordmark. */
-@keyframes brandCapFlight {
-  0% { opacity: 1; transform: translate(103px, 74px) rotate(-16deg) scale(1.6); }
-  10% { transform: translate(129px, 76px) rotate(40deg) scale(1.58); }
-  20% { transform: translate(157px, 68px) rotate(95deg) scale(1.55); }
-  35% { transform: translate(202px, 48px) rotate(175deg) scale(1.5); }
-  50% { transform: translate(251px, 28px) rotate(255deg) scale(1.45); }
-  70% { opacity: 1; transform: translate(322px, -3px) rotate(360deg) scale(1.36); }
-  85% { opacity: .6; transform: translate(379px, -30px) rotate(440deg) scale(1.28); }
-  100% { opacity: 0; transform: translate(440px, -62px) rotate(520deg) scale(1.2); }
+@keyframes brandHandCap {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Starts exactly where the hand lets go (73.55, 49.64, turned 23°), dips through the gap of the C, then rises over the wordmark. */
+@keyframes brandCapX {
+  from { opacity: 1; transform: translateX(73.55px); }
+  to { opacity: 1; transform: translateX(440px); }
+}
+
+@keyframes brandCapY {
+  0% { transform: translateY(49.64px); animation-timing-function: cubic-bezier(.3, .6, .6, 1); }
+  12% { transform: translateY(86px); animation-timing-function: cubic-bezier(.4, 0, .7, .8); }
+  100% { transform: translateY(-62px); }
+}
+
+@keyframes brandCapSpin {
+  0% { opacity: 1; transform: rotate(23deg); }
+  70% { opacity: 1; }
+  100% { opacity: 0; transform: rotate(520deg) scale(.8); }
 }
 
 /* The wordmark (x ≥ 155 of 608) opens just behind the flying cap; the mark area opens last, under the identical SVG. */
 @keyframes brandWordmarkReveal {
-  0% { clip-path: inset(0 74.5% 0 25.5%); }
-  14.3% { clip-path: inset(0 68.75% 0 25.5%); }
-  28.6% { clip-path: inset(0 61.3% 0 25.5%); }
-  49% { clip-path: inset(0 49.8% 0 25.5%); }
-  63.3% { clip-path: inset(0 40.8% 0 25.5%); }
-  77.6% { clip-path: inset(0 30.9% 0 25.5%); animation-timing-function: ease-out; }
-  95% { clip-path: inset(0 0 0 25.5%); }
+  0% { clip-path: inset(0 74.5% 0 25.5%); animation-timing-function: cubic-bezier(.45, .05, .55, .95); }
+  96% { clip-path: inset(0 0 0 25.5%); animation-timing-function: linear; }
   100% { clip-path: inset(0 0 0 0); }
 }
 
@@ -177,6 +234,14 @@
 @keyframes brandBarSlide {
   from { transform: translateX(-100%); }
   to { transform: translateX(250%); }
+}
+
+@media (max-width: 1400px) {
+  .brandLoaderLogo { width: 155px; }
+}
+
+@media (max-width: 420px) {
+  .brandLoaderLogo { width: 142px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
