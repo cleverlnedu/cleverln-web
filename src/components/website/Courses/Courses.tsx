@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import styles from "./Courses.module.css";
-import LoadingIndicator from "@/components/common/LoadingIndicator";
+import BrandLoader from "@/components/common/BrandLoader";
 
 type Product = {
   id: string; slug: string; title: string; description: string; thumbnail_url: string;
@@ -59,31 +59,9 @@ function CourseSection({ title, courses, sectionId }: { title: string; courses: 
   </section>;
 }
 
-function CourseCatalogLoading() {
-  return <div className={styles.catalogLoading} role="status" aria-label="Loading courses">
-    {["Recommended for you", "Trending Courses in CleverLN"].map((title) => <section key={title} className={styles.coursesMarketplaceSection}>
-      <div className={`${styles.catalogSkeleton} ${styles.catalogSkeletonHeading}`} />
-      <div className={styles.catalogSkeletonRow}>{Array.from({ length: 5 }, (_, index) => <div className={styles.catalogSkeletonCard} key={index}>
-        <div className={`${styles.catalogSkeleton} ${styles.catalogSkeletonImage}`} />
-        <div className={`${styles.catalogSkeleton} ${styles.catalogSkeletonTitle}`} />
-        <div className={`${styles.catalogSkeleton} ${styles.catalogSkeletonRating}`} />
-      </div>)}</div>
-    </section>)}
-    <div
-      className={styles.catalogLoadingLabel}
-      style={{
-        position: "fixed",
-        inset: 0,
-        display: "grid",
-        placeItems: "center",
-        width: "100vw",
-        minHeight: "100vh",
-        zIndex: 1200,
-        pointerEvents: "none",
-      }}
-    >
-      <LoadingIndicator large label="Loading courses" />
-    </div>
+function CourseCatalogLoading({ onIntroEnd }: { onIntroEnd: () => void }) {
+  return <div className={styles.catalogLoading}>
+    <BrandLoader label="Loading courses" onIntroEnd={onIntroEnd} />
   </div>;
 }
 
@@ -91,6 +69,10 @@ export default function Courses() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  // On an uncached load the brand intro plays to the end before the catalog replaces it.
+  const [introDone, setIntroDone] = useState(false);
+  const finishIntro = useCallback(() => setIntroDone(true), []);
+  const showLoader = loading || !introDone;
 
   useEffect(() => {
     let active = true;
@@ -114,6 +96,7 @@ export default function Courses() {
     if (hasCachedProducts) {
       setProducts(initialCachedProducts);
       setLoading(false);
+      setIntroDone(true);
     }
 
     if (hasCachedProducts && Date.now() - cachedCourseProductsAt < COURSE_CACHE_TTL) {
@@ -156,14 +139,14 @@ export default function Courses() {
 
   const categories = useMemo(() => [...new Set(products.map((p) => p.category).filter(Boolean))], [products]);
   return <main className={styles.coursesMarketplacePage}>
-    {!loading && products.length > 0 && <div className={styles.coursesMarketplaceCategoryBar}><nav className={styles.coursesMarketplaceCategoryContainer}>
+    {!showLoader && products.length > 0 && <div className={styles.coursesMarketplaceCategoryBar}><nav className={styles.coursesMarketplaceCategoryContainer}>
       {categories.map((category) => <a key={category} href={`#${slugify(category)}`} className={styles.coursesMarketplaceCategoryItem}>{category}</a>)}
     </nav></div>}
     <div className={styles.coursesMarketplaceContainer}>
-      {loading && <CourseCatalogLoading />}
-      {error && <p role="alert" className={styles.courseCatalogStatus}>{error}</p>}
-      {!loading && !error && products.length === 0 && <p className={styles.courseCatalogStatus}>New courses are coming soon.</p>}
-      {!loading && !error && <>
+      {showLoader && <CourseCatalogLoading onIntroEnd={finishIntro} />}
+      {!showLoader && error && <p role="alert" className={styles.courseCatalogStatus}>{error}</p>}
+      {!showLoader && !error && products.length === 0 && <p className={styles.courseCatalogStatus}>New courses are coming soon.</p>}
+      {!showLoader && !error && <>
         <CourseSection title="Recommended for you" sectionId="recommended" courses={products.filter((p) => p.is_recommended)} />
         <CourseSection title="Trending Courses in CleverLN" sectionId="trending" courses={products.filter((p) => p.is_trending)} />
         {categories.map((category) => <CourseSection key={category} title={category} sectionId={slugify(category)} courses={products.filter((p) => p.category === category)} />)}
