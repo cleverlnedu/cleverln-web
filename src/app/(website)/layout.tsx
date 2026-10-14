@@ -1,5 +1,6 @@
 import Navbar from "@/components/website/Navbar/Navbar";
 import Footer from "@/components/website/footer/footer";
+import SmoothScroll from "@/components/website/SmoothScroll/SmoothScroll";
 
 
 export default function WebsiteLayout({
@@ -9,6 +10,7 @@ export default function WebsiteLayout({
 }) {
   return (
     <>
+      <SmoothScroll />
       <Navbar />
       {children}
       <Footer />
