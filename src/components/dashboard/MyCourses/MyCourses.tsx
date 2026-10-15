@@ -7,8 +7,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment, useEffect, useState } from 'react';
 import LoadingIndicator from '@/components/common/LoadingIndicator';
-// The course card deliberately shares the Job card's look, so it uses the same styles.
-import cardStyles from '@/components/dashboard/JobCard/JobCard.module.css';
 import styles from './MyCourses.module.css';
 
 type Course = {
@@ -55,14 +53,14 @@ export default function MyCourses() {
 
   return (
     <motion.section
-      className={cardStyles.djobRoot}
+      className={styles.mcourseRoot}
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
     >
       {hasCourses ? (
-        <div className={cardStyles.djobPurchasedCard}>
-          <p className={cardStyles.djobSectionTitle}>Course</p>
+        <div className={styles.mcoursePurchasedCard}>
+          <p className={styles.mcourseSectionTitle}>Course</p>
 
           {courses.map((course, index) => {
             const percent = Math.round(Math.min(100, Math.max(0, course.progress?.percentComplete ?? 0)));
@@ -70,33 +68,33 @@ export default function MyCourses() {
               <Fragment key={course.id}>
                 {index > 0 && <div className={styles.courseDivider} />}
 
-                <div className={cardStyles.djobProductRow}>
-                  <div className={cardStyles.djobBanner}>
+                <div className={styles.mcourseProductRow}>
+                  <div className={styles.mcourseBanner}>
                     <Image
                       src={course.thumbnail_url || '/images/search-section/hr12.png'}
                       alt={course.title}
                       fill
                       sizes="(max-width: 992px) 100vw, 420px"
-                      className={cardStyles.djobBannerImage}
+                      className={styles.mcourseBannerImage}
                       unoptimized={Boolean(course.thumbnail_url?.startsWith('http'))}
                     />
                   </div>
 
-                  <div className={cardStyles.djobContent}>
-                    <h2 className={cardStyles.djobTitle}>{course.title}</h2>
+                  <div className={styles.mcourseContent}>
+                    <h2 className={styles.mcourseTitle}>{course.title}</h2>
 
-                    <div className={cardStyles.djobMeta}>
+                    <div className={styles.mcourseMeta}>
                       <span><List size={15} />{percent > 0 ? `${percent}% completed` : 'Not started yet'}</span>
                       <span><CalendarCheck size={15} />Access granted {new Date(course.grantedAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
                     </div>
 
-                    <div className={cardStyles.djobLine} />
+                    <div className={styles.mcourseLine} />
 
-                    {course.description && <p className={cardStyles.djobDescription}>{course.description}</p>}
+                    {course.description && <p className={styles.mcourseDescription}>{course.description}</p>}
                   </div>
                 </div>
 
-                <a className={`${cardStyles.djobApplyButton} ${styles.courseOpenButton}`} href={`https://lms.cleverln.com/courses/${course.id}`}>
+                <a className={`${styles.mcourseApplyButton} ${styles.courseOpenButton}`} href={`https://lms.cleverln.com/courses/${course.id}`}>
                   {percent > 0 ? 'Continue Learning' : 'Start Learning'}
                 </a>
               </Fragment>
@@ -104,10 +102,10 @@ export default function MyCourses() {
           })}
         </div>
       ) : (
-        <div className={cardStyles.djobEmptyCard}>
-          <p className={cardStyles.djobSectionTitle}>Course</p>
+        <div className={styles.mcourseEmptyCard}>
+          <p className={styles.mcourseSectionTitle}>Course</p>
 
-          <div className={cardStyles.djobEmptyBody}>
+          <div className={styles.mcourseEmptyBody}>
             {loading ? (
               <LoadingIndicator label="Loading your courses" />
             ) : error ? (
@@ -119,10 +117,10 @@ export default function MyCourses() {
                   alt=""
                   width={22}
                   height={22}
-                  className={cardStyles.djobEmptyIcon}
+                  className={styles.mcourseEmptyIcon}
                 />
-                <h4 className={cardStyles.djobEmptyHeading}>No Course Purchased Yet</h4>
-                <Link href="/courses" className={`${cardStyles.djobEmptyButton} ${styles.courseEmptyLink}`}>
+                <h4 className={styles.mcourseEmptyHeading}>No Course Purchased Yet</h4>
+                <Link href="/courses" className={`${styles.mcourseEmptyButton} ${styles.courseEmptyLink}`}>
                   Get Started
                 </Link>
               </>

@@ -4,7 +4,7 @@
 
 .djobRoot {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 18px;
 }
 
 
@@ -15,11 +15,10 @@
 .djobSectionTitle {
   margin: 0;
 
-  color: #3A3939;
+  color: #252525;
 
-  font-family: var(--font-poppins), sans-serif;
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
 
   line-height: 1.3;
 }
@@ -34,11 +33,14 @@
 
   background: #ffffff;
 
-  border-radius: 6px;
+  border: 1px solid #ececec;
+  border-radius: 20px;
 
   padding: 18px 22px 22px;
 
   box-sizing: border-box;
+
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.025);
 }
 
 
@@ -232,25 +234,21 @@
 ========================================================= */
 
 .djobEmptyCard {
-  position: relative;
-
   width: 100%;
+
+  min-height: 245px;
 
   background: #ffffff;
 
-  border-radius: 6px;
+  border: 1px solid #ececec;
 
-  padding: 24px 19px 23px;
+  border-radius: 18px;
+
+  padding: 24px 20px;
 
   box-sizing: border-box;
-}
 
-/* Title sits in the top-left corner while the message stays centred in the whole card. */
-.djobEmptyCard > .djobSectionTitle {
-  position: absolute;
-
-  top: 15px;
-  left: 19px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
 }
 
 
@@ -259,6 +257,8 @@
 ========================================================= */
 
 .djobEmptyBody {
+  min-height: 185px;
+
   display: flex;
 
   flex-direction: column;
@@ -272,23 +272,23 @@
 
 
 .djobEmptyIcon {
-  width: 22px;
-  height: 22px;
+  
+  width:42px;
+    height:42px;
+    
 
-  margin-bottom: 3px;
+  margin-bottom: 12px;
 }
 
 
 .djobEmptyHeading {
   margin: 0;
 
-  color: #878787;
+  color: #777777;
 
-  font-family: var(--font-poppins), sans-serif;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 15px;
 
-  line-height: 1.4;
+  font-weight: 500;
 }
 
 
@@ -297,32 +297,33 @@
 ========================================================= */
 
 .djobEmptyButton {
-  min-width: 90px;
-  height: 21px;
+  margin-top: 14px;
 
-  margin-top: 7px;
+  height: 30px;
 
-  padding: 0 16px;
+  padding: 0 18px;
 
   border: none;
 
-  border-radius: 7px;
+  border-radius: 999px;
 
-  background: #F4F4F4;
+  background: #f4f4f4;
 
-  color: #4A4A4A;
+  color: #333333;
 
-  font-family: var(--font-poppins), sans-serif;
-  font-size: 10px;
+  font-size: 12px;
+
   font-weight: 600;
 
   cursor: pointer;
 
-  transition: background 0.25s ease;
+  transition: all 0.25s ease;
 }
 
 .djobEmptyButton:hover {
-  background: #ECECEC;
+  background: #e8e8e8;
+
+  transform: translateY(-2px);
 }
 
 
@@ -420,15 +421,6 @@
     height: 44px;
 
     font-size: 15px;
-  }
-
-  /* Comfortable tap size on phones */
-  .djobEmptyButton {
-    height: 32px;
-
-    padding: 0 20px;
-
-    font-size: 12px;
   }
 
 }
