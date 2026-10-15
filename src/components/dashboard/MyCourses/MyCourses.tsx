@@ -4,9 +4,11 @@ import { supabase } from '@/lib/supabase';
 import { motion } from 'framer-motion';
 import { CalendarCheck, List } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Fragment, useEffect, useState } from 'react';
 import LoadingIndicator from '@/components/common/LoadingIndicator';
+// The course card deliberately shares the Job card's look, so it uses the same styles.
+import cardStyles from '@/components/dashboard/JobCard/JobCard.module.css';
 import styles from './MyCourses.module.css';
 
 type Course = {
@@ -20,6 +22,7 @@ type Course = {
 };
 
 export default function MyCourses() {
+  const router = useRouter();
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -53,14 +56,14 @@ export default function MyCourses() {
 
   return (
     <motion.section
-      className={styles.mcourseRoot}
+      className={cardStyles.djobRoot}
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
     >
       {hasCourses ? (
-        <div className={styles.mcoursePurchasedCard}>
-          <p className={styles.mcourseSectionTitle}>Course</p>
+        <div className={cardStyles.djobPurchasedCard}>
+          <p className={cardStyles.djobSectionTitle}>Course</p>
 
           {courses.map((course, index) => {
             const percent = Math.round(Math.min(100, Math.max(0, course.progress?.percentComplete ?? 0)));
@@ -68,33 +71,33 @@ export default function MyCourses() {
               <Fragment key={course.id}>
                 {index > 0 && <div className={styles.courseDivider} />}
 
-                <div className={styles.mcourseProductRow}>
-                  <div className={styles.mcourseBanner}>
+                <div className={cardStyles.djobProductRow}>
+                  <div className={cardStyles.djobBanner}>
                     <Image
                       src={course.thumbnail_url || '/images/search-section/hr12.png'}
                       alt={course.title}
                       fill
                       sizes="(max-width: 992px) 100vw, 420px"
-                      className={styles.mcourseBannerImage}
+                      className={cardStyles.djobBannerImage}
                       unoptimized={Boolean(course.thumbnail_url?.startsWith('http'))}
                     />
                   </div>
 
-                  <div className={styles.mcourseContent}>
-                    <h2 className={styles.mcourseTitle}>{course.title}</h2>
+                  <div className={cardStyles.djobContent}>
+                    <h2 className={cardStyles.djobTitle}>{course.title}</h2>
 
-                    <div className={styles.mcourseMeta}>
+                    <div className={cardStyles.djobMeta}>
                       <span><List size={15} />{percent > 0 ? `${percent}% completed` : 'Not started yet'}</span>
                       <span><CalendarCheck size={15} />Access granted {new Date(course.grantedAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
                     </div>
 
-                    <div className={styles.mcourseLine} />
+                    <div className={cardStyles.djobLine} />
 
-                    {course.description && <p className={styles.mcourseDescription}>{course.description}</p>}
+                    {course.description && <p className={cardStyles.djobDescription}>{course.description}</p>}
                   </div>
                 </div>
 
-                <a className={`${styles.mcourseApplyButton} ${styles.courseOpenButton}`} href={`https://lms.cleverln.com/courses/${course.id}`}>
+                <a className={`${cardStyles.djobApplyButton} ${styles.courseOpenButton}`} href={`https://lms.cleverln.com/courses/${course.id}`}>
                   {percent > 0 ? 'Continue Learning' : 'Start Learning'}
                 </a>
               </Fragment>
@@ -102,10 +105,10 @@ export default function MyCourses() {
           })}
         </div>
       ) : (
-        <div className={styles.mcourseEmptyCard}>
-          <p className={styles.mcourseSectionTitle}>Course</p>
+        <div className={cardStyles.djobEmptyCard}>
+          <p className={cardStyles.djobSectionTitle}>Course</p>
 
-          <div className={styles.mcourseEmptyBody}>
+          <div className={cardStyles.djobEmptyBody}>
             {loading ? (
               <LoadingIndicator label="Loading your courses" />
             ) : error ? (
@@ -115,14 +118,14 @@ export default function MyCourses() {
                 <Image
                   src="/images/dashboard/course-empty.svg"
                   alt=""
-                  width={22}
-                  height={22}
-                  className={styles.mcourseEmptyIcon}
+                  width={42}
+                  height={42}
+                  className={cardStyles.djobEmptyIcon}
                 />
-                <h4 className={styles.mcourseEmptyHeading}>No Course Purchased Yet</h4>
-                <Link href="/courses" className={`${styles.mcourseEmptyButton} ${styles.courseEmptyLink}`}>
+                <h4 className={cardStyles.djobEmptyHeading}>No Course Purchased Yet</h4>
+                <button type="button" className={cardStyles.djobEmptyButton} onClick={() => router.push('/courses')}>
                   Get Started
-                </Link>
+                </button>
               </>
             )}
           </div>
