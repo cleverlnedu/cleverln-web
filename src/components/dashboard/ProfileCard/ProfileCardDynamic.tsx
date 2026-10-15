@@ -4,21 +4,31 @@ import { getCachedLmsProfile, syncLmsProfile, type LearnerProfile } from '@/lib/
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/components/website/AuthProvider';
 import LoadingIndicator from '@/components/common/LoadingIndicator';
-import { GraduationCap, Mail, MapPin, Pencil, Phone, Save, X } from 'lucide-react';
+import { GraduationCap, MapPin, Phone } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import EditProfileModal from './EditProfileModal';
 import styles from './ProfileCard.module.css';
+
+// Solid envelope with a white flap, as in the design (lucide's Mail draws its flap under the body).
+function MailFilled() {
+  return <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="2" y="4" width="20" height="16" rx="2" fill="currentColor" />
+    <path d="m22 7-8.99 5.73a2 2 0 0 1-2.02 0L2 7" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>;
+}
+
+// "Linked" + the "in" box, as in the LinkedIn wordmark.
+function LinkedinWordmark() {
+  return <span className={styles.dprofileLinkedinMark} aria-hidden="true">Linked<span>in</span></span>;
+}
 
 export default function ProfileCardDynamic() {
   const router = useRouter();
   const { user, loading: authLoading } = useAuth();
   const [profile, setProfile] = useState<LearnerProfile | null>(() => user ? getCachedLmsProfile(user.id) : null);
-  const [name, setName] = useState(() => user ? getCachedLmsProfile(user.id)?.name ?? '' : '');
-  const [phone, setPhone] = useState(() => user ? getCachedLmsProfile(user.id)?.phone ?? '' : '');
-  const [city, setCity] = useState('');
-  const [role, setRole] = useState('');
   const [editing, setEditing] = useState(false);
-  const [busy, setBusy] = useState(false);
+  const [saved, setSaved] = useState(false);
   const [error, setError] = useState('');
   // Wait for auth/cache resolution before showing a fetch loader. The profile
   // cache is shared across dashboard remounts, so returning from Home should
@@ -34,12 +44,8 @@ export default function ProfileCardDynamic() {
         return;
       }
       const cachedProfile = getCachedLmsProfile(user.id);
-      setCity(String(user.user_metadata?.city || ''));
-      setRole(String(user.user_metadata?.job_title || user.user_metadata?.role || 'CleverLN learner'));
       if (cachedProfile) {
         setProfile(cachedProfile);
-        setName(cachedProfile.name);
-        setPhone(cachedProfile.phone);
         setLoading(false);
         return;
       }
@@ -48,8 +54,6 @@ export default function ProfileCardDynamic() {
         const currentProfile = await syncLmsProfile();
         if (!active) return;
         setProfile(currentProfile);
-        setName(currentProfile.name);
-        setPhone(currentProfile.phone);
         setLoading(false);
       } catch (syncError) {
         if (active) {
@@ -63,35 +67,18 @@ export default function ProfileCardDynamic() {
     };
   }, [router, user, authLoading]);
 
-  const saveProfile = async () => {
-    setBusy(true);
-    setError('');
-    const { error: updateError } = await supabase.auth.updateUser({
-      data: { name: name.trim(), phone_number: phone.trim(), city: city.trim(), job_title: role.trim() },
-    });
-    if (updateError) {
-      setError(updateError.message);
-      setBusy(false);
-      return;
-    }
-    try {
-      const updatedProfile = await syncLmsProfile({ forceRefresh: true });
-      setProfile(updatedProfile);
-      setName(updatedProfile.name);
-      setPhone(updatedProfile.phone);
-      setEditing(false);
-    } catch (syncError) {
-      setError(syncError instanceof Error ? syncError.message : 'Could not save your profile.');
-    } finally {
-      setBusy(false);
-    }
-  };
+  useEffect(() => {
+    if (!saved) return;
+    const timer = window.setTimeout(() => setSaved(false), 3000);
+    return () => window.clearTimeout(timer);
+  }, [saved]);
 
   const signOut = async () => {
     await supabase.auth.signOut();
     router.replace('/login');
   };
 
+  const headline = profile?.headline || profile?.role || 'CleverLN learner';
   const initials = (profile?.name || profile?.email || 'C').split(/\s+/).map((part) => part[0]).slice(0, 2).join('').toUpperCase();
 
   return (
@@ -108,46 +95,48 @@ export default function ProfileCardDynamic() {
           </div>
 
           <div className={styles.dprofileContent}>
-            {editing ? (
-              <div className={styles.dprofileEditForm}>
-                <label className={styles.dprofileField}>Name<input value={name} onChange={(event) => setName(event.target.value)} maxLength={80} required /></label>
-                <label className={styles.dprofileField}>Phone<input value={phone} onChange={(event) => setPhone(event.target.value)} type="tel" maxLength={30} required /></label>
-                <label className={styles.dprofileField}>Role<input value={role} onChange={(event) => setRole(event.target.value)} maxLength={80} /></label>
-                <label className={styles.dprofileField}>City<input value={city} onChange={(event) => setCity(event.target.value)} maxLength={80} /></label>
-              </div>
-            ) : (
-              <>
-                <h2 className={styles.dprofileName}>{loading ? <LoadingIndicator label="Loading profile" /> : profile?.name || 'Learner profile'}</h2>
-                <p className={styles.dprofileSubtitle}>{role || 'CleverLN learner'}</p>
-              </>
-            )}
+            <h2 className={styles.dprofileName}>{loading ? <LoadingIndicator label="Loading profile" /> : profile?.name || 'Learner profile'}</h2>
+            <p className={styles.dprofileSubtitle}>{headline}</p>
 
             <div className={styles.dprofileInfoRow}>
-              <div className={styles.dprofileInfoItem}><Mail size={17} /><span>{loading ? <LoadingIndicator label="Loading account details" /> : profile?.email || 'Email unavailable'}</span></div>
-              <div className={styles.dprofileInfoItem}><Phone size={17} /><span>{editing ? phone : (profile?.phone || 'Phone not added')}</span></div>
-              <div className={styles.dprofileInfoItem}><GraduationCap size={17} /><span>{role || 'CleverLN learner'}</span></div>
-              <div className={styles.dprofileInfoItem}><MapPin size={17} /><span>{editing ? city : (city || 'Location not added')}</span></div>
+              <div className={styles.dprofileInfoItem}><MailFilled /><span>{loading ? <LoadingIndicator label="Loading account details" /> : profile?.email || 'Email unavailable'}</span></div>
+              <div className={styles.dprofileInfoItem}><Phone size={17} /><span>{profile?.phone || 'Phone not added'}</span></div>
+              <div className={styles.dprofileInfoItem}><GraduationCap size={19} className={styles.dprofileIconCap} /><span>{profile?.education || 'Education not added'}</span></div>
+              <div className={styles.dprofileInfoItem}><MapPin size={18} className={styles.dprofileIconPin} /><span>{profile?.city || 'Location not added'}</span></div>
             </div>
 
             {error && <p className={styles.dprofileError} role="alert">{error}</p>}
+            <p className={styles.dprofileSaved} role="status">{saved ? 'Profile updated' : ''}</p>
             <div className={styles.dprofileButtonRow}>
-              {editing ? (
-                <>
-                  <button type="button" className={styles.dprofileEditBtn} onClick={() => void saveProfile()} disabled={busy || !name.trim() || !phone.trim()}>
-                    <Save size={14} /> {busy ? 'Saving…' : 'Save profile'}
-                  </button>
-                  <button type="button" className={styles.dprofileLogoutBtn} onClick={() => setEditing(false)} disabled={busy}><X size={14} /> Cancel</button>
-                </>
+              {profile?.linkedin ? (
+                <a className={styles.dprofileLinkedinBtn} href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in a new tab)">
+                  <LinkedinWordmark />
+                </a>
               ) : (
-                <>
-                  <button type="button" className={styles.dprofileEditBtn} onClick={() => setEditing(true)} disabled={loading}><Pencil size={14} /> Edit profile</button>
-                  <button type="button" className={styles.dprofileLogoutBtn} onClick={() => void signOut()}>Log out</button>
-                </>
+                <button type="button" className={styles.dprofileLinkedinBtn} onClick={() => setEditing(true)} disabled={loading || !profile} aria-label="Add your LinkedIn profile">
+                  <LinkedinWordmark />
+                </button>
               )}
+              <button type="button" className={styles.dprofileEditBtn} onClick={() => setEditing(true)} disabled={loading || !profile}>Edit Profile</button>
+              <button type="button" className={styles.dprofileLogoutBtn} onClick={() => void signOut()}>Logout</button>
             </div>
           </div>
         </div>
       </div>
+
+      {editing && profile && (
+        <EditProfileModal
+          profile={profile}
+          initials={initials}
+          onClose={() => setEditing(false)}
+          onSaved={(updatedProfile) => {
+            setProfile(updatedProfile);
+            setError('');
+            setEditing(false);
+            setSaved(true);
+          }}
+        />
+      )}
     </section>
   );
 }

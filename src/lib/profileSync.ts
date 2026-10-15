@@ -6,6 +6,11 @@ export type LearnerProfile = {
   email: string;
   phone: string;
   avatar: string;
+  city: string;
+  role: string;
+  headline: string;
+  education: string;
+  linkedin: string;
 };
 
 const profileCache = new Map<string, { profile: LearnerProfile; savedAt: number }>();

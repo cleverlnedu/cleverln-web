@@ -14,10 +14,8 @@
 .dprofileCard{
     width:100%;
     background:#ffffff;
-    border-radius:18px;
-    border:1px solid #ECECEC;
-    padding:28px 0px;
-    box-shadow:0 8px 30px rgba(0,0,0,.03);
+    border-radius:6px;
+    padding:34px 0;
 }
 
 /* =========================================================
@@ -27,27 +25,26 @@
 .dprofileWrapper{
     display:flex;
     align-items:center;
-    gap:42px;
+    gap:36px;
 }
 
 /* =========================================================
    AVATAR
+   The photo is shown whole (a portrait cut-out sits on the card like in the design).
 ========================================================= */
 
-.dprofileAvatarWrapper{
-    flex-shrink:0;
-}
-
 .dprofileAvatarBox{
-    width:202px;
+    flex-shrink:0;
+    width:150px;
     height:150px;
+    margin-left:76px;
     position:relative;
     overflow:hidden;
     border-radius:14px;
     background:#ffffff;
-    background-position:center;
+    background-position:center bottom;
     background-repeat:no-repeat;
-    background-size:cover;
+    background-size:contain;
     display:grid;
     place-items:center;
 }
@@ -58,51 +55,31 @@
     font-weight:700;
 }
 
-.dprofileAvatar{
-    object-fit:cover;
-}
-
 /* =========================================================
    CONTENT
 ========================================================= */
 
 .dprofileContent{
     flex:1;
+    min-width:0;
     display:flex;
     flex-direction:column;
 }
 
-/* =========================================================
-   NAME
-========================================================= */
-
 .dprofileName{
-
     margin:0;
-
-    font-size:26px;
-
+    color:#3C3C3C;
+    font-size:28px;
     font-weight:700;
-
-    color:#1F1F1F;
-
     line-height:1.2;
 }
 
-/* =========================================================
-   SUBTITLE
-========================================================= */
-
 .dprofileSubtitle{
-
-    margin-top:6px;
-
-    color:#7A7A7A;
-
-    font-size:15px;
-
-    font-weight:500;
-
+    margin-top:4px;
+    color:#878787;
+    font-family:var(--font-poppins), sans-serif;
+    font-size:14px;
+    font-weight:400;
     line-height:1.5;
 }
 
@@ -111,82 +88,42 @@
 ========================================================= */
 
 .dprofileInfoRow{
-
     display:flex;
-
     align-items:center;
-
     flex-wrap:wrap;
-
-    gap:54px;
-
-    margin-top:22px;
+    gap:10px 66px;
+    margin-top:28px;
 }
 
-/* =========================================================
-   INFO ITEM
-========================================================= */
-
 .dprofileInfoItem{
-
     display:flex;
-
     align-items:center;
-
-    gap:8px;
-
-    font-size:15px;
-
-    color:#4E4E4E;
-
-    font-weight:500;
+    gap:9px;
+    color:#878787;
+    font-family:var(--font-poppins), sans-serif;
+    font-size:14px;
+    font-weight:400;
+    line-height:1.5;
 }
 
 .dprofileInfoItem svg{
-
-    color:#555;
-
+    color:#525252;
     flex-shrink:0;
 }
 
-/* =========================================================
-   BUTTON ROW
-========================================================= */
-
-.dprofileButtonRow{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    margin-top:18px;
+/* Solid icons, as in the design */
+.dprofileIconCap path:first-child,
+.dprofileIconCap path:last-child{
+    fill:currentColor;
 }
 
-.dprofileEditForm{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:10px;
-    max-width:620px;
+.dprofileIconPin path{
+    fill:currentColor;
 }
 
-.dprofileField{
-    display:grid;
-    gap:5px;
-    color:#56675f;
-    font-size:12px;
-    font-weight:600;
-}
-
-.dprofileField input{
-    min-width:0;
-    height:36px;
-    padding:0 10px;
-    border:1px solid #d8e1dc;
-    border-radius:6px;
-    color:#1d3c31;
-    font:inherit;
+.dprofileIconPin circle{
+    fill:#ffffff;
+    stroke:none;
 }
 
 .dprofileError{
@@ -195,79 +132,85 @@
     font-size:13px;
 }
 
+.dprofileSaved{
+    margin:12px 0 0;
+    color:#047857;
+    font-family:var(--font-poppins), sans-serif;
+    font-size:13px;
+    font-weight:600;
+}
+
+.dprofileSaved:empty{
+    display:none;
+}
+
 /* =========================================================
-   BUTTONS
+   BUTTONS: LinkedIn · Edit Profile · Logout
 ========================================================= */
+
+.dprofileButtonRow{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:18px;
+}
 
 .dprofileLinkedinBtn,
 .dprofileEditBtn,
 .dprofileLogoutBtn{
-
-    height:28px;
-
-    padding:0 18px;
-
-    border-radius:999px;
-
+    min-width:88px;
+    height:22px;
+    padding:0 14px;
     border:none;
-
-    cursor:pointer;
-
+    border-radius:7px;
+    background:#F4F4F4;
+    color:#4A4A4A;
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
-    font-size:12px;
-
-    font-weight:600;
-
-    transition:.25s ease;
-
+    font-family:var(--font-poppins), sans-serif;
+    font-size:10.5px;
+    font-weight:400;
+    line-height:1;
     text-decoration:none;
+    cursor:pointer;
+    transition:background .25s ease;
 }
 
-/* LinkedIn */
-
-.dprofileLinkedinBtn{
-
-    background:#0A66C2;
-
-    color:#fff;
-}
-
-.dprofileLinkedinBtn:hover{
-
-    background:#0958A5;
-}
-
-/* Edit */
-
-.dprofileEditBtn{
-
-    background:#F4F4F4;
-
-    color:#3A3A3A;
-}
-
-.dprofileEditBtn:hover{
-
-    background:#ECECEC;
-}
-
-/* Logout */
-
-.dprofileLogoutBtn{
-
-    background:#F4F4F4;
-
-    color:#3A3A3A;
-}
-
+.dprofileLinkedinBtn:hover,
+.dprofileEditBtn:hover,
 .dprofileLogoutBtn:hover{
-
     background:#ECECEC;
+}
+
+.dprofileLinkedinBtn:disabled,
+.dprofileEditBtn:disabled{
+    cursor:default;
+    opacity:.6;
+}
+
+.dprofileLinkedinMark{
+    display:inline-flex;
+    align-items:center;
+    gap:1px;
+    color:#0A66C2;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:-.2px;
+}
+
+.dprofileLinkedinMark span{
+    display:inline-grid;
+    place-items:center;
+    min-width:13px;
+    height:13px;
+    padding:0 1px;
+    border-radius:2px;
+    background:#0A66C2;
+    color:#ffffff;
+    font-size:11px;
+    letter-spacing:0;
 }
 
 /* =========================================================
@@ -276,33 +219,24 @@
 
 @media(max-width:992px){
 
+.dprofileCard{
+    padding:28px 24px;
+}
+
 .dprofileWrapper{
-
-flex-direction:column;
-
-align-items:flex-start;
-
-gap:24px;
-
+    flex-direction:column;
+    align-items:flex-start;
+    gap:24px;
 }
 
 .dprofileAvatarBox{
-
-width:110px;
-
-height:110px;
-
+    width:110px;
+    height:110px;
+    margin-left:0;
 }
 
 .dprofileInfoRow{
-
-gap:18px;
-
-}
-
-.dprofileEditForm{
-    grid-template-columns:1fr;
-    width:100%;
+    gap:12px 32px;
 }
 
 }
@@ -314,65 +248,56 @@ gap:18px;
 @media(max-width:768px){
 
 .dprofileCard{
-
-padding:22px;
-
+    padding:22px;
 }
 
 .dprofileWrapper{
-
-align-items:center;
-
-text-align:center;
-
+    align-items:center;
+    text-align:center;
 }
 
 .dprofileContent{
-
-align-items:center;
-
+    align-items:center;
 }
 
 .dprofileSubtitle{
-
-max-width:420px;
-
+    max-width:420px;
 }
 
 .dprofileInfoRow{
-
-flex-direction:column;
-
-align-items:flex-start;
-
-width:100%;
-
-gap:14px;
-
+    flex-direction:column;
+    align-items:flex-start;
+    width:100%;
+    gap:14px;
 }
 
 .dprofileInfoItem{
-
-width:100%;
-
+    width:100%;
+    font-size:15px;
 }
 
 .dprofileButtonRow{
-
-width:100%;
-
-flex-direction:column;
-
+    width:100%;
+    flex-direction:column;
 }
 
 .dprofileLinkedinBtn,
 .dprofileEditBtn,
 .dprofileLogoutBtn{
+    width:100%;
+    height:42px;
+    border-radius:10px;
+    font-size:14px;
+}
 
-width:100%;
+.dprofileLinkedinMark{
+    font-size:15px;
+}
 
-height:42px;
-
+.dprofileLinkedinMark span{
+    min-width:15px;
+    height:15px;
+    font-size:12px;
 }
 
 }
@@ -384,37 +309,24 @@ height:42px;
 @media(max-width:480px){
 
 .dprofileCard{
-
-padding:18px;
-
-border-radius:16px;
-
+    padding:18px;
 }
 
 .dprofileAvatarBox{
-
-width:96px;
-
-height:96px;
-
+    width:96px;
+    height:96px;
 }
 
 .dprofileName{
-
-font-size:22px;
-
+    font-size:22px;
 }
 
 .dprofileSubtitle{
-
-font-size:13px;
-
+    font-size:13px;
 }
 
 .dprofileInfoItem{
-
-font-size:13px;
-
+    font-size:13px;
 }
 
 }

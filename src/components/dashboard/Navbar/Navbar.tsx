@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Bell,
+  BellRing,
   House,
   Menu,
   X,
@@ -316,6 +317,8 @@ export default function Navbar() {
                 className={`${
                   styles.dnavIcon
                 } ${
+                  styles.dnavIconPlain
+                } ${
                   notificationOpen
                     ? styles.dnavIconActive
                     : ""
@@ -331,9 +334,9 @@ export default function Navbar() {
                 }
               >
 
-                <Bell
-                  size={20}
-                  strokeWidth={1.8}
+                <BellRing
+                  size={21}
+                  strokeWidth={1.9}
                 />
 
                 {/* Unread Badge */}
@@ -569,7 +572,8 @@ export default function Navbar() {
             >
               <House
                 size={20}
-                strokeWidth={1.8}
+                strokeWidth={1.9}
+                className={styles.dnavHomeIcon}
               />
             </button>
 

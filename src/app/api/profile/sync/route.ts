@@ -24,6 +24,11 @@ export async function POST(request: NextRequest) {
     const name = String(authUser.user_metadata?.name || authUser.user_metadata?.full_name || '').trim();
     const phone = String(authUser.user_metadata?.phone_number || '').trim();
     const avatar = String(authUser.user_metadata?.avatar_url || authUser.user_metadata?.picture || '').trim();
+    const city = String(authUser.user_metadata?.city || '').trim();
+    const role = String(authUser.user_metadata?.job_title || authUser.user_metadata?.role || '').trim();
+    const headline = String(authUser.user_metadata?.headline || '').trim();
+    const education = String(authUser.user_metadata?.education_status || '').trim();
+    const linkedin = String(authUser.user_metadata?.linkedin_url || '').trim();
     if (!name || !phone) return NextResponse.json({ error: 'Name and phone are required.' }, { status: 422 });
 
     const { data: existingLink, error: linkLookupError } = await supabase
@@ -66,7 +71,9 @@ export async function POST(request: NextRequest) {
     if (linkError) throw linkError;
 
     return NextResponse.json({
-      profile: { id: lmsUserId, name, email: authUser.email, phone, avatar },
+      // City, role, headline, education and LinkedIn live only in the account metadata; returning them from this
+      // server-side read keeps every device in step (a browser's cached session can hold older metadata).
+      profile: { id: lmsUserId, name, email: authUser.email, phone, avatar, city, role, headline, education, linkedin },
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Profile sync failed.';

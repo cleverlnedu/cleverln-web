@@ -1,134 +1,32 @@
-.panel {
+/* The course card reuses JobCard.module.css for its look; these are only the course-specific extras. */
+
+/* Between two purchased courses */
+.courseDivider {
   width: 100%;
-  padding: 24px;
-  border: 1px solid #e2e8e5;
-  border-radius: 10px;
-  background: #fff;
+  height: 1px;
+  margin: 26px 0 18px;
+  background: #ececec;
 }
 
-.header {
+/* The Job card's buttons are <button>s; here they are links, so centre the label the same way. */
+.courseOpenButton,
+.courseEmptyLink {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid #e8eeeb;
+  justify-content: center;
+  text-decoration: none;
 }
 
-.eyebrow {
-  color: #087f65;
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
+.courseOpenButton {
+  margin-top: 22px;
 }
 
-.title {
-  margin-top: 4px;
-  color: #173b30;
-  font-size: 21px;
-  font-weight: 750;
+.courseEmptyLink {
+  display: inline-flex;
 }
 
-.browseLink {
-  color: #087f65;
-  font-size: 13px;
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.message,
-.error {
-  padding: 28px 8px;
-  color: #62746c;
-  font-size: 14px;
-}
-
-.error {
+.courseError {
+  margin: 0;
   color: #9c2727;
-}
-
-.list {
-  display: grid;
-}
-
-.course {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 18px 0;
-  border-bottom: 1px solid #e8eeeb;
-}
-
-.course:last-child {
-  border-bottom: 0;
-}
-
-.courseImageWrapper {
-  flex: 0 0 130px;
-  width: 130px;
-  aspect-ratio: 16 / 9;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #eef3f0;
-  border: 1px solid #e0eae5;
-}
-
-.courseImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.courseInfo {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.courseTitle {
-  color: #173b30;
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.courseDescription {
-  margin-top: 5px;
-  color: #60736a;
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.accessDate {
-  margin-top: 7px;
-  color: #84918b;
-  font-size: 11px;
-}
-
-.openButton {
-  flex: 0 0 auto;
-  padding: 10px 14px;
-  border-radius: 6px;
-  background: #087f65;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-@media (max-width: 600px) {
-  .panel {
-    padding: 18px;
-  }
-
-  .course {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .courseImageWrapper {
-    width: 100%;
-    max-width: 260px;
-  }
+  font-size: 14px;
 }

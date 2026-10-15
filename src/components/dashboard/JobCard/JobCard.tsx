@@ -128,8 +128,8 @@ export default function JobCard({
             <Image
               src="/images/dashboard/course-empty.svg"
               alt="Course"
-              width={42}
-              height={42}
+              width={22}
+              height={22}
               className={styles.djobEmptyIcon}
             />
 
