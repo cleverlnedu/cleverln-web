@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabase";
+import { clearRememberPreference, isRememberedSessionExpired } from "@/lib/rememberSession";
 
 type AuthContextValue = { user: User | null; loading: boolean; signOut: () => Promise<void> };
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -21,13 +22,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     let mounted = true;
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session: Session | null) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session: Session | null) => {
+      if (event === "SIGNED_OUT") clearRememberPreference();
       if (mounted) {
         setUser(session?.user ?? null);
         setLoading(false);
       }
     });
-    void supabase.auth.getSession().then(({ data, error }) => {
+    // Honour "Remember for 30 days": end the sign-in after 30 days, or when the browser was closed if unchecked.
+    const expired = isRememberedSessionExpired();
+    void (expired ? supabase.auth.signOut({ scope: "local" }).then(() => undefined) : Promise.resolve()).then(() => supabase.auth.getSession()).then(({ data, error }) => {
       if (mounted) {
         setUser(error ? null : data.session?.user ?? null);
         setLoading(false);

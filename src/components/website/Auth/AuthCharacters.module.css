@@ -1,0 +1,142 @@
+.characters {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.characters g {
+  transform-box: fill-box;
+}
+
+/* Lean from the feet */
+.body {
+  transform-origin: 50% 100%;
+  transition: transform .45s cubic-bezier(.2, .8, .2, 1);
+}
+
+.face {
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1);
+}
+
+.face circle {
+  transition: transform .25s ease-out;
+}
+
+.face path {
+  fill: none;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+
+/* Expressions are swapped by fading, so changes never jump */
+.eyesOpen,
+.eyesHappy,
+.blush,
+.mouthFlat,
+.mouthSmile,
+.mouthSad {
+  transition: opacity .2s ease;
+}
+
+.eyesHappy,
+.blush,
+.mouthSmile,
+.mouthSad {
+  opacity: 0;
+}
+
+.blush {
+  fill: #ff8fa3;
+}
+
+/* Blinking, at different paces so they never blink in sync */
+.eyesOpen {
+  transform-origin: 50% 50%;
+}
+
+.blinkSlow { animation: authBlink 5.2s ease-in-out infinite; }
+.blinkMid { animation: authBlink 4.3s ease-in-out .9s infinite; }
+.blinkFast { animation: authBlink 3.7s ease-in-out 1.6s infinite; }
+
+@keyframes authBlink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(.1); }
+}
+
+/* Happy: smiling eyes, rosy cheeks, smiles and a bounce */
+.happy .eyesOpen,
+.happy .mouthFlat {
+  opacity: 0;
+}
+
+.happy .eyesHappy,
+.happy .mouthSmile {
+  opacity: 1;
+}
+
+.happy .blush {
+  opacity: .55;
+}
+
+.bouncer {
+  transform-origin: 50% 100%;
+}
+
+.happy .bouncer {
+  animation: authBounce .95s cubic-bezier(.3, .6, .4, 1) infinite;
+}
+
+.happy .black { animation-delay: .08s; }
+.happy .orange { animation-delay: .16s; }
+.happy .yellow { animation-delay: .24s; }
+
+@keyframes authBounce {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  12% { transform: translateY(0) scaleY(.94); }
+  34% { transform: translateY(-16px) scaleY(1.04); }
+  56% { transform: translateY(0) scaleY(.97); }
+  70% { transform: translateY(-5px) scaleY(1); }
+  84% { transform: translateY(0) scaleY(1); }
+}
+
+/* Sad: frown and a little head shake */
+.sad .mouthFlat {
+  opacity: 0;
+}
+
+.sad .mouthSad {
+  opacity: 1;
+}
+
+.sad .bouncer {
+  animation: authShake .55s ease-in-out;
+}
+
+.sad .black { animation-delay: .05s; }
+.sad .orange { animation-delay: .1s; }
+.sad .yellow { animation-delay: .15s; }
+
+@keyframes authShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .body,
+  .face,
+  .face circle {
+    transition: none;
+  }
+
+  .blinkSlow,
+  .blinkMid,
+  .blinkFast,
+  .happy .bouncer,
+  .sad .bouncer {
+    animation: none;
+  }
+}

@@ -1,12 +1,13 @@
 "use client";
 
+import { friendlyAuthError } from '@/lib/authMessages';
 import { syncLmsProfile } from '@/lib/profileSync';
-import Link from 'next/link';
-import { supabase } from '@/lib/supabase';
 import { safeReturnTo, withReturnTo } from '@/lib/returnTo';
+import { supabase } from '@/lib/supabase';
+import AuthLayout from '@/components/website/Auth/AuthLayout';
+import styles from '@/components/website/Auth/Auth.module.css';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import styles from '../../(website)/auth.module.css';
 
 export default function AuthCallbackPage() {
   const router = useRouter();
@@ -26,13 +27,13 @@ export default function AuthCallbackPage() {
 
       const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(code);
       if (exchangeError) {
-        if (active) setError(exchangeError.message);
+        if (active) setError(friendlyAuthError(exchangeError.message));
         return;
       }
 
       const { data: { user }, error: userError } = await supabase.auth.getUser();
       if (userError) {
-        if (active) setError(userError.message);
+        if (active) setError(friendlyAuthError(userError.message));
         return;
       }
 
@@ -56,29 +57,31 @@ export default function AuthCallbackPage() {
     };
   }, [router]);
 
+  const backToLogin = () => {
+    router.replace(withReturnTo('/login', safeReturnTo(window.location.search)));
+  };
+
+  // The characters keep celebrating from the Google button while the sign-in completes.
   return (
-    <main className={styles.authPage}>
-      <section className={`${styles.authPanel} ${styles.callbackPanel}`}>
-        {!error && <div className={styles.loadingIndicator} aria-hidden="true" />}
-        <p className={styles.authEyebrow}>CleverLN account</p>
-        <h1 className={styles.authTitle}>
-          {error ? 'Sign-in could not be completed' : 'Finishing sign-in'}
-        </h1>
-        <p className={error ? styles.alert : styles.authDescription} role={error ? 'alert' : 'status'}>
-          {error || 'Your Google account is verified. One moment…'}
-        </p>
-        {error && (
-          <Link className={`${styles.authLink} ${styles.callbackLink}`} href="/login" onClick={(event) => {
-            const returnTo = safeReturnTo(window.location.search);
-            if (returnTo) {
-              event.preventDefault();
-              router.replace(withReturnTo('/login', returnTo));
-            }
-          }}>
-            Return to login
-          </Link>
+    <AuthLayout mood={error ? 'sad' : 'happy'}>
+      <h1 className={styles.authTitle}>{error ? 'Sign-in could not be completed' : 'Finishing sign-in'}</h1>
+      <p className={styles.authSubtitle}>{error ? 'Something went wrong on the way back' : 'You’re verified. One moment…'}</p>
+
+      <div className={styles.authForm}>
+        {error ? (
+          <>
+            <p className={styles.authAlert} role="alert">{error}</p>
+            <div className={styles.authButtons}>
+              <button type="button" className={styles.authButton} onClick={backToLogin}>Back to log in</button>
+            </div>
+          </>
+        ) : (
+          <div className={styles.authStatus} role="status">
+            <span className={styles.authSpinner} aria-hidden="true" />
+            Signing you in
+          </div>
         )}
-      </section>
-    </main>
+      </div>
+    </AuthLayout>
   );
 }

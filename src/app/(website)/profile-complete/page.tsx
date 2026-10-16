@@ -1,20 +1,27 @@
 "use client";
 
+import { friendlyAuthError, phoneNumberError } from '@/lib/authMessages';
 import { syncLmsProfile } from '@/lib/profileSync';
-import { supabase } from '@/lib/supabase';
 import { safeReturnTo } from '@/lib/returnTo';
+import { supabase } from '@/lib/supabase';
+import AuthLayout from '@/components/website/Auth/AuthLayout';
+import { useAuthMood } from '@/components/website/Auth/useAuthMood';
+import styles from '@/components/website/Auth/Auth.module.css';
 import { useRouter } from 'next/navigation';
-import { FormEvent, useEffect, useState } from 'react';
-import styles from '../auth.module.css';
+import { useEffect, useState, type FormEvent } from 'react';
+
+type FieldErrors = { name?: string; phone?: string };
 
 export default function CompleteProfilePage() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [errors, setErrors] = useState<FieldErrors>({});
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const [loadingProfile, setLoadingProfile] = useState(true);
+  const { mood, watchTarget, typed, focusProps, setHappy, flashSad } = useAuthMood(false);
 
   useEffect(() => {
     let active = true;
@@ -39,13 +46,24 @@ export default function CompleteProfilePage() {
   const saveProfile = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError('');
+    const nextErrors: FieldErrors = {};
+    if (name.trim().length < 2) nextErrors.name = 'Enter your full name.';
+    const phoneError = phoneNumberError(phone);
+    if (phoneError) nextErrors.phone = phoneError;
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length) {
+      flashSad();
+      event.currentTarget.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
+      return;
+    }
     setBusy(true);
     const { error: updateError } = await supabase.auth.updateUser({
       data: { name: name.trim(), phone_number: phone.trim() },
     });
     if (updateError) {
-      setError(updateError.message);
+      setError(friendlyAuthError(updateError.message));
       setBusy(false);
+      flashSad();
       return;
     }
     try {
@@ -53,39 +71,81 @@ export default function CompleteProfilePage() {
     } catch (syncError) {
       setError(syncError instanceof Error ? syncError.message : 'Could not save your LMS profile.');
       setBusy(false);
+      flashSad();
       return;
     }
+    setHappy(true);
     router.replace(safeReturnTo(window.location.search) || '/dashboard');
   };
 
   return (
-    <main className={styles.authPage}>
-      <section className={styles.authPanel}>
-        {loadingProfile ? <div className={styles.callbackPanel} role="status"><div className={styles.loadingIndicator} aria-hidden="true" /><p className={styles.authDescription}>Loading your verified account details…</p></div> : <>
-        <p className={styles.authEyebrow}>CleverLN profile</p>
-        <h1 className={styles.authTitle}>Review your details</h1>
-        <p className={styles.authDescription}>Your sign-in email is verified and read-only. Add the details needed for your learner profile.</p>
+    <AuthLayout mood={mood} watchTarget={watchTarget} typed={typed}>
+      <h1 className={styles.authTitle}>Review your details</h1>
+      <p className={styles.authSubtitle}>Add the details for your learner profile</p>
 
-        <form onSubmit={saveProfile} className={`${styles.form} ${styles.profileForm}`}>
-          <label className={styles.label}>
-            Full name
-            <input className={styles.input} value={name} onChange={(event) => setName(event.target.value)} autoComplete="name" maxLength={80} required />
-          </label>
-          <label className={styles.label}>
-            Verified email
-            <input className={styles.input} value={email} readOnly aria-readonly="true" />
-          </label>
-          <label className={styles.label}>
-            Phone number
-            <input className={styles.input} type="tel" value={phone} onChange={(event) => setPhone(event.target.value)} autoComplete="tel" maxLength={30} required />
-          </label>
-          {error && <p className={styles.alert} role="alert">{error}</p>}
-          <button type="submit" disabled={busy} className={styles.submitButton}>
-            <span className={styles.buttonContent}>{busy && <span className={styles.buttonSpinner} aria-hidden="true" />}{busy ? 'Saving profile…' : 'Save and continue'}</span>
-          </button>
+      {loadingProfile ? (
+        <div className={styles.authForm}>
+          <div className={styles.authStatus} role="status">
+            <span className={styles.authSpinner} aria-hidden="true" />
+            Loading your account details
+          </div>
+        </div>
+      ) : (
+        <form className={styles.authForm} onSubmit={(event) => void saveProfile(event)} noValidate>
+          <div className={styles.authField}>
+            <label className={styles.authLabel} htmlFor="profile-name">Full name</label>
+            <input
+              id="profile-name"
+              className={styles.authInput}
+              value={name}
+              onChange={(event) => { setName(event.target.value); setErrors((current) => ({ ...current, name: undefined })); }}
+              autoComplete="name"
+              placeholder="Your full name"
+              maxLength={80}
+              aria-invalid={errors.name ? true : undefined}
+              aria-describedby={errors.name ? 'profile-name-error' : undefined}
+              disabled={busy}
+              {...focusProps()}
+            />
+            {errors.name && <span id="profile-name-error" className={styles.authFieldError}>{errors.name}</span>}
+          </div>
+
+          <div className={styles.authField}>
+            <label className={styles.authLabel} htmlFor="profile-email">Verified email</label>
+            <input id="profile-email" className={styles.authInput} value={email} readOnly aria-readonly="true" />
+            <span className={styles.authHint}>This is your sign-in email and can’t be changed here.</span>
+          </div>
+
+          <div className={styles.authField}>
+            <label className={styles.authLabel} htmlFor="profile-phone">Phone number</label>
+            <input
+              id="profile-phone"
+              className={styles.authInput}
+              type="tel"
+              inputMode="tel"
+              value={phone}
+              onChange={(event) => { setPhone(event.target.value); setErrors((current) => ({ ...current, phone: undefined })); }}
+              autoComplete="tel"
+              placeholder="+91 98765 43210"
+              maxLength={20}
+              aria-invalid={errors.phone ? true : undefined}
+              aria-describedby={errors.phone ? 'profile-phone-error' : undefined}
+              disabled={busy}
+              {...focusProps()}
+            />
+            {errors.phone && <span id="profile-phone-error" className={styles.authFieldError}>{errors.phone}</span>}
+          </div>
+
+          {error && <p className={styles.authAlert} role="alert">{error}</p>}
+
+          <div className={styles.authButtons}>
+            <button type="submit" className={styles.authButton} disabled={busy}>
+              {busy && <span className={styles.authSpinner} aria-hidden="true" />}
+              {busy ? 'Saving…' : 'Save and continue'}
+            </button>
+          </div>
         </form>
-        </>}
-      </section>
-    </main>
+      )}
+    </AuthLayout>
   );
 }

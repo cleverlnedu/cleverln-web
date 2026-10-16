@@ -1,0 +1,385 @@
+/* =========================================================
+   AUTH PAGES (login, signup, password reset)
+   Split card: playful characters on the left, a clean form on the right.
+========================================================= */
+
+.authShell {
+  display: grid;
+  place-items: center;
+  min-height: calc(100svh - 96px);
+  padding: 40px 20px 72px;
+  background: #ffffff;
+}
+
+.authCard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: min(1040px, 100%);
+  min-height: 620px;
+  overflow: hidden;
+  border: 1px solid #ececec;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 30px 80px rgba(17, 17, 17, .08);
+}
+
+/* =========================================================
+   CHARACTER PANEL
+========================================================= */
+
+.authArt {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(140deg, #a7aab0 0%, #8b8e94 45%, #64676d 100%);
+}
+
+.authCharacters {
+  position: absolute;
+  left: 7%;
+  right: 11%;
+  bottom: 7%;
+}
+
+/* =========================================================
+   FORM SIDE
+========================================================= */
+
+.authFormSide {
+  display: grid;
+  place-items: center;
+  padding: 56px 48px;
+}
+
+.authFormInner {
+  width: min(340px, 100%);
+}
+
+.authTitle {
+  margin: 0;
+  color: #111111;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.authSubtitle {
+  margin: 8px 0 0;
+  color: #8a8a8a;
+  font-size: 14px;
+  text-align: center;
+}
+
+.authForm {
+  display: grid;
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.authField {
+  display: grid;
+  gap: 8px;
+}
+
+.authLabel {
+  color: #111111;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.authInputWrap {
+  position: relative;
+}
+
+.authInput {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  outline: none;
+  background: #ffffff;
+  color: #111111;
+  font: inherit;
+  font-size: 14px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.authInputWrap .authInput {
+  padding-right: 46px;
+}
+
+.authInput::placeholder {
+  color: #b3b3b3;
+}
+
+.authInput:focus {
+  border-color: #111111;
+  box-shadow: 0 0 0 3px rgba(17, 17, 17, .06);
+}
+
+.authInput[aria-invalid="true"] {
+  border-color: #d64545;
+}
+
+.authInput:read-only {
+  background: #f7f7f7;
+  color: #6f6f6f;
+}
+
+.authInput:read-only:focus {
+  border-color: #ececec;
+  box-shadow: none;
+}
+
+/* "Signing you in" / "Loading…" line */
+.authStatus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 10px;
+  background: #f7f7f7;
+  color: #6f6f6f;
+  font-size: 14px;
+}
+
+.authEye {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #6f6f6f;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.authEye:hover {
+  background: #f4f4f4;
+  color: #111111;
+}
+
+.authFieldError {
+  color: #b42318;
+  font-size: 12.5px;
+}
+
+.authHint {
+  color: #8a8a8a;
+  font-size: 12.5px;
+}
+
+.authRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: -2px;
+}
+
+.authCheck {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #333333;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.authCheck input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: #111111;
+  cursor: pointer;
+}
+
+.authLink {
+  border: none;
+  background: none;
+  padding: 0;
+  color: #087f65;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.authLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.authButtons {
+  display: grid;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.authButton {
+  width: 100%;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #111111;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(17, 17, 17, .04);
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.authButton:hover:not(:disabled) {
+  border-color: #d6d6d6;
+  background: #f7f7f7;
+}
+
+.authButton:active:not(:disabled) {
+  transform: scale(.99);
+}
+
+.authButton:disabled {
+  cursor: wait;
+  opacity: .7;
+}
+
+.authGoogle:hover:not(:disabled) {
+  box-shadow: 0 6px 18px rgba(17, 17, 17, .08);
+}
+
+.authSpinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(17, 17, 17, .2);
+  border-top-color: #111111;
+  border-radius: 50%;
+  animation: authSpin .7s linear infinite;
+}
+
+@keyframes authSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   MESSAGES + FOOTER
+========================================================= */
+
+.authAlert,
+.authNotice {
+  margin: 0;
+  padding: 11px 13px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.authAlert {
+  background: #fef3f2;
+  color: #b42318;
+}
+
+.authNotice {
+  background: #ecfdf3;
+  color: #067647;
+}
+
+.authInlineAction {
+  margin-left: 4px;
+}
+
+.authFooter {
+  margin: 26px 0 0;
+  color: #8a8a8a;
+  font-size: 13px;
+  text-align: center;
+}
+
+.authFooter a {
+  color: #111111;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.authFooter a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* =========================================================
+   TABLET + PHONE: characters above the form
+========================================================= */
+
+@media (max-width: 860px) {
+  .authShell {
+    padding: 24px 16px 56px;
+  }
+
+  .authCard {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .authArt {
+    height: 230px;
+  }
+
+  .authCharacters {
+    left: 50%;
+    right: auto;
+    bottom: 0;
+    /* The drawing is ~0.87 as tall as it is wide; keep the tallest character inside the panel. */
+    width: min(240px, 72%);
+    transform: translateX(-50%);
+  }
+
+  .authFormSide {
+    padding: 32px 22px 36px;
+  }
+
+  /* 16px stops iPhones from zooming into the field */
+  .authInput {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .authArt {
+    height: 190px;
+  }
+
+  .authCharacters {
+    width: min(196px, 70%);
+  }
+
+  .authTitle {
+    font-size: 26px;
+  }
+
+  .authRow {
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .authSpinner {
+    animation-duration: 2s;
+  }
+}
