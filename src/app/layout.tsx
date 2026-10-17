@@ -3,7 +3,6 @@ import "./globals.css";
 import { AuthProvider } from "@/components/website/AuthProvider";
 import { brandIntroScript } from "@/components/website/BrandSplash/brandIntro";
 import BrandSplash from "@/components/website/BrandSplash/BrandSplash";
-import { PageVisitTracker } from "@/components/common/PageLoader";
 
 //import Navbar from "@/components/website/Navbar/Navbar";
 //import Footer from "@/components/website/footer/footer";
@@ -102,7 +101,6 @@ export default function RootLayout({
       <body className={rootFontClasses}>
         <script dangerouslySetInnerHTML={{ __html: brandIntroScript }} />
         <BrandSplash />
-        <PageVisitTracker />
         <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
