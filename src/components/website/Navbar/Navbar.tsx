@@ -160,6 +160,9 @@ export default function Navbar() {
           Logo + login stay in the top bar; the pages move here.
       ================================================= */}
 
+      {/* Frosts the strip under and around the floating bar, so no page content shows below it */}
+      <div className={styles.wBottomScrim} aria-hidden="true" />
+
       <nav
         className={styles.wBottomNav}
         aria-label="Main"
@@ -168,6 +171,10 @@ export default function Navbar() {
       >
         {/* Glass bubble that glides to the current page */}
         <span className={styles.wBottomIndicator} aria-hidden="true" />
+        {/* Glossy light sweep; re-mounts on tab change so the shine runs across right away */}
+        <span className={styles.wBottomGloss} aria-hidden="true">
+          <span key={activeIndex} className={styles.wBottomShine} />
+        </span>
         {navItems.map(({ title, href, icon: TabIcon }, index) => {
           const active = index === activeIndex;
           return (
