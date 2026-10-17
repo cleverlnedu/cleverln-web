@@ -1,31 +1,40 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import type { Icon } from "@phosphor-icons/react";
+import { BookOpenTextIcon } from "@phosphor-icons/react/dist/csr/BookOpenText";
+import { BriefcaseIcon } from "@phosphor-icons/react/dist/csr/Briefcase";
+import { HouseIcon } from "@phosphor-icons/react/dist/csr/House";
+import { UsersThreeIcon } from "@phosphor-icons/react/dist/csr/UsersThree";
 
 import styles from "./Navbar.module.css";
 import { useAuth } from "@/components/website/AuthProvider";
 import LoadingIndicator from "@/components/common/LoadingIndicator";
 
-const navItems = [
+// Outline icons, switching to solid for the current page (like iOS tab bars).
+const navItems: { title: string; href: string; icon: Icon }[] = [
   {
     title: "Home",
     href: "/",
+    icon: HouseIcon,
   },
   {
     title: "Courses",
     href: "/courses",
+    icon: BookOpenTextIcon,
   },
   {
     title: "Hire Talent",
     href: "/hire",
+    icon: UsersThreeIcon,
   },
   {
     title: "Get Hired",
     href: "/opportunities",
+    icon: BriefcaseIcon,
   },
 ];
 
@@ -34,7 +43,6 @@ export default function Navbar() {
   const { user, loading } = useAuth();
 
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,13 +71,7 @@ export default function Navbar() {
     );
   };
 
-  const handleMenuToggle = () => {
-    setMenuOpen((prev) => !prev);
-  };
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
+  const activeIndex = navItems.findIndex((item) => isActive(item.href));
 
   return (
     <>
@@ -99,7 +101,6 @@ export default function Navbar() {
           <Link
             href="/"
             className={styles.wLogo}
-            onClick={closeMenu}
           >
             <Image
               src="/images/dashboard/logo.webp"
@@ -148,35 +149,6 @@ export default function Navbar() {
               {loading ? <LoadingIndicator /> : user ? "MY LEARNING" : "LOGIN"}
             </Link>
 
-
-            {/* HAMBURGER
-                Tablet + Mobile only
-            */}
-
-            <button
-              type="button"
-              className={styles.wMenuButton}
-              onClick={handleMenuToggle}
-              aria-label={
-                menuOpen
-                  ? "Close navigation menu"
-                  : "Open navigation menu"
-              }
-              aria-expanded={menuOpen}
-            >
-              {menuOpen ? (
-                <X
-                  size={25}
-                  strokeWidth={2}
-                />
-              ) : (
-                <Menu
-                  size={25}
-                  strokeWidth={2}
-                />
-              )}
-            </button>
-
           </div>
 
         </div>
@@ -184,38 +156,34 @@ export default function Navbar() {
 
 
       {/* =================================================
-          TABLET / MOBILE MENU
+          TABLET / MOBILE BOTTOM NAVIGATION
+          Logo + login stay in the top bar; the pages move here.
       ================================================= */}
 
-      <div
-        className={`${styles.wMobileMenu} ${
-          menuOpen
-            ? styles.wMobileMenuOpen
-            : ""
-        }`}
+      <nav
+        className={styles.wBottomNav}
+        aria-label="Main"
+        data-has-active={activeIndex >= 0 ? "" : undefined}
+        style={{ "--active-index": Math.max(activeIndex, 0) } as CSSProperties}
       >
-        <nav className={styles.wMobileNav}>
-
-          {navItems.map((item) => (
+        {/* Glass bubble that glides to the current page */}
+        <span className={styles.wBottomIndicator} aria-hidden="true" />
+        {navItems.map(({ title, href, icon: TabIcon }, index) => {
+          const active = index === activeIndex;
+          return (
             <Link
-              key={item.href}
-              href={item.href}
-              onClick={closeMenu}
-              className={`${styles.wMobileLink} ${
-                isActive(item.href)
-                  ? styles.wMobileActive
-                  : ""
-              }`}
+              key={href}
+              href={href}
+              className={`${styles.wBottomLink} ${active ? styles.wBottomActive : ""}`}
+              aria-current={active ? "page" : undefined}
             >
-              {item.title}
+              {/* Re-mounts on change so the active icon pops in */}
+              <TabIcon key={active ? "on" : "off"} className={styles.wBottomIcon} size={24} weight={active ? "fill" : "regular"} aria-hidden="true" />
+              <span className={styles.wBottomLabel}>{title}</span>
             </Link>
-          ))}
-          <Link href={loading ? "/login" : user ? "/dashboard" : "/login"} onClick={closeMenu} className={styles.wMobileLink}>
-            {loading ? <LoadingIndicator label="Checking account" /> : user ? "My learning" : "Login"}
-          </Link>
-
-        </nav>
-      </div>
+          );
+        })}
+      </nav>
 
 
       {/* =================================================
@@ -229,4 +197,10 @@ export default function Navbar() {
       />
     </>
   );
+}
+
+
+/** Keeps the end of the page clear of the bottom navigation on tablets and phones. Place after the footer. */
+export function NavbarBottomSpacer() {
+  return <div className={styles.wBottomNavSpacer} aria-hidden="true" />;
 }
