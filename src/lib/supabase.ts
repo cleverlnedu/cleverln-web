@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { sharedSessionStorage } from './sharedSession';
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
@@ -11,5 +12,7 @@ export const supabase = createClient(url, publishableKey, {
   auth: {
     flowType: 'pkce',
     detectSessionInUrl: false,
+    // Shared with the LMS so one sign-in covers both sites.
+    storage: sharedSessionStorage,
   },
 });

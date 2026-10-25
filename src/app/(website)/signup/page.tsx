@@ -2,7 +2,7 @@
 
 import { friendlyAuthError, phoneNumberError } from '@/lib/authMessages';
 import { getAuthCallbackUrl } from '@/lib/authRedirect';
-import { setRememberPreference } from '@/lib/rememberSession';
+import { setRememberPreference } from '@/lib/sharedSession';
 import { safeReturnTo, withReturnTo } from '@/lib/returnTo';
 import { supabase } from '@/lib/supabase';
 import AuthLayout from '@/components/website/Auth/AuthLayout';

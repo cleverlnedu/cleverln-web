@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Bell,
@@ -16,6 +16,8 @@ import {
   BookOpen,
   Sparkles,
 } from "lucide-react";
+
+import { useAuth } from "@/components/website/AuthProvider";
 
 import styles from "./Navbar.module.css";
 
@@ -70,6 +72,13 @@ const notifications = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { signOut } = useAuth();
+
+  const logout = async () => {
+    await signOut();
+    router.replace("/login");
+  };
 
   const [open, setOpen] = useState(false);
 
@@ -742,8 +751,7 @@ export default function Navbar() {
                     styles.dnavDrawerButton
                   }
                   onClick={() =>
-                    (window.location.href =
-                      "/dashboard")
+                    void logout()
                   }
                 >
                   Logout

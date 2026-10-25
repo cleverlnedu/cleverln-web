@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { lmsUrl } from "@/lib/lmsUrl";
 import { supabase } from "@/lib/supabase";
 import ProductPageTemplate, { type ProductPageCourse } from "@/components/website/ProductPageTemplate";
 import PageLoader from "@/components/common/PageLoader";
@@ -75,6 +76,6 @@ export default function CourseDetailPage() {
     course={product}
     owned={Boolean(ownedCourseId)}
     onBuyNow={() => void openCheckoutProfile()}
-    onOpenCourse={() => ownedCourseId && window.location.assign(`https://lms.cleverln.com/courses/${ownedCourseId}`)}
+    onOpenCourse={() => ownedCourseId && window.location.assign(lmsUrl(`/courses/${ownedCourseId}`))}
   />;
 }

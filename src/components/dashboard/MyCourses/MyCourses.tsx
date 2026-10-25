@@ -1,5 +1,6 @@
 "use client";
 
+import { lmsUrl } from '@/lib/lmsUrl';
 import { supabase } from '@/lib/supabase';
 import { motion } from 'framer-motion';
 import { CalendarCheck, List } from 'lucide-react';
@@ -97,7 +98,7 @@ export default function MyCourses() {
                   </div>
                 </div>
 
-                <a className={`${cardStyles.djobApplyButton} ${styles.courseOpenButton}`} href={`https://lms.cleverln.com/courses/${course.id}`}>
+                <a className={`${cardStyles.djobApplyButton} ${styles.courseOpenButton}`} href={lmsUrl(`/courses/${course.id}`)}>
                   {percent > 0 ? 'Continue Learning' : 'Start Learning'}
                 </a>
               </Fragment>

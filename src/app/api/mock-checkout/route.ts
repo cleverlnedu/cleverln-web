@@ -1,10 +1,15 @@
 import { createClient } from '@supabase/supabase-js';
 import { NextRequest, NextResponse } from 'next/server';
+import { AccountLinkError, resolveLmsUserId } from '@/lib/lmsAccount';
 
 export const runtime = 'nodejs';
 
-const isProductionDeployment = process.env.VERCEL_ENV === 'production'
-  || (process.env.NODE_ENV === 'production' && process.env.VERCEL_ENV !== 'preview');
+// Every environment (production, previews, local) writes to the production
+// database, so mock checkout is limited to allow-listed test accounts
+// everywhere, and outside production it must also be switched on explicitly.
+const isProductionDeployment = process.env.VERCEL_ENV === 'production';
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const IDEMPOTENCY_KEY = /^[A-Za-z0-9_-]{16,120}$/;
 
 const createAdminClient = () => {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -22,8 +27,9 @@ export async function POST(request: NextRequest) {
   if (!token) return NextResponse.json({ error: 'Sign in before using test checkout.' }, { status: 401 });
 
   const body = await request.json().catch(() => null) as { productId?: string; idempotencyKey?: string } | null;
-  if (!body?.productId || !body.idempotencyKey) {
-    return NextResponse.json({ error: 'Product and checkout request ID are required.' }, { status: 400 });
+  if (!body || typeof body.productId !== 'string' || !UUID.test(body.productId)
+    || typeof body.idempotencyKey !== 'string' || !IDEMPOTENCY_KEY.test(body.idempotencyKey)) {
+    return NextResponse.json({ error: 'We couldn’t start checkout. Please refresh the page and try again.' }, { status: 400 });
   }
 
   try {
@@ -34,7 +40,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'A verified sign-in is required.' }, { status: 401 });
     }
 
-    if (isProductionDeployment) {
+    {
       const { data: allowlistedAccount, error: allowlistError } = await supabase
         .from('mock_checkout_allowlist')
         .select('email')
@@ -53,39 +59,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Complete your profile before checkout.' }, { status: 409 });
     }
 
-    const { data: existingLink, error: linkQueryError } = await supabase
-      .from('auth_lms_user_links')
-      .select('lms_user_id')
-      .eq('auth_user_id', authUser.id)
-      .maybeSingle();
-    if (linkQueryError) throw linkQueryError;
-
-    let lmsUserId = existingLink?.lms_user_id;
-    if (!lmsUserId) {
-      const { data: existingUser, error: userQueryError } = await supabase
-        .from('users')
-        .select('id')
-        .eq('email', authUser.email)
-        .maybeSingle();
-      if (userQueryError) throw userQueryError;
-
-      if (existingUser) {
-        lmsUserId = existingUser.id;
-      } else {
-        const { data: createdUser, error: createUserError } = await supabase
-          .from('users')
-          .insert([{ id: authUser.id, name, email: authUser.email, phone, role: 'student' }])
-          .select('id')
-          .single();
-        if (createUserError) throw createUserError;
-        lmsUserId = createdUser.id;
-      }
-
-      const { error: linkError } = await supabase
-        .from('auth_lms_user_links')
-        .upsert({ auth_user_id: authUser.id, lms_user_id: lmsUserId }, { onConflict: 'auth_user_id' });
-      if (linkError) throw linkError;
-    }
+    const lmsUserId = await resolveLmsUserId(supabase, authUser, { name, phone });
 
     const { data: product, error: productError } = await supabase
       .from('store_products')
@@ -98,11 +72,16 @@ export async function POST(request: NextRequest) {
 
     const { data: sameRequest, error: requestError } = await supabase
       .from('orders')
-      .select('id')
+      .select('id, status')
       .eq('buyer_auth_user_id', authUser.id)
       .eq('idempotency_key', body.idempotencyKey)
       .maybeSingle();
     if (requestError) throw requestError;
+    // A repeated request returns the original order. Re-running fulfilment here
+    // would re-activate access that an admin has since revoked.
+    if (sameRequest?.status === 'paid') {
+      return NextResponse.json({ orderId: sameRequest.id, status: 'paid', mock: true, testMode: true, message: 'Mock checkout complete. No payment was taken.' });
+    }
 
     const courseIds = (product.product_courses || []).map((entry: { course_id: string }) => entry.course_id);
     if (courseIds.length === 0) return NextResponse.json({ error: 'This course is not linked to LMS access.' }, { status: 409 });
@@ -132,9 +111,9 @@ export async function POST(request: NextRequest) {
     const errorCode = typeof error === 'object' && error !== null && 'code' in error
       ? String((error as { code?: unknown }).code)
       : '';
-    const message = errorCode === '23505'
-      ? 'You already have access to this course.'
-      : error instanceof Error ? error.message : 'Mock checkout failed.';
-    return NextResponse.json({ error: message }, { status: errorCode === '23505' ? 409 : 500 });
+    if (error instanceof AccountLinkError) return NextResponse.json({ error: error.message }, { status: 409 });
+    if (errorCode === '23505') return NextResponse.json({ error: 'You already have access to this course.' }, { status: 409 });
+    console.error('[mock-checkout]', error);
+    return NextResponse.json({ error: 'Checkout didn’t go through. Please try again.' }, { status: 500 });
   }
 }

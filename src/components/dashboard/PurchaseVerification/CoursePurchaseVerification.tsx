@@ -4,6 +4,7 @@ import Image from "next/image";
 import { List, Star } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { lmsUrl } from "@/lib/lmsUrl";
 import { supabase } from "@/lib/supabase";
 import LoadingIndicator from "@/components/common/LoadingIndicator";
 import styles from "./PurchaseVerification.module.css";
@@ -107,7 +108,7 @@ export default function CoursePurchaseVerification({ courseSlug }: { courseSlug:
   };
 
   const openCourse = () => {
-    if (ownedCourseId) window.location.assign(`https://lms.cleverln.com/courses/${ownedCourseId}`);
+    if (ownedCourseId) window.location.assign(lmsUrl(`/courses/${ownedCourseId}`));
     else router.push("/dashboard");
   };
 

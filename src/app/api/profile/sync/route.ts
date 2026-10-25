@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { NextRequest, NextResponse } from 'next/server';
+import { AccountLinkError, resolveLmsUserId } from '@/lib/lmsAccount';
 
 export const runtime = 'nodejs';
 
@@ -31,44 +32,12 @@ export async function POST(request: NextRequest) {
     const linkedin = String(authUser.user_metadata?.linkedin_url || '').trim();
     if (!name || !phone) return NextResponse.json({ error: 'Name and phone are required.' }, { status: 422 });
 
-    const { data: existingLink, error: linkLookupError } = await supabase
-      .from('auth_lms_user_links')
-      .select('lms_user_id')
-      .eq('auth_user_id', authUser.id)
-      .maybeSingle();
-    if (linkLookupError) throw linkLookupError;
-
-    let lmsUserId = existingLink?.lms_user_id;
-    if (!lmsUserId) {
-      const { data: existingUser, error: userLookupError } = await supabase
-        .from('users')
-        .select('id')
-        .eq('email', authUser.email)
-        .maybeSingle();
-      if (userLookupError) throw userLookupError;
-      lmsUserId = existingUser?.id;
-    }
-
-    if (lmsUserId) {
-      const { error: updateError } = await supabase
-        .from('users')
-        .update({ name, email: authUser.email, phone, avatar })
-        .eq('id', lmsUserId);
-      if (updateError) throw updateError;
-    } else {
-      const { data: createdUser, error: createError } = await supabase
-        .from('users')
-        .insert([{ id: authUser.id, name, email: authUser.email, phone, avatar, role: 'student' }])
-        .select('id')
-        .single();
-      if (createError) throw createError;
-      lmsUserId = createdUser.id;
-    }
-
-    const { error: linkError } = await supabase
-      .from('auth_lms_user_links')
-      .upsert({ auth_user_id: authUser.id, lms_user_id: lmsUserId }, { onConflict: 'auth_user_id' });
-    if (linkError) throw linkError;
+    const lmsUserId = await resolveLmsUserId(supabase, authUser, { name, phone, avatar });
+    const { error: updateError } = await supabase
+      .from('users')
+      .update({ name, email: authUser.email, phone, avatar })
+      .eq('id', lmsUserId);
+    if (updateError) throw updateError;
 
     return NextResponse.json({
       // City, role, headline, education and LinkedIn live only in the account metadata; returning them from this
@@ -76,7 +45,8 @@ export async function POST(request: NextRequest) {
       profile: { id: lmsUserId, name, email: authUser.email, phone, avatar, city, role, headline, education, linkedin },
     });
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Profile sync failed.';
-    return NextResponse.json({ error: message }, { status: 500 });
+    if (error instanceof AccountLinkError) return NextResponse.json({ error: error.message }, { status: 409 });
+    console.error('[profile/sync]', error);
+    return NextResponse.json({ error: 'We couldn’t save your profile. Please try again.' }, { status: 500 });
   }
 }
