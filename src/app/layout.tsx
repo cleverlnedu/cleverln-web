@@ -74,7 +74,8 @@ METADATA
 ========================================================= */
 
 export const metadata: Metadata = {
-  title: "CleverLN",
+  // Pages set their own name; it shows in the tab as "Name | CleverLN".
+  title: { default: "CleverLN", template: "%s | CleverLN" },
   description: "Learn UI/UX and build your skills in a unique modern way.",
 };
 
