@@ -155,17 +155,8 @@ const faqs = [
         <div className={styles.proheroRight}>
           <div className={styles.proheroImageWrapper}>
 
-            {/* DESKTOP: the course's own photo over its decorative backdrop */}
+            {/* the course's own person over its decorative backdrop (desktop and mobile) */}
             <CourseHeroArt hero={hero} alt={course?.title || "UI/UX course"} className={styles.proheroArt} />
-
-            {/* MOBILE IMAGE */}
-            <Image
-              src="/products/student-ambassador.webp"
-              alt={course?.title || "UI/UX course"}
-              fill
-              priority
-              className={styles.proheroMobileImage}
-            />
 
           </div>
         </div>
