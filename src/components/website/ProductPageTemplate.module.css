@@ -42,29 +42,31 @@
   box-sizing: border-box;
 }
 
+/* Heading, description and buttons follow the hero design: sizes scale with the screen
+   and reach the design size at 1440px. Max-widths are in em so the line breaks match the design. */
 .proheroHeading {
-  max-width: 650px;
+  max-width: 10.9em;
 
   margin: 0;
 
   font-family: var(--font-ibm);
 
-  font-size: 40px;
-  line-height: 1.36;
+  font-size: clamp(34px, 3.34vw, 48px);
+  line-height: 1.27;
   font-weight: 700;
 
   color: #000000;
 }
 
 .proheroSubtext {
-  max-width: 590px;
+  max-width: 37.2em;
 
-  margin: 34px 0 0;
+  margin: clamp(16px, 1.53vw, 22px) 0 0;
 
   font-family: var(--font-poppins);
 
-  font-size: 16px;
-  line-height: 1.7;
+  font-size: clamp(12.5px, 0.98vw, 14px);
+  line-height: 2.15;
   font-weight: 500;
 
   color: #3e3e3e;
@@ -74,23 +76,23 @@
   display: flex;
   align-items: center;
 
-  gap: 32px;
+  gap: clamp(18px, 2.2vw, 32px);
 
-  margin-top: 34px;
+  margin-top: clamp(24px, 2.43vw, 35px);
 }
 
 .proheroPrimaryBtn,
 .proheroSecondaryBtn {
-  width: 220px;
-  height: 68px;
+  width: clamp(150px, 13.5vw, 195px);
+  height: clamp(46px, 3.9vw, 56px);
 
   padding: 0;
 
   border: none;
-  border-radius: 16px;
+  border-radius: 13px;
 
   font-family: var(--font-poppins);
-  font-size: 16px;
+  font-size: clamp(13px, 1.05vw, 15px);
   font-weight: 700;
 
   cursor: pointer;
@@ -120,6 +122,7 @@
 .proheroSecondaryBtn {
   background: #eeeeee;
   color: #111111;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
 
   transition:
     transform 0.25s ease,
@@ -149,17 +152,17 @@
 
 
 /* =========================================================
-   DESKTOP IMAGE
+   DESKTOP ART (see Courses/CourseHeroArt)
+   One 304×308 frame for the backdrop and person, sized to fit
+   the column (container units) so the layers always line up.
 ========================================================= */
 
-.proheroDesktopImage {
-  display: block;
-
-  object-fit: contain;
-  object-position: center;
-
-  width: 100%;
-  height: 100%;
+.proheroArt {
+  position: absolute;
+  inset: 0;
+  width: min(100cqw, calc(100cqh * 304 / 308));
+  aspect-ratio: 304 / 308;
+  margin: auto;
 }
 
 
@@ -183,6 +186,8 @@
   width: 100%;
   height: 100%;
   min-height: 605px;
+
+  container-type: size;
 }
 
 
@@ -203,30 +208,6 @@
 
   .proheroLeft {
     padding-left: 18px;
-  }
-
-  .proheroHeading {
-    max-width: 580px;
-    font-size: 34px;
-  }
-
-  .proheroSubtext {
-    max-width: 520px;
-    font-size: 14px;
-  }
-
-  .proheroButtons {
-    gap: 28px;
-  }
-
-  .proheroPrimaryBtn,
-  .proheroSecondaryBtn {
-    width: 175px;
-    height: 50px;
-
-    font-family: var(--font-poppins);
-    font-size: 13px;
-    font-weight: 700;
   }
 
   .proheroRight {
@@ -257,36 +238,6 @@
     padding-left: 10px;
   }
 
-  .proheroHeading {
-    max-width: 500px;
-    font-size: 40px;
-    line-height: 1.17;
-  }
-
-  .proheroSubtext {
-    max-width: 450px;
-
-    margin-top: 27px;
-
-    font-size: 12px;
-    line-height: 1.85;
-  }
-
-  .proheroButtons {
-    gap: 20px;
-    margin-top: 28px;
-  }
-
-  .proheroPrimaryBtn,
-  .proheroSecondaryBtn {
-    width: 165px;
-    height: 52px;
-
-    border-radius: 14px;
-
-    font-size: 14px;
-  }
-
   .proheroRight {
     height: 500px;
   }
@@ -307,7 +258,7 @@
     padding: 42px 0 45px;
   }
 
-  .proheroDesktopImage {
+  .proheroArt {
     display: none;
   }
 
@@ -772,55 +723,690 @@
 
 /* =========================================================
    PROIMPACT
-   IMPACT / PROGRAM SECTION
+   WHAT THIS PROGRAM IS ABOUT: header + bento grid
+   (how it works, jobs, companies, stats).
+   Type follows the pricing section's scale at every breakpoint.
 ========================================================= */
 
 .proimpactSection {
+  position: relative;
+
   width: 100%;
 
-  background: #ffffff;
+  overflow: hidden;
 
-  box-sizing: border-box;
+  background: #ffffff;
+}
+
+/* faint graph-paper grid behind the header that fades out */
+.proimpactSection::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  right: 0;
+
+  left: 0;
+
+  height: 520px;
+
+  background-image:
+    linear-gradient(rgba(14, 180, 126, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 180, 126, 0.09) 1px, transparent 1px);
+
+  background-size: 44px 44px;
+
+  background-position: center top;
+
+  -webkit-mask-image: radial-gradient(ellipse 60% 75% at 50% 0%, #000000 25%, transparent 75%);
+
+  mask-image: radial-gradient(ellipse 60% 75% at 50% 0%, #000000 25%, transparent 75%);
+
+  pointer-events: none;
 }
 
 
 /* =========================================================
-   CONTAINER
+   CONTAINER + HEADER
 ========================================================= */
 
 .proimpactContainer {
+  position: relative;
+
   width: 100%;
-  max-width: 1200px;
+
+  max-width: 1132px;
 
   margin: 0 auto;
 
-  padding: 28px 20px 48px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  text-align: center;
+  padding: 64px 20px 72px;
 
   box-sizing: border-box;
 }
 
+.proimpactHeader {
+  max-width: 860px;
 
-/* =========================================================
-   TOP LABEL
-========================================================= */
+  margin: 0 auto;
+
+  text-align: center;
+}
 
 .proimpactTag {
   margin: 0;
 
   font-family: var(--font-poppins);
 
-  font-size: 15px;
-  line-height: 1.4;
+  font-size: 11.5px;
+
+  line-height: 16px;
 
   font-weight: 600;
 
   letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  color: #868585;
+}
+
+/* same as the pricing heading */
+.proimpactHeading {
+  margin: 12px 0 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 32px;
+
+  line-height: 1.3;
+
+  font-weight: 600;
+
+  color: #111111;
+
+  text-wrap: balance;
+}
+
+/* key words in brand green (kept on one line) */
+.proimpactHeading span {
+  white-space: nowrap;
+
+  color: #137a5f;
+}
+
+/* same as the pricing subtitle */
+.proimpactDescription {
+  max-width: 640px;
+
+  margin: 10px auto 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 16.5px;
+
+  line-height: 1.5;
+
+  font-weight: 500;
+
+  color: #6b6b6b;
+
+  text-wrap: balance;
+}
+
+
+/* =========================================================
+   BENTO GRID + CARD
+========================================================= */
+
+.proimpactGrid {
+  margin-top: 48px;
+
+  display: grid;
+
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.proimpactCard {
+  position: relative;
+
+  min-width: 0;
+
+  padding: 26px 28px;
+
+  border: 1px solid #e6ebe9;
+
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 1px 2px rgba(16, 40, 30, 0.04),
+    0 8px 24px rgba(16, 40, 30, 0.05);
+
+  box-sizing: border-box;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.proimpactCard:hover {
+  transform: translateY(-4px);
+
+  border-color: #bfe9d8;
+
+  box-shadow:
+    0 18px 40px rgba(14, 180, 126, 0.12);
+}
+
+/* like the "Trending Plan" tab text */
+.proimpactCardLabel {
+  margin: 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 10.5px;
+
+  line-height: 14px;
+
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  color: #0e9f6e;
+}
+
+/* like the pricing subtitle, in semibold */
+.proimpactCardTitle {
+  margin: 8px 0 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 16.5px;
+
+  line-height: 1.35;
+
+  font-weight: 600;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   HOW IT WORKS (three steps joined by a dashed path)
+========================================================= */
+
+.proimpactSteps {
+  grid-column: span 8;
+
+  grid-row: span 2;
+
+  background: linear-gradient(180deg, #f4fbf8 0%, #ffffff 70%);
+}
+
+.proimpactStepList {
+  position: relative;
+
+  margin: 22px 0 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+.proimpactStepList::before {
+  content: "";
+
+  position: absolute;
+
+  top: 19px;
+
+  left: 19px;
+
+  right: calc((100% - 32px) / 3 - 19px);
+
+  border-top: 2px dashed #bfe3d4;
+}
+
+.proimpactStepList li {
+  position: relative;
+
+  min-width: 0;
+}
+
+.proimpactStepIcon {
+  position: relative;
+
+  z-index: 1;
+
+  width: 38px;
+
+  height: 38px;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 1px solid #cdeee0;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 4px 12px rgba(14, 180, 126, 0.12);
+
+  color: #0e9f6e;
+}
+
+.proimpactStepIcon svg {
+  width: 18px;
+
+  height: 18px;
+}
+
+/* the last step is where it all leads */
+.proimpactStepList li:last-child .proimpactStepIcon {
+  border: none;
+
+  background: linear-gradient(135deg, #16b883 0%, #0b5a3d 100%);
+
+  color: #ffffff;
+}
+
+.proimpactStepNumber {
+  display: block;
+
+  margin-top: 14px;
+
+  font-family: var(--font-poppins);
+
+  font-size: 10.5px;
+
+  line-height: 14px;
+
+  font-weight: 600;
+
+  letter-spacing: 1px;
+
+  color: #9aa5a0;
+}
+
+/* like the trust line, in semibold */
+.proimpactStepList strong {
+  display: block;
+
+  margin-top: 2px;
+
+  font-family: var(--font-poppins);
+
+  font-size: 12.5px;
+
+  line-height: 18px;
+
+  font-weight: 600;
+
+  color: #111111;
+}
+
+/* like the plan description */
+.proimpactStepList p {
+  margin: 4px 0 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 10.5px;
+
+  line-height: 1.5;
+
+  font-weight: 500;
+
+  color: #6b6b6b;
+}
+
+
+/* =========================================================
+   JOBS (dark green feature card)
+========================================================= */
+
+.proimpactJobs {
+  grid-column: span 5;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  overflow: hidden;
+
+  isolation: isolate;
+
+  border: none;
+
+  background:
+    radial-gradient(circle at 85% 12%, rgba(110, 231, 183, 0.35), transparent 45%),
+    linear-gradient(145deg, #0d8a60 0%, #064e37 100%);
+
+  color: #ffffff;
+}
+
+.proimpactJobs::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -1;
+
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+
+  background-size: 32px 32px;
+
+  -webkit-mask-image: linear-gradient(200deg, #000000 10%, transparent 70%);
+
+  mask-image: linear-gradient(200deg, #000000 10%, transparent 70%);
+}
+
+.proimpactJobs:hover {
+  box-shadow:
+    0 20px 44px rgba(6, 78, 55, 0.3);
+}
+
+.proimpactJobs .proimpactCardLabel {
+  color: #a7ead0;
+}
+
+/* like the plan price */
+.proimpactJobsNumber {
+  margin: 12px 0 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 32px;
+
+  line-height: 1;
+
+  font-weight: 600;
+}
+
+.proimpactJobsText {
+  margin: 10px 0 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 10.5px;
+
+  line-height: 1.5;
+
+  font-weight: 500;
+
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.proimpactJobsText + .proimpactJobsText {
+  margin: 2px 0 20px;
+}
+
+/* frosted glass button, sized like BUY NOW (gets the shared glass sheen too) */
+.proimpactJobsButton {
+  height: 33px;
+
+  padding: 0 14px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.14);
+
+  -webkit-backdrop-filter: blur(6px);
+
+  backdrop-filter: blur(6px);
+
+  font-family: var(--font-poppins);
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.proimpactJobsButton svg {
+  width: 14px;
+
+  height: 14px;
+}
+
+.proimpactJobsButton:hover {
+  transform: translateX(2px);
+
+  background: rgba(255, 255, 255, 0.22);
+}
+
+
+/* growth chart on the right of the jobs card (decorative) */
+.proimpactJobsChart {
+  position: absolute;
+
+  right: 22px;
+
+  bottom: 22px;
+
+  width: 46%;
+
+  max-width: 240px;
+
+  height: auto;
+
+  pointer-events: none;
+}
+
+/* the line draws itself; where supported, in step with scrolling the card into view */
+.proimpactJobsLine {
+  stroke-dasharray: 1;
+
+  stroke-dashoffset: 1;
+
+  animation: proimpactDraw 1.6s ease-out 0.3s forwards;
+}
+
+@supports (animation-timeline: view()) {
+
+  .proimpactJobsLine {
+    animation: proimpactDraw linear both;
+
+    animation-timeline: view();
+
+    animation-range: entry 20% cover 45%;
+  }
+}
+
+@keyframes proimpactDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.proimpactJobsPulse {
+  opacity: 0.3;
+
+  transform-box: fill-box;
+
+  transform-origin: center;
+
+  animation: proimpactPulse 2s ease-out infinite;
+}
+
+@keyframes proimpactPulse {
+  0% {
+    opacity: 0.45;
+
+    transform: scale(0.6);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform: scale(1.6);
+  }
+}
+
+
+/* =========================================================
+   COMPANIES (logo tiles)
+========================================================= */
+
+.proimpactCompanies {
+  grid-column: span 7;
+}
+
+.proimpactLogos {
+  margin-top: 16px;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+.proimpactLogoItem {
+  height: 54px;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 1px solid #edf0ef;
+
+  border-radius: 12px;
+
+  background: #fafbfa;
+}
+
+.proimpactLogoItem img {
+  width: auto;
+
+  max-width: 78%;
+
+  height: 22px;
+
+  object-fit: contain;
+}
+
+.proimpactFooter {
+  margin: 14px 0 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 10.5px;
+
+  line-height: 1.5;
+
+  font-weight: 500;
+
+  color: #6b6b6b;
+}
+
+
+/* =========================================================
+   STATS (two compact cards stacked beside the steps)
+========================================================= */
+
+.proimpactStat {
+  grid-column: span 4;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+}
+
+.proimpactStatIcon {
+  flex: 0 0 auto;
+
+  width: 48px;
+
+  height: 48px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 14px;
+
+  background: #e9f7f1;
+
+  color: #0e9f6e;
+}
+
+.proimpactStatIcon svg {
+  width: 22px;
+
+  height: 22px;
+}
+
+/* like the plan price */
+.proimpactStatNumber {
+  margin: 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 32px;
+
+  line-height: 1;
+
+  font-weight: 600;
+
+  color: #111111;
+}
+
+.proimpactStatLabel {
+  margin: 6px 0 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 10.5px;
+
+  line-height: 14px;
+
+  font-weight: 600;
+
+  letter-spacing: 1.5px;
+
   text-transform: uppercase;
 
   color: #868585;
@@ -828,948 +1414,372 @@
 
 
 /* =========================================================
-   MAIN HEADING
-========================================================= */
-
-.proimpactHeading {
-  max-width: 760px;
-
-  margin: 20px 0 0;
-
-  font-family: var(--font-ibm);
-
-  font-size: 36px;
-  line-height: 1.25;
-
-  font-weight: 700;
-
-  color: #137a5f;
-}
-
-
-/* =========================================================
-   SUB HEADING
-========================================================= */
-
-.proimpactSubHeading {
-  margin: 15px 0 0;
-
-  font-family: var(--font-poppins);
-
-  font-size: 18px;
-  line-height: 1.5;
-
-  font-weight: 500;
-
-  color: #868585;
-}
-
-
-/* =========================================================
-   DESCRIPTION
-========================================================= */
-
-.proimpactDescription {
-  max-width: 860px;
-
-  margin: 14px 0 0;
-
-  font-family: var(--font-poppins);
-
-  font-size: 18px;
-  line-height: 1.75;
-
-  font-weight: 600;
-
-  color: #6c6b75;
-}
-
-
-/* =========================================================
-   SMALL TEXT
-========================================================= */
-
-.proimpactSmallText {
-  margin: 20px 0 0;
-
-  font-family: var(--font-poppins);
-
-  font-size: 18px;
-  line-height: 1.5;
-
-  font-weight: 500;
-
-  letter-spacing: 0.4px;
-
-  color: #858585;
-}
-
-
-/* =========================================================
-   COMPANY LOGOS
-========================================================= */
-
-.proimpactLogos {
-  margin-top: 29px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 52px;
-}
-
-
-/* =========================================================
-   LOGO ITEM
-========================================================= */
-
-.proimpactLogoItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  height: 34px;
-
-  box-sizing: border-box;
-}
-
-
-/* =========================================================
-   LOGO IMAGE
-========================================================= */
-
-.proimpactLogoItem img {
-  display: block;
-
-  width: auto;
-  height: 39px;
-
-  max-width: 120px;
-
-  object-fit: contain;
-}
-
-
-/* =========================================================
-   FOOTER TEXT
-========================================================= */
-
-.proimpactFooter {
-  margin: 22px 0 0;
-
-  font-family: var(--font-poppins);
-
-  font-size: 16px;
-  line-height: 1.5;
-
-  font-weight: 600;
-
-  letter-spacing: 0.2px;
-
-  color: #777777;
-}
-
-
-/* =========================================================
-   1439px
+   1439px (pricing: heading 28, subtitle 15, price 29)
 ========================================================= */
 
 @media (max-width: 1439px) {
 
   .proimpactContainer {
-    max-width: 1100px;
-
-    padding: 26px 28px 44px;
+    max-width: 1040px;
   }
 
   .proimpactHeading {
-    font-size: 23px;
+    font-size: 28px;
+  }
+
+  .proimpactDescription {
+    font-size: 15px;
+  }
+
+  .proimpactCardTitle {
+    font-size: 15px;
+  }
+
+  .proimpactJobsNumber,
+  .proimpactStatNumber {
+    font-size: 29px;
+  }
+}
+
+
+/* =========================================================
+   1100px: six columns (steps full width, then pairs)
+   (pricing: heading 24, subtitle 13, price 23, small text 9.5)
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .proimpactContainer {
+    max-width: 900px;
+
+    padding: 56px 20px 60px;
+  }
+
+  .proimpactHeading {
+    font-size: 24px;
   }
 
   .proimpactDescription {
     font-size: 13px;
   }
-  
-.proimpactTag {
-  margin: 0;
 
-  font-family: var(--font-poppins);
+  .proimpactGrid {
+    margin-top: 40px;
 
-  font-size: 13px;
-}
-
-
-/* =========================================================
-   MAIN HEADING
-========================================================= */
-
-
-
-
-/* =========================================================
-   SUB HEADING
-========================================================= */
-
-.proimpactSubHeading {
-
-  font-size: 14px;
-}
-
-  .proimpactLogos {
-    gap: 40px;
-  }
-  .proimpactSmallText {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-  .proimpactFooter {
-    margin: 22px 0 0;
-
-    font-size: 14px;
-    
-  }
-}
-
-
-/* =========================================================
-   1100px
-========================================================= */
-
-@media (max-width: 1100px) {
-
-  .proimpactContainer {
-    padding: 25px 24px 40px;
-  }
-
-  .proimpactTag {
-    font-size: 9px;
-
-    letter-spacing: 4px;
-  }
-
-  .proimpactHeading {
-    margin-top: 18px;
-
-    font-size: 22px;
-  }
-
-  .proimpactSubHeading {
-    font-size: 12px;
-  }
-
-  .proimpactDescription {
-    max-width: 680px;
-
-    font-size: 12px;
-  }
-
-  .proimpactSmallText {
-    margin-top: 18px;
-
-    font-size: 10px;
-  }
-
-  .proimpactLogos {
-    margin-top: 21px;
-
-    gap: 35px;
-  }
-
-  .proimpactLogoItem {
-    height: 32px;
-  }
-
-  .proimpactLogoItem img {
-    height: 27px;
-
-    max-width: 110px;
-  }
-
-  .proimpactFooter {
-    margin-top: 15px;
-
-    font-size: 9px;
-  }
-}
-
-
-/* =========================================================
-   760px
-========================================================= */
-
-@media (max-width: 760px) {
-
-  .proimpactContainer {
-    padding: 30px 20px 38px;
-  }
-
-  .proimpactTag {
-    font-size: 8px;
-
-    letter-spacing: 3.5px;
-  }
-
-  .proimpactHeading {
-    max-width: 560px;
-
-    margin-top: 16px;
-
-    font-size: 22px;
-    line-height: 1.3;
-  }
-
-  .proimpactSubHeading {
-    margin-top: 9px;
-
-    font-size: 12px;
-  }
-
-  .proimpactDescription {
-    max-width: 500px;
-
-    margin-top: 13px;
-
-    font-size: 12px;
-    line-height: 1.7;
-  }
-
-  .proimpactSmallText {
-    max-width: 450px;
-
-    margin-top: 18px;
-
-    font-size: 9px;
-  }
-
-  .proimpactLogos {
-    margin-top: 21px;
-
-    gap: 30px;
-  }
-
-  .proimpactLogoItem {
-    height: 30px;
-  }
-
-  .proimpactLogoItem img {
-    height: 25px;
-
-    max-width: 100px;
-  }
-
-  .proimpactFooter {
-    max-width: 500px;
-
-    margin-top: 14px;
-
-    font-size: 9px;
-  }
-}
-
-
-/* =========================================================
-   480px
-========================================================= */
-
-@media (max-width: 480px) {
-
-  .proimpactContainer {
-    padding: 26px 6px 34px;
-  }
-
-  .proimpactTag {
-    font-size: 10px;
-
-    letter-spacing: 3px;
-  }
-
-  .proimpactHeading {
-    max-width: 340px;
-
-    margin-top: 15px;
-
-    font-size: 20px;
-    line-height: 1.3;
-  }
-
-  .proimpactSubHeading {
-    margin-top: 8px;
-
-    font-size: 12px;
-  }
-
-  .proimpactDescription {
-    max-width: 340px;
-
-    margin-top: 12px;
-
-    font-size: 12px;
-    line-height: 1.7;
-  }
-
-  .proimpactSmallText {
-    max-width: 330px;
-
-    margin-top: 17px;
-
-    font-size: 11px;
-
-    line-height: 1.6;
-  }
-
-  .proimpactLogos {
-    margin-top: 20px;
-
-    gap: 28px;
-  }
-
-  .proimpactLogoItem {
-    height: 28px;
-  }
-
-  .proimpactLogoItem img {
-    height: 23px;
-
-    max-width: 85px;
-  }
-
-  .proimpactFooter {
-    max-width: 340px;
-
-    margin-top: 13px;
-
-    font-size: 10px;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* =========================================================
-   PROSTATS
-   STATS SECTION
-========================================================= */
-
-.prostatsSection {
-  width: 100%;
-  background: #ffffff;
-  box-sizing: border-box;
-}
-
-
-/* =========================================================
-   CONTAINER
-========================================================= */
-
-.prostatsContainer {
-  width: 100%;
-  max-width: 900px;
-
-  margin: 0 auto;
-
-  padding: 28px 0 50px;
-
-  display: grid;
-
-  grid-template-columns: 191px 470px 191px;
-
-  align-items: center;
-
-  justify-content: center;
-
-  column-gap: 21px;
-
-  box-sizing: border-box;
-}
-
-
-/* =========================================================
-   SIDE CARDS
-========================================================= */
-
-.prostatsCard {
-  width: 191px;
-  height: 79px;
-
-  border: 3px solid #078d68;
-
-  border-radius: 14px;
-
-  box-sizing: border-box;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  padding: 12px 19px;
-}
-
-
-/* =========================================================
-   LEFT CARD INNER
-========================================================= */
-
-.prostatsCardInner {
-  width: 100%;
-}
-
-
-/* =========================================================
-   SIDE CARD NUMBER
-========================================================= */
-
-.prostatsCard h3 {
-  margin: 0;
-
-  font-family: var(--font-ibm);
-
-  font-size: 22px;
-  line-height: 1;
-
-  font-weight: 700;
-
-  color: #3c3c3c;
-}
-
-
-/* =========================================================
-   SIDE CARD LABEL
-========================================================= */
-
-.prostatsCard p {
-  margin: 9px 0 0;
-
-  font-family: var(--font-poppins);
-
-  font-size: 12px;
-  line-height: 1.2;
-
-  font-weight: 500;
-
-  color: #999999;
-}
-
-
-/* =========================================================
-   CENTER CARD
-========================================================= */
-
-.prostatsCenterCard {
-  width: 470px;
-  height: 79px;
-
-  border-radius: 14px;
-
-  background: #F7F7F7;
-
-  display: grid;
-
-  grid-template-columns: auto 1px 1fr;
-
-  align-items: center;
-
-  column-gap: 12px;
-
-  padding: 0 22px;
-
-  box-sizing: border-box;
-}
-
-
-/* =========================================================
-   CENTER NUMBER
-========================================================= */
-
-.prostatsCenterLeft {
-  display: flex;
-  align-items: center;
-
-  white-space: nowrap;
-}
-
-.prostatsCenterLeft h2 {
-  margin: 0;
-
-  font-family: var(--font-ibm);
-
-  font-size: 25px;
-  line-height: 1;
-
-  font-weight: 700;
-
-  color: #1d1d1d;
-}
-
-
-/* =========================================================
-   CENTER DIVIDER
-========================================================= */
-
-.prostatsDivider {
-  width: 2px;
-  height: 45px;
-
-  background: #e0e0e0;
-}
-
-
-/* =========================================================
-   CENTER TEXT
-========================================================= */
-
-.prostatsCenterRight {
-  min-width: 0;
-
-  display: flex;
-  flex-direction: column;
-
-  justify-content: center;
-}
-
-.prostatsCenterRight p {
-  margin: 0;
-
-  font-family: var(--font-poppins);
-
-  font-size: 12px;
-  line-height: 1.55;
-
-  font-weight: 500;
-
-  color: #777777;
-}
-
-.prostatsCenterRight p + p {
-  margin-top: 2px;
-}
-
-.prostatsCenterRight span {
-  font-weight: 700;
-
-  color: #3c3c3c;
-}
-
-
-/* =========================================================
-   1439px
-========================================================= */
-
-@media (max-width: 1439px) {
-
-  .prostatsContainer {
-    max-width: 900px;
-
-    padding: 7px 0 46px;
-
-    grid-template-columns:
-      185px
-      470px
-      185px;
-
-    column-gap: 18px;
-  }
-  .prostatsCard {
-    border: 2px solid #078d68;
-    padding: 12px 19px;
-  }
-
-  .prostatsCard {
-    width: 185px;
-  }
-
-  .prostatsCenterCard {
-    width: 470px;
-  }
-}
-
-
-/* =========================================================
-   1100px
-========================================================= */
-
-@media (max-width: 1100px) {
-
-  .prostatsContainer {
-    max-width: 800px;
-
-    padding: 25px 20px 42px;
-
-    grid-template-columns:
-      165px
-      minmax(350px, 1fr)
-      165px;
-
-    column-gap: 22px;
-  }
-
-  .prostatsCard {
-    width: 165px;
-    height: 80px;
-
-    padding: 11px 16px;
-  }
-
-  .prostatsCard h3 {
-    font-size: 21px;
-  }
-
-  .prostatsCard p {
-    margin-top: 12px;
-
-    font-size: 9px;
-  }
-
-  .prostatsCenterCard {
-    width: 100%;
-    height: 80px;
-
-    padding: 0 18px;
-
-    column-gap: 10px;
-  }
-
-  .prostatsCenterLeft h2 {
-    font-size: 22px;
-  }
-
-  .prostatsDivider {
-    height: 42px;
-  }
-
-  .prostatsCenterRight p {
-    font-size: 9px;
-  }
-}
-
-
-/* =========================================================
-   760px
-========================================================= */
-
-@media (max-width: 760px) {
-
-  .prostatsContainer {
-    width: 100%;
-    max-width: 500px;
-
-    padding: 25px 20px 38px;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    align-items: center;
-
-    gap: 14px;
-  }
-
-  /* LEFT CARD */
-  .prostatsCard:first-child {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  /* RIGHT CARD */
-  .prostatsCard:last-child {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .prostatsCard {
-    width: 100%;
-    max-width: none;
-
-    height: 72px;
-
-    padding: 10px 17px;
-  }
-
-  .prostatsCard h3 {
-    font-size: 20px;
-  }
-
-  .prostatsCard p {
-    margin-top: 9px;
-
-    font-size: 8px;
-  }
-
-  /* CENTER CARD */
-  .prostatsCenterCard {
-    grid-column: 1 / -1;
-    grid-row: 2;
-
-    width: 100%;
-    max-width: none;
-
-    height: 72px;
-
-    padding: 0 16px;
-
-    column-gap: 10px;
-  }
-
-  .prostatsCenterLeft h2 {
-    font-size: 20px;
-  }
-
-  .prostatsDivider {
-    height: 38px;
-  }
-
-  .prostatsCenterRight p {
-    font-size: 8px;
-
-    line-height: 1.5;
-  }
-}
-
-
-/* =========================================================
-   420px
-========================================================= */
-
-@media (max-width: 480px) {
-
-  .prostatsContainer {
-    padding: 12px 16px 32px;
-
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
 
     gap: 16px;
   }
 
-  /* LEFT CARD */
-  .prostatsCard:first-child {
-    grid-column: 1;
-    grid-row: 1;
+  .proimpactSteps {
+    grid-column: span 6;
+
+    grid-row: auto;
   }
 
-  /* RIGHT CARD */
-  .prostatsCard:last-child {
-    grid-column: 2;
-    grid-row: 1;
+  .proimpactJobs,
+  .proimpactCompanies,
+  .proimpactStat {
+    grid-column: span 3;
   }
 
-  .prostatsCard {
-    width: 100%;
-
-    height: 64px;
-
-    padding: 9px 14px;
-
-    border-radius: 11px;
+  .proimpactCardLabel {
+    font-size: 9.5px;
   }
 
-  .prostatsCard h3 {
-    font-size: 18px;
+  .proimpactCardTitle {
+    font-size: 13px;
   }
 
-  .prostatsCard p {
-    margin-top: 7px;
+  .proimpactStepNumber {
+    font-size: 9.5px;
+  }
+
+  .proimpactStepList strong {
+    font-size: 11px;
+  }
+
+  .proimpactStepList p,
+  .proimpactJobsText,
+  .proimpactFooter,
+  .proimpactStatLabel {
+    font-size: 9.5px;
+  }
+
+  .proimpactJobsNumber,
+  .proimpactStatNumber {
+    font-size: 23px;
+  }
+
+  .proimpactJobsButton {
+    height: 28px;
+
+    font-size: 9.5px;
+  }
+
+}
+
+
+/* =========================================================
+   768px: phones (pricing's mobile scale)
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .proimpactSection::before {
+    height: 360px;
+
+    background-size: 32px 32px;
+  }
+
+  .proimpactContainer {
+    padding: 40px 16px 48px;
+  }
+
+  .proimpactTag {
+    font-size: 10px;
+
+    line-height: 14px;
+  }
+
+  .proimpactHeading {
+    margin-top: 8px;
+
+    font-family: var(--font-ibm);
+
+    font-size: 20px;
+
+    line-height: 25px;
+
+    font-weight: 700;
+  }
+
+  .proimpactDescription {
+    margin-top: 6px;
+
+    font-size: 11px;
+
+    line-height: 16.5px;
+  }
+
+  .proimpactGrid {
+    margin-top: 26px;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+
+  .proimpactSteps,
+  .proimpactJobs,
+  .proimpactCompanies {
+    grid-column: span 2;
+  }
+
+  .proimpactStat {
+    grid-column: span 1;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 10px;
+  }
+
+  .proimpactCard {
+    padding: 18px;
+
+    border-radius: 16px;
+  }
+
+  .proimpactCard:hover {
+    transform: none;
+  }
+
+  .proimpactCardLabel {
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .proimpactCardTitle {
+    margin-top: 6px;
+
+    font-size: 13px;
+
+    line-height: 18px;
+  }
+
+  /* steps run down the card, joined by a vertical dashed path */
+
+  .proimpactStepList {
+    margin-top: 16px;
+
+    grid-template-columns: minmax(0, 1fr);
+
+    gap: 14px;
+  }
+
+  .proimpactStepList::before {
+    top: 18px;
+
+    bottom: 18px;
+
+    left: 18px;
+
+    right: auto;
+
+    border-top: none;
+
+    border-left: 2px dashed #bfe3d4;
+  }
+
+  .proimpactStepList li {
+    display: grid;
+
+    grid-template-columns: 36px minmax(0, 1fr);
+
+    column-gap: 12px;
+
+    align-items: start;
+  }
+
+  .proimpactStepIcon {
+    grid-row: span 3;
+
+    width: 36px;
+
+    height: 36px;
+  }
+
+  .proimpactStepNumber {
+    margin-top: 0;
 
     font-size: 10px;
   }
 
-  /* CENTER CARD */
-  .prostatsCenterCard {
-    grid-column: 1 / -1;
-    grid-row: 2;
+  .proimpactStepList strong {
+    margin-top: 0;
 
+    font-size: 13px;
+
+    line-height: 18px;
+  }
+
+  .proimpactStepList p {
+    margin-top: 2px;
+
+    font-size: 11px;
+
+    line-height: 16.5px;
+  }
+
+  .proimpactJobsNumber,
+  .proimpactStatNumber {
+    font-family: var(--font-ibm);
+
+    font-size: 26px;
+
+    font-weight: 700;
+  }
+
+  .proimpactJobsText {
+    font-size: 12px;
+
+    line-height: 18px;
+  }
+
+  .proimpactJobsText + .proimpactJobsText {
+    margin-bottom: 18px;
+  }
+
+  .proimpactJobsChart {
+    top: 18px;
+
+    right: 16px;
+
+    bottom: auto;
+
+    width: 40%;
+
+    max-width: 150px;
+  }
+
+  .proimpactJobsButton {
     width: 100%;
 
-    height: 64px;
+    height: 48px;
 
-    padding: 0 13px;
+    justify-content: center;
 
-    column-gap: 8px;
+    border-radius: 12px;
+
+    font-size: 13px;
+  }
+
+  .proimpactLogos {
+    margin-top: 12px;
+
+    gap: 8px;
+  }
+
+  .proimpactLogoItem {
+    height: 48px;
+  }
+
+  .proimpactLogoItem img {
+    height: 18px;
+  }
+
+  .proimpactFooter {
+    margin-top: 12px;
+
+    font-size: 11px;
+
+    line-height: 16.5px;
+  }
+
+  .proimpactStatIcon {
+    width: 36px;
+
+    height: 36px;
 
     border-radius: 10px;
   }
 
-  .prostatsCenterLeft h2 {
-    font-size: 19px;
+  .proimpactStatIcon svg {
+    width: 17px;
+
+    height: 17px;
   }
 
-  .prostatsDivider {
-    height: 34px;
-  }
+  .proimpactStatLabel {
+    margin-top: 4px;
 
-  .prostatsCenterRight p {
     font-size: 10px;
 
-    line-height: 1.45;
-  }
-
-  .prostatsCenterRight p + p {
-    margin-top: 2px;
+    letter-spacing: 1px;
   }
 }
 
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-  .prostatsSection,
-  .prostatsCard,
-  .prostatsCenterCard {
-    scroll-behavior: auto;
+  .proimpactCard,
+  .proimpactJobsButton {
+    transition: none;
+  }
+
+  .proimpactJobsLine {
+    stroke-dashoffset: 0;
+
+    animation: none;
+  }
+
+  .proimpactJobsPulse {
+    animation: none;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* =========================================================
@@ -3502,10 +3512,6 @@
    HOVER
 ========================================================= */
 
-.profaqQuestion:hover .profaqQuestionText {
-  color: #087957;
-}
-
 .profaqQuestion:hover .profaqIcon {
   transform: scale(1.05);
 }
@@ -3905,11 +3911,11 @@
 .propricingContainer {
   width: 100%;
 
-  max-width: 1150px;
+  max-width: 1132px;
 
   margin: 0 auto;
 
-  padding: 30px 20px 42px;
+  padding: 35px 20px 46px;
 
   box-sizing: border-box;
 }
@@ -3939,13 +3945,13 @@
 .propricingHeader h2 {
   margin: 0;
 
-  font-family: var(--font-ibm);
+  font-family: var(--font-poppins);
 
-  font-size: 28px;
+  font-size: 32px;
 
-  line-height: 1.25;
+  line-height: 1.3;
 
-  font-weight: 700;
+  font-weight: 600;
 
   color: #111111;
 }
@@ -3956,11 +3962,11 @@
 ========================================================= */
 
 .propricingHeader p {
-  margin: 8px 0 0;
+  margin: 10px 0 0;
 
   font-family: var(--font-poppins);
 
-  font-size: 14.5px;
+  font-size: 16.5px;
 
   line-height: 1.5;
 
@@ -3977,37 +3983,15 @@
 .propricingCards {
   width: 100%;
 
-  margin-top: 42px;
+  margin-top: 56px;
 
   display: grid;
 
   grid-template-columns: repeat(2, minmax(0, 1fr));
 
-  gap: 22px;
+  gap: 31px;
 
   box-sizing: border-box;
-}
-
-.coursePricingCards {
-  grid-template-columns: minmax(0, 1fr);
-  max-width: 900px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.propricingCoursePrice {
-  color: #111;
-  font-family: var(--font-ibm), Arial, sans-serif;
-  font-size: 34px;
-  font-weight: 700;
-  line-height: 1.1;
-}
-
-.propricingComparePrice {
-  margin-top: 5px;
-  color: #8a9691;
-  font-size: 14px;
-  text-decoration: line-through;
 }
 
 
@@ -4020,18 +4004,18 @@
 
   width: 100%;
 
-  min-height: 193px;
+  min-height: 242px;
 
-  padding: 28px 45px 20px;
+  padding: 39px 28px 27px 30px;
 
   background: #ffffff;
 
-  
+  border: 2px solid #dedede;
 
-  border-radius: 10px;
+  border-radius: 13px;
 
   box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.18);
+    0 3px 8px rgba(0, 0, 0, 0.12);
 
   box-sizing: border-box;
 }
@@ -4046,11 +4030,11 @@
 
   display: grid;
 
-  grid-template-columns: 0.95fr 1.05fr;
+  grid-template-columns: 52% 48%;
 
   align-items: start;
 
-  gap: 2px;
+  gap: 0;
 }
 
 
@@ -4080,28 +4064,42 @@
 
   justify-content: center;
 
-  min-width: 67px;
+  gap: 3px;
 
-  height: 22px;
+  min-width: 82px;
 
-  padding: 0 9px;
+  height: 26px;
+
+  margin-left: 6px;
+
+  padding: 0 12px;
 
   background: #ffffff;
 
-  border-radius: 3px;
+  border-radius: 4px;
 
   box-shadow:
-    0 2px 5px rgba(0, 0, 0, 0.12);
+    0 2px 6px rgba(0, 0, 0, 0.14);
 
   font-family: var(--font-poppins);
 
-  font-size: 8px;
+  font-size: 11.5px;
 
   line-height: 1;
 
   font-weight: 500;
 
-  color: #00a878;
+  color: #0fa06c;
+
+  box-sizing: border-box;
+}
+
+.propricingPlanBadge strong {
+  font-size: 1.3em;
+
+  font-weight: 700;
+
+  color: #0b6e4b;
 }
 
 
@@ -4112,17 +4110,17 @@
 .propricingTrendingBadge {
   position: absolute;
 
-  top: -15px;
+  top: -21px;
 
-  left: 25px;
+  left: 33px;
 
-  height: 25px;
+  height: 20px;
 
   padding: 0 12px;
 
-  border-radius: 5px 5px 0 0;
+  border-radius: 6px 6px 0 0;
 
-  background: #64c1a4;
+  background: #6cc3a1;
 
   color: #ffffff;
 
@@ -4134,7 +4132,7 @@
 
   font-family: var(--font-poppins);
 
-  font-size: 8px;
+  font-size: 10.5px;
 
   font-weight: 600;
 
@@ -4143,7 +4141,7 @@
 
 
 /* =========================================================
-   PRICE
+   PRICE (Rs, amount and decimals share one size)
 ========================================================= */
 
 .propricingPrice {
@@ -4151,62 +4149,27 @@
 
   align-items: baseline;
 
-  margin-top: 12px;
+  margin-top: 20px;
+
+  font-family: var(--font-poppins);
+
+  font-size: 32px;
+
+  line-height: 1;
+
+  font-weight: 600;
+
+  color: #111111;
 
   white-space: nowrap;
 }
 
-
-/* =========================================================
-   CURRENCY
-========================================================= */
-
 .propricingCurrency {
-  margin-right: 5px;
-
-  font-family: var(--font-ibm);
-
-  font-size: 18px;
-
-  line-height: 1;
-
-  font-weight: 700;
-
-  color: #111111;
+  margin-right: 0.25em;
 }
-
-
-/* =========================================================
-   AMOUNT
-========================================================= */
-
-.propricingAmount {
-  font-family: var(--font-ibm);
-
-  font-size: 27px;
-
-  line-height: 1;
-
-  font-weight: 700;
-
-  color: #111111;
-}
-
-
-/* =========================================================
-   DECIMAL
-========================================================= */
 
 .propricingDecimal {
-  font-family: var(--font-ibm);
-
-  font-size: 22px;
-
-  line-height: 1;
-
-  font-weight: 500;
-
-  color: #b8b8b8;
+  color: #b3b3b3;
 }
 
 
@@ -4215,19 +4178,19 @@
 ========================================================= */
 
 .propricingDescription {
-  max-width: 190px;
+  max-width: 172px;
 
-  margin: 8px 0 0;
+  margin: 12px 0 0;
 
   font-family: var(--font-poppins);
 
-  font-size: 10px;
+  font-size: 10.5px;
 
-  line-height: 1.45;
+  line-height: 1.5;
 
   font-weight: 500;
 
-  color: #aaaaaa;
+  color: #a9a9a9;
 }
 
 
@@ -4236,29 +4199,32 @@
 ========================================================= */
 
 .propricingBuyButton {
-  width: 84px;
+  width: 86px;
 
-  height: 28px;
+  height: 33px;
 
-  margin-top: 14px;
+  margin-top: 18px;
 
   padding: 0;
 
   border: none;
 
-  border-radius: 6px;
+  border-radius: 8px;
 
   background: linear-gradient(
     to right,
-    #0eb47e 0%,
-    #087957 100%
+    #14a878 0%,
+    #0b5a3d 100%
   );
+
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.14);
 
   color: #ffffff;
 
   font-family: var(--font-poppins);
 
-  font-size: 9px;
+  font-size: 11px;
 
   line-height: 1;
 
@@ -4286,13 +4252,17 @@
 .propricingFeatures {
   min-width: 0;
 
+  margin: 0;
+
+  padding: 6px 0 0;
+
+  list-style: none;
+
   display: flex;
 
   flex-direction: column;
 
-  gap: 10px;
-
-  padding-top: 7px;
+  gap: 18px;
 }
 
 
@@ -4303,52 +4273,38 @@
 .propricingFeature {
   display: flex;
 
-  align-items: flex-start;
+  align-items: center;
 
-  gap: 7px;
+  gap: 8px;
 
   font-family: var(--font-poppins);
 
-  font-size: 11px;
+  font-size: 10.3px;
 
-  line-height: 1.45;
+  line-height: 16px;
 
   font-weight: 500;
 
-  color: #222222;
+  color: #1f1f1f;
+}
+
+.propricingFeature strong {
+  font-weight: 700;
+
+  color: #0fa06c;
 }
 
 
 /* =========================================================
-   CHECK
+   CHECK (dashed circle icon)
 ========================================================= */
 
 .propricingCheck {
   flex: 0 0 auto;
 
-  width: 13px;
+  width: 16px;
 
-  height: 13px;
-
-  border: 1px solid #25b98a;
-
-  border-radius: 50%;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  color: #18ae7e;
-
-  font-size: 8px;
-
-  line-height: 1;
-
-  font-weight: 700;
-
-  box-sizing: border-box;
+  height: 16px;
 }
 
 
@@ -4359,7 +4315,7 @@
 .propricingTrust {
   width: 100%;
 
-  margin-top: 44px;
+  margin-top: 55px;
 
   display: flex;
 
@@ -4369,13 +4325,13 @@
 }
 
 .propricingTrust p {
-  max-width: 760px;
+  max-width: 780px;
 
   margin: 0;
 
   font-family: var(--font-poppins);
 
-  font-size: 12px;
+  font-size: 12.5px;
 
   line-height: 1.5;
 
@@ -4386,38 +4342,43 @@
 
 
 /* =========================================================
-   PAYMENT LOGOS
+   PAYMENT & PARTNER LOGOS (files include their boxes)
 ========================================================= */
 
 .propricingPaymentLogos {
   width: 100%;
 
-  margin-top: 9px;
+  margin-top: 11px;
 
   display: flex;
+
+  flex-wrap: wrap;
 
   align-items: center;
 
   justify-content: center;
 
-  gap: 18px;
+  gap: 9px;
 }
-
-
-/* =========================================================
-   PAYMENT LOGO
-========================================================= */
 
 .propricingPaymentLogos img {
   display: block;
 
   width: auto;
 
-  height: 23px;
+  height: 32px;
+}
 
-  max-width: 80px;
 
-  object-fit: contain;
+/* =========================================================
+   MOBILE-ONLY PARTS (switcher, dots, note, secure line)
+========================================================= */
+
+.propricingSwitch,
+.propricingDots,
+.propricingNote,
+.propricingSecure {
+  display: none;
 }
 
 
@@ -4430,35 +4391,47 @@
   .propricingContainer {
     max-width: 1040px;
 
-    padding: 30px 20px 40px;
+    padding: 32px 20px 42px;
   }
 
   .propricingHeader h2 {
-    font-size: 24px;
+    font-size: 28px;
+  }
+
+  .propricingHeader p {
+    font-size: 15px;
   }
 
   .propricingCards {
-    margin-top: 40px;
+    margin-top: 50px;
 
-    gap: 22px;
+    gap: 26px;
   }
 
   .propricingCard {
-    min-height: 190px;
+    min-height: 226px;
 
-    padding: 27px 24px 20px;
+    padding: 34px 22px 25px 26px;
   }
 
   .propricingCardContent {
-    gap: 1px;
+    grid-template-columns: 50% 50%;
   }
 
-  .propricingAmount {
-    font-size: 26px;
+  .propricingPrice {
+    font-size: 29px;
+  }
+
+  .propricingFeatures {
+    gap: 16px;
+  }
+
+  .propricingFeature {
+    font-size: 10px;
   }
 
   .propricingTrust {
-    margin-top: 42px;
+    margin-top: 48px;
   }
 }
 
@@ -4480,176 +4453,601 @@
   }
 
   .propricingHeader p {
-    font-size: 11px;
+    font-size: 13px;
   }
 
   .propricingCards {
-    margin-top: 38px;
+    margin-top: 44px;
 
-    gap: 18px;
+    gap: 22px;
   }
 
   .propricingCard {
-    min-height: 185px;
+    min-height: 200px;
 
-    padding: 25px 20px 18px;
+    padding: 28px 18px 22px 22px;
+
+    border-radius: 11px;
   }
 
   .propricingCardContent {
-    grid-template-columns: 0.9fr 1.1fr;
-
-    gap: 17px;
+    grid-template-columns: 45% 55%;
   }
 
-  .propricingAmount {
-    font-size: 24px;
+  .propricingTrendingBadge {
+    left: 24px;
+
+    font-size: 9.5px;
   }
 
-  .propricingCurrency {
-    font-size: 16px;
+  .propricingPlanBadge {
+    min-width: 68px;
+
+    height: 22px;
+
+    font-size: 9.5px;
   }
 
-  .propricingDecimal {
-    font-size: 19px;
+  .propricingPrice {
+    margin-top: 16px;
+
+    font-size: 23px;
   }
 
   .propricingDescription {
-    max-width: 160px;
+    max-width: 150px;
 
-    font-size: 7px;
+    font-size: 9.5px;
+  }
+
+  .propricingBuyButton {
+    width: 74px;
+
+    height: 28px;
+
+    margin-top: 16px;
+
+    font-size: 9.5px;
+  }
+
+  .propricingFeatures {
+    gap: 12px;
   }
 
   .propricingFeature {
-    font-size: 7px;
+    gap: 6px;
+
+    font-size: 9.5px;
+
+    line-height: 14px;
   }
 
   .propricingCheck {
-    width: 12px;
+    width: 13px;
 
-    height: 12px;
-
-    font-size: 7px;
+    height: 13px;
   }
 
   .propricingTrust {
-    margin-top: 38px;
+    margin-top: 40px;
+  }
+
+  .propricingTrust p {
+    font-size: 11px;
+  }
+
+  .propricingPaymentLogos img {
+    height: 26px;
   }
 }
 
 
+/* Angle for the trending card's rotating gradient border (must be registered to animate). */
+@property --propricing-angle {
+  syntax: "<angle>";
+
+  initial-value: 0deg;
+
+  inherits: false;
+}
+
+
 /* =========================================================
-   760px
+   900px and below: swipeable plan carousel
+   The carousel's scroll position is written to --p (0 = Standard, 1 = Advantage +),
+   and the switcher highlight, card depth and dots all follow it. It runs right-to-left
+   (row-reverse, Standard ordered after Advantage +) so it opens on Advantage +.
 ========================================================= */
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
 
   .propricingContainer {
     width: 100%;
 
     max-width: 560px;
 
-    padding: 30px 20px 38px;
+    padding: 32px 20px 40px;
   }
 
-  .propricingHeader h2 {
-    font-size: 22px;
 
-    line-height: 1.3;
+  /* type matches the other mobile sections (headings, subtitles, labels, body) */
+
+  .propricingHeader h2 {
+    font-family: var(--font-ibm);
+
+    font-size: 20px;
+
+    line-height: 25px;
+
+    font-weight: 700;
+
+    text-wrap: balance;
   }
 
   .propricingHeader p {
-    margin-top: 7px;
+    margin-top: 6px;
 
-    font-size: 10px;
+    font-size: 11px;
+
+    line-height: 16.5px;
+
+    text-wrap: balance;
   }
 
 
   /* =======================================================
-     CARDS
+     PLAN SWITCHER (gradient highlight slides with the swipe)
+  ======================================================= */
+
+  .propricingSwitch {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 340px;
+
+    margin: 26px auto 0;
+
+    padding: 5px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    background: #f1f5f3;
+
+    border: 1px solid #e2ebe6;
+
+    border-radius: 999px;
+
+    box-shadow:
+      inset 0 1px 3px rgba(16, 40, 30, 0.07);
+
+    box-sizing: border-box;
+  }
+
+  .propricingSwitch::before {
+    content: "";
+
+    position: absolute;
+
+    top: 5px;
+
+    bottom: 5px;
+
+    left: 5px;
+
+    width: calc(50% - 5px);
+
+    border-radius: 999px;
+
+    background: linear-gradient(135deg, #16b883 0%, #0b5a3d 100%);
+
+    box-shadow:
+      0 4px 10px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+    transform: translateX(calc(var(--p, 1) * 100%));
+  }
+
+  .propricingSwitch button {
+    position: relative;
+
+    z-index: 1;
+
+    height: 42px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0 8px;
+
+    border: none;
+
+    background: transparent;
+
+    font-family: var(--font-poppins);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #5b6b64;
+
+    cursor: pointer;
+
+    transition: color 0.25s ease;
+  }
+
+  .propricingSwitch button strong {
+    font-weight: 700;
+  }
+
+  .propricingSwitch .propricingSwitchActive {
+    color: #ffffff;
+  }
+
+  .propricingSwitchTag {
+    position: absolute;
+
+    top: -11px;
+
+    right: 10px;
+
+    padding: 2px 8px;
+
+    border: 1px solid #bfe9d8;
+
+    border-radius: 999px;
+
+    background: #ffffff;
+
+    box-shadow:
+      0 2px 6px rgba(0, 0, 0, 0.08);
+
+    font-size: 9px;
+
+    line-height: 13px;
+
+    font-weight: 600;
+
+    color: #0b8a5f;
+  }
+
+  /* =======================================================
+     CAROUSEL (native swipe with snapping; one full-width plan
+     at a time, the other waits off-screen)
   ======================================================= */
 
   .propricingCards {
-    margin-top: 35px;
+    position: relative;
+
+    width: auto;
+
+    margin: 10px -20px 0;
+
+    padding: 16px 20px 26px;
+
+    display: flex;
+
+    flex-direction: row-reverse;
+
+    gap: 40px;
+
+    overflow-x: auto;
+
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+
+    overscroll-behavior-x: contain;
+  }
+
+  .propricingCards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .propricingCard {
+    flex: 0 0 100%;
 
     display: flex;
 
     flex-direction: column;
 
-    gap: 25px;
-  }
-
-  .propricingCard {
     min-height: auto;
 
-    padding: 27px 22px 22px;
+    padding: 22px 18px 18px;
 
-    border-radius: 9px;
+    border: 1.5px solid #e3e7e5;
+
+    border-radius: 18px;
+
+    box-shadow:
+      0 10px 28px rgba(16, 40, 30, 0.08);
+
+    scroll-snap-align: center;
+
+    scroll-snap-stop: always;
   }
 
-  .propricingCardContent {
-    grid-template-columns: 1fr 1fr;
+  /* depth: the card in focus is full size, the other one steps back */
 
-    gap: 18px;
+  .propricingCard:first-child {
+    order: 1;
+
+    transform: scale(calc(1 - 0.06 * var(--p, 1)));
+
+    opacity: calc(1 - 0.4 * var(--p, 1));
+  }
+
+  .propricingCard:last-child {
+    transform: scale(calc(0.94 + 0.06 * var(--p, 1)));
+
+    opacity: calc(0.6 + 0.4 * var(--p, 1));
+  }
+
+  /* trending card: slowly rotating gradient border over a soft green wash (neutral shadow, no green glow) */
+
+  .propricingCardTrending {
+    border: 2px solid transparent;
+
+    background:
+      linear-gradient(180deg, #effaf5 0, #ffffff 150px) padding-box,
+      conic-gradient(from var(--propricing-angle), #0eb47e, #a7ead0, #064e37, #0eb47e) border-box;
+
+    box-shadow:
+      0 10px 28px rgba(16, 40, 30, 0.08);
+
+    animation: propricingSpin 6s linear infinite;
+  }
+
+  @keyframes propricingSpin {
+    to {
+      --propricing-angle: 360deg;
+    }
+  }
+
+
+  /* single column inside the card: details, then the list, then the button */
+
+  .propricingCardContent {
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .propricingMain {
+    display: contents;
   }
 
   .propricingTrendingBadge {
-    top: -14px;
+    top: 22px;
 
-    left: 22px;
+    right: 18px;
+
+    left: auto;
 
     height: 24px;
 
-    font-size: 8px;
+    padding: 0 11px;
+
+    border-radius: 999px;
+
+    background: #0eb47e;
+
+    font-size: 10px;
   }
 
   .propricingPlanBadge {
-    min-width: 64px;
+    min-width: 0;
 
-    height: 21px;
+    height: 26px;
 
-    font-size: 8px;
+    margin-left: 0;
+
+    padding: 0 12px;
+
+    font-size: 12px;
   }
 
   .propricingPrice {
-    margin-top: 11px;
-  }
+    margin-top: 16px;
 
-  .propricingCurrency {
-    font-size: 16px;
-  }
+    font-family: var(--font-ibm);
 
-  .propricingAmount {
-    font-size: 24px;
-  }
+    font-size: 26px;
 
-  .propricingDecimal {
-    font-size: 19px;
+    font-weight: 700;
   }
 
   .propricingDescription {
-    max-width: 180px;
+    max-width: none;
 
-    font-size: 8px;
+    margin-top: 8px;
+
+    font-size: 12px;
+
+    line-height: 18px;
+
+    color: #868585;
   }
 
-  .propricingBuyButton {
-    width: 72px;
+  .propricingNote {
+    display: inline-flex;
 
-    height: 29px;
+    margin-top: 12px;
 
-    font-size: 8px;
+    padding: 6px 10px;
+
+    border-radius: 8px;
+
+    background: #e3f6ee;
+
+    font-family: var(--font-poppins);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    color: #0b6e4b;
   }
 
   .propricingFeatures {
-    padding-top: 5px;
+    order: 1;
 
-    gap: 9px;
+    width: 100%;
+
+    margin: 18px 0 20px;
+
+    padding: 16px 0 0;
+
+    border-top: 1px dashed #dfe5e2;
+
+    gap: 12px;
+  }
+
+  .propricingFeatures::before {
+    content: "What you get";
+
+    font-family: var(--font-poppins);
+
+    font-size: 10px;
+
+    line-height: 14px;
+
+    font-weight: 600;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: #868585;
   }
 
   .propricingFeature {
-    font-size: 8px;
+    align-items: flex-start;
+
+    gap: 9px;
+
+    font-size: 11px;
+
+    line-height: 16.5px;
+
+    color: #3e3e3e;
+  }
+
+  .propricingCheck {
+    width: 16px;
+
+    height: 16px;
+
+    margin-top: 0;
+  }
+
+  /* full-width button (the glass sheen comes from GLASS BUTTONS at the end of the file) */
+
+  .propricingBuyButton {
+    order: 2;
+
+    width: 100%;
+
+    height: 48px;
+
+    margin-top: auto;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+
+    letter-spacing: 0.04em;
+  }
+
+  .propricingBuyButton::after {
+    content: "\2192";
+
+    margin-left: 8px;
+  }
+
+  .propricingSecure {
+    order: 3;
+
+    width: 100%;
+
+    margin-top: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    font-family: var(--font-poppins);
+
+    font-size: 10px;
+
+    line-height: 12px;
+
+    font-weight: 500;
+
+    color: #999999;
+  }
+
+  .propricingSecure svg {
+    width: 12px;
+
+    height: 12px;
+  }
+
+
+  /* =======================================================
+     DOTS (stretch with the swipe)
+  ======================================================= */
+
+  .propricingDots {
+    margin-top: 2px;
+
+    display: flex;
+
+    justify-content: center;
 
     gap: 6px;
+  }
+
+  .propricingDots button {
+    height: 8px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 999px;
+
+    background: #cfd8d4;
+
+    cursor: pointer;
+
+    transition: background 0.25s ease;
+  }
+
+  .propricingDots button:first-child {
+    width: calc(8px + 16px * (1 - var(--p, 1)));
+  }
+
+  .propricingDots button:last-child {
+    width: calc(8px + 16px * var(--p, 1));
+  }
+
+  .propricingDots .propricingDotActive {
+    background: #0eb47e;
   }
 
 
@@ -4658,25 +5056,25 @@
   ======================================================= */
 
   .propricingTrust {
-    margin-top: 34px;
+    margin-top: 28px;
   }
 
   .propricingTrust p {
-    max-width: 500px;
+    max-width: 420px;
 
-    font-size: 8px;
+    font-size: 11px;
+
+    line-height: 16.5px;
   }
 
   .propricingPaymentLogos {
     gap: 8px;
 
-    margin-top: 9px;
+    margin-top: 12px;
   }
 
   .propricingPaymentLogos img {
-    height: 23px;
-
-    max-width: 72px;
+    height: 28px;
   }
 }
 
@@ -4688,147 +5086,36 @@
 @media (max-width: 480px) {
 
   .propricingContainer {
-    padding: 26px 16px 34px;
+    padding: 28px 16px 36px;
   }
-
-  .propricingHeader h2 {
-    font-size: 19px;
-  }
-
-  .propricingHeader p {
-    font-size: 11px;
-  }
-
-
-  /* =======================================================
-     CARDS
-  ======================================================= */
 
   .propricingCards {
-    margin-top: 32px;
+    margin-right: -16px;
 
-    gap: 33px;
-  }
+    margin-left: -16px;
 
-  .propricingCard {
-    padding: 25px 17px 20px;
+    padding-right: 16px;
 
-    border-radius: 8px;
-  }
+    padding-left: 16px;
 
-  .propricingCardContent {
-    grid-template-columns: 0.9fr 1.1fr;
-
-    gap: 4px;
-  }
-
-  .propricingTrendingBadge {
-    top: -23px;
-
-    left: 13px;
-
-    height: 23px;
-
-    padding: 0 10px;
-
-    font-size: 7px;
-  }
-
-  .propricingPlanBadge {
-    min-width: 59px;
-
-    height: 20px;
-
-    font-size: 7px;
-  }
-
-  .propricingPrice {
-    margin-top: 15px;
-  }
-
-  .propricingCurrency {
-    margin-right: 3px;
-
-    font-size: 14px;
-  }
-
-  .propricingAmount {
-    font-size: 21px;
-  }
-
-  .propricingDecimal {
-    font-size: 17px;
-  }
-
-  .propricingDescription {
-    max-width: 145px;
-
-    margin-top: 7px;
-
-    font-size: 8.5px;
-
-    line-height: 1.5;
-  }
-
-  .propricingBuyButton {
-    width: 65px;
-
-    height: 27px;
-
-    margin-top: 12px;
-
-    font-size: 7px;
-  }
-
-  .propricingFeatures {
-    gap: 12px;
-
-    padding-top: 4px;
-  }
-
-  .propricingFeature {
-    font-size: 9px;
-
-    line-height: 1.4;
-
-    gap: 5px;
-  }
-
-  .propricingCheck {
-    width: 11px;
-
-    height: 11px;
-
-    font-size: 6px;
-  }
-
-
-  /* =======================================================
-     TRUST
-  ======================================================= */
-
-  .propricingTrust {
-    margin-top: 30px;
-  }
-
-  .propricingTrust p {
-    max-width: 340px;
-
-    font-size: 10px;
-
-    line-height: 1.6;
-  }
-
-  .propricingPaymentLogos {
-    gap: 16px;
-
-    margin-top: 10px;
+    gap: 32px;
   }
 
   .propricingPaymentLogos img {
-    height: 22px;
+    height: 24px;
+  }
+}
 
-    max-width: 65px;
+
+@media (prefers-reduced-motion: reduce) {
+
+  .propricingCardTrending {
+    animation: none;
+  }
+
+  .propricingSwitch button,
+  .propricingDots button {
+    transition: none;
   }
 }
 
@@ -4841,5 +5128,85 @@
 
   .propricingBuyButton {
     transition: none;
+  }
+}
+
+
+/* =========================================================
+   GLASS BUTTONS
+   Every button on the page gets a glossy top sheen, a thin
+   inner highlight and a soft light sweep. The layer sits
+   between the button's own background and its label
+   (isolation + z-index -1), so the text stays crisp.
+========================================================= */
+
+.proheroPrimaryBtn,
+.proheroSecondaryBtn,
+.procontactButton,
+.protoolsBrochureButton,
+.propricingBuyButton,
+.proimpactJobsButton {
+  position: relative;
+
+  overflow: hidden;
+
+  isolation: isolate;
+}
+
+.proheroPrimaryBtn::before,
+.proheroSecondaryBtn::before,
+.procontactButton::before,
+.protoolsBrochureButton::before,
+.propricingBuyButton::before,
+.proimpactJobsButton::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -1;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.38) 50%, transparent 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.08) 48%, rgba(255, 255, 255, 0) 52%);
+
+  background-size: 250% 100%, 100% 100%;
+
+  background-repeat: no-repeat;
+
+  background-position: 160% 0, 0 0;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+  pointer-events: none;
+
+  animation: glassShine 3.6s ease-in-out infinite;
+}
+
+@keyframes glassShine {
+  0%,
+  55% {
+    background-position: 160% 0, 0 0;
+  }
+
+  100% {
+    background-position: -60% 0, 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .proheroPrimaryBtn::before,
+  .proheroSecondaryBtn::before,
+  .procontactButton::before,
+  .protoolsBrochureButton::before,
+  .propricingBuyButton::before,
+  .proimpactJobsButton::before {
+    animation: none;
   }
 }

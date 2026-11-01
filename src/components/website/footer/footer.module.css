@@ -309,6 +309,16 @@
 }
 
 
+/* Long course names (e.g. "Financial Risk Management") stay on one line,
+   running into the wide column gap instead of wrapping. */
+@media (min-width: 769px) {
+
+  .footerExtraLinks li {
+    white-space: nowrap;
+  }
+}
+
+
 /* =========================================================
    BOTTOM BAR
 ========================================================= */

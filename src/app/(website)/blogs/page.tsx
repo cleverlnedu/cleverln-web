@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import styles from "./blogs.module.css";
 
@@ -70,7 +71,7 @@ export default function BlogsPage() {
       <div className={styles.column}>
         <h4>Explore</h4>
         <ul>
-          <li>Courses to learn</li>
+          <li><Link href="/courses">Courses to learn</Link></li>
           <li>Programs to explore</li>
           <li>Certifications</li>
           <li>Workshops</li>
@@ -81,7 +82,7 @@ export default function BlogsPage() {
       <div className={styles.column}>
         <h4>Important Links</h4>
         <ul>
-          <li>Help Center</li>
+          <li><Link href="/help-center">Help Center</Link></li>
           <li>Privacy Policy</li>
           <li>Terms & Conditions</li>
           <li>Support system</li>

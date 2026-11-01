@@ -3,8 +3,9 @@
 import Link from "next/link";
 
 import styles from "./footer.module.css";
+import type { TrendingCourse } from "./trendingCourses";
 
-const Footer = () => {
+const Footer = ({ trendingCourses = [] }: { trendingCourses?: TrendingCourse[] }) => {
   return (
     <footer className={styles.footerFooter}>
 
@@ -20,7 +21,7 @@ const Footer = () => {
             <h4>Explore</h4>
 
             <ul>
-              <li>Courses to learn</li>
+              <li><Link href="/courses">Courses to learn</Link></li>
               <li>Programs to explore</li>
               <li>Certifications</li>
               <li>Workshops</li>
@@ -33,7 +34,7 @@ const Footer = () => {
             <h4>Policies</h4>
 
             <ul>
-              <li>Help Center</li>
+              <li><Link href="/help-center">Help Center</Link></li>
               <li>
                 <Link href="/privacy-policy">
                   Privacy Policy
@@ -165,25 +166,19 @@ const Footer = () => {
 
             <ul>
 
-              <li>
-                Courses to learn
-              </li>
-
-              <li>
-                Programs to explore
-              </li>
-
-              <li>
-                Certifications
-              </li>
-
-              <li>
-                Workshops
-              </li>
-
-              <li>
-                Resources
-              </li>
+              {trendingCourses.length > 0 ? trendingCourses.map((course) => (
+                <li key={course.slug}>
+                  <Link href={`/courses/${course.slug}`}>
+                    {course.title}
+                  </Link>
+                </li>
+              )) : (
+                <li>
+                  <Link href="/courses">
+                    Courses to learn
+                  </Link>
+                </li>
+              )}
 
             </ul>
 
@@ -201,7 +196,7 @@ const Footer = () => {
             <ul>
 
               <li>
-                Help Center
+                <Link href="/help-center">Help Center</Link>
               </li>
 
               <li>
@@ -232,7 +227,9 @@ const Footer = () => {
             <ul>
 
               <li>
-                Courses to learn
+                <Link href="/courses">
+                  Courses to learn
+                </Link>
               </li>
 
               <li>
@@ -267,7 +264,7 @@ const Footer = () => {
             <ul>
 
               <li>
-                Help Center
+                <Link href="/help-center">Help Center</Link>
               </li>
 
               <li>
@@ -295,7 +292,7 @@ const Footer = () => {
             <ul>
 
               <li>
-                Help Center
+                <Link href="/help-center">Help Center</Link>
               </li>
 
               <li>

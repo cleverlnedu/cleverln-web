@@ -1,0 +1,981 @@
+/* =========================================================
+   OPPORTUNITIES HERO
+   Left: headline, cycling subtitle, location search, counting stats.
+   Right: a job seeker inside a slowly turning orbit of icons, and three
+   floating cards that tell the journey (match -> shortlisted -> interview).
+   Everything animates in once, then only gentle loops run; reduced motion turns them off.
+========================================================= */
+
+.hero {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  isolation: isolate;
+
+  background: #ffffff;
+}
+
+.inner {
+  width: 100%;
+
+  max-width: 1180px;
+
+  min-height: 480px;
+
+  margin: 0 auto;
+
+  padding: 0 24px;
+
+  display: grid;
+
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+
+  align-items: center;
+
+  gap: 24px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ENTRANCE (each copy element rises in after the previous one)
+========================================================= */
+
+.heading,
+.sub,
+.search,
+.stats {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   COPY
+========================================================= */
+
+.copy {
+  padding: 36px 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+/* two-class selector so it wins over the course hero heading's size limits */
+.copy .heading {
+  max-width: none;
+
+  margin: 0;
+
+  font-size: clamp(40px, 4.4vw, 62px);
+
+  line-height: 1.08;
+
+  letter-spacing: -1px;
+}
+
+.highlight {
+  position: relative;
+
+  display: inline-block;
+
+  color: #07845f;
+}
+
+.copy .sub {
+  max-width: none;
+
+  margin: 22px 0 0;
+
+  font-size: 17px;
+
+  line-height: 1.6;
+}
+
+.word,
+.wordActive {
+  margin-right: 0.35em;
+
+  transition: color 0.35s ease;
+}
+
+.wordActive {
+  font-weight: 600;
+
+  color: #07845f;
+}
+
+
+/* =========================================================
+   SEARCH (the visitor's location + Apply Now)
+========================================================= */
+
+.search {
+  width: 100%;
+
+  max-width: 520px;
+
+  margin-top: 30px;
+
+  padding: 6px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  border: 1px solid #e3e7e5;
+
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 18px 40px rgba(16, 40, 30, 0.08);
+
+  box-sizing: border-box;
+}
+
+.searchField {
+  position: relative;
+
+  flex: 1;
+
+  min-width: 0;
+
+  height: clamp(46px, 3.9vw, 56px);
+
+  padding: 0 14px 0 8px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  border-radius: 12px;
+
+  text-align: left;
+}
+
+.searchPin {
+  flex: 0 0 auto;
+
+  width: 38px;
+
+  height: 38px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 10px;
+
+  background: #e9f7f1;
+
+  color: #0e9f6e;
+}
+
+.searchText {
+  flex: 1;
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.searchLabel {
+  font-family: var(--font-poppins);
+
+  font-size: 10.5px;
+
+  line-height: 14px;
+
+  font-weight: 600;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+  color: #868585;
+}
+
+.searchValue {
+  overflow: hidden;
+
+  font-family: var(--font-poppins);
+
+  font-size: 14px;
+
+  line-height: 20px;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+}
+
+.searchValue {
+  font-weight: 600;
+
+  color: #111111;
+}
+
+.search .apply {
+  flex: 0 0 auto;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  border-radius: 12px;
+}
+
+
+/* =========================================================
+   STATS (count up on load)
+========================================================= */
+
+.stats {
+  margin: 36px 0 0;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  list-style: none;
+}
+
+.stats li {
+  padding: 0 28px;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.stats li:first-child {
+  padding-left: 0;
+}
+
+.stats li + li {
+  border-left: 1px solid #dfe5e2;
+}
+
+.stats strong {
+  font-family: var(--font-poppins);
+
+  font-size: 26px;
+
+  line-height: 1.1;
+
+  font-weight: 600;
+
+  font-variant-numeric: tabular-nums;
+
+  color: #111111;
+}
+
+.stats span {
+  margin-top: 4px;
+
+  font-family: var(--font-poppins);
+
+  font-size: 12px;
+
+  line-height: 16px;
+
+  font-weight: 500;
+
+  color: #868585;
+}
+
+
+/* =========================================================
+   VISUAL
+========================================================= */
+
+.visual {
+  position: relative;
+
+  align-self: end;
+
+  height: 460px;
+}
+
+/* dashed orbit that turns slowly; the chips counter-turn so their icons stay upright */
+.orbit {
+  position: absolute;
+
+  left: 50%;
+
+  top: 50%;
+
+  width: 440px;
+
+  height: 440px;
+
+  margin: -220px 0 0 -220px;
+
+  border: 1.5px dashed rgba(14, 180, 126, 0.35);
+
+  border-radius: 50%;
+
+  animation:
+    fadeIn 0.8s ease 0.5s both,
+    spin 48s linear infinite;
+}
+
+.orbitChip {
+  position: absolute;
+
+  width: 40px;
+
+  height: 40px;
+
+  margin: -20px 0 0 -20px;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 1px solid #e3efe9;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 8px 18px rgba(16, 40, 30, 0.1);
+
+  color: #0e9f6e;
+
+  animation: spin 48s linear infinite reverse;
+}
+
+.chipTop {
+  left: 50%;
+
+  top: 0;
+}
+
+.chipLeft {
+  left: 6.7%;
+
+  top: 75%;
+}
+
+.chipRight {
+  left: 93.3%;
+
+  top: 75%;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+.person {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 0;
+
+  /* sized by the column's width, so the laptop never runs past the column's right edge:
+     with the -41% shift the right edge sits at 50% + 0.59 x width, which stays inside at 84% */
+  width: min(500px, 84%);
+
+  height: auto;
+
+  /* his head sits at ~38% of the image width; -41% keeps it near the orbit's centre line */
+  transform: translateX(-41%);
+
+  -webkit-mask-image: linear-gradient(180deg, #000000 88%, transparent 100%);
+
+  mask-image: linear-gradient(180deg, #000000 88%, transparent 100%);
+
+  animation: personIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+@keyframes personIn {
+  from {
+    opacity: 0;
+
+    transform: translate(-41%, 30px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translate(-41%, 0);
+  }
+}
+
+
+/* =========================================================
+   FLOATING JOURNEY CARDS
+   The wrapper pops in (staggered); the card inside floats.
+========================================================= */
+
+.cardWrap {
+  position: absolute;
+
+  z-index: 2;
+
+  animation: pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+
+    transform: translateY(14px) scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: none;
+  }
+}
+
+.card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 10px 12px;
+
+  border: 1px solid #eef2f0;
+
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  -webkit-backdrop-filter: blur(10px);
+
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 14px 32px -8px rgba(16, 40, 30, 0.18);
+
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.card strong {
+  display: block;
+
+  font-family: var(--font-poppins);
+
+  font-size: 13px;
+
+  line-height: 18px;
+
+  font-weight: 600;
+
+  color: #111111;
+
+  white-space: nowrap;
+}
+
+.cardMeta,
+.cardLabel {
+  display: block;
+
+  font-family: var(--font-poppins);
+
+  font-size: 11px;
+
+  line-height: 15px;
+
+  font-weight: 500;
+
+  color: #868585;
+
+  white-space: nowrap;
+}
+
+.cardLabel {
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+
+  color: #0e9f6e;
+}
+
+.cardIcon {
+  flex: 0 0 auto;
+
+  width: 34px;
+
+  height: 34px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 10px;
+}
+
+.iconMint {
+  background: #e9f7f1;
+
+  color: #0e9f6e;
+}
+
+.iconGreen {
+  position: relative;
+
+  border-radius: 50%;
+
+  background: #0eb47e;
+
+  color: #ffffff;
+}
+
+.iconAmber {
+  background: #fff4e0;
+
+  color: #c98a12;
+}
+
+/* the sample match changes every few seconds */
+.matchBody {
+  min-width: 128px;
+
+  animation: matchIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes matchIn {
+  from {
+    opacity: 0;
+
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: none;
+  }
+}
+
+.applyPill {
+  margin-left: 4px;
+
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  background: #0eb47e;
+
+  font-family: var(--font-poppins);
+
+  font-size: 11px;
+
+  line-height: 14px;
+
+  font-weight: 600;
+
+  color: #ffffff;
+}
+
+.cardMatch {
+  top: 12%;
+
+  left: -4%;
+
+  animation-delay: 0.9s;
+}
+
+.cardShortlist {
+  top: 46%;
+
+  right: -2%;
+
+  animation-delay: 1.25s;
+}
+
+.cardShortlist .card {
+  animation-delay: -2s;
+}
+
+.cardInterview {
+  bottom: 12%;
+
+  left: 0;
+
+  animation-delay: 1.6s;
+}
+
+.cardInterview .card {
+  animation-delay: -4s;
+}
+
+
+/* =========================================================
+   1100px
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .inner {
+    min-height: 460px;
+
+    gap: 8px;
+  }
+
+  .visual {
+    height: 440px;
+  }
+
+  .person {
+    width: min(446px, 84%);
+  }
+
+  .orbit {
+    width: 400px;
+
+    height: 400px;
+
+    margin: -200px 0 0 -200px;
+  }
+
+  .stats li {
+    padding: 0 18px;
+  }
+
+  .cardMatch {
+    left: -6%;
+  }
+
+  /* the column reaches the screen edge here, so this card stays inside it */
+  .cardShortlist {
+    right: 0;
+  }
+}
+
+
+/* =========================================================
+   900px: one column, the visual first and the copy centred below it
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .inner {
+    min-height: 0;
+
+    padding: 0 16px;
+
+    grid-template-columns: minmax(0, 1fr);
+
+    gap: 0;
+  }
+
+  .copy {
+    padding: 20px 0 40px;
+
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .copy .heading,
+  .copy .sub {
+    text-align: center;
+  }
+
+  .stats li:first-child {
+    padding-left: 18px;
+  }
+
+  .visual {
+    order: -1;
+
+    width: 100%;
+
+    max-width: 440px;
+
+    height: 380px;
+
+    margin: 16px auto 0;
+  }
+
+  .person {
+    width: min(375px, 84%);
+  }
+
+
+  .orbit {
+    width: 360px;
+
+    height: 360px;
+
+    margin: -180px 0 0 -180px;
+  }
+
+  .cardMatch {
+    top: 8%;
+
+    left: 0;
+  }
+
+  .cardShortlist {
+    right: 0;
+  }
+
+  .cardInterview {
+    bottom: 10%;
+
+    left: 2%;
+  }
+}
+
+
+/* =========================================================
+   480px
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .copy {
+    padding: 16px 0 32px;
+  }
+
+  .copy .heading {
+    font-size: 34px;
+  }
+
+  .copy .sub {
+    margin-top: 14px;
+
+    font-size: 14px;
+  }
+
+  .search {
+    margin-top: 24px;
+
+    padding: 5px;
+
+    border-radius: 16px;
+  }
+
+  .searchField {
+    height: 48px;
+
+    padding: 0 8px 0 4px;
+
+    gap: 10px;
+  }
+
+  .searchPin {
+    width: 34px;
+
+    height: 34px;
+  }
+
+  .searchLabel {
+    font-size: 9.5px;
+
+    letter-spacing: 1px;
+  }
+
+  .searchValue {
+    font-size: 13px;
+  }
+
+  .search .apply {
+    width: 112px;
+
+    max-width: none;
+
+    height: 48px;
+
+    font-size: 13px;
+  }
+
+  .stats {
+    margin-top: 28px;
+  }
+
+  .stats li,
+  .stats li:first-child {
+    padding: 0 12px;
+  }
+
+  .stats strong {
+    font-size: 20px;
+  }
+
+  .stats span {
+    font-size: 10.5px;
+
+    line-height: 14px;
+
+    text-wrap: balance;
+  }
+
+  .visual {
+    height: 320px;
+  }
+
+  .person {
+    width: min(321px, 84%);
+  }
+
+
+  .orbit {
+    width: 300px;
+
+    height: 300px;
+
+    margin: -150px 0 0 -150px;
+  }
+
+  .orbitChip {
+    width: 32px;
+
+    height: 32px;
+
+    margin: -16px 0 0 -16px;
+
+    border-radius: 10px;
+  }
+
+  .orbitChip svg {
+    width: 15px;
+
+    height: 15px;
+  }
+
+  .card {
+    gap: 8px;
+
+    padding: 8px 10px;
+
+    border-radius: 12px;
+  }
+
+  .card strong {
+    font-size: 11.5px;
+
+    line-height: 15px;
+  }
+
+  .cardMeta,
+  .cardLabel {
+    font-size: 9.5px;
+
+    line-height: 13px;
+  }
+
+  .cardLabel {
+    font-size: 8.5px;
+  }
+
+  .cardIcon {
+    width: 28px;
+
+    height: 28px;
+
+    border-radius: 8px;
+  }
+
+  .cardIcon svg {
+    width: 14px;
+
+    height: 14px;
+  }
+
+  .matchBody {
+    min-width: 104px;
+  }
+
+  .applyPill {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION: everything shown in its final state
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .heading,
+  .sub,
+  .search,
+  .stats,
+  .orbit,
+  .orbitChip,
+  .person,
+  .cardWrap,
+  .card,
+  .matchBody {
+    animation: none;
+  }
+
+  .word,
+  .wordActive {
+    transition: none;
+  }
+}

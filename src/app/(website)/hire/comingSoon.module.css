@@ -1,0 +1,692 @@
+/* =========================================================
+   HIRE: COMING SOON
+   Desktop type follows the landing hero (IBM Plex Sans 48px title, 20px description);
+   phones follow the landing mobile system (700 / 480 / 360px breakpoints).
+========================================================= */
+
+.soonPage {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  font-family: var(--font-ibm);
+}
+
+/* soft aurora of brand greens (and a hint of teal) drifting behind the headline */
+.soonPage::before {
+  content: "";
+
+  position: absolute;
+
+  top: -180px;
+
+  left: -10%;
+
+  width: 120%;
+
+  height: 820px;
+
+  background:
+    radial-gradient(38% 48% at 30% 42%, rgba(167, 234, 208, 0.6), transparent 70%),
+    radial-gradient(34% 44% at 70% 32%, rgba(14, 180, 126, 0.26), transparent 70%),
+    radial-gradient(30% 40% at 52% 68%, rgba(94, 210, 200, 0.22), transparent 70%);
+
+  filter: blur(48px);
+
+  -webkit-mask-image: linear-gradient(180deg, transparent 180px, #000000 420px);
+
+  mask-image: linear-gradient(180deg, transparent 180px, #000000 420px);
+
+  pointer-events: none;
+
+  animation: soonAurora 18s ease-in-out infinite alternate;
+}
+
+@keyframes soonAurora {
+  0% {
+    transform: translate3d(-3%, 0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(3%, 2%, 0) scale(1.08);
+  }
+}
+
+/* a whisper of film grain so the colour reads rich rather than flat */
+.soonPage::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  opacity: 0.045;
+
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000000 200px);
+
+  mask-image: linear-gradient(180deg, transparent 0, #000000 200px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.soonHero {
+  position: relative;
+
+  z-index: 1;
+
+  width: 100%;
+
+  max-width: 1120px;
+
+  margin: 0 auto;
+
+  padding: 88px 24px 96px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  box-sizing: border-box;
+}
+
+.soonBadge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 7px 15px;
+
+  border: 1px solid rgba(14, 180, 126, 0.25);
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.65);
+
+  -webkit-backdrop-filter: blur(8px);
+
+  backdrop-filter: blur(8px);
+
+  box-shadow:
+    0 4px 14px rgba(14, 180, 126, 0.1);
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  line-height: 1;
+
+  color: #0b6e4b;
+}
+
+.soonDot {
+  width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #0eb47e;
+
+  animation: soonPulse 1.6s ease-out infinite;
+}
+
+@keyframes soonPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(14, 180, 126, 0.55);
+  }
+
+  100% {
+    box-shadow: 0 0 0 8px rgba(14, 180, 126, 0);
+  }
+}
+
+.soonTitle {
+  max-width: 860px;
+
+  margin: 22px 0 0;
+
+  font-size: 48px;
+
+  line-height: 1.12;
+
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+
+  color: #050505;
+
+  text-wrap: balance;
+}
+
+.soonTitle span {
+  white-space: nowrap;
+
+  color: #07845f;
+}
+
+.soonDescription {
+  max-width: 640px;
+
+  margin: 18px 0 0;
+
+  font-size: 20px;
+
+  line-height: 1.55;
+
+  font-weight: 500;
+
+  color: #3e3e3e;
+
+  text-wrap: balance;
+}
+
+
+/* =========================================================
+   BUTTONS (glass sheen like the rest of the site)
+========================================================= */
+
+.soonActions {
+  margin-top: 32px;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 14px;
+}
+
+.soonPrimary,
+.soonSecondary {
+  position: relative;
+
+  height: 52px;
+
+  padding: 0 24px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  overflow: hidden;
+
+  isolation: isolate;
+
+  border-radius: 16px;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.soonPrimary {
+  background: linear-gradient(135deg, #10b77b 0%, #075f47 100%);
+
+  box-shadow:
+    0 14px 30px rgba(7, 95, 71, 0.22);
+
+  color: #ffffff;
+}
+
+.soonSecondary {
+  border: 1px solid #e3e7e5;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 8px 20px rgba(16, 40, 30, 0.06);
+
+  color: #111111;
+}
+
+.soonPrimary:hover,
+.soonSecondary:hover {
+  transform: translateY(-2px);
+}
+
+.soonPrimary::before,
+.soonSecondary::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -1;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.38) 50%, transparent 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.08) 48%, rgba(255, 255, 255, 0) 52%);
+
+  background-size: 250% 100%, 100% 100%;
+
+  background-repeat: no-repeat;
+
+  background-position: 160% 0, 0 0;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+  pointer-events: none;
+
+  animation: soonShine 3.6s ease-in-out infinite;
+}
+
+@keyframes soonShine {
+  0%,
+  55% {
+    background-position: 160% 0, 0 0;
+  }
+
+  100% {
+    background-position: -60% 0, 0 0;
+  }
+}
+
+
+/* =========================================================
+   WHAT'S COMING
+========================================================= */
+
+.soonPreview {
+  position: relative;
+
+  width: 100%;
+
+  margin-top: 64px;
+}
+
+/* glowing horizon: a wide, gently curved arc the cards sit on, like a sunrise */
+.soonPreview::before {
+  content: "";
+
+  position: absolute;
+
+  top: -44px;
+
+  left: 50%;
+
+  z-index: -1;
+
+  width: 160vw;
+
+  max-width: 2000px;
+
+  height: 900px;
+
+  border-top: 1px solid rgba(14, 180, 126, 0.45);
+
+  border-radius: 50%;
+
+  background: linear-gradient(180deg, rgba(239, 250, 245, 0.95) 0%, #ffffff 26%);
+
+  box-shadow:
+    0 -26px 90px -12px rgba(14, 180, 126, 0.32),
+    inset 0 18px 40px -20px rgba(14, 180, 126, 0.25);
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+}
+
+.soonPreviewLabel {
+  margin: 0;
+
+  font-family: var(--font-poppins);
+
+  font-size: 12px;
+
+  line-height: 16px;
+
+  font-weight: 600;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  color: #868585;
+}
+
+.soonGrid {
+  margin-top: 20px;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 18px;
+
+  text-align: left;
+}
+
+.soonCard {
+  min-width: 0;
+
+  padding: 22px;
+
+  border: 1px solid #e6ebe9;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  box-shadow:
+    0 1px 2px rgba(16, 40, 30, 0.04),
+    0 8px 24px rgba(16, 40, 30, 0.05);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.soonCard:hover {
+  transform: translateY(-4px);
+
+  border-color: #bfe9d8;
+
+  box-shadow:
+    0 18px 40px rgba(14, 180, 126, 0.12);
+}
+
+.soonCardIcon {
+  width: 42px;
+
+  height: 42px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 12px;
+
+  background: #e9f7f1;
+
+  color: #0e9f6e;
+}
+
+.soonCard h2 {
+  margin: 16px 0 0;
+
+  font-size: 17px;
+
+  line-height: 1.3;
+
+  font-weight: 700;
+
+  color: #111111;
+}
+
+.soonCard p {
+  margin: 6px 0 0;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  font-weight: 500;
+
+  color: #777777;
+}
+
+
+/* =========================================================
+   1100px: two cards per row
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .soonHero {
+    padding: 72px 24px 80px;
+  }
+
+  .soonTitle {
+    font-size: 42px;
+  }
+
+  .soonDescription {
+    font-size: 18px;
+  }
+
+  .soonGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* =========================================================
+   700px (landing mobile system)
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .soonPage::before {
+    top: -120px;
+
+    height: 620px;
+
+    filter: blur(36px);
+
+    -webkit-mask-image: linear-gradient(180deg, transparent 120px, #000000 300px);
+
+    mask-image: linear-gradient(180deg, transparent 120px, #000000 300px);
+  }
+
+  .soonPreview::before {
+    top: -30px;
+
+    height: 560px;
+  }
+
+  .soonHero {
+    padding: 65px 18px 60px;
+  }
+
+  .soonBadge {
+    padding: 6px 12px;
+
+    font-size: 11px;
+  }
+
+  .soonTitle {
+    margin-top: 18px;
+
+    font-size: 38px;
+
+    line-height: 1.25;
+
+    letter-spacing: -1px;
+  }
+
+  .soonDescription {
+    margin-top: 14px;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+  }
+
+  .soonActions {
+    margin-top: 26px;
+
+    gap: 10px;
+  }
+
+  .soonPrimary,
+  .soonSecondary {
+    height: 46px;
+
+    padding: 0 20px;
+
+    border-radius: 14px;
+
+    font-size: 15px;
+  }
+
+  .soonPreview {
+    margin-top: 48px;
+  }
+
+  .soonPreviewLabel {
+    font-size: 10px;
+
+    line-height: 14px;
+  }
+
+  .soonGrid {
+    margin-top: 16px;
+
+    gap: 14px;
+  }
+
+  .soonCard {
+    padding: 16px;
+
+    border-radius: 16px;
+  }
+
+  .soonCard:hover,
+  .soonPrimary:hover,
+  .soonSecondary:hover {
+    transform: none;
+  }
+
+  .soonCardIcon {
+    width: 36px;
+
+    height: 36px;
+
+    border-radius: 10px;
+  }
+
+  .soonCardIcon svg {
+    width: 18px;
+
+    height: 18px;
+  }
+
+  .soonCard h2 {
+    margin-top: 12px;
+
+    font-size: 14px;
+  }
+
+  .soonCard p {
+    margin-top: 4px;
+
+    font-size: 12px;
+
+    line-height: 1.45;
+  }
+}
+
+
+/* =========================================================
+   480px: full-width 40px buttons
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .soonHero {
+    padding: 55px 15px 50px;
+  }
+
+  .soonTitle {
+    font-size: 26px;
+
+    line-height: 1.3;
+  }
+
+  .soonDescription {
+    font-size: 12px;
+
+    line-height: 1.48;
+
+    color: #777777;
+  }
+
+  .soonActions {
+    width: 100%;
+
+    flex-direction: column;
+  }
+
+  .soonPrimary,
+  .soonSecondary {
+    width: 100%;
+
+    height: 40px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+  }
+
+  .soonGrid {
+    gap: 13px;
+  }
+}
+
+
+/* =========================================================
+   360px
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .soonHero {
+    padding: 48px 12px 45px;
+  }
+
+  .soonCard {
+    padding: 14px;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .soonPage::before,
+  .soonDot,
+  .soonPrimary::before,
+  .soonSecondary::before {
+    animation: none;
+  }
+
+  .soonCard,
+  .soonPrimary,
+  .soonSecondary {
+    transition: none;
+  }
+}

@@ -1,97 +1,76 @@
 "use client";
 
-import { useState } from "react";
 import styles from "./ProductPageTemplate.module.css";
 import Image from "next/image";
+import { ArrowRight, Award, Briefcase, Hammer, TrendingUp, Users } from "lucide-react";
+import CourseHeroArt from "./Courses/CourseHeroArt";
+import ContactLeadForm from "./ProductSections/ContactLeadForm";
+import FaqSection from "./ProductSections/FaqSection";
+import PricingPlans, { type PricingPlan } from "./ProductSections/PricingPlans";
+import { getCourseHero } from "./Courses/courseHero";
 
 export type ProductPageCourse = {
+  slug?: string;
+  category?: string | null;
   title: string;
   description: string;
   priceMinor: number;
   compareAtPriceMinor: number | null;
 };
 
+// "Build. Apply. Impact" steps in the program section (copy drawn from the section's own lines).
+const IMPACT_STEPS = [
+  { icon: Hammer, title: "Build", text: "Learn by building, with new AI use cases every week." },
+  { icon: Briefcase, title: "Apply", text: "Work on problems inspired by real companies." },
+  { icon: TrendingUp, title: "Impact", text: "Turn ideas into measurable growth." },
+];
+
+const IMPACT_COMPANIES = [
+  { src: "/products/mmmiles.webp", alt: "Miles", width: 448, height: 128 },
+  { src: "/products/redit.webp", alt: "Reddit", width: 576, height: 212 },
+  { src: "/products/swiggy.webp", alt: "Swiggy", width: 608, height: 168 },
+];
+
+// Both plans are shown on /product and on every course page.
+const PLANS = [
+  {
+    id: "standard",
+    name: "Standard",
+    badge: "Standard",
+    price: "21099",
+    description: "Perfect for beginners who prefer flexible, self-paced learning.",
+    trending: false,
+    features: [
+      "LMS + interactive live sessions",
+      <>Earn your <strong>CleverLN</strong> certificate.</>,
+      "Get job portal access. Apply now.",
+      "2+ Real-time projects",
+      "Integrate AI into your daily work.",
+    ],
+  },
+  {
+    id: "advantage",
+    name: "Advantage +",
+    badge: <>Advantage <strong>+</strong></>,
+    price: "23199",
+    description: "Perfect for students aiming to grow under expert guidance.",
+    trending: true,
+    features: [
+      "Complete Standard plan Included",
+      <>Earn your <strong>CleverLN Pro</strong> certificate.</>,
+      "Get Real-Time Internship + LOR",
+      "Dedicated Growth Mentor Provided",
+      "Weekly AI Interviews, Tests & Reports",
+    ],
+  },
+];
+
+// Shown on the Advantage + card on mobile (Standard gets "Most affordable plan"), so the step up reads as a small one.
+const ADVANTAGE_EXTRA = (Number(PLANS[1].price) - Number(PLANS[0].price)).toLocaleString("en-IN");
+
 export default function ProductPage({ course, onBuyNow, owned = false, onOpenCourse }: { course?: ProductPageCourse; onBuyNow?: () => void; owned?: boolean; onOpenCourse?: () => void }) {
 
-
-  /* =====================================================
-  STATES
-  ===================================================== */
-  const [step, setStep] = useState(1);
-
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-
-  const [submitted, setSubmitted] =
-    useState(false);
-
-  /* =====================================================
-  NEXT BUTTON LOGIC
-  ===================================================== */
-
-  const handleNext = () => {
-
-  if (step === 1) {
-
-    if (!name.trim()) {
-      alert("Please enter your name");
-      return;
-    }
-
-    setStep(2);
-    return;
-  }
-
-  if (step === 2) {
-
-    if (!phone.trim()) {
-      alert("Please enter your phone number");
-      return;
-    }
-
-    setStep(3);
-    return;
-  }
-
-  if (step === 3) {
-
-    if (!email.trim()) {
-      alert("Please enter your email");
-      return;
-    }
-
-    setSubmitted(true);
-
-    console.log({
-      name,
-      phone,
-      email,
-    });
-
-    setTimeout(() => {
-
-      setStep(1);
-
-      setName("");
-      setPhone("");
-      setEmail("");
-
-      setSubmitted(false);
-
-    }, 10500);
-  }
-};
-
-
-
-
-  
-
-
-const [activeFAQ, setActiveFAQ] =
-  useState<number | null>(null);
-
+  // Course FAQ (the accordion itself is the shared FaqSection).
 const faqs = [
   {
     question:
@@ -127,18 +106,18 @@ const faqs = [
 
 
 
-const handleKeyDown = (
-  e: React.KeyboardEvent<HTMLInputElement>
-) => {
-
-  if (e.key === "Enter") {
-
-    handleNext();
-  }
-};
 
 
 
+
+  // Standard goes through the course checkout; Advantage + has no checkout yet.
+  const plans: [PricingPlan, PricingPlan] = [
+    { ...PLANS[0], note: "Most affordable plan", onBuy: owned ? onOpenCourse : onBuyNow, buyLabel: owned ? "OPEN COURSE" : "BUY NOW" },
+    { ...PLANS[1], note: `Just Rs ${ADVANTAGE_EXTRA} more than Standard` },
+  ];
+
+  // Each course has its own headline, photo, colours and layout in the hero.
+  const hero = getCourseHero(course);
 
   return (
     <main className={styles.page}>
@@ -151,11 +130,11 @@ const handleKeyDown = (
         <div className={styles.proheroLeft}>
 
           <h1 className={styles.proheroHeading}>
-            {course?.title || "Learn UI/UX and build your skills through a modern, innovative approach."}
+            {hero.headline}
           </h1>
 
           <p className={styles.proheroSubtext}>
-            {course?.description || <>Learn UI/UX design through a practical, hands-on approach focused on
+            {hero.description || course?.description || <>Learn UI/UX design through a practical, hands-on approach focused on
             applications and helps you understand user behavior, design intuitive
             interfaces, and work with industry tools like Figma.</>}
           </p>
@@ -176,14 +155,8 @@ const handleKeyDown = (
         <div className={styles.proheroRight}>
           <div className={styles.proheroImageWrapper}>
 
-            {/* DESKTOP IMAGE */}
-            <Image
-              src="/products/ui-ux complete course and internship.webp"
-              alt={course?.title || "UI/UX course"}
-              fill
-              priority
-              className={styles.proheroDesktopImage}
-            />
+            {/* DESKTOP: the course's own photo over its decorative backdrop */}
+            <CourseHeroArt hero={hero} alt={course?.title || "UI/UX course"} className={styles.proheroArt} />
 
             {/* MOBILE IMAGE */}
             <Image
@@ -256,581 +229,165 @@ const handleKeyDown = (
 
 
 
-      {/* ================= IMPACT SECTION ================= */}
+      {/* ================= IMPACT (bento grid) =================
+          What the program is about, how it works, who it is built with and the numbers, in one grid. */}
       <section className={styles.proimpactSection}>
         <div className={styles.proimpactContainer}>
 
-          {/* TOP LABEL */}
-          <p className={styles.proimpactTag}>
-            WHAT THIS PROGRAM IS ABOUT
-          </p>
-
-          {/* MAIN HEADING */}
-          <h2 className={styles.proimpactHeading}>
-            Turn ideas into real impact with CleverLN.
-          </h2>
-
-          {/* SUBTEXT */}
-          <p className={styles.proimpactSubHeading}>
-            Build. Apply. Impact
-          </p>
-
-          {/* DESCRIPTION */}
-          <p className={styles.proimpactDescription}>
-            Bring your ideas to life with designs that are creative,
-            intuitive, and user-focused.
-            
-            Where creativity meets usability.
-          </p>
-
-          {/* SMALL TEXT */}
-          <p className={styles.proimpactSmallText}>
-            Learn by building-weekly AI use cases inspired by real companies.
-          </p>
-
-          {/* COMPANY LOGOS */}
-          <div className={styles.proimpactLogos}>
-
-            <div className={styles.proimpactLogoItem}>
-              <img
-                src="/products/mmmiles.webp"
-                alt="Miles"
-              />
-            </div>
-
-            <div className={styles.proimpactLogoItem}>
-              <img
-                src="/products/redit.webp"
-                alt="Reddit"
-              />
-            </div>
-
-            <div className={styles.proimpactLogoItem}>
-              <img
-                src="/products/swiggy.webp"
-                alt="Swiggy"
-              />
-            </div>
-
-          </div>
-
-          {/* FOOTER TEXT */}
-          <p className={styles.proimpactFooter}>
-            Learn from those who’ve built real AI systems and driven measurable growth.
-          </p>
-
-        </div>
-      </section>
-
-
-
-
-
-
-
-
-
-
-      {/* ================= STATS ================= */}
-      <section className={styles.prostatsSection}>
-        <div className={styles.prostatsContainer}>
-
-          {/* LEFT CARD */}
-          <div className={styles.prostatsCard}>
-
-            <div className={styles.prostatsCardInner}>
-              <h3>07+</h3>
-
-              <p>YEARS OF EXPERIENCE</p>
-            </div>
-
-          </div>
-
-          {/* CENTER CARD */}
-          <div className={styles.prostatsCenterCard}>
-
-            <div className={styles.prostatsCenterLeft}>
-              <h2>20000+</h2>
-            </div>
-
-            <div className={styles.prostatsDivider}></div>
-
-            <div className={styles.prostatsCenterRight}>
-
-              <p>
-                Jobs are Listed this year.
-              </p>
-
-              <p>
-                Don’t wait <span>Start with CleverLN</span> and are you ready?
-              </p>
-
-            </div>
-
-          </div>
-
-          {/* RIGHT CARD */}
-          <div className={styles.prostatsCard}>
-
-            <h3>2K+</h3>
-
-            <p>
-              STUDENTS REGISTERED
+          <header className={styles.proimpactHeader}>
+            <p className={styles.proimpactTag}>
+              WHAT THIS PROGRAM IS ABOUT
             </p>
 
-          </div>
-
-        </div>
-      </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* =========================================================
-   PRICING SECTION
-========================================================= */}
-
-<section className={styles.propricingSection} id="course-pricing">
-
-  <div className={styles.propricingContainer}>
-
-    {/* ================= HEADER ================= */}
-
-    <div className={styles.propricingHeader}>
-
-      <h2>{course ? "Course investment" : "CleverLN plans built for every learner."}</h2>
-
-      <p>
-        Built for competition. Designed for every student’s success.
-      </p>
-
-    </div>
-
-
-    {/* ================= PRICING CARDS ================= */}
-
-    <div className={`${styles.propricingCards} ${course ? styles.coursePricingCards : ""}`}>
-
-
-      {/* ================= STANDARD PLAN ================= */}
-
-      <div className={styles.propricingCard}>
-
-        <div className={styles.propricingCardContent}>
-
-          {/* LEFT SIDE */}
-
-          <div className={styles.propricingMain}>
-
-            <span className={styles.propricingPlanBadge}>
-              {course?.title || "Standard"}
-            </span>
-
-            <div className={styles.propricingPrice}>
-              {course ? <span className={styles.propricingCoursePrice}>₹{Math.round(course.priceMinor / 100).toLocaleString("en-IN")}</span> : <>
-                <span className={styles.propricingCurrency}>Rs</span><span className={styles.propricingAmount}>21099</span><span className={styles.propricingDecimal}>.00</span>
-              </>}
-            </div>
-
-            {course?.compareAtPriceMinor != null && course.compareAtPriceMinor > course.priceMinor && <p className={styles.propricingComparePrice}>₹{Math.round(course.compareAtPriceMinor / 100).toLocaleString("en-IN")}</p>}
-
-            <p className={styles.propricingDescription}>
-              {course?.description || <>Perfect for beginners who prefer
-              flexible, self-paced learning.</>}
-            </p>
-
-            <button
-              type="button"
-              className={styles.propricingBuyButton}
-              onClick={owned ? onOpenCourse : onBuyNow}
-            >
-              {owned ? "OPEN COURSE" : "BUY NOW"}
-            </button>
-
-          </div>
-
-
-          {/* FEATURES */}
-
-          <div className={styles.propricingFeatures}>
-
-            <div className={styles.propricingFeature}>
-              <span className={styles.propricingCheck}>
-                ✓
-              </span>
-
-              <span>
-                LMS + interactive live sessions
-              </span>
-            </div>
-
-            <div className={styles.propricingFeature}>
-              <span className={styles.propricingCheck}>
-                ✓
-              </span>
-
-              <span>
-                Earn your CleverLN certificate.
-              </span>
-            </div>
-
-            <div className={styles.propricingFeature}>
-              <span className={styles.propricingCheck}>
-                ✓
-              </span>
-
-              <span>
-                Get job portal access. Apply now.
-              </span>
-            </div>
-
-            <div className={styles.propricingFeature}>
-              <span className={styles.propricingCheck}>
-                ✓
-              </span>
-
-              <span>
-                2+ Real-time projects
-              </span>
-            </div>
-
-            <div className={styles.propricingFeature}>
-              <span className={styles.propricingCheck}>
-                ✓
-              </span>
-
-              <span>
-                Integrate AI into your daily work.
-              </span>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      {!course && <>
-      {/* ================= ADVANTAGE PLAN ================= */}
-
-      <div
-        className={`${styles.propricingCard} ${styles.propricingCardTrending}`}
-      >
-
-        <span className={styles.propricingTrendingBadge}>
-          Trending Plan
-        </span>
-
-        <div className={styles.propricingCardContent}>
-
-          {/* LEFT SIDE */}
-
-          <div className={styles.propricingMain}>
-
-            <span className={styles.propricingPlanBadge}>
-              Advantage +
-            </span>
-
-            <div className={styles.propricingPrice}>
-              <span className={styles.propricingCurrency}>
-                Rs
-              </span>
-
-              <span className={styles.propricingAmount}>
-                23199
-              </span>
-
-              <span className={styles.propricingDecimal}>
-                .00
-              </span>
-            </div>
-
-            <p className={styles.propricingDescription}>
-              Perfect for students aiming to
-              grow under expert guidance.
-            </p>
-
-            <button
-              type="button"
-              className={styles.propricingBuyButton}
-            >
-              BUY NOW
-            </button>
-
-          </div>
-
-
-          {/* FEATURES */}
-
-          <div className={styles.propricingFeatures}>
-
-            <div className={styles.propricingFeature}>
-              <span className={styles.propricingCheck}>
-                ✓
-              </span>
-
-              <span>
-                Complete Standard plan Included
-              </span>
-            </div>
-
-            <div className={styles.propricingFeature}>
-              <span className={styles.propricingCheck}>
-                ✓
-              </span>
-
-              <span>
-                Earn your CleverLN Pro certificate.
-              </span>
-            </div>
-
-            <div className={styles.propricingFeature}>
-              <span className={styles.propricingCheck}>
-                ✓
-              </span>
-
-              <span>
-                Get Real-Time Internship + LOR
-              </span>
-            </div>
-
-            <div className={styles.propricingFeature}>
-              <span className={styles.propricingCheck}>
-                ✓
-              </span>
-
-              <span>
-                Dedicated Growth Mentor Provided
-              </span>
-            </div>
-
-            <div className={styles.propricingFeature}>
-              <span className={styles.propricingCheck}>
-                ✓
-              </span>
-
-              <span>
-                Weekly AI Interviews, Tests & Reports
-              </span>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-      </>}
-
-    </div>
-
-
-    {/* ================= TRUST TEXT ================= */}
-
-    <div className={styles.propricingTrust}>
-
-      <p>
-        Trusted by 519+ universities, we follow PPP pricing
-        to make learning accessible—along with 100% secure
-        payments with
-      </p>
-
-    </div>
-
-
-    {/* ================= PAYMENT LOGOS ================= */}
-
-    <div className={styles.propricingPaymentLogos}>
-
-      <img
-        src="/images/payment/rzrpay.webp"
-        alt="Rzrpay"
-      />
-
-      
-
-      <img
-        src="/images/payment/upi-w.webp"
-        alt="uip"
-      />
-
-      <img
-        src="/images/payment/esbuzz.webp"
-        alt="Esbuzz"
-      />
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {/* ================= CONTACT SECTION ================= */}
-    <section className={styles.procontactSection}>
-      <div className={styles.procontactContainer}>
-
-        <div className={styles.procontactCard}>
-
-          {/* LEFT CONTENT */}
-          <div className={styles.procontactLeft}>
-
-            <h2 className={styles.procontactTitle}>
-              Want to know more?
+            <h2 className={styles.proimpactHeading}>
+              Turn ideas into <span>real impact</span> with CleverLN.
             </h2>
 
-            <h1 className={styles.procontactHeading}>
-              Submit the form to get complete details.
-            </h1>
-
-            <p className={styles.procontactDescription}>
-              Whether you have questions, need clarity, or are looking for the right
-              direction, connect with our experts for the right guidance.
+            <p className={styles.proimpactDescription}>
+              Bring your ideas to life with designs that are creative, intuitive, and user-focused.
+              Where creativity meets usability.
             </p>
+          </header>
 
-          </div>
+          <div className={styles.proimpactGrid}>
 
-          {/* RIGHT FORM */}
-          <div className={styles.procontactRight}>
+            {/* HOW IT WORKS */}
+            <article className={`${styles.proimpactCard} ${styles.proimpactSteps}`}>
+              <p className={styles.proimpactCardLabel}>How it works</p>
+              <h3 className={styles.proimpactCardTitle}>Build. Apply. Impact</h3>
 
-            {!submitted ? (
-              <>
-                <div className={styles.procontactInputWrapper}>
+              <ol className={styles.proimpactStepList}>
+                {IMPACT_STEPS.map(({ icon: Icon, title, text }, i) => (
+                  <li key={title}>
+                    <span className={styles.proimpactStepIcon}>
+                      <Icon size={20} strokeWidth={2} />
+                    </span>
+                    <span className={styles.proimpactStepNumber}>0{i + 1}</span>
+                    <strong>{title}</strong>
+                    <p>{text}</p>
+                  </li>
+                ))}
+              </ol>
+            </article>
 
-                  {/* STEP 1 */}
-                  {step === 1 && (
-                    <input
-                      type="text"
-                      placeholder="Enter Your Name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      onKeyDown={handleKeyDown}
-                      className={styles.procontactInput}
-                    />
-                  )}
+            {/* STATS */}
+            <article className={`${styles.proimpactCard} ${styles.proimpactStat}`}>
+              <span className={styles.proimpactStatIcon}>
+                <Award size={20} strokeWidth={2} />
+              </span>
+              <div>
+                <p className={styles.proimpactStatNumber}>07+</p>
+                <p className={styles.proimpactStatLabel}>Years of experience</p>
+              </div>
+            </article>
 
-                  {/* STEP 2 */}
-                  {step === 2 && (
-                    <input
-                      type="tel"
-                      placeholder="Enter Your Phone Number"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      onKeyDown={handleKeyDown}
-                      className={styles.procontactInput}
-                    />
-                  )}
+            <article className={`${styles.proimpactCard} ${styles.proimpactStat}`}>
+              <span className={styles.proimpactStatIcon}>
+                <Users size={20} strokeWidth={2} />
+              </span>
+              <div>
+                <p className={styles.proimpactStatNumber}>2K+</p>
+                <p className={styles.proimpactStatLabel}>Students registered</p>
+              </div>
+            </article>
 
-                  {/* STEP 3 */}
-                  {step === 3 && (
-                    <input
-                      type="email"
-                      placeholder="Enter Your Email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      onKeyDown={handleKeyDown}
-                      className={styles.procontactInput}
-                    />
-                  )}
+            {/* COMPANIES */}
+            <article className={`${styles.proimpactCard} ${styles.proimpactCompanies}`}>
+              <p className={styles.proimpactCardLabel}>Learn by building</p>
+              <h3 className={styles.proimpactCardTitle}>Weekly AI use cases inspired by real companies.</h3>
 
-                  <button
-                    onClick={handleNext}
-                    className={styles.procontactButton}
-                  >
-                    {step === 3 ? "Submit" : "Next"}
-                  </button>
-
-                </div>
-
-                {/* PROGRESS */}
-                <div className={styles.procontactProgressWrapper}>
-
-                  <span
-                    className={`${styles.procontactProgressBar} ${
-                      step >= 1
-                        ? styles.procontactProgressActive
-                        : ""
-                    }`}
-                  />
-
-                  <span
-                    className={`${styles.procontactProgressBar} ${
-                      step >= 2
-                        ? styles.procontactProgressActive
-                        : ""
-                    }`}
-                  />
-
-                  <span
-                    className={`${styles.procontactProgressBar} ${
-                      step >= 3
-                        ? styles.procontactProgressActive
-                        : ""
-                    }`}
-                  />
-
-                </div>
-
-                <p className={styles.procontactResponseText}>
-                  Get Response within 12 Hours
-                </p>
-
-              </>
-            ) : (
-
-              <div className={styles.procontactSuccessWrapper}>
-                <p className={styles.procontactSuccessMessage}>
-                  Thank you for taking the first step
-                  <br />
-                  toward becoming your best.
-                </p>
-
-                <p className={styles.procontactSuccessResponse}>
-                  Get Response within 12 Hours
-                </p>
+              <div className={styles.proimpactLogos}>
+                {IMPACT_COMPANIES.map((logo) => (
+                  <div key={logo.alt} className={styles.proimpactLogoItem}>
+                    <Image src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} />
+                  </div>
+                ))}
               </div>
 
-            )}
+              <p className={styles.proimpactFooter}>
+                Learn from those who’ve built real AI systems and driven measurable growth.
+              </p>
+            </article>
+
+            {/* JOBS */}
+            <article className={`${styles.proimpactCard} ${styles.proimpactJobs}`}>
+              <p className={styles.proimpactCardLabel}>This year</p>
+              <p className={styles.proimpactJobsNumber}>20000+</p>
+              <p className={styles.proimpactJobsText}>Jobs are listed this year.</p>
+              <p className={styles.proimpactJobsText}>
+                Don’t wait. Are you ready?
+              </p>
+
+              <button
+                type="button"
+                className={styles.proimpactJobsButton}
+                onClick={() => document.getElementById("course-pricing")?.scrollIntoView({ behavior: "smooth" })}
+              >
+                Start with CleverLN
+                <ArrowRight size={16} strokeWidth={2.4} />
+              </button>
+
+              {/* decorative growth chart (no data, just the idea of jobs going up) */}
+              <svg className={styles.proimpactJobsChart} viewBox="0 0 232 150" aria-hidden="true">
+                <defs>
+                  <linearGradient id="proimpactJobsArea" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stopColor="#ffffff" stopOpacity="0.32" />
+                    <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
+                {[[6, 104], [44, 90], [82, 94], [120, 70], [158, 54], [196, 32]].map(([x, y]) => (
+                  <rect key={x} x={x} y={y} width="24" height={150 - y} rx="6" fill="#ffffff" fillOpacity="0.08" />
+                ))}
+                <path d="M2 122C30 114 52 106 78 102C106 98 122 74 148 64C172 56 190 40 214 20L214 150L2 150Z" fill="url(#proimpactJobsArea)" />
+                <path className={styles.proimpactJobsLine} pathLength={1} d="M2 122C30 114 52 106 78 102C106 98 122 74 148 64C172 56 190 40 214 20" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" />
+                <circle cx="78" cy="102" r="4" fill="#0b6e4b" stroke="#ffffff" strokeWidth="2" />
+                <circle cx="148" cy="64" r="4" fill="#0b6e4b" stroke="#ffffff" strokeWidth="2" />
+                <circle className={styles.proimpactJobsPulse} cx="214" cy="20" r="11" fill="#ffffff" />
+                <circle cx="214" cy="20" r="6" fill="#ffffff" />
+              </svg>
+            </article>
 
           </div>
-
         </div>
+      </section>
 
-      </div>
-    </section>
+
+
+
+
+
+
+
+
+
+<PricingPlans id="course-pricing" plans={plans} />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <ContactLeadForm />
 
 
 
@@ -944,108 +501,7 @@ const handleKeyDown = (
 
 
 
-{/* =========================================================
-   FAQ SECTION
-========================================================= */}
-
-<section className={styles.profaqSection}>
-
-  <div className={styles.profaqContainer}>
-
-    {/* HEADER */}
-
-    <div className={styles.profaqHeader}>
-
-      <h2>
-        Let’s Clear Things Up
-      </h2>
-
-      <p>
-        Quick answers to help you move forward with confidence.
-      </p>
-
-    </div>
-
-
-    {/* FAQ LIST */}
-
-    <div className={styles.profaqList}>
-
-      {faqs.map((faq, index) => {
-
-        const isOpen = activeFAQ === index;
-
-        return (
-          <div
-            key={index}
-            className={`${styles.profaqItem} ${
-              isOpen ? styles.profaqItemOpen : ""
-            }`}
-          >
-
-            {/* QUESTION */}
-
-            <button
-              type="button"
-              className={styles.profaqQuestion}
-              onClick={() =>
-                setActiveFAQ(
-                  isOpen ? null : index
-                )
-              }
-              aria-expanded={isOpen}
-              aria-controls={`profaq-answer-${index}`}
-            >
-
-              <span className={styles.profaqQuestionText}>
-                {faq.question}
-              </span>
-
-              <span
-                className={`${styles.profaqIcon} ${
-                  isOpen
-                    ? styles.profaqIconOpen
-                    : ""
-                }`}
-                aria-hidden="true"
-              >
-                <span className={styles.profaqChevron} />
-              </span>
-
-            </button>
-
-
-            {/* ANSWER */}
-
-            <div
-              id={`profaq-answer-${index}`}
-              className={`${styles.profaqAnswerWrapper} ${
-                isOpen
-                  ? styles.profaqAnswerWrapperOpen
-                  : ""
-              }`}
-            >
-
-              <div className={styles.profaqAnswer}>
-
-                <p>
-                  {faq.answer}
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-        );
-
-      })}
-
-    </div>
-
-  </div>
-
-</section>
+<FaqSection faqs={faqs} />
 
 
 
