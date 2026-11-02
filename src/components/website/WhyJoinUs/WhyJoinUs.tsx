@@ -8,7 +8,7 @@ const benefits = [
     icon: "/images/why-join-us/influence.webp",
     title: "INFLUENCE",
     description:
-      "Become a voice people trust and turn your skills into real impact in your career.",
+      "Become the voice people trust and turn your skills into real impact in your career.",
   },
   {
     icon: "/images/why-join-us/mentorship.webp",
