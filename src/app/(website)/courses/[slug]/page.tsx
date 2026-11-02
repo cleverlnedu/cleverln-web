@@ -1,3 +1,4 @@
+import { faqJsonLd, getCourseFaqs } from "@/components/website/Courses/courseFaqs";
 import CourseDetail from "./CourseDetail";
 import { COURSE_SELECT, fetchPublishedCourse, toCourseProduct, type CourseRow } from "./courseData";
 
@@ -6,5 +7,11 @@ import { COURSE_SELECT, fetchPublishedCourse, toCourseProduct, type CourseRow } 
 export default async function CourseDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const row = await fetchPublishedCourse<CourseRow>(slug, COURSE_SELECT);
-  return <CourseDetail slug={slug} initialProduct={row ? toCourseProduct(row) : null} />;
+  return (
+    <>
+      {/* the course FAQ as structured data, so search engines can read the questions and answers */}
+      {row && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(getCourseFaqs(row).faqs) }} />}
+      <CourseDetail slug={slug} initialProduct={row ? toCourseProduct(row) : null} />
+    </>
+  );
 }

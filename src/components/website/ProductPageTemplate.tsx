@@ -7,6 +7,7 @@ import CourseHeroArt from "./Courses/CourseHeroArt";
 import ContactLeadForm from "./ProductSections/ContactLeadForm";
 import FaqSection from "./ProductSections/FaqSection";
 import PricingPlans, { type PricingPlan } from "./ProductSections/PricingPlans";
+import { getCourseFaqs } from "./Courses/courseFaqs";
 import { getCourseHero } from "./Courses/courseHero";
 
 export type ProductPageCourse = {
@@ -70,39 +71,8 @@ const ADVANTAGE_EXTRA = (Number(PLANS[1].price) - Number(PLANS[0].price)).toLoca
 
 export default function ProductPage({ course, onBuyNow, owned = false, onOpenCourse }: { course?: ProductPageCourse; onBuyNow?: () => void; owned?: boolean; onOpenCourse?: () => void }) {
 
-  // Course FAQ (the accordion itself is the shared FaqSection).
-const faqs = [
-  {
-    question:
-      "Can students and professionals from any background learn UI/UX?",
-    answer:
-      "Yes! Anyone can learn UI/UX, regardless of their degree or background—whether you’re from Development, Arts, Sales, MBA, BCA, or any other field.",
-  },
-  {
-    question:
-      "What career opportunities are available after learning UI/UX?",
-    answer:
-      "You can explore roles such as UI Designer, UX Designer, Product Designer, UX Researcher, Interaction Designer, and Visual Designer.",
-  },
-  {
-    question:
-      "Will I work on real-world projects?",
-    answer:
-      "Yes. You’ll work on practical projects and gain real-world internship experience with a company, helping you build hands-on design skills.",
-  },
-  {
-    question:
-      "Can CleverLN help me with job opportunities after the course?",
-    answer:
-      "We don’t leave you after the course. Our dedicated team continues to support you with career opportunities.",
-  },
-  {
-    question:
-      "Does the CleverLN team provide doubt-clearing support after classes?",
-    answer:
-      "Yes! Dedicated mentors are available to assist and guide you, so you never feel stuck.",
-  },
-];
+  // Questions written for this course (see Courses/courseFaqs.ts); also sent as FAQPage data by the course route.
+  const { name: faqName, faqs } = getCourseFaqs(course);
 
 
 
@@ -492,7 +462,7 @@ const faqs = [
 
 
 
-<FaqSection faqs={faqs} />
+<FaqSection faqs={faqs} subheading={`Quick answers to the most asked questions about the ${faqName} course.`} />
 
 
 

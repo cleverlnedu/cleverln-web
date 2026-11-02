@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 
 import ps from "@/components/website/ProductPageTemplate.module.css";
+import { faqJsonLd } from "@/components/website/Courses/courseFaqs";
 import ContactLeadForm from "@/components/website/ProductSections/ContactLeadForm";
 import FaqSection from "@/components/website/ProductSections/FaqSection";
 import PricingPlans, { type PricingPlan } from "@/components/website/ProductSections/PricingPlans";
@@ -343,6 +344,8 @@ export default function OpportunitiesPage() {
 
       {/* ================= FAQ (shared): answers questions before the contact form ================= */}
       <FaqSection faqs={FAQS} />
+      {/* the same questions as structured data for search engines */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(FAQS) }} />
 
 
       {/* ================= CONTACT (shared): for anything the FAQ did not answer ================= */}

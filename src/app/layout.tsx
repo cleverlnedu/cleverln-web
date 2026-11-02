@@ -98,7 +98,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    // data-scroll-behavior lets Next.js turn off the smooth scrolling from globals.css while it changes pages
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className={rootFontClasses}>
         <script dangerouslySetInnerHTML={{ __html: brandIntroScript }} />
         <BrandSplash />
