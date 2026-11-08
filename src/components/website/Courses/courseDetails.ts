@@ -1,7 +1,7 @@
 // Per-course content for the course page's "What this program is about" section and the
 // "Work with Industry Tools" row. Copy is drawn from each course's own description (courseHero.ts);
-// nothing here adds numbers, durations or placement promises. The figures in that section
-// (years of experience, students registered, jobs listed) are CleverLN-wide and stay shared.
+// nothing here adds placement promises. The figures in that section (course duration, students
+// registered, jobs listed) are set below in SHARED_STATS / COURSE_STATS.
 //
 // Tool logos live in /public/tools/icons: brand marks from Simple Icons (CC0) and Devicon (MIT).
 // Tools with no freely licensed logo (ChatGPT, Stable Diffusion, Excel, Power BI, CLO 3D, TestNG, Keka)
@@ -33,8 +33,8 @@ type Step = { title: string; text: string };
 
 /** The three figures in the section. */
 export type CourseStats = {
-  /** "Years of experience" card */
-  years: string;
+  /** "Course duration" card */
+  duration: string;
   /** "Students registered" card */
   students: string;
   /** green card: jobs listed this year */
@@ -42,36 +42,37 @@ export type CourseStats = {
 };
 
 // CleverLN-wide figures, shown for any course that has no figures of its own yet.
-const SHARED_STATS: CourseStats = { years: "07+", students: "2K+", jobs: "20000+" };
+// Every course runs for 3 months.
+const SHARED_STATS: CourseStats = { duration: "3 Months", students: "2K+", jobs: "20000+" };
 
 // Per-course figures. PLACEHOLDERS: chosen to be plausible and to add up to the CleverLN-wide
 // figures (students ~2.4K in total, at least 60+ per course; jobs ~21K in total). Replace each with the real number when known;
 // a course left out (or a field removed) falls back to the CleverLN-wide figure above.
 const COURSE_STATS: Record<string, Partial<CourseStats>> = {
-  "agentic-ai": { years: "03+", students: "140+", jobs: "900+" },
-  "generative-ai": { years: "04+", students: "180+", jobs: "1100+" },
-  "prompt-engineering": { years: "03+", students: "210+", jobs: "800+" },
-  "mlops": { years: "06+", students: "60+", jobs: "700+" },
-  "financial-analytics": { years: "09+", students: "110+", jobs: "1200+" },
-  "fin-tech-engineering": { years: "07+", students: "65+", jobs: "650+" },
-  "financial-risk-management": { years: "10+", students: "60+", jobs: "500+" },
-  "hotel-management": { years: "12+", students: "70+", jobs: "950+" },
-  "corporate-event-management": { years: "08+", students: "60+", jobs: "400+" },
-  "ui-ux-design": { years: "07+", students: "260+", jobs: "1300+" },
-  "motion-graphics": { years: "08+", students: "75+", jobs: "600+" },
-  "product-designer": { years: "07+", students: "90+", jobs: "750+" },
-  "fashion-designing": { years: "10+", students: "65+", jobs: "450+" },
-  "social-media-manager": { years: "06+", students: "95+", jobs: "1000+" },
-  "java-full-stack-developer": { years: "10+", students: "120+", jobs: "1800+" },
-  "devops-engineering": { years: "08+", students: "70+", jobs: "1100+" },
-  "python-developer": { years: "09+", students: "150+", jobs: "1900+" },
-  "automation-testing": { years: "08+", students: "70+", jobs: "900+" },
-  "talent-acquisition-lead": { years: "09+", students: "65+", jobs: "850+" },
-  "internal-recruitment-coordinator": { years: "06+", students: "60+", jobs: "350+" },
-  "hr-analytics-specialist": { years: "07+", students: "60+", jobs: "400+" },
-  "people-operations-manager": { years: "08+", students: "60+", jobs: "450+" },
-  "digital-marketing": { years: "09+", students: "130+", jobs: "1500+" },
-  "performance-marketing": { years: "07+", students: "70+", jobs: "700+" },
+  "agentic-ai": { students: "140+", jobs: "900+" },
+  "generative-ai": { students: "180+", jobs: "1100+" },
+  "prompt-engineering": { students: "210+", jobs: "800+" },
+  "mlops": { students: "60+", jobs: "700+" },
+  "financial-analytics": { students: "110+", jobs: "1200+" },
+  "fin-tech-engineering": { students: "65+", jobs: "650+" },
+  "financial-risk-management": { students: "60+", jobs: "500+" },
+  "hotel-management": { students: "70+", jobs: "950+" },
+  "corporate-event-management": { students: "60+", jobs: "400+" },
+  "ui-ux-design": { students: "260+", jobs: "1300+" },
+  "motion-graphics": { students: "75+", jobs: "600+" },
+  "product-designer": { students: "90+", jobs: "750+" },
+  "fashion-designing": { students: "65+", jobs: "450+" },
+  "social-media-manager": { students: "95+", jobs: "1000+" },
+  "java-full-stack-developer": { students: "120+", jobs: "1800+" },
+  "devops-engineering": { students: "70+", jobs: "1100+" },
+  "python-developer": { students: "150+", jobs: "1900+" },
+  "automation-testing": { students: "70+", jobs: "900+" },
+  "talent-acquisition-lead": { students: "65+", jobs: "850+" },
+  "internal-recruitment-coordinator": { students: "60+", jobs: "350+" },
+  "hr-analytics-specialist": { students: "60+", jobs: "400+" },
+  "people-operations-manager": { students: "60+", jobs: "450+" },
+  "digital-marketing": { students: "130+", jobs: "1500+" },
+  "performance-marketing": { students: "70+", jobs: "700+" },
 };
 
 type CourseDetails = {

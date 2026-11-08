@@ -3,7 +3,7 @@
 import styles from "./ProductPageTemplate.module.css";
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import { ArrowRight, Award, Briefcase, Hammer, TrendingUp, Users } from "lucide-react";
+import { ArrowRight, Briefcase, CalendarDays, Hammer, TrendingUp, Users } from "lucide-react";
 import CourseHeroArt from "./Courses/CourseHeroArt";
 import ContactLeadForm from "./ProductSections/ContactLeadForm";
 import FaqSection from "./ProductSections/FaqSection";
@@ -236,11 +236,11 @@ export default function ProductPage({ course, onBuyNow, owned = false, onOpenCou
             {/* STATS */}
             <article className={`${styles.proimpactCard} ${styles.proimpactStat}`}>
               <span className={styles.proimpactStatIcon}>
-                <Award size={20} strokeWidth={2} />
+                <CalendarDays size={20} strokeWidth={2} />
               </span>
               <div>
-                <p className={styles.proimpactStatNumber}>{stats.years}</p>
-                <p className={styles.proimpactStatLabel}>Years of experience</p>
+                <p className={styles.proimpactStatNumber}>{stats.duration}</p>
+                <p className={styles.proimpactStatLabel}>Course duration</p>
               </div>
             </article>
 

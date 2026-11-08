@@ -1744,6 +1744,16 @@
   }
 }
 
+/* small phones: keep "3 Months" on one line in the half-width stat cards */
+@media (max-width: 374px) {
+
+  .proimpactStatNumber {
+    font-size: 22px;
+
+    white-space: nowrap;
+  }
+}
+
 
 @media (prefers-reduced-motion: reduce) {
 

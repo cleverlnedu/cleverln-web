@@ -45,7 +45,11 @@ const Footer = ({ trendingCourses = [] }: { trendingCourses?: TrendingCourse[] }
                   Terms & Conditions
                 </Link>
               </li>
-              <li>Refund policy</li>
+              <li>
+                <Link href="/refund-policy">
+                  Refund policy
+                </Link>
+              </li>
             </ul>
           </div>
 
