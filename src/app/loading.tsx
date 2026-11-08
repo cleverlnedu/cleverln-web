@@ -1,20 +1,11 @@
 import LoadingIndicator from "@/components/common/LoadingIndicator";
-import PageLoader from "@/components/common/PageLoader";
 import styles from "./loading.module.css";
 
+// Between pages: only the three moving dots (the label is read out to screen readers, not shown).
 export default function Loading() {
   return (
     <main className={styles.loadingScreen}>
-      <PageLoader
-        label="Loading CleverLN"
-        fallback={<>
-          <div className={styles.loadingBrand} aria-hidden="true">
-            <span className={styles.loadingMark}>C</span>
-            <span>CleverLN</span>
-          </div>
-          <LoadingIndicator large label="Loading" />
-        </>}
-      />
+      <LoadingIndicator large label="Loading CleverLN" hideLabel />
     </main>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { friendlyAuthError, phoneNumberError } from '@/lib/authMessages';
+import LoadingIndicator from "@/components/common/LoadingIndicator";
 import { syncLmsProfile } from '@/lib/profileSync';
 import { safeReturnTo } from '@/lib/returnTo';
 import { supabase } from '@/lib/supabase';
@@ -85,9 +86,8 @@ export default function CompleteProfilePage() {
 
       {loadingProfile ? (
         <div className={styles.authForm}>
-          <div className={styles.authStatus} role="status">
-            <span className={styles.authSpinner} aria-hidden="true" />
-            Loading your account details
+          <div className={styles.authStatus}>
+            <LoadingIndicator label="Loading your account details" />
           </div>
         </div>
       ) : (

@@ -1,6 +1,7 @@
 "use client";
 
 import { friendlyAuthError } from '@/lib/authMessages';
+import LoadingIndicator from "@/components/common/LoadingIndicator";
 import { syncLmsProfile } from '@/lib/profileSync';
 import { safeReturnTo, withReturnTo } from '@/lib/returnTo';
 import { supabase } from '@/lib/supabase';
@@ -76,9 +77,8 @@ export default function AuthCallbackPage() {
             </div>
           </>
         ) : (
-          <div className={styles.authStatus} role="status">
-            <span className={styles.authSpinner} aria-hidden="true" />
-            Signing you in
+          <div className={styles.authStatus}>
+            <LoadingIndicator label="Signing you in" />
           </div>
         )}
       </div>

@@ -1,7 +1,116 @@
 .loading { display: inline-flex; align-items: center; justify-content: center; gap: 10px; color: #416457; font: 600 13px/1.5 var(--font-poppins), Arial, sans-serif; }
-.spinner { position: relative; width: 20px; height: 20px; flex: 0 0 auto; border: 2px solid #dcebe4; border-top-color: #07966f; border-right-color: #07966f; border-radius: 50%; animation: cleverSpinner .85s cubic-bezier(.5,.1,.3,.9) infinite; }
-.large { flex-direction: column; gap: 15px; font-size: 14px; letter-spacing: .01em; }
-.large .spinner { width: 48px; height: 48px; border-width: 3px; box-shadow: 0 0 0 8px #eff8f4, 0 8px 24px rgb(7 127 95 / 12%); }
-.large .spinner::after { content: ""; position: absolute; inset: 7px; border: 2px solid #bfe5d5; border-bottom-color: #0a7559; border-radius: 50%; animation: cleverSpinner 1.2s ease-in-out infinite reverse; }
-@keyframes cleverSpinner { to { transform: rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) { .spinner, .large .spinner::after { animation-duration: 2s; } }
+.large { flex-direction: column; gap: 14px; font-size: 14px; letter-spacing: .01em; }
+
+/* label for screen readers only (hideLabel) */
+.srOnly { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* =========================================================
+   THREE DOTS: they take turns in the middle. Every step each dot moves one place
+   to the right; the middle one is big and dark, the side ones small and light, and
+   the dot on the right hops back over the top to the left.
+   --s big dot size, --d distance between places, --h height of the hop.
+========================================================= */
+
+.dots {
+  --s: 8px;
+  --d: 10px;
+  --h: 9px;
+  --dot: #07966f;
+  --dot-soft: #a6dcc7;
+  --glow: 0 2px 5px rgb(7 150 111 / 35%);
+
+  position: relative;
+  flex: 0 0 auto;
+  width: calc(var(--d) * 2 + var(--s) + 4px);
+  height: calc(var(--s) + var(--h) + 6px);
+}
+
+.dot {
+  position: absolute;
+  left: calc(50% - var(--s) / 2);
+  bottom: 3px;
+  width: var(--s);
+  height: var(--s);
+  border-radius: 50%;
+  background: var(--dot-soft);
+  will-change: transform;
+  animation: cleverDots 1.8s infinite both;
+}
+
+.dot:nth-child(2) { animation-delay: -.6s; }
+.dot:nth-child(3) { animation-delay: -1.2s; }
+
+/* one dot's trip; the other two run the same trip a third and two thirds ahead */
+@keyframes cleverDots {
+  0%, 13.33% {
+    transform: translate(calc(var(--d) * -1), 0) scale(.5);
+    background: var(--dot-soft);
+    box-shadow: none;
+    animation-timing-function: cubic-bezier(.65, 0, .3, 1);
+  }
+  33.33%, 46.66% {
+    transform: translate(0, 0) scale(1);
+    background: var(--dot);
+    box-shadow: var(--glow);
+    animation-timing-function: cubic-bezier(.65, 0, .3, 1);
+  }
+  66.66%, 80% {
+    transform: translate(var(--d), 0) scale(.5);
+    background: var(--dot-soft);
+    box-shadow: none;
+    animation-timing-function: linear;
+  }
+  /* the hop back over the top */
+  85% { transform: translate(calc(var(--d) * .72), calc(var(--h) * -.72)) scale(.48); animation-timing-function: linear; }
+  90% { transform: translate(0, calc(var(--h) * -1)) scale(.46); animation-timing-function: linear; }
+  95% { transform: translate(calc(var(--d) * -.72), calc(var(--h) * -.72)) scale(.48); animation-timing-function: linear; }
+  100% {
+    transform: translate(calc(var(--d) * -1), 0) scale(.5);
+    background: var(--dot-soft);
+    box-shadow: none;
+  }
+}
+
+/* big page loader: larger dots and a soft shadow under the middle place */
+.large .dots {
+  --s: 16px;
+  --d: 22px;
+  --h: 24px;
+  --glow: 0 6px 14px rgb(7 150 111 / 32%);
+}
+
+.large .dot { bottom: 8px; }
+
+.large .dots::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 10px);
+  bottom: 0;
+  width: 20px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgb(7 120 90 / 22%);
+  filter: blur(1.5px);
+  animation: cleverDotsFloor .6s infinite;
+}
+
+/* the shadow is full while a dot sits in the middle and fades while the dots change places */
+@keyframes cleverDotsFloor {
+  0%, 40% { opacity: 1; transform: scaleX(1); }
+  70% { opacity: .3; transform: scaleX(.5); }
+  100% { opacity: 1; transform: scaleX(1); }
+}
+
+/* on a green button (navbar) */
+.light .dots {
+  --dot: #ffffff;
+  --dot-soft: rgb(255 255 255 / 55%);
+  --glow: 0 2px 6px rgb(0 0 0 / 18%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot { animation-duration: 3.6s; }
+  .dot:nth-child(2) { animation-delay: -1.2s; }
+  .dot:nth-child(3) { animation-delay: -2.4s; }
+  .large .dots::after { animation-duration: 1.2s; }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { friendlyAuthError } from '@/lib/authMessages';
+import LoadingIndicator from "@/components/common/LoadingIndicator";
 import { supabase } from '@/lib/supabase';
 import AuthLayout from '@/components/website/Auth/AuthLayout';
 import PasswordField from '@/components/website/Auth/PasswordField';
@@ -56,7 +57,7 @@ export default function ResetPasswordPage() {
       <p className={styles.authSubtitle}>Make it at least 8 characters</p>
 
       {loading ? (
-        <div className={styles.authForm} role="status"><span className={styles.authSpinner} aria-hidden="true" /></div>
+        <div className={styles.authForm}><LoadingIndicator large /></div>
       ) : linkExpired ? (
         <div className={styles.authForm}>
           <p className={styles.authAlert} role="alert">This reset link has expired or was opened on a different device. Request a new one to continue.</p>

@@ -146,7 +146,7 @@ export default function Navbar() {
               className={styles.wLogin}
               aria-live="polite"
             >
-              {loading ? <LoadingIndicator /> : user ? "MY LEARNING" : "LOGIN"}
+              {loading ? <LoadingIndicator tone="light" /> : user ? "MY LEARNING" : "LOGIN"}
             </Link>
 
           </div>
