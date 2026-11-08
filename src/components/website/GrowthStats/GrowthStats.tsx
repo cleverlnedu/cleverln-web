@@ -4,22 +4,24 @@ import { useEffect, useRef, useState } from "react";
 
 import styles from "./GrowthStats.module.css";
 
+// The last two repeat claims made elsewhere on the site (pricing: "Trusted by 519+ universities";
+// support FAQ: team available 24/7), so the numbers stay consistent across pages.
 const stats = [
   {
     value: "10X",
-    description: "faster video production",
+    description: "faster placement",
   },
   {
-    value: "40%",
-    description: "increase in video watch time",
+    value: "100%",
+    description: "hands-on learning experience",
   },
   {
-    value: "5X",
-    description: "increase in video asset output",
+    value: "519+",
+    description: "universities trust CleverLN",
   },
   {
-    value: "5X",
-    description: "return on ad spend",
+    value: "24/7",
+    description: "learner support",
   },
 ];
 

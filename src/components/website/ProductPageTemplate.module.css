@@ -5192,3 +5192,89 @@
     animation: none;
   }
 }
+
+
+/* =========================================================
+   TOOLS: logo + name (courses whose tools come from /tools/icons).
+   Same row as the wordmark logos; two-class selectors so they win over
+   ".protoolsLogos img" at every breakpoint.
+========================================================= */
+
+ul.protoolsLogos {
+  margin-bottom: 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  flex-wrap: wrap;
+
+  row-gap: 18px;
+}
+
+.protoolsLogos .protoolsTool {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  font-family: var(--font-poppins);
+
+  font-size: 17px;
+
+  line-height: 1;
+
+  font-weight: 600;
+
+  letter-spacing: -0.01em;
+
+  color: #1d2421;
+
+  white-space: nowrap;
+
+  --tool-icon: 28px;
+}
+
+.protoolsLogos .protoolsTool img {
+  width: var(--tool-icon);
+
+  height: var(--tool-icon);
+
+  max-width: none;
+
+  object-fit: contain;
+}
+
+/* wordmarks (Zoom, Zoho, AWS): natural width, height set per logo (--wide) */
+.protoolsLogos .protoolsTool .protoolsToolWide {
+  width: auto;
+
+  height: calc(var(--tool-icon) * var(--wide, 0.85));
+}
+
+@media (max-width: 1439px) {
+
+  .protoolsLogos .protoolsTool {
+    font-size: 15px;
+
+    --tool-icon: 25px;
+  }
+}
+
+@media (max-width: 760px) {
+
+  ul.protoolsLogos {
+    column-gap: 24px;
+
+    row-gap: 16px;
+  }
+
+  .protoolsLogos .protoolsTool {
+    gap: 7px;
+
+    font-size: 13.5px;
+
+    --tool-icon: 22px;
+  }
+}

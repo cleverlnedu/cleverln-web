@@ -612,8 +612,8 @@
 
 /* =========================================================
    BOTTOM NAVIGATION (tablet + phone)
-   Floating "liquid glass" capsule: frosted, translucent bar with a
-   specular edge, and a tinted glass bubble that glides to the
+   iOS-style floating "liquid glass" tab bar: a frosted capsule with a
+   specular edge, and a light glass lens that glides (and squishes) to the
    current page. Icons switch from outline to solid when active.
    Hidden on desktop.
 ========================================================= */
@@ -644,30 +644,32 @@
     pointer-events: none;
   }
 
+  /* iOS-style floating tab bar: a frosted glass capsule with neutral shadows */
   .wBottomNav {
     position: fixed;
     left: 50%;
     bottom: calc(10px + env(safe-area-inset-bottom));
     z-index: 9990;
-    width: min(520px, calc(100% - 24px));
+    width: min(460px, calc(100% - 32px));
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    padding: 6px;
+    padding: 4px;
     isolation: isolate;
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    border-radius: 30px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.48));
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    backdrop-filter: blur(24px) saturate(180%);
+    border: 0.5px solid rgba(0, 0, 0, 0.06);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.66);
+    -webkit-backdrop-filter: blur(22px) saturate(190%);
+    backdrop-filter: blur(22px) saturate(190%);
     box-shadow:
-      0 14px 34px rgba(10, 48, 36, 0.16),
-      0 2px 6px rgba(10, 48, 36, 0.06),
-      inset 0 1px 0 rgba(255, 255, 255, 0.9),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.35);
+      0 10px 30px rgba(0, 0, 0, 0.12),
+      0 1px 3px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    /* the iPhone's own SF font on Apple devices, the brand font everywhere else */
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-ibm), sans-serif;
     transform: translateX(-50%);
   }
 
-  /* Gloss: a curved reflection across the top half, and a faint one along the bottom */
+  /* Gloss: a soft reflection across the top half, and a faint one along the bottom */
   .wBottomNav::before {
     content: "";
     position: absolute;
@@ -675,8 +677,8 @@
     z-index: -2;
     border-radius: inherit;
     background:
-      radial-gradient(140% 95% at 50% -32%, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.45) 38%, rgba(255, 255, 255, 0) 62%),
-      linear-gradient(0deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 30%);
+      radial-gradient(140% 95% at 50% -32%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.4) 38%, rgba(255, 255, 255, 0) 62%),
+      linear-gradient(0deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 30%);
     pointer-events: none;
   }
 
@@ -686,9 +688,9 @@
     position: absolute;
     inset: -1px;
     z-index: 2;
-    padding: 1.2px;
+    padding: 1px;
     border-radius: inherit;
-    background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.3) 42%, rgba(255, 255, 255, 0.12) 62%, rgba(255, 255, 255, 0.75) 100%);
+    background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.3) 42%, rgba(255, 255, 255, 0.12) 62%, rgba(255, 255, 255, 0.7) 100%);
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -711,33 +713,37 @@
     bottom: -20%;
     left: 0;
     width: 26%;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.45) 50%, rgba(255, 255, 255, 0) 100%);
     opacity: 0;
     animation: wGlossSweep 7s ease-in-out infinite;
   }
 
-  /* The glass bubble behind the current page */
+  /* Glides to the current page, one column per tab */
   .wBottomIndicator {
     position: absolute;
-    top: 6px;
-    bottom: 6px;
-    left: 6px;
+    top: 4px;
+    bottom: 4px;
+    left: 4px;
     z-index: -1;
-    width: calc((100% - 12px) / 4);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 24px;
-    /* Glossy top half over a green tint */
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0.14) 46%, rgba(255, 255, 255, 0) 54%),
-      linear-gradient(135deg, rgba(24, 184, 123, 0.32), rgba(16, 134, 95, 0.18));
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.95),
-      inset 0 -6px 12px rgba(16, 134, 95, 0.08),
-      0 6px 16px rgba(16, 134, 95, 0.2);
+    width: calc((100% - 8px) / 4);
     transform: translateX(calc(var(--active-index, 0) * 100%));
     transition:
-      transform 0.55s cubic-bezier(0.34, 1.4, 0.5, 1),
+      transform 0.5s cubic-bezier(0.32, 1.25, 0.5, 1),
       opacity 0.2s ease;
+  }
+
+  /* The glass lens itself: light grey like iOS, squishing like liquid as it travels */
+  .wBottomLens {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 60%),
+      rgba(118, 118, 128, 0.14);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.85),
+      inset 0 0 0 0.5px rgba(0, 0, 0, 0.04);
+    animation: wLens 0.5s cubic-bezier(0.32, 1.25, 0.5, 1);
   }
 
   .wBottomNav:not([data-has-active]) .wBottomIndicator {
@@ -746,36 +752,38 @@
 
   .wBottomLink {
     min-width: 0;
-    min-height: 56px;
+    min-height: 54px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3px;
-    padding: 6px 4px;
-    border-radius: 24px;
-    color: #4f5d57;
+    gap: 2px;
+    padding: 5px 2px 4px;
+    border-radius: 999px;
+    color: #5b6461;
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
-    transition: color 0.25s ease;
+    transition:
+      color 0.25s ease,
+      transform 0.2s ease;
+  }
+
+  /* pressed: the whole tab dips, like a native button */
+  .wBottomLink:active {
+    transform: scale(0.92);
   }
 
   .wBottomIcon {
     flex-shrink: 0;
-    transition: transform 0.2s ease;
-  }
-
-  .wBottomLink:active .wBottomIcon {
-    transform: scale(0.86);
   }
 
   .wBottomLabel {
     max-width: 100%;
     overflow: hidden;
-    font-size: 11.5px;
+    font-size: 10.5px;
     font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: 0.01em;
+    line-height: 13px;
+    letter-spacing: 0.005em;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
@@ -789,7 +797,6 @@
   }
 
   .wBottomActive .wBottomIcon {
-    filter: drop-shadow(0 2px 3px rgba(11, 122, 85, 0.28));
     animation: wTabPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
@@ -808,6 +815,12 @@
   2% { opacity: 1; }
   14% { opacity: 1; transform: translateX(440%) skewX(-20deg); }
   15%, 100% { opacity: 0; transform: translateX(440%) skewX(-20deg); }
+}
+
+@keyframes wLens {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.14, 0.86); }
+  100% { transform: scale(1); }
 }
 
 @keyframes wTabPop {
@@ -832,19 +845,19 @@
 @media (max-width: 360px) {
 
   .wBottomNav {
-    width: calc(100% - 16px);
-    padding: 5px;
+    width: calc(100% - 20px);
+    padding: 3px;
   }
 
   .wBottomIndicator {
-    top: 5px;
-    bottom: 5px;
-    left: 5px;
-    width: calc((100% - 10px) / 4);
+    top: 3px;
+    bottom: 3px;
+    left: 3px;
+    width: calc((100% - 6px) / 4);
   }
 
   .wBottomLabel {
-    font-size: 10.5px;
+    font-size: 10px;
   }
 
 }
@@ -857,7 +870,8 @@
     transition: none;
   }
 
-  .wBottomActive .wBottomIcon {
+  .wBottomActive .wBottomIcon,
+  .wBottomLens {
     animation: none;
   }
 

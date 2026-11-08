@@ -74,7 +74,7 @@ export default function BlogsPage() {
           <li><Link href="/courses">Courses to learn</Link></li>
           <li>Programs to explore</li>
           <li>Certifications</li>
-          <li>Workshops</li>
+          <li><Link href="/workshops">Workshops</Link></li>
           <li>Resources</li>
         </ul>
       </div>

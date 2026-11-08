@@ -1,4 +1,5 @@
 import type { Faq } from "../ProductSections/FaqSection";
+import { getCourseDetails } from "./courseDetails";
 
 // FAQs for each course page: course-specific questions people search for (what it is, who can join, tools,
 // jobs, plus one common question per course) and the platform questions answered for that course.
@@ -342,6 +343,16 @@ function platformFaqs(name: string, projects: string): Faq[] {
   ];
 }
 
+// Names the same tools as the course page's "Work with Industry Tools" row, so the two never disagree.
+function toolsAnswer(info: CourseFaqInfo, course?: { slug?: string; title?: string }) {
+  const { tools } = getCourseDetails(course);
+  const shown = "wordmarks" in tools ? tools.wordmarks.map((logo) => logo.alt) : tools.list.map((tool) => tool.name);
+  const names = shown.length ? shown : info.tools;
+  const practise = "practising each one through real assignments so you're comfortable using them on the job.";
+  if (info.toolsAnswer) return names.length ? `${info.toolsAnswer} You'll also work with ${list(names)}, ${practise}` : info.toolsAnswer;
+  return `You'll work hands-on with ${list(names)}, ${practise}`;
+}
+
 export function getCourseFaqs(course?: { slug?: string; title?: string }): { name: string; faqs: Faq[] } {
   // the template without a course (the /product page) shows UI/UX, so it gets the UI/UX questions
   const info = COURSE_FAQS[course?.slug ?? ""] ?? (course?.title ? undefined : COURSE_FAQS["ui-ux-design"]);
@@ -370,7 +381,7 @@ export function getCourseFaqs(course?: { slug?: string; title?: string }): { nam
       info.extra,
       {
         question: `Which tools will I learn in the ${name} course?`,
-        answer: info.toolsAnswer ?? `You'll work hands-on with ${list(info.tools)}, practising each one through real assignments so you're comfortable using them on the job.`,
+        answer: toolsAnswer(info, course),
       },
       {
         question: `What jobs can I get after the ${name} course?`,

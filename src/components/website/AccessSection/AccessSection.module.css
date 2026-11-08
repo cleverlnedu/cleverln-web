@@ -437,7 +437,7 @@
 @media (max-width: 760px) {
 
   .accessSection {
-    padding: 50px 0 60px;
+    padding: 50px 0 40px;
   }
 
   .accessContainer {
@@ -567,7 +567,7 @@
 @media (max-width: 480px) {
 
   .accessSection {
-    padding: 45px 0 55px;
+    padding: 45px 0 40px;
   }
 
   .accessContainer {
@@ -602,6 +602,20 @@
     height: 39px;
 
     font-size: 16px;
+  }
+}
+
+
+/* =========================================================
+   768px: this is the last section on the home page. On phones the footer's
+   newsletter card no longer overlaps the page, so the footer's top space
+   (100px) is only empty; cancel it so the section's own 40px is the gap.
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .accessSection {
+    margin-bottom: -100px;
   }
 }
 

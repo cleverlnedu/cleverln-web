@@ -27,12 +27,12 @@ const navItems: { title: string; href: string; icon: Icon }[] = [
     icon: BookOpenTextIcon,
   },
   {
-    title: "Hire Talent",
-    href: "/hire",
+    title: "Workshops",
+    href: "/workshops",
     icon: UsersThreeIcon,
   },
   {
-    title: "Get Hired",
+    title: "Apply Jobs",
     href: "/opportunities",
     icon: BriefcaseIcon,
   },
@@ -169,8 +169,10 @@ export default function Navbar() {
         data-has-active={activeIndex >= 0 ? "" : undefined}
         style={{ "--active-index": Math.max(activeIndex, 0) } as CSSProperties}
       >
-        {/* Glass bubble that glides to the current page */}
-        <span className={styles.wBottomIndicator} aria-hidden="true" />
+        {/* Glass lens that glides to the current page; the inner lens re-mounts so it squishes as it moves */}
+        <span className={styles.wBottomIndicator} aria-hidden="true">
+          <span key={activeIndex} className={styles.wBottomLens} />
+        </span>
         {/* Glossy light sweep; re-mounts on tab change so the shine runs across right away */}
         <span className={styles.wBottomGloss} aria-hidden="true">
           <span key={activeIndex} className={styles.wBottomShine} />

@@ -1,0 +1,1478 @@
+/* =========================================================
+   WORKSHOPS: COMING SOON
+   Left: copy (landing type scale: IBM Plex Sans title, Poppins body).
+   Right: a preview of a live workshop window (expert on stage, moving Q&A chat,
+   learners joining) with a "seats opening soon" card. Below: how a workshop works.
+   Neutral shadows only; brand green #0eb47e / #07845f for accents.
+========================================================= */
+
+.page {
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  padding: 72px 24px 64px;
+}
+
+.inner {
+  max-width: 1180px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+
+  align-items: center;
+
+  gap: 56px;
+}
+
+.eyebrow,
+.title,
+.sub,
+.actions,
+.points {
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: none;
+  }
+}
+
+.eyebrow {
+  margin: 0 0 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  color: #07845f;
+}
+
+.eyebrowDot {
+  width: 8px;
+
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #0eb47e;
+
+  animation: dot 1.8s ease-in-out infinite;
+}
+
+@keyframes dot {
+  0%,
+  100% {
+    transform: scale(1);
+
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(0.6);
+
+    opacity: 0.5;
+  }
+}
+
+.title {
+  margin: 0;
+
+  color: #111111;
+
+  /* even line lengths, so "work." never sits alone on the last line */
+  text-wrap: balance;
+}
+
+.title span {
+  color: #07845f;
+}
+
+.sub {
+  max-width: 520px;
+
+  margin: 18px 0 0;
+
+  color: #4b5552;
+}
+
+.actions {
+  margin-top: 30px;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 14px;
+}
+
+/* the glass buttons from the course page, as links */
+.actions .btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-decoration: none;
+}
+
+.points {
+  margin: 28px 0 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px 22px;
+}
+
+.points li {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #3c4643;
+}
+
+.points svg {
+  flex-shrink: 0;
+
+  width: 20px;
+
+  height: 20px;
+
+  padding: 3px;
+
+  border-radius: 50%;
+
+  background: #e6f6ef;
+
+  color: #07845f;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LIVE WORKSHOP PREVIEW
+========================================================= */
+
+.visual {
+  position: relative;
+
+  padding: 34px 0 0 28px;
+}
+
+.window {
+  overflow: hidden;
+
+  border: 1px solid #e6ebe9;
+
+  border-radius: 22px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 1px 2px rgba(16, 40, 30, 0.05),
+    0 24px 48px -12px rgba(16, 40, 30, 0.16);
+
+  animation: windowIn 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both;
+}
+
+@keyframes windowIn {
+  from {
+    opacity: 0;
+
+    transform: translateY(24px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: none;
+  }
+}
+
+/* window chrome */
+.bar {
+  height: 44px;
+
+  padding: 0 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  border-bottom: 1px solid #eef1ef;
+
+  background: #fbfcfb;
+}
+
+.barDots {
+  display: inline-flex;
+
+  gap: 6px;
+}
+
+.barDots i {
+  width: 9px;
+
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #e1e5e3;
+}
+
+/* right-aligned so the "seats" card can sit over the window's top-left corner */
+.barTitle {
+  margin-left: auto;
+
+  font-family: var(--font-poppins);
+
+  font-size: 12.5px;
+
+  font-weight: 600;
+
+  color: #3c4643;
+
+  white-space: nowrap;
+}
+
+.live {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 4px 9px;
+
+  border-radius: 999px;
+
+  background: #fdecec;
+
+  font-family: var(--font-poppins);
+
+  font-size: 10.5px;
+
+  line-height: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  color: #d93636;
+}
+
+.liveDot {
+  width: 6px;
+
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #e5484d;
+
+  animation: blink 1.4s ease-in-out infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+/* stage: the expert on the left, the Q&A chat on the right */
+.stage {
+  height: 300px;
+
+  padding: 12px;
+
+  display: grid;
+
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+
+  gap: 12px;
+
+  box-sizing: border-box;
+}
+
+.speaker {
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+
+  background:
+    radial-gradient(circle at 50% 36%, #ffffff 0, rgba(255, 255, 255, 0) 55%),
+    linear-gradient(160deg, #f3eff7 0%, #e6e0ee 100%);
+}
+
+.expert {
+  position: absolute;
+
+  bottom: 0;
+
+  left: 50%;
+
+  width: auto;
+
+  max-width: none;
+
+  height: 94%;
+
+  transform: translateX(-50%);
+}
+
+.nameTag {
+  position: absolute;
+
+  bottom: 10px;
+
+  left: 10px;
+
+  padding: 7px 12px 7px 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+
+  box-shadow: 0 4px 14px rgba(16, 40, 30, 0.1);
+}
+
+.nameTag strong,
+.nameTag small {
+  display: block;
+
+  font-family: var(--font-poppins);
+
+  white-space: nowrap;
+}
+
+.nameTag strong {
+  font-size: 11.5px;
+
+  line-height: 14px;
+
+  font-weight: 600;
+
+  color: #111111;
+}
+
+.nameTag small {
+  font-size: 10px;
+
+  line-height: 13px;
+
+  font-weight: 500;
+
+  color: #6b7572;
+}
+
+/* "speaking" bars */
+.wave {
+  height: 16px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 2px;
+}
+
+.wave i {
+  width: 3px;
+
+  height: 6px;
+
+  border-radius: 2px;
+
+  background: #0eb47e;
+
+  animation: wave 1s ease-in-out infinite;
+}
+
+.wave i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.wave i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.wave i:nth-child(4) {
+  animation-delay: 0.45s;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    height: 5px;
+  }
+
+  50% {
+    height: 15px;
+  }
+}
+
+/* Q&A chat */
+.chat {
+  min-width: 0;
+
+  padding: 10px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  border: 1px solid #eef1ef;
+
+  border-radius: 16px;
+
+  background: #fbfcfb;
+}
+
+.chatHead {
+  margin: 0 0 8px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  font-family: var(--font-poppins);
+
+  font-size: 11px;
+
+  line-height: 14px;
+
+  font-weight: 600;
+
+  color: #3c4643;
+}
+
+.chatHead svg {
+  color: #07845f;
+}
+
+.messages {
+  flex: 1;
+
+  min-height: 0;
+
+  overflow: hidden;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: flex-end;
+
+  gap: 8px;
+}
+
+.message {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 6px;
+
+  animation: messageIn 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes messageIn {
+  from {
+    opacity: 0;
+
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: none;
+  }
+}
+
+.messageAvatar {
+  flex: 0 0 20px;
+
+  height: 20px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #dfe6e3;
+
+  font-family: var(--font-poppins);
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  color: #3c4643;
+}
+
+.message p {
+  margin: 0;
+
+  padding: 7px 9px;
+
+  border: 1px solid #e9edeb;
+
+  border-radius: 4px 12px 12px 12px;
+
+  background: #ffffff;
+
+  font-family: var(--font-poppins);
+
+  font-size: 10.5px;
+
+  line-height: 1.45;
+
+  font-weight: 500;
+
+  color: #2e3734;
+}
+
+.messageExpert .messageAvatar {
+  background: #0eb47e;
+
+  color: #ffffff;
+}
+
+.messageExpert p {
+  border-color: #d3efe3;
+
+  background: #e9f7f1;
+
+  color: #0b5e43;
+}
+
+.chatInput {
+  height: 30px;
+
+  margin-top: 8px;
+
+  padding: 0 10px;
+
+  display: flex;
+
+  flex-shrink: 0;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border: 1px solid #e6ebe9;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  font-family: var(--font-poppins);
+
+  font-size: 10.5px;
+
+  color: #8a9390;
+}
+
+.chatInput svg {
+  color: #0eb47e;
+}
+
+/* bottom bar: learners joining, call buttons */
+.controls {
+  height: 56px;
+
+  padding: 0 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-top: 1px solid #eef1ef;
+}
+
+.people {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.people small {
+  font-family: var(--font-poppins);
+
+  font-size: 11.5px;
+
+  font-weight: 500;
+
+  color: #5f6b66;
+}
+
+.avatars {
+  display: inline-flex;
+}
+
+.avatars span {
+  width: 26px;
+
+  height: 26px;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 2px solid #ffffff;
+
+  border-radius: 50%;
+
+  font-family: var(--font-poppins);
+
+  font-size: 10.5px;
+
+  font-weight: 700;
+
+  color: #ffffff;
+}
+
+.avatars span + span {
+  margin-left: -8px;
+}
+
+.buttons {
+  display: flex;
+
+  gap: 8px;
+}
+
+.buttons span {
+  width: 32px;
+
+  height: 32px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #f2f4f3;
+
+  color: #3c4643;
+}
+
+.buttons .raised {
+  background: #fff4d6;
+
+  color: #b7791f;
+}
+
+.raised svg {
+  transform-origin: 50% 90%;
+
+  animation: wiggle 2.4s ease-in-out 1.2s infinite;
+}
+
+@keyframes wiggle {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0);
+  }
+
+  70% {
+    transform: rotate(-14deg);
+  }
+
+  80% {
+    transform: rotate(10deg);
+  }
+
+  90% {
+    transform: rotate(-6deg);
+  }
+}
+
+/* floating "seats opening soon" card over the window's top-left corner */
+.seats {
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  z-index: 1;
+
+  padding: 11px 16px 11px 11px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  border: 1px solid #e9ecea;
+
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  box-shadow: 0 14px 30px -10px rgba(16, 40, 30, 0.2);
+
+  animation:
+    pop 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.2) 0.9s both,
+    float 6s ease-in-out 1.5s infinite;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+
+    transform: translateY(8px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: none;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.seatsIcon {
+  width: 38px;
+
+  height: 38px;
+
+  flex-shrink: 0;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 12px;
+
+  background: #fff4d6;
+
+  color: #b7791f;
+}
+
+.seats strong,
+.seats small {
+  display: block;
+
+  font-family: var(--font-poppins);
+
+  white-space: nowrap;
+}
+
+.seats strong {
+  font-size: 13px;
+
+  line-height: 18px;
+
+  font-weight: 600;
+
+  color: #111111;
+}
+
+.seats small {
+  font-size: 11px;
+
+  line-height: 15px;
+
+  font-weight: 500;
+
+  color: #6b7572;
+}
+
+
+/* =========================================================
+   HOW A WORKSHOP WORKS
+========================================================= */
+
+.how {
+  padding: 24px 24px 40px;
+}
+
+.howInner {
+  max-width: 1132px;
+
+  margin: 0 auto;
+}
+
+.howTitle {
+  margin: 0;
+
+  text-align: center;
+
+  color: #111111;
+}
+
+.howSub {
+  margin: 10px 0 0;
+
+  text-align: center;
+
+  color: #5f6b66;
+}
+
+.steps {
+  margin: 36px 0 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.stepCard {
+  position: relative;
+
+  padding: 22px 20px 24px;
+
+  border: 1px solid #e6ebe9;
+
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 1px 2px rgba(16, 40, 30, 0.04),
+    0 8px 24px rgba(16, 40, 30, 0.05);
+}
+
+/* dashed link from one step to the next, level with the icons */
+.stepCard + .stepCard::before {
+  content: "";
+
+  position: absolute;
+
+  top: 44px;
+
+  left: -21px;
+
+  width: 22px;
+
+  border-top: 2px dashed #cfe3da;
+}
+
+.stepTop {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+.stepIcon {
+  width: 44px;
+
+  height: 44px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 13px;
+
+  background: #e9f7f1;
+
+  color: #07845f;
+}
+
+.stepNum {
+  font-family: var(--font-ibm);
+
+  font-size: 28px;
+
+  line-height: 1;
+
+  font-weight: 700;
+
+  color: #e2e8e5;
+}
+
+.stepCard h3 {
+  margin: 18px 0 0;
+
+  color: #111111;
+}
+
+.stepCard p {
+  margin: 8px 0 0;
+
+  color: #5f6b66;
+}
+
+
+/* =========================================================
+   1100px
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .hero {
+    padding: 56px 24px 56px;
+  }
+
+  /* even columns, so both 202px buttons fit side by side down to 960px */
+  .inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+    gap: 28px;
+  }
+
+  .stage {
+    height: 280px;
+  }
+
+  .steps {
+    gap: 16px;
+  }
+
+  .stepCard + .stepCard::before {
+    left: -17px;
+
+    width: 18px;
+  }
+}
+
+
+/* =========================================================
+   960px: one column, the preview first and the copy centred below
+========================================================= */
+
+@media (max-width: 960px) {
+
+  .inner {
+    max-width: 620px;
+
+    grid-template-columns: minmax(0, 1fr);
+
+    gap: 28px;
+  }
+
+  .visual {
+    order: -1;
+
+    padding: 30px 0 0;
+  }
+
+  .seats {
+    left: 12px;
+  }
+
+  .copy {
+    text-align: center;
+  }
+
+  .eyebrow,
+  .actions,
+  .points {
+    justify-content: center;
+  }
+
+  .sub {
+    margin-right: auto;
+
+    margin-left: auto;
+  }
+
+  .steps {
+    max-width: 620px;
+
+    margin-right: auto;
+
+    margin-left: auto;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stepCard + .stepCard::before {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   700px (landing mobile scale)
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .hero {
+    padding: 28px 16px 48px;
+  }
+
+
+  .sub {
+    margin-top: 14px;
+  }
+
+  .actions {
+    margin-top: 24px;
+
+    gap: 12px;
+  }
+
+  .points {
+    margin-top: 22px;
+
+    gap: 8px 16px;
+  }
+
+
+  .how {
+    padding: 8px 16px 40px;
+  }
+
+
+
+  .steps {
+    margin-top: 24px;
+
+    gap: 12px;
+  }
+}
+
+
+/* =========================================================
+   600px: chat below the expert, showing the two newest messages
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .stage {
+    height: auto;
+
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* room for the "seats" card above the window, clear of its title bar */
+  .visual {
+    padding-top: 46px;
+  }
+
+  .speaker {
+    height: 210px;
+  }
+
+  .messages {
+    justify-content: flex-start;
+  }
+
+  .message:first-child {
+    display: none;
+  }
+
+  .message p {
+    font-size: 11px;
+  }
+
+  .steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* icon left, text right */
+  .stepCard {
+    padding: 16px;
+
+    display: grid;
+
+    grid-template-columns: 44px minmax(0, 1fr);
+
+    column-gap: 14px;
+  }
+
+  .stepTop {
+    grid-row: span 2;
+
+    align-self: start;
+  }
+
+  .stepNum {
+    display: none;
+  }
+
+  .stepCard h3 {
+    margin-top: 1px;
+  }
+
+  .stepCard p {
+    margin-top: 4px;
+  }
+}
+
+
+/* =========================================================
+   768px: the footer's newsletter card no longer overlaps the page, so the space
+   above the footer (its 80px margin, merged with the 100px top margin of its first
+   block) is only empty space here; cancel it so the steps keep just 40px.
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .page {
+    margin-bottom: -100px;
+  }
+}
+
+
+/* =========================================================
+   480px
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .eyebrow {
+    margin-bottom: 14px;
+  }
+
+
+
+  .bar {
+    padding: 0 12px;
+  }
+
+  .barTitle {
+    font-size: 11.5px;
+  }
+
+  .speaker {
+    height: 190px;
+  }
+
+  .controls {
+    height: 52px;
+
+    padding: 0 12px;
+  }
+
+  .people small {
+    font-size: 10.5px;
+  }
+
+  .buttons span {
+    width: 30px;
+
+    height: 30px;
+  }
+
+  .seats {
+    padding: 9px 14px 9px 9px;
+  }
+
+  .seatsIcon {
+    width: 34px;
+
+    height: 34px;
+  }
+
+  .seats strong {
+    font-size: 12px;
+  }
+
+  .seats small {
+    font-size: 10.5px;
+  }
+
+}
+
+
+/* =========================================================
+   TYPE: the landing page's scale on every device (values measured from
+   the home page: hero title / description / button, and the "Why join us"
+   eyebrow, section title, description and card text), same breakpoints.
+========================================================= */
+
+.eyebrow,
+.title,
+.sub,
+.points li,
+.actions .btn,
+.howTitle,
+.howSub,
+.stepCard h3,
+.stepCard p {
+  font-family: var(--font-ibm), sans-serif;
+}
+
+/* 1101-1439px (the landing page's base) */
+.eyebrow {
+  font-size: 11px;
+  line-height: normal;
+  font-weight: 700;
+}
+
+.title {
+  font-size: 38px;
+  line-height: 1.08;
+  font-weight: 700;
+}
+
+.sub {
+  font-size: 16px;
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+.actions .btn {
+  width: 202px;
+  height: 58px;
+  border-radius: 18px;
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.points li,
+.stepCard p {
+  font-size: 12px;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+.howTitle {
+  font-size: 24px;
+  line-height: 1.28;
+  font-weight: 700;
+}
+
+.howSub {
+  font-size: 16px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+.stepCard h3 {
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+@media (min-width: 1440px) {
+
+  .eyebrow {
+    font-size: 13px;
+  }
+
+  .title {
+    font-size: 48px;
+  }
+
+  .sub {
+    font-size: 20px;
+  }
+
+  .points li,
+  .stepCard p {
+    font-size: 14px;
+  }
+
+  .howTitle {
+    font-size: 28px;
+  }
+
+  .howSub {
+    font-size: 18px;
+  }
+
+  .stepCard h3 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1100px) {
+
+  .title {
+    font-size: 46px;
+  }
+
+  .sub {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 760px) {
+
+  .howTitle {
+    line-height: 1.3;
+  }
+
+  .howSub {
+    line-height: 1.5;
+  }
+
+  .points li,
+  .stepCard p {
+    line-height: 1.45;
+  }
+}
+
+@media (max-width: 700px) {
+
+  .title {
+    font-size: 38px;
+    line-height: 1.4;
+  }
+
+  .sub {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .actions .btn {
+    width: 170px;
+    height: 48px;
+    border-radius: 15px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .title {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+
+  .sub {
+    font-size: 12px;
+    line-height: 1.48;
+  }
+
+  .actions .btn {
+    width: 150px;
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 420px) {
+
+  .howTitle {
+    font-size: 19px;
+  }
+
+  .howSub {
+    font-size: 12px;
+  }
+
+  .stepCard h3 {
+    font-size: 13px;
+  }
+
+  .points li,
+  .stepCard p {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+}
+
+@media (max-width: 350px) {
+
+  .title {
+    font-size: 28px;
+  }
+
+  .sub {
+    font-size: 14px;
+  }
+
+  .actions .btn {
+    width: 180px;
+    height: 50px;
+    font-size: 15px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .eyebrow,
+  .title,
+  .sub,
+  .actions,
+  .points,
+  .eyebrowDot,
+  .window,
+  .liveDot,
+  .wave i,
+  .message,
+  .raised svg,
+  .seats {
+    animation: none;
+  }
+}

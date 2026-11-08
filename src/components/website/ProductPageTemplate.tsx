@@ -2,11 +2,13 @@
 
 import styles from "./ProductPageTemplate.module.css";
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import { ArrowRight, Award, Briefcase, Hammer, TrendingUp, Users } from "lucide-react";
 import CourseHeroArt from "./Courses/CourseHeroArt";
 import ContactLeadForm from "./ProductSections/ContactLeadForm";
 import FaqSection from "./ProductSections/FaqSection";
 import PricingPlans, { type PricingPlan } from "./ProductSections/PricingPlans";
+import { getCourseDetails } from "./Courses/courseDetails";
 import { getCourseFaqs } from "./Courses/courseFaqs";
 import { getCourseHero } from "./Courses/courseHero";
 
@@ -19,12 +21,8 @@ export type ProductPageCourse = {
   compareAtPriceMinor: number | null;
 };
 
-// "Build. Apply. Impact" steps in the program section (copy drawn from the section's own lines).
-const IMPACT_STEPS = [
-  { icon: Hammer, title: "Build", text: "Learn by building, with new AI use cases every week." },
-  { icon: Briefcase, title: "Apply", text: "Work on problems inspired by real companies." },
-  { icon: TrendingUp, title: "Impact", text: "Turn ideas into measurable growth." },
-];
+// Icons for the three "How it works" steps (the steps themselves are per course, see Courses/courseDetails.ts).
+const IMPACT_STEP_ICONS = [Hammer, Briefcase, TrendingUp];
 
 const IMPACT_COMPANIES = [
   { src: "/products/mmmiles.webp", alt: "Miles", width: 448, height: 128 },
@@ -73,6 +71,8 @@ export default function ProductPage({ course, onBuyNow, owned = false, onOpenCou
 
   // Questions written for this course (see Courses/courseFaqs.ts); also sent as FAQPage data by the course route.
   const { name: faqName, faqs } = getCourseFaqs(course);
+  // "What this program is about" copy and the industry tools, written for this course.
+  const { impact, tools, stats } = getCourseDetails(course);
 
 
 
@@ -201,12 +201,11 @@ export default function ProductPage({ course, onBuyNow, owned = false, onOpenCou
             </p>
 
             <h2 className={styles.proimpactHeading}>
-              Turn ideas into <span>real impact</span> with CleverLN.
+              {impact.heading[0]}<span>{impact.heading[1]}</span>{impact.heading[2]}
             </h2>
 
             <p className={styles.proimpactDescription}>
-              Bring your ideas to life with designs that are creative, intuitive, and user-focused.
-              Where creativity meets usability.
+              {impact.description}
             </p>
           </header>
 
@@ -215,10 +214,12 @@ export default function ProductPage({ course, onBuyNow, owned = false, onOpenCou
             {/* HOW IT WORKS */}
             <article className={`${styles.proimpactCard} ${styles.proimpactSteps}`}>
               <p className={styles.proimpactCardLabel}>How it works</p>
-              <h3 className={styles.proimpactCardTitle}>Build. Apply. Impact</h3>
+              <h3 className={styles.proimpactCardTitle}>{impact.steps.map((s) => s.title).join(". ")}</h3>
 
               <ol className={styles.proimpactStepList}>
-                {IMPACT_STEPS.map(({ icon: Icon, title, text }, i) => (
+                {impact.steps.map(({ title, text }, i) => {
+                  const Icon = IMPACT_STEP_ICONS[i];
+                  return (
                   <li key={title}>
                     <span className={styles.proimpactStepIcon}>
                       <Icon size={20} strokeWidth={2} />
@@ -227,7 +228,8 @@ export default function ProductPage({ course, onBuyNow, owned = false, onOpenCou
                     <strong>{title}</strong>
                     <p>{text}</p>
                   </li>
-                ))}
+                  );
+                })}
               </ol>
             </article>
 
@@ -237,7 +239,7 @@ export default function ProductPage({ course, onBuyNow, owned = false, onOpenCou
                 <Award size={20} strokeWidth={2} />
               </span>
               <div>
-                <p className={styles.proimpactStatNumber}>07+</p>
+                <p className={styles.proimpactStatNumber}>{stats.years}</p>
                 <p className={styles.proimpactStatLabel}>Years of experience</p>
               </div>
             </article>
@@ -247,7 +249,7 @@ export default function ProductPage({ course, onBuyNow, owned = false, onOpenCou
                 <Users size={20} strokeWidth={2} />
               </span>
               <div>
-                <p className={styles.proimpactStatNumber}>2K+</p>
+                <p className={styles.proimpactStatNumber}>{stats.students}</p>
                 <p className={styles.proimpactStatLabel}>Students registered</p>
               </div>
             </article>
@@ -255,7 +257,7 @@ export default function ProductPage({ course, onBuyNow, owned = false, onOpenCou
             {/* COMPANIES */}
             <article className={`${styles.proimpactCard} ${styles.proimpactCompanies}`}>
               <p className={styles.proimpactCardLabel}>Learn by building</p>
-              <h3 className={styles.proimpactCardTitle}>Weekly AI use cases inspired by real companies.</h3>
+              <h3 className={styles.proimpactCardTitle}>{impact.casesTitle}</h3>
 
               <div className={styles.proimpactLogos}>
                 {IMPACT_COMPANIES.map((logo) => (
@@ -266,17 +268,17 @@ export default function ProductPage({ course, onBuyNow, owned = false, onOpenCou
               </div>
 
               <p className={styles.proimpactFooter}>
-                Learn from those who’ve built real AI systems and driven measurable growth.
+                {impact.casesFooter}
               </p>
             </article>
 
             {/* JOBS */}
             <article className={`${styles.proimpactCard} ${styles.proimpactJobs}`}>
               <p className={styles.proimpactCardLabel}>This year</p>
-              <p className={styles.proimpactJobsNumber}>20000+</p>
+              <p className={styles.proimpactJobsNumber}>{stats.jobs}</p>
               <p className={styles.proimpactJobsText}>Jobs are listed this year.</p>
               <p className={styles.proimpactJobsText}>
-                Don’t wait. Are you ready?
+                {impact.jobsLine}
               </p>
 
               <button
@@ -378,34 +380,30 @@ export default function ProductPage({ course, onBuyNow, owned = false, onOpenCou
 
 
     {/* ================= LOGOS ================= */}
-        <div className={styles.protoolsLogos}>
-
-          <img
-            src="/tools/canva.png"
-            alt="Canva"
-          />
-
-          <img
-            src="/tools/figma.png"
-            alt="Figma"
-          />
-
-          <img
-            src="/tools/claude.png"
-            alt="Claude"
-          />
-
-          <img
-            src="/tools/adobe.png"
-            alt="Adobe XD"
-          />
-
-          <img
-            src="/tools/framer.png"
-            alt="Framer"
-          />
-
-        </div>
+        {/* the tools taught in this course (see Courses/courseDetails.ts) */}
+        {"wordmarks" in tools ? (
+          <div className={styles.protoolsLogos}>
+            {tools.wordmarks.map((logo) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img key={logo.alt} src={logo.src} alt={logo.alt} />
+            ))}
+          </div>
+        ) : tools.list.length > 0 ? (
+          <ul className={styles.protoolsLogos} aria-label="Tools you will learn">
+            {tools.list.map((tool) => (
+              <li key={tool.icon + tool.name} className={styles.protoolsTool} title={tool.name}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`/tools/icons/${tool.icon}.svg`}
+                  alt={tool.label === "" ? tool.name : ""}
+                  className={tool.wide ? styles.protoolsToolWide : undefined}
+                  style={tool.wide ? ({ "--wide": tool.wide } as CSSProperties) : undefined}
+                />
+                {tool.label !== "" && <span>{tool.label ?? tool.name}</span>}
+              </li>
+            ))}
+          </ul>
+        ) : null}
 
 
         {/* ================= BROCHURE CARD ================= */}

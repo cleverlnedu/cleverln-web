@@ -22,10 +22,10 @@ const Footer = ({ trendingCourses = [] }: { trendingCourses?: TrendingCourse[] }
 
             <ul>
               <li><Link href="/courses">Courses to learn</Link></li>
-              <li>Programs to explore</li>
-              <li>Certifications</li>
-              <li>Workshops</li>
-              <li>Resources</li>
+              <li><Link href="/opportunities">Apply for jobs</Link></li>
+              <li><Link href="/hire">Hire now</Link></li>
+              <li><Link href="/workshops">Workshops</Link></li>
+              
             </ul>
           </div>
 
@@ -34,10 +34,10 @@ const Footer = ({ trendingCourses = [] }: { trendingCourses?: TrendingCourse[] }
             <h4>Policies</h4>
 
             <ul>
-              <li><Link href="/help-center">Help Center</Link></li>
+              <li><Link href="/help-center">Help center</Link></li>
               <li>
                 <Link href="/privacy-policy">
-                  Privacy Policy
+                  Privacy policy
                 </Link>
               </li>
               <li>
@@ -45,7 +45,7 @@ const Footer = ({ trendingCourses = [] }: { trendingCourses?: TrendingCourse[] }
                   Terms & Conditions
                 </Link>
               </li>
-              <li>Support system</li>
+              <li>Refund policy</li>
             </ul>
           </div>
 
@@ -241,7 +241,9 @@ const Footer = ({ trendingCourses = [] }: { trendingCourses?: TrendingCourse[] }
               </li>
 
               <li>
-                Workshops
+                <Link href="/workshops">
+                  Workshops
+                </Link>
               </li>
 
               <li>

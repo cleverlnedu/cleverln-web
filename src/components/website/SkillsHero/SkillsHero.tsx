@@ -4,27 +4,29 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./SkillsHero.module.css";
 
+// The previous photos (22, 33, 444, 55.webp) are kept in /images/hero; transparent cut-outs of the
+// new people are in /images/people for use elsewhere.
 const heroProfiles = [
   {
     image: "/images/hero/11.webp",
     role: "Buyer",
   },
   {
-    image: "/images/hero/22.webp",
+    image: "/images/hero/man-black-blazer.webp",
     role: "Transaction Coordinator",
   },
 
   {
-    image: "/images/hero/33.webp",
+    image: "/images/hero/woman-navy-blazer.webp",
     role: "Agent",
   },
-  
+
   {
-    image: "/images/hero/444.webp",
+    image: "/images/hero/man-blue-suit.webp",
     role: "Seller",
   },
   {
-    image: "/images/hero/55.webp",
+    image: "/images/hero/man-glasses-red.webp",
     role: "Buyer",
   },
 ];
