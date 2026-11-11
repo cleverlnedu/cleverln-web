@@ -3,102 +3,169 @@
 // The full hire page, parked while /hire shows "Coming soon" (see page.tsx).
 // To bring it back, make page.tsx render <FullHirePage />.
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./hirePage.module.css";
 
 export default function FullHirePage() {
-  const [step, setStep] = useState(1);
-  const [active, setActive] = useState("freshers");
-  const [isMobile, setIsMobile] = useState(false);
+const [step, setStep] = useState(1);
+const [active, setActive] = useState("freshers");
+  
 
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 600);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
 
+type FAQItem = {
+  question: string;
+  answer: string;
+};
+
+const goalsRef = useRef<HTMLDivElement | null>(null);
+const [submitted, setSubmitted] = useState(false);
+
+
+
+/*================ FEATURES SECTION ==============*/
+    const features = [
+  {
+    title: "One Platform for Every ",
+    highlight: "Location.",
+    desc: "Empowering every journey toward success.",
+    image: "/features/location.png",
+    reverse: false,
+  },
+  {
+    title: "Verified Talent, ",
+    highlight: "Trusted",
+    desc: " Results. Find verified CV’s backed by CleverLN AI insights.",
+    image: "/features/verified.png",
+    reverse: true,
+  },
+  {
+    title: "Always here to ",
+    highlight: "Support",
+    desc: " you. Get dedicated support whenever you need it.",
+    image: "/features/support.png",
+    reverse: false,
+  },
+  {
+    title: "Advanced ",
+    highlight: "Dashboard",
+    desc: " for Recruiter's. Take full control of your hiring with a powerful, all-in-one dashboard.",
+    image: "/features/dashboard.png",
+    reverse: true,
+  },
+  {
+    title: "",
+    highlight: "Top-tier",
+    desc: " colleges, interns & graduates. Access top-tier talent from leading colleges, interns, and fresh graduates.",
+    image: "/features/college.png",
+    reverse: false,
+  },
+];
+  
+  /* ================= TESTIMONIAL DATA ================= */
+
+
+const [isMobile, setIsMobile] = useState(false);
+
+useEffect(() => {
+  const check = () => setIsMobile(window.innerWidth <= 600);
+  check();
+  window.addEventListener("resize", check);
+  return () => window.removeEventListener("resize", check);
+}, []);
+
+  
   const testimonials = [
     {
       name: "Yashna H",
       role: "Full Stack Developer",
       img: "/users/user1.webp",
       text: "Improved my resume with expert guidance. Got interview calls within days. Cracked my first job with CleverLN Pro. ",
-      tags: ["Congratulations !", "Thanks for sharing with us."],
+      tags: ["Congratulations !", "Thanks for sharing with us."]
     },
     {
       name: "Ananya Singh",
       role: "UI/UX Designer",
       img: "/users/user2.webp",
       text: "Completed my course but needed direction. CleverLN Pro helped refine my profile. Secured a high-paying MNC job.",
-      tags: ["Feeling Proud!", "Your journey doesn’t end here"],
+      tags: ["Feeling Proud!", "Your journey doesn’t end here"]
     },
     {
       name: "Nikhil Sharma",
       role: "Performance Marketer",
       img: "/users/user3.webp",
       text: "Needed real job support after learning. CleverLN Pro made my profile job-ready. Cracked a premium job offer..",
-      tags: ["Congratulations !", "Real talent gets paid more."],
+      tags: ["Congratulations !", "Real talent gets paid more."]
     },
     {
       name: "Rahul Khana",
       role: "Backend Developer",
       img: "/users/user4.webp",
       text: "Started with zero freelancing experience. Got real project guidance step by step. Turned skills into steady income.",
-      tags: ["Congratulations !", "Don’t chase jobs. Create them."],
+      tags: ["Congratulations !", "Don’t chase jobs. Create them."]
     },
     {
       name: "Extra User",
       role: "Developer",
       img: "/users/user1.webp",
       text: "Wanted to earn while learning skills. Started freelancing with guidance. Now making consistent income.",
-      tags: ["Nice!", "Keep going"],
+      tags: ["Nice!", "Keep going"]
     },
     {
       name: "Yashna H",
       role: "Full Stack Developer",
       img: "/users/user1.webp",
       text: "Applied daily but got zero responses. CleverLN Pro changed everything fast. Landed multiple interviews in one week.",
-      tags: ["Congratulations !", "Thanks for sharing with us."],
+      tags: ["Congratulations !", "Thanks for sharing with us."]
     },
     {
       name: "Ananya Singh",
       role: "UI/UX Designer",
       img: "/users/user2.webp",
       text: "I used to apply every day… but got no calls. After joining CleverLN Pro, everything changed.",
-      tags: ["Feeling Proud!", "Your journey doesn’t end here"],
+      tags: ["Feeling Proud!", "Your journey doesn’t end here"]
     },
     {
       name: "Nikhil Sharma",
       role: "Performance Marketer",
       img: "/users/user3.webp",
       text: "Completed my Digital Marketing course and landed a high-paying MNC job.",
-      tags: ["Congratulations !", "Real talent gets paid more."],
+      tags: ["Congratulations !", "Real talent gets paid more."]
     },
     {
       name: "Rahul Khana",
       role: "Backend Developer",
       img: "/users/user4.webp",
       text: "Started freelancing and now earning more than full-time roles.",
-      tags: ["Congratulations !", "Don’t chase jobs. Create them."],
+      tags: ["Congratulations !", "Don’t chase jobs. Create them."]
     },
     {
       name: "Extra User",
       role: "Developer",
       img: "/users/user1.webp",
       text: "This extra card ensures smooth sliding behavior.",
-      tags: ["Nice!", "Keep going"],
-    },
+      tags: ["Nice!", "Keep going"]
+    }
   ];
 
   /* ================= SLIDER LOGIC ================= */
 
   const [current, setCurrent] = useState(0);
-  const totalCards = testimonials.length;
-  const visibleCards = isMobile ? 1 : 4;
-  const maxIndex = Math.max(0, totalCards - visibleCards);
+const totalCards = testimonials.length;
 
-  /* ================= FAQ OPEN/CLOSE ================= */
+const visibleCards = isMobile ? 1 : 4;
+
+const maxIndex = Math.max(0, totalCards - visibleCards);
+
+
+const [activeIndex, setActiveIndex] = useState<number | null>(0);
+
+  const toggle = (index: number) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+ 
+
+
+/* ================= FAQ OPEN/CLOSE ================= */
 
   const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
 

@@ -72,6 +72,14 @@ export default function DashboardClient({
     !purchased || jobPurchased;
 
 
+  /* =========================================================
+     PAYMENT PAGE
+  ========================================================= */
+
+  const isPaymentPage =
+    verify || jobVerify;
+
+
   return (
     <Container>
 
