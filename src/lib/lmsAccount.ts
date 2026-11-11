@@ -2,7 +2,28 @@ import type { SupabaseClient, User } from '@supabase/supabase-js';
 
 export class AccountLinkError extends Error {}
 
-const escapeLike = (value: string) => value.replace(/[\\%_]/g, (char) => `\\${char}`);
+const cleanText = (value: unknown, maxLength: number) =>
+  (typeof value === 'string' || typeof value === 'number' ? String(value) : '')
+    .replace(/[\u0000-\u001f\u007f]+/g, ' ')
+    .trim()
+    .slice(0, maxLength);
+
+/**
+ * Name, phone and photo from the account metadata. A signed-in user can set
+ * their own metadata to anything, so it is trimmed to sensible lengths and
+ * shapes before it is written to the shared users table.
+ */
+export function profileFromMetadata(metadata: Record<string, unknown> | null | undefined) {
+  const source = metadata ?? {};
+  const avatar = cleanText(source.avatar_url || source.picture, 2048);
+  return {
+    name: cleanText(source.name || source.full_name, 120),
+    phone: cleanText(source.phone_number, 40).replace(/[^+\d\s()-]/g, '').trim(),
+    avatar: /^https?:\/\//i.test(avatar) ? avatar : '',
+  };
+}
+
+const escapeLike =(value: string) => value.replace(/[\\%_]/g, (char) => `\\${char}`);
 
 /**
  * The LMS user that belongs to this signed-in account, creating and linking one

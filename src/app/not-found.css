@@ -234,3 +234,10 @@
         max-width: 350px;
     }
 }
+
+
+@media (prefers-reduced-motion: reduce) {
+  .blob {
+    animation: none;
+  }
+}

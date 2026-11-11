@@ -1,29 +1,12 @@
-import DashboardClient from "./DashboardClient";
+import { Suspense } from "react";
+import { DashboardFromQuery } from "./DashboardClient";
 
-interface DashboardPageProps {
-  searchParams: Promise<{
-    verify?: string;
-    purchased?: string;
-    jobVerify?: string;
-    jobPurchased?: string;
-    plan?: string;
-    course?: string;
-  }>;
-}
-
-export default async function DashboardPage({
-  searchParams,
-}: DashboardPageProps) {
-  const params = await searchParams;
-
+// The query string is read in the browser, so this page is built once and
+// served as a static file instead of being rendered on the server per visit.
+export default function DashboardPage() {
   return (
-    <DashboardClient
-      verify={params.verify === "true"}
-      purchased={params.purchased === "true"}
-      jobVerify={params.jobVerify === "true"}
-      jobPurchased={params.jobPurchased === "true"}
-      plan={params.plan || "standard"}
-      courseSlug={params.course}
-    />
+    <Suspense fallback={null}>
+      <DashboardFromQuery />
+    </Suspense>
   );
 }

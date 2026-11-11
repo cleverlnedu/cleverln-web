@@ -23,19 +23,19 @@ export default function NotFound() {
                     </p>
 
                     <div className="navLinks">
-                        <Link href="/shots/popular" className="navItem">
+                        <Link href="/courses" className="navItem">
                             <span className="navIcon">🎓</span>
                             Explore Courses
                         </Link>
-                        <Link href="/jobs" className="navItem">
+                        <Link href="/opportunities" className="navItem">
                             <span className="navIcon">💼</span>
                             Search Internships
                         </Link>
-                        <Link href="/stories" className="navItem">
+                        <Link href="/community" className="navItem">
                             <span className="navIcon">🌐</span>
                             Community Forum
                         </Link>
-                        <Link href="/help" className="navItem">
+                        <Link href="/support" className="navItem">
                             <span className="navIcon">💬</span>
                             Send Support Request
                         </Link>

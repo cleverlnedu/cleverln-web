@@ -8,8 +8,6 @@ import BrandSplash from "@/components/website/BrandSplash/BrandSplash";
 //import Footer from "@/components/website/footer/footer";
 
 import {
-  Geist,
-  Geist_Mono,
   Poppins,
   DM_Serif_Display,
   IBM_Plex_Sans,
@@ -24,6 +22,9 @@ const ibmHebrew = IBM_Plex_Sans_Hebrew({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-ibm-hebrew",
+  // Only the hire and opportunities pages use this face, so it is fetched when
+  // a page needs it instead of being preloaded on every page.
+  preload: false,
 });
 
 
@@ -31,22 +32,9 @@ const ibmHebrew = IBM_Plex_Sans_Hebrew({
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  // Weight 300 is not used by any style, so it is not downloaded.
+  weight: ["400", "500", "600", "700"],
   variable: "--font-poppins",
-});
-
-/* =========================================================
-GEIST
-========================================================= */
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 /* =========================================================
@@ -57,6 +45,8 @@ const dmSerif = DM_Serif_Display({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-dm-serif",
+  // Used on the course detail page and job cards only.
+  preload: false,
 });
 
 /* =========================================================
@@ -65,7 +55,7 @@ IBM PLEX SANS
 
 const ibm = IBM_Plex_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-ibm",
 });
 
@@ -81,8 +71,6 @@ export const metadata: Metadata = {
 
 const rootFontClasses = [
   poppins.variable,
-  geistSans.variable,
-  geistMono.variable,
   dmSerif.variable,
   ibm.variable,
   ibmHebrew.variable,

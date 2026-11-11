@@ -77,56 +77,56 @@ const TESTIMONIALS = [
   {
     name: "Yashna H",
     role: "Full Stack Developer",
-    img: "/users/user1.png",
+    img: "/users/user1.webp",
     text: "Improved my resume with expert guidance. Got interview calls within days. Cracked my first job with CleverLN Pro.",
     tags: ["Congratulations !", "Thanks for sharing with us."],
   },
   {
     name: "Ananya Singh",
     role: "UI/UX Designer",
-    img: "/users/user2.png",
+    img: "/users/user2.webp",
     text: "Completed my course but needed direction. CleverLN Pro helped refine my profile. Secured a high-paying MNC job.",
     tags: ["Feeling Proud!", "Your journey doesn’t end here"],
   },
   {
     name: "Nikhil Sharma",
     role: "Performance Marketer",
-    img: "/users/user3.png",
+    img: "/users/user3.webp",
     text: "Needed real job support after learning. CleverLN Pro made my profile job-ready. Cracked a premium job offer.",
     tags: ["Congratulations !", "Real talent gets paid more."],
   },
   {
     name: "Rahul Khana",
     role: "Backend Developer",
-    img: "/users/user4.png",
+    img: "/users/user4.webp",
     text: "Started with zero freelancing experience. Got real project guidance step by step. Turned skills into steady income.",
     tags: ["Congratulations !", "Don’t chase jobs. Create them."],
   },
   {
     name: "Yashna H",
     role: "Full Stack Developer",
-    img: "/users/user1.png",
+    img: "/users/user1.webp",
     text: "Applied daily but got zero responses. CleverLN Pro changed everything fast. Landed multiple interviews in one week.",
     tags: ["Congratulations !", "Thanks for sharing with us."],
   },
   {
     name: "Ananya Singh",
     role: "UI/UX Designer",
-    img: "/users/user2.png",
+    img: "/users/user2.webp",
     text: "I used to apply every day… but got no calls. After joining CleverLN Pro, everything changed.",
     tags: ["Feeling Proud!", "Your journey doesn’t end here"],
   },
   {
     name: "Nikhil Sharma",
     role: "Performance Marketer",
-    img: "/users/user3.png",
+    img: "/users/user3.webp",
     text: "Completed my Digital Marketing course and landed a high-paying MNC job.",
     tags: ["Congratulations !", "Real talent gets paid more."],
   },
   {
     name: "Rahul Khana",
     role: "Backend Developer",
-    img: "/users/user4.png",
+    img: "/users/user4.webp",
     text: "Started freelancing and now earning more than full-time roles.",
     tags: ["Congratulations !", "Don’t chase jobs. Create them."],
   },
@@ -156,7 +156,7 @@ const FAQS = [
   },
 ];
 
-const BLOGS = ["/blogs/blog.1.png", "/blogs/blog.2.png", "/blogs/blog.1.png", "/blogs/blog.2.png"];
+const BLOGS = ["/blogs/blog.1.webp", "/blogs/blog.2.webp", "/blogs/blog.1.webp", "/blogs/blog.2.webp"];
 
 const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

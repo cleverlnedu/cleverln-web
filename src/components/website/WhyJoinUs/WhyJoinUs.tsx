@@ -129,6 +129,8 @@ export default function WhyJoinUs() {
                   <img
                     src={benefit.icon}
                     alt=""
+                    loading="lazy"
+                    decoding="async"
                     className={styles.whyJoinUsIcon}
                   />
                 

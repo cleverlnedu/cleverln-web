@@ -73,6 +73,14 @@ export default function Hero() {
       return;
     }
 
+    /*
+      Visitors who ask for reduced motion move the carousel themselves.
+    */
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % heroProfiles.length);
     }, 4800);

@@ -197,3 +197,38 @@ textarea,
 select {
   -webkit-tap-highlight-color: transparent;
 }
+
+
+/* =========================================================
+   KEYBOARD FOCUS
+   One clear ring for links and buttons reached with the keyboard.
+   Zero specificity, so any component's own focus style still wins.
+========================================================= */
+
+:where(a, button, [role="button"], summary):focus-visible {
+  outline: 2px solid #0aaa7a;
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   PRESSED FEEDBACK ON TOUCH SCREENS
+   The tap highlight is switched off above, so links and buttons
+   without their own pressed state dim slightly while held.
+========================================================= */
+
+@media (hover: none) {
+  :where(a, button, [role="button"]):where(:not(:disabled)):active {
+    opacity: 0.82;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   In-page jumps are instant for visitors who ask for less motion.
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

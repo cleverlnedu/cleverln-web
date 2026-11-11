@@ -6,7 +6,7 @@ import styles from "./blogs.module.css";
 
 const blogsData = Array.from({ length: 10 }).map((_, i) => ({
   id: i + 1,
-  image: i % 2 === 0 ? "/blogs/blog.1.png" : "/blogs/blog.2.png",
+  image: i % 2 === 0 ? "/blogs/blog.1.webp" : "/blogs/blog.2.webp",
 }));
 
 export default function BlogsPage() {
@@ -55,7 +55,7 @@ export default function BlogsPage() {
         <div className={styles.grid}>
           {blogsData.map((blog) => (
             <div key={blog.id} className={styles.card}>
-              <img src={blog.image} className={styles.imageOnly} alt="blog" />
+              <img src={blog.image} className={styles.imageOnly} alt="blog" width={884} height={1048} decoding="async" />
             </div>
           ))}
         </div>

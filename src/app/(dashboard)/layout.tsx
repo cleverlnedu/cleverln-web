@@ -1,4 +1,5 @@
 import DashboardNavbar from "@/components/dashboard/Navbar";
+import MotionPreferences from "@/components/dashboard/MotionPreferences";
 import "@/styles/dashboard.css";
 
 export default function DashboardLayout({
@@ -7,12 +8,14 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="dashboard">
-      <DashboardNavbar />
+    <MotionPreferences>
+      <div className="dashboard">
+        <DashboardNavbar />
 
-      <main className="dashboard-main">
-        {children}
-      </main>
-    </div>
+        <main className="dashboard-main">
+          {children}
+        </main>
+      </div>
+    </MotionPreferences>
   );
 }

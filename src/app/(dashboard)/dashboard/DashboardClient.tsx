@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import Container from "@/components/common/Container";
 
@@ -22,6 +22,22 @@ interface DashboardClientProps {
   jobPurchased: boolean;
   plan: string;
   courseSlug?: string;
+}
+
+/** Reads the dashboard's state from the address bar (same parameters the page has always used). */
+export function DashboardFromQuery() {
+  const params = useSearchParams();
+
+  return (
+    <DashboardClient
+      verify={params.get("verify") === "true"}
+      purchased={params.get("purchased") === "true"}
+      jobVerify={params.get("jobVerify") === "true"}
+      jobPurchased={params.get("jobPurchased") === "true"}
+      plan={params.get("plan") || "standard"}
+      courseSlug={params.get("course") || undefined}
+    />
+  );
 }
 
 export default function DashboardClient({

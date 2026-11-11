@@ -78,70 +78,70 @@ useEffect(() => {
     {
       name: "Yashna H",
       role: "Full Stack Developer",
-      img: "/users/user1.png",
+      img: "/users/user1.webp",
       text: "Improved my resume with expert guidance. Got interview calls within days. Cracked my first job with CleverLN Pro. ",
       tags: ["Congratulations !", "Thanks for sharing with us."]
     },
     {
       name: "Ananya Singh",
       role: "UI/UX Designer",
-      img: "/users/user2.png",
+      img: "/users/user2.webp",
       text: "Completed my course but needed direction. CleverLN Pro helped refine my profile. Secured a high-paying MNC job.",
       tags: ["Feeling Proud!", "Your journey doesn’t end here"]
     },
     {
       name: "Nikhil Sharma",
       role: "Performance Marketer",
-      img: "/users/user3.png",
+      img: "/users/user3.webp",
       text: "Needed real job support after learning. CleverLN Pro made my profile job-ready. Cracked a premium job offer..",
       tags: ["Congratulations !", "Real talent gets paid more."]
     },
     {
       name: "Rahul Khana",
       role: "Backend Developer",
-      img: "/users/user4.png",
+      img: "/users/user4.webp",
       text: "Started with zero freelancing experience. Got real project guidance step by step. Turned skills into steady income.",
       tags: ["Congratulations !", "Don’t chase jobs. Create them."]
     },
     {
       name: "Extra User",
       role: "Developer",
-      img: "/users/user1.png",
+      img: "/users/user1.webp",
       text: "Wanted to earn while learning skills. Started freelancing with guidance. Now making consistent income.",
       tags: ["Nice!", "Keep going"]
     },
     {
       name: "Yashna H",
       role: "Full Stack Developer",
-      img: "/users/user1.png",
+      img: "/users/user1.webp",
       text: "Applied daily but got zero responses. CleverLN Pro changed everything fast. Landed multiple interviews in one week.",
       tags: ["Congratulations !", "Thanks for sharing with us."]
     },
     {
       name: "Ananya Singh",
       role: "UI/UX Designer",
-      img: "/users/user2.png",
+      img: "/users/user2.webp",
       text: "I used to apply every day… but got no calls. After joining CleverLN Pro, everything changed.",
       tags: ["Feeling Proud!", "Your journey doesn’t end here"]
     },
     {
       name: "Nikhil Sharma",
       role: "Performance Marketer",
-      img: "/users/user3.png",
+      img: "/users/user3.webp",
       text: "Completed my Digital Marketing course and landed a high-paying MNC job.",
       tags: ["Congratulations !", "Real talent gets paid more."]
     },
     {
       name: "Rahul Khana",
       role: "Backend Developer",
-      img: "/users/user4.png",
+      img: "/users/user4.webp",
       text: "Started freelancing and now earning more than full-time roles.",
       tags: ["Congratulations !", "Don’t chase jobs. Create them."]
     },
     {
       name: "Extra User",
       role: "Developer",
-      img: "/users/user1.png",
+      img: "/users/user1.webp",
       text: "This extra card ensures smooth sliding behavior.",
       tags: ["Nice!", "Keep going"]
     }
@@ -256,7 +256,9 @@ useEffect(() => {
   <section className={styles.featuresSection}>
   <div className={styles.featuresContainer}>
     <img
-      src="/images/features-section.png"
+      src="/images/features-section.webp"
+      width={2640}
+      height={1309}
       alt="CleverLN Features"
       className={styles.featuresImage}
     />
@@ -317,7 +319,11 @@ useEffect(() => {
   <div className={styles.hireContainer}>
 
     <img
-      src="/images/hire-banner.png"
+      src="/images/hire-banner.webp"
+      width={2400}
+      height={998}
+      loading="lazy"
+      decoding="async"
       alt="Hire smarter with AI"
       className={styles.hireImage}
     />
@@ -630,7 +636,7 @@ useEffect(() => {
             {testimonials.map((item, i) => (
               <div key={i} className={styles.testimonialCard}>
                 <div className={styles.testimonialTop}>
-                  <img src={item.img} alt={item.name} />
+                  <img src={item.img} alt={item.name} loading="lazy" decoding="async" />
                   <div>
                     <h3>{item.name}</h3>
                     <p>{item.role}</p>

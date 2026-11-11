@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { NextRequest, NextResponse } from 'next/server';
-import { AccountLinkError, resolveLmsUserId } from '@/lib/lmsAccount';
+import { AccountLinkError, profileFromMetadata, resolveLmsUserId } from '@/lib/lmsAccount';
 
 export const runtime = 'nodejs';
 
@@ -22,9 +22,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'A verified sign-in is required.' }, { status: 401 });
     }
 
-    const name = String(authUser.user_metadata?.name || authUser.user_metadata?.full_name || '').trim();
-    const phone = String(authUser.user_metadata?.phone_number || '').trim();
-    const avatar = String(authUser.user_metadata?.avatar_url || authUser.user_metadata?.picture || '').trim();
+    const { name, phone, avatar } = profileFromMetadata(authUser.user_metadata);
     const city = String(authUser.user_metadata?.city || '').trim();
     const role = String(authUser.user_metadata?.job_title || authUser.user_metadata?.role || '').trim();
     const headline = String(authUser.user_metadata?.headline || '').trim();

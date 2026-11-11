@@ -55,11 +55,17 @@ export default function BundleShowcase() {
             <source
               media="(max-width: 700px)"
               srcSet="/images/bundle/bundle-mobile.webp"
+              width={1440}
+              height={2752}
             />
 
             <img
               src="/images/bundle/bundle-desktop.webp"
               alt="CleverLN learning bundle"
+              width={2600}
+              height={655}
+              loading="lazy"
+              decoding="async"
               className={styles.bundleShowcaseImage}
             />
           </picture>
