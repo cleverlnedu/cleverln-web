@@ -65,34 +65,34 @@ function CourseCatalogLoading() {
   </div>;
 }
 
+function readCachedCourseProducts(): Product[] | null {
+  if (cachedCourseProducts !== null) return cachedCourseProducts;
+  if (typeof window === "undefined") return null;
+  try {
+    const stored = sessionStorage.getItem(COURSE_CACHE_KEY);
+    if (stored) {
+      const parsed: unknown = JSON.parse(stored);
+      if (parsed && typeof parsed === "object" && "products" in parsed && "savedAt" in parsed &&
+        Array.isArray(parsed.products) && typeof parsed.savedAt === "number") {
+        cachedCourseProducts = parsed.products as Product[];
+        cachedCourseProductsAt = parsed.savedAt;
+      }
+    }
+  } catch {
+    // Ignore malformed or unavailable browser storage and fetch fresh data.
+  }
+  return cachedCourseProducts;
+}
+
 export default function Courses() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState<Product[]>(() => readCachedCourseProducts() ?? []);
+  const [loading, setLoading] = useState(() => readCachedCourseProducts() === null);
   const [error, setError] = useState("");
 
   useEffect(() => {
     let active = true;
-    if (cachedCourseProducts === null) {
-      try {
-        const stored = sessionStorage.getItem(COURSE_CACHE_KEY);
-        if (stored) {
-          const parsed: unknown = JSON.parse(stored);
-          if (parsed && typeof parsed === "object" && "products" in parsed && "savedAt" in parsed &&
-            Array.isArray(parsed.products) && typeof parsed.savedAt === "number") {
-            cachedCourseProducts = parsed.products as Product[];
-            cachedCourseProductsAt = parsed.savedAt;
-          }
-        }
-      } catch {
-        // Ignore malformed or unavailable browser storage and fetch fresh data.
-      }
-    }
-    const initialCachedProducts = cachedCourseProducts;
+    const initialCachedProducts = readCachedCourseProducts();
     const hasCachedProducts = initialCachedProducts !== null;
-    if (hasCachedProducts) {
-      setProducts(initialCachedProducts);
-      setLoading(false);
-    }
 
     if (hasCachedProducts && Date.now() - cachedCourseProductsAt < COURSE_CACHE_TTL) {
       return () => { active = false; };
